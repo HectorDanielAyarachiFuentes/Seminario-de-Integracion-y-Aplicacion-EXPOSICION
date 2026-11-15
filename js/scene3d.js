@@ -441,12 +441,12 @@ class Presentation3D {
     // Restablecer amortiguadamente las modificaciones de usuario
     this.resetUserControls();
 
-    // Duraciones reactivas según velocidad de navegación
-    const exitDuration  = isRapid ? 0.16 : 0.40;
-    const enterDuration = isRapid ? 0.22 : 0.55;
-    const camDuration   = isRapid ? 0.30 : 0.65;
+    // Duraciones reactivas estilo Prezi (vuelo espacial inmersivo)
+    const exitDuration  = isRapid ? 0.20 : 0.65;
+    const enterDuration = isRapid ? 0.30 : 0.85;
+    const camDuration   = isRapid ? 0.35 : 1.05;
 
-    // 2. Interpolación de Cámara Cinemática al nuevo ángulo canónico
+    // 2. Interpolación de Cámara Cinemática al nuevo ángulo canónico (Vuelo orbital / Gran Angular Prezi)
     const camTarget = this.cameraTargets[targetId] || { pos: [2.3, 1.4, 6.8], lookAt: [1.4, 0.2, 0] };
     if (window.gsap) {
       gsap.to(this.targetCamPos, {
@@ -454,14 +454,14 @@ class Presentation3D {
         y: camTarget.pos[1],
         z: camTarget.pos[2],
         duration: camDuration,
-        ease: "power2.out"
+        ease: "power3.inOut"
       });
       gsap.to(this.targetLookAt, {
         x: camTarget.lookAt[0],
         y: camTarget.lookAt[1],
         z: camTarget.lookAt[2],
         duration: camDuration,
-        ease: "power2.out"
+        ease: "power3.inOut"
       });
     } else {
       this.targetCamPos.set(...camTarget.pos);
@@ -473,14 +473,13 @@ class Presentation3D {
     if (!newGroup) return;
 
     if (!window.gsap || !oldGroup || isRapid) {
-      // En navegación rápida, ocultar de inmediato el anterior para no duplicar carga en GPU
       if (oldGroup) {
         oldGroup.visible = false;
       }
       this.transitionState.exitingGroup = null;
     }
 
-    // 3. Transición cinemática de retroceso y avance sin solapamientos
+    // 3. Transición cinemática de retroceso y avance sin solapamientos (Efecto Prezi Zoom-to-frame)
     newGroup.visible = true;
 
     const lateralDir = direction >= 0 ? 1 : -1;
@@ -489,12 +488,12 @@ class Presentation3D {
       this.transitionState.exitingGroup = oldGroup;
       this.transitionState.exitOffset = { x: 0, y: 0, z: 0, scale: 1 };
       gsap.to(this.transitionState.exitOffset, {
-        x: -1.0 * lateralDir,
-        y: -0.10,
-        z: -1.0,
-        scale: 0.88,
+        x: -1.6 * lateralDir,
+        y: -0.15,
+        z: -1.8,
+        scale: 0.72,
         duration: exitDuration,
-        ease: "power2.in",
+        ease: "power2.inOut",
         onComplete: () => {
           if (oldGroup) oldGroup.visible = false;
           if (this.transitionState.exitingGroup === oldGroup) {
@@ -508,11 +507,11 @@ class Presentation3D {
     }
 
     this.transitionState.enterOffset = {
-      x: (isRapid ? 0.5 : 1.1) * lateralDir,
-      y: 0.08,
-      z: isRapid ? -0.4 : -0.9,
-      scale: isRapid ? 0.94 : 0.88,
-      rotY: (isRapid ? 0.15 : 0.35) * lateralDir
+      x: (isRapid ? 0.7 : 1.8) * lateralDir,
+      y: 0.12,
+      z: isRapid ? -0.8 : -1.8,
+      scale: isRapid ? 0.90 : 0.75,
+      rotY: (isRapid ? 0.20 : 0.50) * lateralDir
     };
 
     if (window.gsap) {
@@ -523,7 +522,7 @@ class Presentation3D {
         scale: 1,
         rotY: 0,
         duration: enterDuration,
-        ease: "power2.out"
+        ease: "power3.out"
       });
     } else {
       this.transitionState.enterOffset = { x: 0, y: 0, z: 0, scale: 1, rotY: 0 };

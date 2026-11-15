@@ -630,7 +630,11 @@ class PresentationApp {
     this.bulletsElement.innerHTML = "";
     slide.puntosClave.forEach((punto) => {
       const li = document.createElement("li");
-      li.textContent = punto;
+      if (punto.indexOf("<") !== -1) {
+        li.innerHTML = punto;
+      } else {
+        li.textContent = punto;
+      }
       this.bulletsElement.appendChild(li);
     });
 
