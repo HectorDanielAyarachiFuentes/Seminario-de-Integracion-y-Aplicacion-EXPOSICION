@@ -58,6 +58,8 @@ class Presentation3D {
 
     // Control dinámico de encuadre y prioridad: 'default' | 'object' | 'text'
     this.focusMode = "default";
+    this.baseGroupX = 2.15;
+    this.baseGroupScale = 0.78;
     this.focusAnim = { centerXOffset: 0, scaleMultiplier: 1.0 };
 
     this.init();
@@ -585,13 +587,15 @@ class Presentation3D {
       const enter = this.transitionState?.enterOffset || { x: 0, y: 0, z: 0, scale: 1, rotY: 0 };
       const centerOffset = this.focusAnim?.centerXOffset || 0;
       const scaleMult = this.focusAnim?.scaleMultiplier || 1.0;
-      activeGroup.position.x = 1.6 + centerOffset + this.userPan.x + enter.x;
+      const basePosX = (this.baseGroupX !== undefined) ? this.baseGroupX : 2.15;
+      const baseScaleMult = (this.baseGroupScale !== undefined) ? this.baseGroupScale : 0.78;
+      activeGroup.position.x = basePosX + centerOffset + this.userPan.x + enter.x;
       activeGroup.position.y = this.userPan.y + enter.y;
       activeGroup.position.z = enter.z;
       activeGroup.rotation.y = this.userRotation.y + enter.rotY;
       activeGroup.rotation.x = this.userRotation.x;
       const baseScale = enter.scale !== undefined ? enter.scale : 1;
-      activeGroup.scale.setScalar(baseScale * scaleMult);
+      activeGroup.scale.setScalar(baseScale * scaleMult * baseScaleMult);
     }
 
     // 4b. Escultura saliente en suave retroceso de galería
@@ -600,9 +604,12 @@ class Presentation3D {
       const exit = this.transitionState.exitOffset;
       const centerOffset = this.focusAnim?.centerXOffset || 0;
       const scaleMult = this.focusAnim?.scaleMultiplier || 1.0;
-      exitingGroup.position.x = 1.6 + centerOffset + exit.x;
+      const basePosX = (this.baseGroupX !== undefined) ? this.baseGroupX : 2.15;
+      const baseScaleMult = (this.baseGroupScale !== undefined) ? this.baseGroupScale : 0.78;
+      exitingGroup.position.x = basePosX + centerOffset + exit.x;
       exitingGroup.position.y = exit.y;
       exitingGroup.position.z = exit.z;
+      exitingGroup.scale.setScalar(exit.scale * scaleMult * baseScaleMult);
       const baseScale = exit.scale !== undefined ? exit.scale : 1;
       exitingGroup.scale.setScalar(baseScale * scaleMult);
     }

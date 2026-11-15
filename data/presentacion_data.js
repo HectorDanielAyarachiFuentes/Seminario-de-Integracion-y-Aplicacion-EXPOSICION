@@ -232,18 +232,18 @@ const PRESENTACION_DATA = {
     {
       id: "slide_1",
       numero: 1,
-      bloque: "APERTURA INSTITUCIONAL",
+      bloque: "APERTURA PROTOCOLAR",
       esquema: "Carátula Oficial del TFG",
-      badge: "SIA • CURZAS-UNCo",
-      titulo: "Evaluación del Desempeño Docente y Factibilidad de un Modelo 360°",
-      subtitulo: "Enfoque Formativo Situado en el Departamento de Administración Pública del CURZAS-UNCo (2027)",
+      badge: "CURZAS • UNCo",
+      titulo: "Evaluación Docente y Modelo 360°",
+      subtitulo: "Factibilidad en el Dpto. de Administración Pública (2027)",
       puntosClave: [
-        "Tipo de Trabajo: Proyecto Integral de Trabajo Final de Graduación (TFG) — Conforme Res. CD-CURZAS N° 266/23.",
-        "Institución y Carrera: Universidad Nacional del Comahue • CURZAS • Licenciatura en Gestión de Recursos Humanos (CCC).",
-        "Estudiante y Contacto: Tec. Sup. en RRHH Héctor Daniel Ayarachi Fuentes (DNI 35.492.138 — Legajo 8252 — hectordanielayarachifuentes@gmail.com).",
-        "Equipo de Cátedra y Dirección: Dra. Deborah Noguera, Esp. Federico Abeiro, Esp. María Cecilia Aguirre • Dirección: A designar antes de finalizar el SIA."
+        "🎓 <strong>Proyecto TFG:</strong> Licenciatura en Gestión de Recursos Humanos (CCC)",
+        "👤 <strong>Tesista:</strong> Tec. Sup. en RRHH Héctor Daniel Ayarachi Fuentes (Legajo 8252)",
+        "🏛️ <strong>Marco Institucional:</strong> CURZAS — Universidad Nacional del Comahue",
+        "👥 <strong>Cátedra SIA:</strong> Dra. D. Noguera • Esp. F. Abeiro • Esp. M. C. Aguirre"
       ],
-      metadatosFooter: "Carátula Canónica Oficial • Cátedra SIA 2026 • Viedma, Río Negro",
+      metadatosFooter: "Carátula Oficial • Res. CD-CURZAS 266/23 • Viedma, Río Negro",
       escena3D: "anim_01",
       guionOrador: "Estimados miembros del tribunal evaluador, Dra. Deborah Noguera, Esp. Federico Abeiro y Esp. María Cecilia Aguirre. Inicio formalmente la presentación de mi Proyecto Integral de Trabajo Final de Graduación titulado 'Evaluación del Desempeño Docente y Factibilidad de Implementación de un Modelo de Retroalimentación 360° en el Departamento de Administración Pública del CURZAS-UNCo'. Esta propuesta cumple con todos los requerimientos formales de la carátula institucional reglamentada por la Resolución CD-CURZAS 266/23."
     },

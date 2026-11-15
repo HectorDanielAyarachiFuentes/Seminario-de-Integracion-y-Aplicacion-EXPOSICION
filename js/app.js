@@ -183,9 +183,17 @@ class PresentationApp {
     this.btnTimerToggle.addEventListener("click", () => this.toggleTimer());
     this.btnTimerReset.addEventListener("click", () => this.resetTimer());
 
-    // Modal de Notas de Orador
+    // Modal de Notas de Orador (Atril Digital / Teleprómpter Lateral)
     this.btnToggleNotes.addEventListener("click", () => this.toggleNotes());
     this.btnCloseNotes.addEventListener("click", () => this.toggleNotes(false));
+
+    // Ajuste de tamaño de fuente para lectura cómoda de pie
+    const btnFontSmaller = document.getElementById("btn-font-smaller");
+    const btnFontLarger = document.getElementById("btn-font-larger");
+    if (btnFontSmaller && btnFontLarger) {
+      btnFontSmaller.addEventListener("click", () => this.adjustNotesFontSize(-0.1));
+      btnFontLarger.addEventListener("click", () => this.adjustNotesFontSize(0.1));
+    }
 
     // Drawer de Respaldo Metodológico
     this.btnToggleDrawer.addEventListener("click", () => this.toggleDrawer());
@@ -662,9 +670,16 @@ class PresentationApp {
       this.slideCounter.textContent = `${index + 1} / ${this.totalSlides}`;
     }
 
+    // Sincronizar tiempo sugerido en el Atril del Orador
+    const timePill = document.getElementById("notes-time-pill");
+    if (timePill) {
+      const tiempoEst = slide.tiempoSugerido || "~1.5 min";
+      timePill.innerHTML = `⏱️ ${tiempoEst}`;
+    }
+
     this.notesBody.innerHTML = `
-      <p><strong>🎯 Objetivo de la Filmina ${index + 1}:</strong> ${slide.esquema}</p>
-      <p style="margin-top: 0.6rem;">${slide.guionOrador}</p>
+      <div class="notes-target-badge">🎯 Objetivo Filmina ${index + 1}: ${slide.esquema}</div>
+      <div class="notes-speech-text">${slide.guionOrador}</div>
     `;
   }
 
@@ -979,9 +994,18 @@ class PresentationApp {
   }
 
   // ─── HERRAMIENTAS LATERALES Y DRAWERS ───────────────────────────────────
+  adjustNotesFontSize(delta) {
+    if (!this.notesBody) return;
+    const currentSize = parseFloat(getComputedStyle(this.notesBody).fontSize) || 16;
+    const newSize = Math.max(13, Math.min(26, currentSize + delta * 16));
+    this.notesBody.style.setProperty("--notes-font-size", `${newSize}px`);
+    this.notesBody.style.fontSize = `${newSize}px`;
+  }
+
   toggleNotes(forceState) {
     const isOpen = this.notesModal.classList.contains("open");
     const newState = forceState !== undefined ? forceState : !isOpen;
+
     this.notesModal.classList.toggle("open", newState);
     this.btnToggleNotes.classList.toggle("active", newState);
   }

@@ -498,7 +498,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: clamp(0.6rem, 1.8vh, 1.5rem) clamp(1.2rem, 3.5vw, 4.2rem);
+  padding: clamp(0.5rem, 1.5vh, 1.2rem) clamp(1.5rem, 2.8vw, 3.5rem);
   pointer-events: none;
   overflow: hidden;
   position: relative;
@@ -506,15 +506,15 @@ body {
 
 .slide-card {
   width: 100%;
-  max-width: min(880px, 52vw);
-  max-height: 100%;
-  background: rgba(255, 255, 255, 0.88);
+  max-width: min(1040px, 58vw);
+  max-height: 94%;
+  background: rgba(255, 255, 255, 0.94);
   border: 1.5px solid rgba(180, 131, 36, 0.35);
   border-radius: 16px;
-  padding: clamp(1.4rem, 2.6vh, 2.4rem) clamp(1.8rem, 2.8vw, 3rem);
+  padding: clamp(1.4rem, 2.6vh, 2.4rem) clamp(2rem, 3.2vw, 3.2rem);
   box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08), 0 4px 16px rgba(180, 131, 36, 0.06);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   pointer-events: auto;
   display: flex;
   flex-direction: column;
@@ -622,20 +622,34 @@ body {
 
 .slide-bullets li {
   position: relative;
-  padding-left: clamp(1.4rem, 1.8vw, 1.8rem);
-  font-size: clamp(0.95rem, 1.28vh + 0.18vw, 1.12rem);
-  line-height: 1.52;
+  padding: 0.5rem 0.8rem 0.5rem 1.6rem;
+  font-size: clamp(0.95rem, 1.25vh + 0.18vw, 1.1rem);
+  line-height: 1.45;
   color: #1e293b;
   font-weight: 450;
+  background: rgba(248, 250, 252, 0.7);
+  border-radius: 6px;
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.slide-bullets li:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(180, 131, 36, 0.35);
 }
 
 .slide-bullets li::before {
   content: '✦';
   position: absolute;
-  left: 0;
-  top: 0.08em;
+  left: 0.55rem;
+  top: 0.55rem;
   color: var(--gold-light);
-  font-size: 0.82rem;
+  font-size: 0.75rem;
+}
+
+.slide-bullets li strong {
+  color: var(--oxford-blue);
+  font-weight: 650;
 }
 
 .slide-svg-action {
@@ -977,52 +991,181 @@ body {
   color: var(--gold-main);
 }
 
-/* ─── MODAL DE GUION DEL ORADOR (SPEAKER NOTES) ──────────────────────────── */
+/* ─── MODAL DE GUION DEL ORADOR (ATRIL DIGITAL / TELEPRÓMPTER LATERAL DERECHO) ─── */
 .notes-modal {
   position: fixed;
-  bottom: clamp(55px, 8.5vh, 80px);
-  left: clamp(1rem, 3.5vw, 3.5rem);
-  width: min(520px, calc(100vw - 2rem));
-  max-height: min(290px, 45vh);
-  background: #ffffff;
-  border: 1px solid var(--gold-main);
-  border-radius: 8px;
-  padding: clamp(1rem, 2vh, 1.5rem);
-  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.15);
-  backdrop-filter: blur(18px);
-  z-index: 50;
+  top: clamp(65px, 8.5vh, 85px);
+  right: clamp(1rem, 2.5vw, 2.5rem);
+  bottom: clamp(60px, 8vh, 75px);
+  left: auto;
+  width: min(450px, 36vw);
+  background: rgba(255, 255, 255, 0.96);
+  border: 1.5px solid rgba(180, 131, 36, 0.45);
+  border-radius: 16px;
+  box-shadow: -15px 20px 50px rgba(15, 23, 42, 0.16), 0 4px 20px rgba(180, 131, 36, 0.1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 90;
   display: none;
   flex-direction: column;
-  overflow-y: auto;
+  overflow: hidden;
+  animation: slideInAtril 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .notes-modal.open {
   display: flex;
-  animation: slideUp 0.3s ease;
 }
 
+@keyframes slideInAtril {
+  from { opacity: 0; transform: translateX(35px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Encabezado dorado institucional estilo Keynote / Presenter View */
 .notes-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.8rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--gold-border);
+  padding: 0.85rem 1.25rem;
+  background: linear-gradient(180deg, rgba(254, 252, 246, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
+  border-bottom: 1.5px solid rgba(180, 131, 36, 0.25);
+  gap: 0.6rem;
+  flex-shrink: 0;
+  user-select: none;
 }
 
-.notes-header h3 {
+.notes-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.notes-badge-tag {
   font-family: var(--font-serif);
-  font-size: 0.85rem;
+  font-size: 0.62rem;
   font-weight: 700;
-  text-transform: uppercase;
   color: var(--gold-main);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
+.notes-title-group h3 {
+  font-family: var(--font-serif);
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--oxford-blue);
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.notes-header-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.notes-time-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--oxford-blue);
+  background: rgba(180, 131, 36, 0.12);
+  border: 1px solid rgba(180, 131, 36, 0.3);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Barra de herramientas para lectura cómoda de pie */
+.notes-reader-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 1.25rem;
+  background: rgba(241, 245, 249, 0.6);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.reader-label {
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.reader-font-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.btn-font-size {
+  background: #ffffff;
+  border: 1px solid rgba(203, 213, 225, 0.9);
+  color: var(--oxford-blue);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.18rem 0.45rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-font-size:hover {
+  border-color: var(--gold-main);
+  color: var(--gold-dark);
+}
+
+/* Cuerpo con scroll suave y tipografía nítida para oratoria */
 .notes-body {
-  font-size: 0.9rem;
-  line-height: 1.62;
+  font-size: var(--notes-font-size, 1.02rem);
+  line-height: 1.68;
+  color: #0f172a;
+  padding: 1.3rem 1.4rem;
+  overflow-y: auto;
+  flex: 1 1 auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(180, 131, 36, 0.35) transparent;
+}
+
+.notes-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notes-body::-webkit-scrollbar-thumb {
+  background: rgba(180, 131, 36, 0.35);
+  border-radius: 4px;
+}
+
+.notes-body p {
+  margin-bottom: 0.85rem;
+}
+
+.notes-body p:last-child {
+  margin-bottom: 0;
+}
+
+.notes-target-badge {
+  display: block;
+  padding: 0.45rem 0.8rem;
+  background: rgba(180, 131, 36, 0.08);
+  border-left: 3px solid var(--gold-main);
+  border-radius: 0 6px 6px 0;
+  color: #78350f;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.notes-speech-text {
+  font-family: var(--font-sans);
   color: #1e293b;
+  font-weight: 450;
+  text-align: justify;
 }
 
 /* ─── MODAL VISOR DE DIAGRAMAS SVG (ALTA DEFINICIÓN) ────────────────────── */
@@ -1455,8 +1598,8 @@ body {
 /* ─── 1. PC DE ESCRITORIO GRANDE / 2K / 4K / MONITORES DE AUDITORIO (>1400px) ─── */
 @media (min-width: 1400px) {
   .slide-card {
-    max-width: min(740px, 42vw);
-    padding: 2rem 2.8rem;
+    max-width: min(1080px, 58vw);
+    padding: 2.2rem 3.2rem;
   }
   .slide-title {
     font-size: clamp(2rem, 2.2vw, 2.45rem);
@@ -1521,10 +1664,10 @@ body {
     padding: 0.5rem 1.8rem;
   }
   .slide-card {
-    padding: 1.15rem 1.6rem;
-    max-width: min(630px, 49vw);
-    max-height: calc(100vh - 120px);
-    border-radius: 8px;
+    padding: 1.35rem 2rem;
+    max-width: min(920px, 59vw);
+    max-height: calc(100vh - 110px);
+    border-radius: 12px;
   }
   .slide-header-tags {
     margin-bottom: 0.45rem;
