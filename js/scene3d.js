@@ -58,8 +58,8 @@ class Presentation3D {
 
     // Control dinámico de encuadre y prioridad: 'default' | 'object' | 'text'
     this.focusMode = "default";
-    this.baseGroupX = 2.15;
-    this.baseGroupScale = 0.78;
+    this.baseGroupX = 1.85; // Centrado en la mitad derecha libre
+    this.baseGroupScale = 0.72;
     this.focusAnim = { centerXOffset: 0, scaleMultiplier: 1.0 };
 
     this.init();
@@ -199,11 +199,15 @@ class Presentation3D {
       this.camera.clearViewOffset();
       return;
     }
+
+    // Si las notas están abiertas, centrar la cámara entre la filmina y el atril de notas
+    const isNotesOpen = typeof document !== 'undefined' && document.body.classList.contains("notes-open");
+
     if (w > 1024) {
-      const offsetX = -w * 0.16;
+      const offsetX = isNotesOpen ? -w * 0.08 : -w * 0.18;
       this.camera.setViewOffset(w, h, offsetX, 0, w, h);
     } else if (w > 768) {
-      const offsetX = -w * 0.08;
+      const offsetX = isNotesOpen ? -w * 0.04 : -w * 0.10;
       this.camera.setViewOffset(w, h, offsetX, 0, w, h);
     } else {
       this.camera.clearViewOffset();
@@ -213,7 +217,8 @@ class Presentation3D {
   /**
    * Cambia el modo de enfoque de la escultura 3D:
    * - 'object': centra en pantalla (x: 0) y agranda (+48% escala) para máxima presencia
-   * - 'default' | 'text': regresa a la posición lateral canónica para convivir con la filmina
+   * - 'text': desplaza la escultura un poco más hacia la derecha y la atenúa suavemente
+   * - 'default': regresa a la posición lateral canónica para convivir con la filmina
    */
   setFocusMode(mode) {
     this.focusMode = mode;
@@ -223,8 +228,19 @@ class Presentation3D {
       this.focusAnim = { centerXOffset: 0, scaleMultiplier: 1.0 };
     }
 
-    const targetOffsetX = mode === "object" ? -1.6 : 0;
-    const targetScale = mode === "object" ? 1.48 : 1.0;
+    let targetOffsetX = 0;
+    let targetScale = 1.0;
+
+    if (mode === "object") {
+      targetOffsetX = -1.6;
+      targetScale = 1.48;
+    } else if (mode === "text") {
+      targetOffsetX = 4.0; // Desplazar fuera del viewport
+      targetScale = 0.01;  // Reducir a 0 para que no asome detrás de la filmina
+    } else {
+      targetOffsetX = 0;
+      targetScale = 1.0;
+    }
 
     if (window.gsap) {
       gsap.to(this.focusAnim, {
@@ -587,8 +603,8 @@ class Presentation3D {
       const enter = this.transitionState?.enterOffset || { x: 0, y: 0, z: 0, scale: 1, rotY: 0 };
       const centerOffset = this.focusAnim?.centerXOffset || 0;
       const scaleMult = this.focusAnim?.scaleMultiplier || 1.0;
-      const basePosX = (this.baseGroupX !== undefined) ? this.baseGroupX : 2.15;
-      const baseScaleMult = (this.baseGroupScale !== undefined) ? this.baseGroupScale : 0.78;
+      const basePosX = (this.baseGroupX !== undefined) ? this.baseGroupX : 1.85;
+      const baseScaleMult = (this.baseGroupScale !== undefined) ? this.baseGroupScale : 0.72;
       activeGroup.position.x = basePosX + centerOffset + this.userPan.x + enter.x;
       activeGroup.position.y = this.userPan.y + enter.y;
       activeGroup.position.z = enter.z;
@@ -604,8 +620,8 @@ class Presentation3D {
       const exit = this.transitionState.exitOffset;
       const centerOffset = this.focusAnim?.centerXOffset || 0;
       const scaleMult = this.focusAnim?.scaleMultiplier || 1.0;
-      const basePosX = (this.baseGroupX !== undefined) ? this.baseGroupX : 2.15;
-      const baseScaleMult = (this.baseGroupScale !== undefined) ? this.baseGroupScale : 0.78;
+      const basePosX = (this.baseGroupX !== undefined) ? this.baseGroupX : 1.85;
+      const baseScaleMult = (this.baseGroupScale !== undefined) ? this.baseGroupScale : 0.72;
       exitingGroup.position.x = basePosX + centerOffset + exit.x;
       exitingGroup.position.y = exit.y;
       exitingGroup.position.z = exit.z;

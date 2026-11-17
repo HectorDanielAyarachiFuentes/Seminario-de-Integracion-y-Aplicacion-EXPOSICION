@@ -88,7 +88,10 @@ body {
 }
 
 #webgl-canvas.dimmed {
-  opacity: 0.18;
+  opacity: 0 !important;
+  visibility: hidden;
+  pointer-events: none !important;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
 /* ─── PÍLDORA SUTIL DE INTERACCIÓN 3D (ROTA, ZOOM, PAN) ──────────────────── */
@@ -116,6 +119,14 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
+}
+
+body.notes-open .canvas-3d-hint,
+body.view-focus-text .canvas-3d-hint {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
 }
 
 @media (max-width: 900px) {
@@ -498,7 +509,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding: clamp(0.5rem, 1.5vh, 1.2rem) clamp(1.5rem, 2.8vw, 3.5rem);
+  padding: clamp(0.6rem, 1.6vh, 1.4rem) clamp(1.8rem, 2.5vw, 3.2rem);
   pointer-events: none;
   overflow: hidden;
   position: relative;
@@ -506,12 +517,13 @@ body {
 
 .slide-card {
   width: 100%;
-  max-width: min(1040px, 58vw);
-  max-height: 94%;
-  background: rgba(255, 255, 255, 0.94);
+  max-width: min(890px, 50vw);
+  height: auto;
+  max-height: calc(100vh - clamp(120px, 14vh, 140px));
+  background: rgba(255, 255, 255, 0.95);
   border: 1.5px solid rgba(180, 131, 36, 0.35);
   border-radius: 16px;
-  padding: clamp(1.4rem, 2.6vh, 2.4rem) clamp(2rem, 3.2vw, 3.2rem);
+  padding: clamp(1.3rem, 2.4vh, 2.2rem) clamp(1.8rem, 2.8vw, 2.8rem);
   box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08), 0 4px 16px rgba(180, 131, 36, 0.06);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
@@ -519,9 +531,14 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.35s ease, max-width 0.35s ease;
   contain: content;
   transform: translateZ(0);
+}
+
+/* Cuando las Notas están abiertas, calibrar la filmina para dar paso armonioso al atril */
+body.notes-open .slide-card {
+  max-width: min(780px, 42vw);
 }
 
 .slide-card:hover {
@@ -593,18 +610,18 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: clamp(0.55rem, 1.1vh, 0.9rem);
-  margin-bottom: clamp(0.6rem, 1.2vh, 1.15rem);
+  gap: clamp(0.45rem, 0.9vh, 0.75rem);
+  margin-bottom: clamp(0.5rem, 1vh, 0.85rem);
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
-  padding-right: 0.5rem;
+  padding-right: 0.4rem;
   scrollbar-width: thin;
   scrollbar-color: rgba(180, 131, 36, 0.28) transparent;
 }
 
 .slide-bullets::-webkit-scrollbar {
-  width: 5px;
+  width: 4px;
 }
 
 .slide-bullets::-webkit-scrollbar-track {
@@ -622,27 +639,27 @@ body {
 
 .slide-bullets li {
   position: relative;
-  padding: 0.5rem 0.8rem 0.5rem 1.6rem;
-  font-size: clamp(0.95rem, 1.25vh + 0.18vw, 1.1rem);
-  line-height: 1.45;
+  padding: clamp(0.45rem, 0.8vh, 0.65rem) clamp(0.7rem, 1vw, 0.95rem) clamp(0.45rem, 0.8vh, 0.65rem) clamp(1.4rem, 1.8vw, 1.7rem);
+  font-size: clamp(0.92rem, 1.15vh + 0.15vw, 1.05rem);
+  line-height: 1.42;
   color: #1e293b;
   font-weight: 450;
-  background: rgba(248, 250, 252, 0.7);
-  border-radius: 6px;
-  border: 1px solid rgba(226, 232, 240, 0.6);
+  background: rgba(248, 250, 252, 0.75);
+  border-radius: 8px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
   transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .slide-bullets li:hover {
-  background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(180, 131, 36, 0.35);
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(180, 131, 36, 0.4);
 }
 
 .slide-bullets li::before {
   content: '✦';
   position: absolute;
   left: 0.55rem;
-  top: 0.55rem;
+  top: clamp(0.45rem, 0.8vh, 0.65rem);
   color: var(--gold-light);
   font-size: 0.75rem;
 }
@@ -994,11 +1011,11 @@ body {
 /* ─── MODAL DE GUION DEL ORADOR (ATRIL DIGITAL / TELEPRÓMPTER LATERAL DERECHO) ─── */
 .notes-modal {
   position: fixed;
-  top: clamp(65px, 8.5vh, 85px);
-  right: clamp(1rem, 2.5vw, 2.5rem);
-  bottom: clamp(60px, 8vh, 75px);
+  top: clamp(66px, 8.8vh, 85px);
+  right: clamp(1.2rem, 2.2vw, 2.4rem);
+  bottom: clamp(68px, 9.2vh, 85px);
   left: auto;
-  width: min(450px, 36vw);
+  width: min(395px, 28vw);
   background: rgba(255, 255, 255, 0.96);
   border: 1.5px solid rgba(180, 131, 36, 0.45);
   border-radius: 16px;
@@ -1121,10 +1138,10 @@ body {
 
 /* Cuerpo con scroll suave y tipografía nítida para oratoria */
 .notes-body {
-  font-size: var(--notes-font-size, 1.02rem);
-  line-height: 1.68;
+  font-size: var(--notes-font-size, 1.0rem);
+  line-height: 1.62;
   color: #0f172a;
-  padding: 1.3rem 1.4rem;
+  padding: clamp(1.1rem, 2vh, 1.45rem) clamp(1.2rem, 1.8vw, 1.5rem);
   overflow-y: auto;
   flex: 1 1 auto;
   scrollbar-width: thin;
@@ -1132,7 +1149,7 @@ body {
 }
 
 .notes-body::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 .notes-body::-webkit-scrollbar-thumb {
@@ -1150,22 +1167,27 @@ body {
 
 .notes-target-badge {
   display: block;
-  padding: 0.45rem 0.8rem;
-  background: rgba(180, 131, 36, 0.08);
-  border-left: 3px solid var(--gold-main);
-  border-radius: 0 6px 6px 0;
+  padding: 0.5rem 0.85rem;
+  background: linear-gradient(90deg, rgba(180, 131, 36, 0.10) 0%, rgba(180, 131, 36, 0.03) 100%);
+  border-left: 3.5px solid var(--gold-main);
+  border-radius: 0 8px 8px 0;
   color: #78350f;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   margin-bottom: 1rem;
-  line-height: 1.4;
+  line-height: 1.45;
+  box-shadow: 0 1px 4px rgba(180, 131, 36, 0.05);
 }
 
 .notes-speech-text {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   color: #1e293b;
   font-weight: 450;
-  text-align: justify;
+  text-align: left;
+  text-wrap: pretty;
+  line-height: 1.62;
+  letter-spacing: 0.01em;
+  word-spacing: normal;
 }
 
 /* ─── MODAL VISOR DE DIAGRAMAS SVG (ALTA DEFINICIÓN) ────────────────────── */
@@ -1598,8 +1620,11 @@ body {
 /* ─── 1. PC DE ESCRITORIO GRANDE / 2K / 4K / MONITORES DE AUDITORIO (>1400px) ─── */
 @media (min-width: 1400px) {
   .slide-card {
-    max-width: min(1080px, 58vw);
+    max-width: min(880px, 49vw);
     padding: 2.2rem 3.2rem;
+  }
+  body.notes-open .slide-card {
+    max-width: min(780px, 43vw);
   }
   .slide-title {
     font-size: clamp(2rem, 2.2vw, 2.45rem);
@@ -1665,9 +1690,15 @@ body {
   }
   .slide-card {
     padding: 1.35rem 2rem;
-    max-width: min(920px, 59vw);
+    max-width: min(780px, 48vw);
     max-height: calc(100vh - 110px);
     border-radius: 12px;
+  }
+  body.notes-open .slide-card {
+    max-width: min(700px, 42vw);
+  }
+  .notes-modal {
+    width: min(360px, 28vw);
   }
   .slide-header-tags {
     margin-bottom: 0.45rem;
@@ -3293,21 +3324,59 @@ body {
    SISTEMA DE ENFOQUE Y PRIORIDAD: MODO TEXTO vs MODO OBJETO 3D
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* 1. MODO TEXTO: El texto se expande para ocupar más espacio y facilitar la lectura */
+/* 1. MODO TEXTO: El texto se luce como protagonista con proporciones, márgenes elegantes y sin colisiones */
+
+/* Cuando la card está en focus-text (sin notas abiertas), centrar en el main-stage */
+body:not(.notes-open) .main-stage:has(.slide-card.focus-text),
+body.view-focus-text:not(.notes-open) .main-stage {
+  justify-content: center !important;
+  align-items: center !important;
+  padding: clamp(0.4rem, 0.9vh, 0.85rem) clamp(1.8rem, 3.2vw, 4rem) !important;
+}
+
+/* Con notas abiertas + focus-text: conviven armónicamente filmina a la izquierda y atril a la derecha respetando todos los márgenes */
+body.notes-open .main-stage:has(.slide-card.focus-text),
+body.notes-open.view-focus-text .main-stage {
+  justify-content: center !important;
+  align-items: center !important;
+  padding-left: clamp(1.4rem, 2.4vw, 3.0rem) !important;
+  /* Reservar exactamente el espacio del atril derecho (ancho + márgenes) para que la filmina nunca quede tapada */
+  padding-right: calc(min(390px, 28vw) + clamp(1rem, 2vw, 2.2rem) + clamp(1.2rem, 1.8vw, 2.4rem)) !important;
+  padding-top: clamp(0.35rem, 0.8vh, 0.75rem) !important;
+  padding-bottom: clamp(0.35rem, 0.8vh, 0.75rem) !important;
+}
+
 .slide-card.focus-text {
-  max-width: min(1020px, 88vw) !important;
+  max-width: min(1140px, 88vw) !important;
+  width: 100% !important;
   margin: 0 auto !important;
-  padding: clamp(1.8rem, 3.2vh, 3rem) clamp(2.4rem, 4vw, 4.4rem) !important;
-  box-shadow: 0 25px 75px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(180, 131, 36, 0.45) !important;
+  min-height: clamp(480px, 68vh, 760px) !important;
+  max-height: calc(100vh - clamp(92px, 11vh, 114px)) !important;
+  padding: clamp(1.4rem, 2.5vh, 2.5rem) clamp(1.8rem, 2.8vw, 3.2rem) !important;
+  box-shadow: 0 25px 80px rgba(15, 23, 42, 0.14), 0 0 0 1.5px rgba(180, 131, 36, 0.45) !important;
   background: rgba(255, 255, 255, 0.985) !important;
   backdrop-filter: blur(28px) !important;
   animation: cardExpandFocus 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Si el modal de notas está abierto al mismo tiempo en modo texto, adaptar proporciones para llenar el alto con porte académico */
+body.notes-open .slide-card.focus-text,
+body.notes-open.view-focus-text .slide-card {
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  min-height: clamp(480px, 68vh, 760px) !important;
+  max-height: calc(100vh - clamp(90px, 11vh, 112px)) !important;
+  padding: clamp(1.3rem, 2.3vh, 2.3rem) clamp(1.6rem, 2.4vw, 2.6rem) !important;
 }
 
 @keyframes cardExpandFocus {
   from {
-    transform: scale(0.97);
-    opacity: 0.85;
+    transform: scale(0.98);
+    opacity: 0.9;
   }
   to {
     transform: scale(1);
@@ -3315,26 +3384,81 @@ body {
   }
 }
 
+.slide-card.focus-text .slide-header-tags {
+  margin-bottom: clamp(0.4rem, 0.8vh, 0.65rem) !important;
+  flex-shrink: 0;
+}
+
 .slide-card.focus-text .slide-title {
-  font-size: clamp(2.1rem, 2.8vw, 2.85rem) !important;
-  margin-bottom: 0.65rem !important;
-  line-height: 1.2 !important;
+  font-size: clamp(1.85rem, 2.4vw, 2.5rem) !important;
+  margin-bottom: clamp(0.45rem, 0.85vh, 0.68rem) !important;
+  line-height: 1.22 !important;
+  flex-shrink: 0;
 }
 
 .slide-card.focus-text .slide-subtitle {
-  font-size: clamp(1.05rem, 1.3vw, 1.25rem) !important;
-  margin-bottom: 1.25rem !important;
-  max-width: 860px;
+  font-size: clamp(1.0rem, 1.2vw, 1.2rem) !important;
+  margin-bottom: clamp(0.75rem, 1.4vh, 1.25rem) !important;
+  max-width: 920px;
+  line-height: 1.38 !important;
+  flex-shrink: 0;
 }
 
 .slide-card.focus-text .slide-bullets {
-  gap: 0.85rem !important;
-  margin-bottom: 1.2rem !important;
+  gap: clamp(0.55rem, 1.15vh, 0.95rem) !important;
+  margin-bottom: clamp(0.65rem, 1.25vh, 1.1rem) !important;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 0.35rem;
+  padding-bottom: 0.2rem;
 }
 
 .slide-card.focus-text .slide-bullets li {
-  font-size: clamp(0.98rem, 1.15vw, 1.12rem) !important;
-  line-height: 1.62 !important;
+  font-size: clamp(0.92rem, 1.06vw, 1.06rem) !important;
+  line-height: 1.48 !important;
+  padding: clamp(0.55rem, 1.0vh, 0.82rem) clamp(0.9rem, 1.2vw, 1.25rem) clamp(0.55rem, 1.0vh, 0.82rem) clamp(1.5rem, 1.8vw, 1.95rem) !important;
+}
+
+.slide-card.focus-text .slide-footer-meta {
+  padding-top: clamp(0.5rem, 0.95vh, 0.85rem) !important;
+  font-size: clamp(0.72rem, 0.9vh, 0.8rem) !important;
+  flex-shrink: 0;
+}
+
+/* Calibración específica cuando conviven MODO TEXTO + ATRIL DE NOTAS:
+   Aprovecha todo el alto y bajo de la pantalla con tipografía cómoda y espaciado generoso */
+body.notes-open .slide-card.focus-text .slide-title,
+body.notes-open.view-focus-text .slide-card .slide-title {
+  font-size: clamp(1.55rem, 2.05vw, 2.15rem) !important;
+  margin-bottom: clamp(0.35rem, 0.7vh, 0.55rem) !important;
+  line-height: 1.22 !important;
+}
+
+body.notes-open .slide-card.focus-text .slide-subtitle,
+body.notes-open.view-focus-text .slide-card .slide-subtitle {
+  font-size: clamp(0.92rem, 1.1vw, 1.08rem) !important;
+  margin-bottom: clamp(0.6rem, 1.2vh, 1.0rem) !important;
+  line-height: 1.35 !important;
+}
+
+body.notes-open .slide-card.focus-text .slide-bullets,
+body.notes-open.view-focus-text .slide-card .slide-bullets {
+  gap: clamp(0.48rem, 1.05vh, 0.82rem) !important;
+  margin-bottom: clamp(0.55rem, 1.1vh, 0.95rem) !important;
+}
+
+body.notes-open .slide-card.focus-text .slide-bullets li,
+body.notes-open.view-focus-text .slide-card .slide-bullets li {
+  font-size: clamp(0.88rem, 1.0vw, 1.0rem) !important;
+  line-height: 1.46 !important;
+  padding: clamp(0.5rem, 0.9vh, 0.72rem) clamp(0.8rem, 1.1vw, 1.1rem) clamp(0.5rem, 0.9vh, 0.72rem) clamp(1.4rem, 1.7vw, 1.8rem) !important;
+}
+
+body.notes-open .slide-card.focus-text .slide-footer-meta,
+body.notes-open.view-focus-text .slide-card .slide-footer-meta {
+  padding-top: clamp(0.45rem, 0.85vh, 0.75rem) !important;
+  font-size: clamp(0.7rem, 0.85vh, 0.78rem) !important;
 }
 
 /* 2. MODO OBJETO: El texto desaparece completamente y el 3D queda solo */
@@ -3345,13 +3469,15 @@ body {
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease !important;
 }
 
-/* Botón flotante para restaurar */
+/* 3. BOTÓN FLOTANTE "VOLVER A LA FILMINA":
+   SOLO y EXCLUSIVAMENTE visible en modo Objeto 3D (cuando la filmina está oculta).
+   Cuando la filmina está visible o en modo texto, queda 100% oculto e inerte para no tapar el texto. */
 .btn-floating-card-toggle {
   position: fixed;
   bottom: 5.5rem;
   left: 50%;
   transform: translateX(-50%) translateY(20px);
-  background: rgba(15, 23, 42, 0.9);
+  background: rgba(15, 23, 42, 0.92);
   color: #ffffff;
   border: 1px solid var(--gold-main);
   border-radius: 30px;
@@ -3364,7 +3490,7 @@ body {
   cursor: pointer;
   z-index: 50;
   box-shadow: 0 10px 25px rgba(15, 23, 42, 0.3);
-  display: flex;
+  display: none;
   align-items: center;
   gap: 0.5rem;
   opacity: 0;
@@ -3373,9 +3499,20 @@ body {
 }
 
 .btn-floating-card-toggle.visible {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
+  display: flex !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateX(-50%) translateY(0) !important;
+}
+
+/* Blindaje: si la card está visible o en focus-text, el cartel flotante se desvanece por completo */
+.slide-card:not(.focus-object):not(.minimized) ~ #btn-floating-card-toggle,
+.slide-card.focus-text ~ #btn-floating-card-toggle,
+body.view-focus-text #btn-floating-card-toggle {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
 }
 
 .btn-floating-card-toggle:hover {
@@ -3383,4 +3520,29 @@ body {
   color: #ffffff;
   box-shadow: 0 12px 30px rgba(180, 131, 36, 0.4);
   transform: translateX(-50%) translateY(-2px);
+}
+
+/* Ocultar radar pill de nodos 3D y píldora de interacción 3D cuando se está en modo texto o con notas abiertas */
+body.view-focus-text #node-radar-pill,
+body.notes-open #node-radar-pill,
+.main-stage:has(.slide-card.focus-text) ~ #node-radar-pill,
+body.notes-open .canvas-3d-hint,
+body.view-focus-text .canvas-3d-hint,
+#notes-modal.open ~ .canvas-3d-hint {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+@media (max-width: 960px) {
+  body.notes-open .main-stage:has(.slide-card.focus-text),
+  body.notes-open.view-focus-text .main-stage {
+    padding-right: clamp(1.4rem, 2.4vw, 3.0rem) !important;
+  }
+  .slide-card.focus-text,
+  body.notes-open .slide-card.focus-text,
+  body.notes-open.view-focus-text .slide-card {
+    min-height: auto !important;
+  }
 }

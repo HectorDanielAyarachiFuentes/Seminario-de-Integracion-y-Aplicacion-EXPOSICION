@@ -66,7 +66,20 @@ class PresentationApp {
     // Configurar Eventos e Inicializar
     this.bindEvents();
     this.renderStationsIndicator();
-    this.renderSlide(0);
+
+    // Restaurar última filmina vista al reiniciar o recargar la página
+    let initialSlide = 0;
+    try {
+      const savedIndex = localStorage.getItem("sia_current_slide_index");
+      if (savedIndex !== null) {
+        const parsed = parseInt(savedIndex, 10);
+        if (!isNaN(parsed) && parsed >= 0 && parsed < this.totalSlides) {
+          initialSlide = parsed;
+        }
+      }
+    } catch (_) {}
+
+    this.renderSlide(initialSlide);
     this.populateDrawerContent();
     this.renderSlidesIndex();
   }
@@ -179,6 +192,16 @@ class PresentationApp {
     this.btnPrev.addEventListener("click", () => this.prevSlide());
     this.btnNext.addEventListener("click", () => this.nextSlide());
 
+    // Clic en el logo UNCo - CURZAS lleva siempre a la primera filmina (Filmina 1)
+    const brandHome = document.getElementById("brand-home-btn");
+    if (brandHome) {
+      brandHome.addEventListener("click", () => {
+        if (this.currentSlideIndex !== 0) {
+          this.renderSlide(0, -1);
+        }
+      });
+    }
+
     // Cronómetro
     this.btnTimerToggle.addEventListener("click", () => this.toggleTimer());
     this.btnTimerReset.addEventListener("click", () => this.resetTimer());
@@ -247,7 +270,12 @@ class PresentationApp {
     }
 
     if (this.btnFloatingCardToggle) {
-      this.btnFloatingCardToggle.addEventListener("click", () => this.toggleMobile3dView(false));
+      this.btnFloatingCardToggle.addEventListener("click", () => {
+        // Forzar reset a modo default
+        this.currentViewMode = "object";
+        this.setViewMode("default");
+        this.toggleMobile3dView(false);
+      });
     }
 
     // Gestos Táctiles (Swipe Izquierda / Derecha) para Celulares y Tablets
@@ -436,7 +464,9 @@ class PresentationApp {
           document.querySelector('[data-tab="svgs"]')?.click();
         }
       } else if (e.key.toLowerCase() === "d") {
-        this.toggle3dDim();
+        this.setViewMode("text");
+      } else if (e.key.toLowerCase() === "o") {
+        this.setViewMode("object");
       } else if (e.key.toLowerCase() === "t") {
         this.toggleTimer();
       } else if (e.key.toLowerCase() === "f") {
@@ -688,6 +718,11 @@ class PresentationApp {
     if (!slide) return;
 
     this.currentSlideIndex = index;
+
+    // Guardar filmina activa en localStorage para recordarla al recargar
+    try {
+      localStorage.setItem("sia_current_slide_index", index.toString());
+    } catch (_) {}
 
     // Actualizar visibilidad de HUD de red territorial (visible en mapa de territorio y red híbrida anim_06 / anim_07)
     const nodePill = document.getElementById("node-radar-pill");
@@ -1008,6 +1043,22 @@ class PresentationApp {
 
     this.notesModal.classList.toggle("open", newState);
     this.btnToggleNotes.classList.toggle("active", newState);
+    document.body.classList.toggle("notes-open", newState);
+
+    // Ocultar pill 3D de nodos y píldora de interacción 3D si las notas están abiertas para no colisionar
+    const radarPill = document.getElementById("node-radar-pill");
+    if (radarPill && (newState || this.currentViewMode === "text")) {
+      radarPill.style.display = "none";
+    }
+    const hint3d = document.getElementById("canvas-3d-hint");
+    if (hint3d) {
+      hint3d.style.display = (newState || this.currentViewMode === "text") ? "none" : "";
+    }
+
+    // Reajustar inmediatamente el encuadre de la cámara 3D para centrar la escultura
+    if (this.engine3D && typeof this.engine3D.updateCameraViewOffset === "function") {
+      this.engine3D.updateCameraViewOffset();
+    }
   }
 
   toggleDrawer(forceState) {
@@ -1029,26 +1080,41 @@ class PresentationApp {
     const newMode = (this.currentViewMode === targetMode) ? "default" : targetMode;
     this.currentViewMode = newMode;
 
-    // 1. Estados CSS en la tarjeta de filmina
+    // 1. Estados CSS en la tarjeta de filmina y en body
     if (this.cardElement) {
       this.cardElement.classList.toggle("focus-text", newMode === "text");
       this.cardElement.classList.toggle("focus-object", newMode === "object");
       this.cardElement.classList.toggle("minimized", newMode === "object");
     }
+    document.body.classList.toggle("view-focus-text", newMode === "text");
+    document.body.classList.toggle("view-focus-object", newMode === "object");
 
     // 2. Atenuación atmosférica del lienzo 3D
     if (this.canvas) {
       this.canvas.classList.toggle("dimmed", newMode === "text");
     }
 
-    // 3. Botón flotante para restaurar a filmina
+    // 3. Ocultar indicador de radar 3D y píldora 3D en modo texto o con notas
+    const radarPill = document.getElementById("node-radar-pill");
+    if (radarPill && (newMode === "text" || document.body.classList.contains("notes-open"))) {
+      radarPill.style.display = "none";
+    }
+    const hint3d = document.getElementById("canvas-3d-hint");
+    if (hint3d) {
+      hint3d.style.display = (newMode === "text" || document.body.classList.contains("notes-open")) ? "none" : "";
+    }
+
+    // 4. Botón flotante para restaurar a filmina:
+    // ¡SOLO visible en modo "object" cuando la tarjeta fue ocultada para ver el 3D libre!
+    // En modo "text" o "default", la filmina ya está visible y JAMÁS debe taparla.
     if (this.btnFloatingCardToggle) {
-      this.btnFloatingCardToggle.classList.toggle("visible", newMode === "object");
+      const showFloating = (newMode === "object");
+      this.btnFloatingCardToggle.classList.toggle("visible", showFloating);
       const span = this.btnFloatingCardToggle.querySelector("span");
       if (span) span.textContent = "Volver a la Filmina";
     }
 
-    // 4. Estados activos de los botones
+    // 5. Estados activos de los botones
     if (this.btnViewText) {
       this.btnViewText.classList.toggle("active", newMode === "text");
     }
@@ -1056,7 +1122,7 @@ class PresentationApp {
       this.btnView3d.classList.toggle("active", newMode === "object");
     }
 
-    // 5. Animación fluida de la escultura 3D en WebGL
+    // 6. Animación fluida de la escultura 3D en WebGL
     if (this.engine3D && typeof this.engine3D.setFocusMode === "function") {
       this.engine3D.setFocusMode(newMode);
     }
@@ -1579,6 +1645,11 @@ window.updateNodeHUD = function(node) {
 
   const currentSlide = window.app?.data.slides[window.app.currentSlideIndex];
   if (currentSlide && (currentSlide.escena3D === "anim_06" || currentSlide.escena3D === "anim_07")) {
+    // Si estamos en modo texto o con notas abiertas, no mostrar el radar para evitar superposiciones
+    if (window.app?.currentViewMode === "text" || document.body.classList.contains("notes-open")) {
+      pill.style.display = "none";
+      return;
+    }
     pill.style.display = "inline-flex";
     if (title) title.textContent = node.nombre;
     if (desc) desc.textContent = `${node.tipo} • ${node.subtitulo}`;
