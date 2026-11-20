@@ -15,7 +15,7 @@ class PresentationApp {
     this.currentSlideIndex = 0;
     this.totalSlides = data.slides.length;
 
-    // Cronómetro de 30 minutos
+    // Cronómetro de 15 minutos (Defensa Oficial SIA)
     this.totalSeconds = data.timing.totalMinutos * 60;
     this.elapsedSeconds = 0;
     this.timerRunning = false;
@@ -493,34 +493,34 @@ class PresentationApp {
         id: "apertura",
         code: "APERTURA",
         shortLabel: "Apertura",
-        title: "Apertura Institucional y Hoja de Ruta",
-        range: [0, 4], // filminas 1 a 5
+        title: "Apertura Protocolar y Carátula Oficial",
+        range: [0, 0], // Filmina 1
         isEje: false
       },
       {
         id: "eje1",
         code: "EJE I",
-        shortLabel: "Eje I: Objeto Problema",
-        title: "EJE I (Tiempo 1): El Objeto Problema, Territorio y Objetivos",
-        range: [5, 10], // filminas 6 a 11
+        shortLabel: "2-El problema",
+        title: "EJE I (2-El problema): Territorio, Tensión Normativa y Objetivos",
+        range: [1, 3], // Filminas 2 a 4
         isEje: true,
         ejeNumber: 1
       },
       {
         id: "eje2",
         code: "EJE II",
-        shortLabel: "Eje II: Marco Teórico",
-        title: "EJE II (Tiempo 2): Marco Teórico Sustantivo y Modelo 360°",
-        range: [11, 16], // filminas 12 a 17
+        shortLabel: "3-Estado de la cuestión...",
+        title: "EJE II (3-Estado de la cuestión...): Marco Teórico, Modelo 360° y Vacancia",
+        range: [4, 6], // Filminas 5 a 7
         isEje: true,
         ejeNumber: 2
       },
       {
         id: "eje3",
         code: "EJE III",
-        shortLabel: "Eje III: Metodología",
-        title: "EJE III (Tiempo 3): Metodología Mixta y Factibilidad",
-        range: [17, 22], // filminas 18 a 23
+        shortLabel: "4-Metodología",
+        title: "EJE III (4-Metodología): Diseño Mixto, 5 Dimensiones, Fases y Ética",
+        range: [7, 10], // Filminas 8 a 11
         isEje: true,
         ejeNumber: 3
       },
@@ -528,8 +528,8 @@ class PresentationApp {
         id: "cierre",
         code: "CIERRE",
         shortLabel: "Cierre y Defensa",
-        title: "Cierre: Síntesis de Factibilidad y Tribunal Evaluador",
-        range: [23, 24], // filminas 24 y 25
+        title: "Cierre: Síntesis de Factibilidad y Espacio para el Tribunal",
+        range: [11, 11], // Filmina 12
         isEje: false
       }
     ];
@@ -972,7 +972,7 @@ class PresentationApp {
     }, 300);
   }
 
-  // ─── CRONÓMETRO REGRESIVO DE 30 MINUTOS ──────────────────────────────────
+  // ─── CRONÓMETRO REGRESIVO DE 15 MINUTOS ──────────────────────────────────
   toggleTimer() {
     if (this.timerRunning) {
       this.pauseTimer();
@@ -993,7 +993,7 @@ class PresentationApp {
 
         if (this.elapsedSeconds >= this.totalSeconds) {
           this.pauseTimer();
-          alert("⏱️ Los 30 minutos estipulados para la exposición han concluido.");
+          alert("⏱️ Los 15 minutos estipulados para la defensa han concluido.");
         }
       }, 1000);
     }

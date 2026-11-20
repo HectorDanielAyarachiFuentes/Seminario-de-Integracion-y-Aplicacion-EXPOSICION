@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=5.0">
+  <link rel="stylesheet" href="css/styles.css?v=6.0">
   <link rel="icon" type="image/png" href="assets/CURZAS.png">
 </head>
 <body>
@@ -56,13 +56,13 @@
     <span class="node-radar-desc" id="node-radar-desc">Sede Cabecera</span>
   </div>
 
-  <!-- Barra de progreso general de la defensa académica (25 filminas) -->
-  <div class="presentation-progress-bar" id="presentation-progress-bar" role="progressbar" aria-valuemin="1" aria-valuemax="25" aria-valuenow="1"></div>
+  <!-- Barra de progreso general de la defensa académica (12 filminas) -->
+  <div class="presentation-progress-bar" id="presentation-progress-bar" role="progressbar" aria-valuemin="1" aria-valuemax="12" aria-valuenow="1"></div>
 
   <!-- Capa de Interfaz de Usuario (UI Glassmorphism de Alto Contraste) -->
   <div class="ui-layer">
 
-    <!-- Barra Superior: Cabecera Institucional + Contador + Estaciones + Cronómetro 30 min -->
+    <!-- Barra Superior: Cabecera Institucional + Contador + Estaciones + Cronómetro 15 min -->
     <header class="top-bar">
       <div class="brand" id="brand-home-btn" title="Volver al inicio (Filmina 1)" style="cursor: pointer;">
         <img src="assets/CURZAS.png" alt="Logotipo CURZAS - Universidad Nacional del Comahue" class="brand-logo">
@@ -74,24 +74,24 @@
 
       <!-- Centro: Contador de Filminas y Estaciones Interactivas -->
       <div class="stations-wrapper">
-        <button class="slide-counter-badge" id="slide-counter-badge" title="Índice Canónico de los 3 Ejes y 25 Filminas (Tecla I)" aria-label="Abrir Índice de Filminas por Ejes">
+        <button class="slide-counter-badge" id="slide-counter-badge" title="Índice Canónico de los 3 Ejes y 12 Filminas (Tecla I)" aria-label="Abrir Índice de Filminas por Ejes">
           <span class="badge-index-icon" aria-hidden="true">
             <svg viewBox="0 0 20 20" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5h14M3 10h14M3 15h9"/></svg>
           </span>
-          <span class="slide-counter-text">Filmina <strong id="slide-counter">1 / 25</strong></span>
+          <span class="slide-counter-text">Filmina <strong id="slide-counter">1 / 12</strong></span>
           <svg class="counter-chevron" viewBox="0 0 20 20" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 7.5l5 5 5-5"/></svg>
         </button>
         <div class="stations-dock-divider" aria-hidden="true"></div>
         <nav class="stations-indicator" id="stations-indicator" aria-label="Estaciones de la Defensa estructuradas en 3 Ejes"></nav>
       </div>
 
-      <!-- Cronómetro Académico de 30 minutos (Defensa Oficial) -->
+      <!-- Cronómetro Académico de 15 minutos (Defensa Oficial) -->
       <div class="timer-container" aria-label="Cronómetro de Defensa">
         <span class="timer-label">DEFENSA</span>
-        <span class="timer-display" id="timer-display">30:00</span>
+        <span class="timer-display" id="timer-display">15:00</span>
         <div class="timer-actions">
           <button id="btn-timer-toggle" title="Iniciar / Pausar Cronómetro (T)" aria-label="Iniciar / Pausar Cronómetro">▶</button>
-          <button id="btn-timer-reset" title="Reiniciar a 30:00" aria-label="Reiniciar Cronómetro">↺</button>
+          <button id="btn-timer-reset" title="Reiniciar a 15:00" aria-label="Reiniciar Cronómetro">↺</button>
         </div>
       </div>
     </header>
@@ -417,22 +417,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <!-- 2. Motor de Animación Profesional GSAP (GreenSock Animation Platform) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <!-- 3. Base de Datos Externa de Metadatos (25 Filminas + Enlaces SVG) -->
-  <script src="data/catedra_data.js?v=4.5"></script>
-  <script src="data/presentacion_data.js?v=4.5"></script>
+  <!-- 3. Base de Datos Externa de Metadatos (12 Filminas Oficiales en 3 Ejes) -->
+  <script src="data/catedra_data.js?v=6.0"></script>
+  <script src="data/presentacion_data.js?v=6.0"></script>
   <!-- 4. Módulos de Esculturas 3D y Utilitarios -->
-  <script src="js/objetos/materials.js?v=4.5"></script>
-  <script src="js/objetos/helpers.js?v=4.5"></script>
-  <script src="js/objetos/camera_config.js?v=4.5"></script>
-  <script src="js/objetos/bloque1.js?v=4.5"></script>
-  <script src="js/objetos/bloque2.js?v=4.5"></script>
-  <script src="js/objetos/bloque3.js?v=4.5"></script>
-  <script src="js/objetos/bloque4.js?v=4.5"></script>
-  <script src="js/objetos/bloque5.js?v=4.5"></script>
+  <script src="js/objetos/materials.js?v=6.0"></script>
+  <script src="js/objetos/helpers.js?v=6.0"></script>
+  <script src="js/objetos/camera_config.js?v=6.0"></script>
+  <script src="js/objetos/bloque1.js?v=6.0"></script>
+  <script src="js/objetos/bloque2.js?v=6.0"></script>
+  <script src="js/objetos/bloque3.js?v=6.0"></script>
+  <script src="js/objetos/bloque4.js?v=6.0"></script>
+  <script src="js/objetos/bloque5.js?v=6.0"></script>
   <!-- 5. Motor Orquestador 3D (Three.js + GSAP) -->
-  <script src="js/scene3d.js?v=4.5"></script>
+  <script src="js/scene3d.js?v=6.0"></script>
   <!-- 6. Controlador de Navegación, Temporizador y Eventos -->
-  <script src="js/app.js?v=5.0"></script>
+  <script src="js/app.js?v=6.0"></script>
 
 </body>
 </html>
