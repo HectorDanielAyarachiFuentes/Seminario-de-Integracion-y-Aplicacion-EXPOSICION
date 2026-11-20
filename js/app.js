@@ -528,7 +528,7 @@ class PresentationApp {
         id: "cierre",
         code: "CIERRE",
         shortLabel: "Cierre y Defensa",
-        title: "Cierre: Síntesis de Factibilidad y Espacio para el Tribunal",
+        title: "Cierre: Proyecciones de Factibilidad y Espacio para el Tribunal",
         range: [11, 11], // Filmina 12
         isEje: false
       }
@@ -700,16 +700,24 @@ class PresentationApp {
       this.slideCounter.textContent = `${index + 1} / ${this.totalSlides}`;
     }
 
-    // Sincronizar tiempo sugerido en el Atril del Orador
+    // Sincronizar tiempo sugerido en el Atril del Orador (~1.2 min por filmina)
     const timePill = document.getElementById("notes-time-pill");
     if (timePill) {
-      const tiempoEst = slide.tiempoSugerido || "~1.5 min";
+      const tiempoEst = slide.tiempoSugerido || "~1.2 min";
       timePill.innerHTML = `⏱️ ${tiempoEst}`;
     }
 
+    // Formateo oratorio profesional: párrafos y chips visuales para pausas y énfasis
+    const formattedSpeech = (slide.guionOrador || "")
+      .replace(/\[Pausa de 2 segundos\]/g, '<span class="notes-cue-pill notes-cue-pause">⏱️ Pausa de 2s</span>')
+      .replace(/\[(.*?)\]/g, '<span class="notes-cue-pill notes-cue-emphasis">💡 $1</span>')
+      .split('\n\n')
+      .map(p => `<p>${p.trim()}</p>`)
+      .join('');
+
     this.notesBody.innerHTML = `
       <div class="notes-target-badge">🎯 Objetivo Filmina ${index + 1}: ${slide.esquema}</div>
-      <div class="notes-speech-text">${slide.guionOrador}</div>
+      <div class="notes-speech-text">${formattedSpeech}</div>
     `;
   }
 

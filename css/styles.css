@@ -1190,6 +1190,40 @@ body.notes-open .slide-card {
   word-spacing: normal;
 }
 
+.notes-speech-text p {
+  margin-bottom: 0.85rem;
+}
+
+.notes-speech-text p:last-child {
+  margin-bottom: 0;
+}
+
+.notes-cue-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+  margin: 0 0.25rem;
+  vertical-align: middle;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+.notes-cue-pause {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fcd34d;
+}
+
+.notes-cue-emphasis {
+  background: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+}
+
 /* ─── MODAL VISOR DE DIAGRAMAS SVG (ALTA DEFINICIÓN) ────────────────────── */
 .svg-modal-backdrop {
   position: fixed;
