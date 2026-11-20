@@ -492,8 +492,8 @@ class PresentationApp {
       {
         id: "apertura",
         code: "APERTURA",
-        shortLabel: "Apertura",
-        title: "Apertura Protocolar y Carátula Oficial",
+        shortLabel: "Carátula",
+        title: "Apertura Protocolar: Carátula Oficial (Apartado 1 del TP)",
         range: [0, 0], // Filmina 1
         isEje: false
       },
@@ -501,7 +501,7 @@ class PresentationApp {
         id: "eje1",
         code: "EJE I",
         shortLabel: "2-El problema",
-        title: "EJE I (2-El problema): Territorio, Tensión Normativa y Objetivos",
+        title: "EJE I (Primera Parte): El Problema (Apartados 2, 3 y 4 del TP)",
         range: [1, 3], // Filminas 2 a 4
         isEje: true,
         ejeNumber: 1
@@ -510,7 +510,7 @@ class PresentationApp {
         id: "eje2",
         code: "EJE II",
         shortLabel: "3-Estado de la cuestión...",
-        title: "EJE II (3-Estado de la cuestión...): Marco Teórico, Modelo 360° y Vacancia",
+        title: "EJE II (Segunda Parte): Estado de la Cuestión y Marco Teórico (Apartados 5 y 6 del TP)",
         range: [4, 6], // Filminas 5 a 7
         isEje: true,
         ejeNumber: 2
@@ -519,7 +519,7 @@ class PresentationApp {
         id: "eje3",
         code: "EJE III",
         shortLabel: "4-Metodología",
-        title: "EJE III (4-Metodología): Diseño Mixto, 5 Dimensiones, Fases y Ética",
+        title: "EJE III (Tercera Parte): Metodología, Fases y Viabilidad (Apartados 7, 8 y 9 del TP)",
         range: [7, 10], // Filminas 8 a 11
         isEje: true,
         ejeNumber: 3

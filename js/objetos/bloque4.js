@@ -152,7 +152,7 @@ window.Presentation3D_Objects["anim_16"] = {
 };
 
 // ──────────────────────────────────────────────────────────────────────────
-// 17. ESTADO DEL ARTE Y VACANCIA: Muro de 3 Escalas y Gema Patagónica
+// 17. ESTADO DEL ARTE Y VACANCIA: Escultura de Miguel Ángel (El David del Conocimiento)
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_17"] = {
   build(engine, g) {
@@ -163,11 +163,11 @@ window.Presentation3D_Objects["anim_17"] = {
     g.add(chassis);
 
     const plaqueMaster = engine.createEngravedPlaque(
-      1.10,
+      1.18,
       0.22,
-      "ESTADO DEL ARTE Y VACANCIA REGIONAL",
-      "Inexistencia de Modelos 360° en Universidades Descentralizadas",
-      ["BRECHA METODOLÓGICA IDENTIFICADA"],
+      "ESTADO DEL ARTE Y ANTECEDENTES",
+      "David del Conocimiento • 3 Escalas de Indagación",
+      ["INTERNACIONAL", "NACIONAL", "REGIONAL", "VACANCIA"],
       { theme: "dark" }
     );
     plaqueMaster.position.set(0, -0.84, 0.78);
@@ -176,7 +176,7 @@ window.Presentation3D_Objects["anim_17"] = {
     const group = new THREE.Group();
     group.position.set(0, -0.05, 0);
 
-    // Podio escalonado de 3 niveles concéntricos (Líneas arquitectónicas puras)
+    // 1. Podio escalonado de mármol de Carrara y molduras de latón dorado
     const base1 = new THREE.Mesh(
       new THREE.CylinderGeometry(1.28, 1.36, 0.22, 48),
       engine.graniteMat(0x1e293b)
@@ -207,85 +207,352 @@ window.Presentation3D_Objects["anim_17"] = {
     rim2.position.y = -0.62;
     group.add(rim2);
 
-    const base3 = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.68, 0.76, 0.22, 48),
+    // Pedestal octogonal clásico donde descansa la estatua
+    const pedestalOcto = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.56, 0.64, 0.24, 8),
+      engine.marbleMat(0xfcfbf9)
+    );
+    pedestalOcto.position.y = -0.50;
+    group.add(pedestalOcto);
+
+    const rimPedestal = new THREE.Mesh(
+      new THREE.TorusGeometry(0.58, 0.014, 16, 48),
       engine.brassMat(0xd4af37)
     );
-    base3.position.y = -0.51;
-    group.add(base3);
+    rimPedestal.rotation.x = Math.PI / 2;
+    rimPedestal.position.y = -0.38;
+    group.add(rimPedestal);
 
-    // Pórtico de latón dorado en forma de arco triunfal con basas molduradas
-    const archLeft = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.045, 0.045, 1.2, 24),
-      engine.brassMat(0xffd700)
+    // ────────────────────────────────────────────────────────────────────────
+    // ESCULTURA DE MIGUEL ÁNGEL: EL DAVID DEL CONOCIMIENTO
+    // ────────────────────────────────────────────────────────────────────────
+    const davidGroup = new THREE.Group();
+    davidGroup.position.set(0, -0.38, 0);
+
+    const marbleMat = engine.marbleMat(0xfcfbf9, 0.26);
+    const marbleSubtle = engine.marbleMat(0xf4f1eb, 0.32);
+    const goldMat = engine.goldMat(0xffd700);
+    const brassMat = engine.brassMat(0xd4af37);
+
+    // Pantalón / Ropaje clásico de censura y elegancia (Azul marino académico y oro)
+    const pantsMat = new THREE.MeshStandardMaterial({
+      color: 0x0f2d59, // Azul marino universitario UNCo
+      roughness: 0.52,
+      metalness: 0.16
+    });
+    const sashGoldMat = engine.brassMat(0xd4af37);
+
+    // A. Tronco de apoyo clásico (detrás de la pierna de apoyo, fiel a la escultura de Miguel Ángel)
+    const stumpGeo = new THREE.CylinderGeometry(0.08, 0.12, 0.44, 16);
+    const treeStump = new THREE.Mesh(stumpGeo, marbleSubtle);
+    treeStump.position.set(0.18, 0.22, -0.08);
+    treeStump.rotation.z = -0.06;
+    davidGroup.add(treeStump);
+
+    // B. Piernas y Pies en Contrapposto Clásico
+    // Pie derecho (apoyo directo firme de mármol)
+    const rightFoot = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.04, 0.16), marbleMat);
+    rightFoot.position.set(0.10, 0.02, 0.04);
+    davidGroup.add(rightFoot);
+
+    // Pierna derecha (pierna de apoyo vertical que soporta el peso)
+    const rightShin = new THREE.Mesh(new THREE.CylinderGeometry(0.052, 0.042, 0.30, 20), marbleMat);
+    rightShin.position.set(0.10, 0.18, 0.0);
+    davidGroup.add(rightShin);
+
+    const rightKnee = new THREE.Mesh(new THREE.SphereGeometry(0.054, 16, 16), marbleMat);
+    rightKnee.position.set(0.10, 0.33, 0.02);
+    davidGroup.add(rightKnee);
+
+    // Pie izquierdo (relajado, ligeramente adelantado y abierto en ángulo)
+    const leftFoot = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.04, 0.16), marbleMat);
+    leftFoot.position.set(-0.20, 0.02, -0.02);
+    leftFoot.rotation.y = -0.25;
+    davidGroup.add(leftFoot);
+
+    // Pierna izquierda (relajada, ligeramente flexionada)
+    const leftShin = new THREE.Mesh(new THREE.CylinderGeometry(0.050, 0.040, 0.30, 20), marbleMat);
+    leftShin.position.set(-0.18, 0.18, -0.02);
+    leftShin.rotation.z = -0.08;
+    leftShin.rotation.x = 0.06;
+    davidGroup.add(leftShin);
+
+    const leftKnee = new THREE.Mesh(new THREE.SphereGeometry(0.052, 16, 16), marbleMat);
+    leftKnee.position.set(-0.16, 0.33, 0.04);
+    davidGroup.add(leftKnee);
+
+    // ────────────────────────────────────────────────────────────────────────
+    // C. PANTALÓN CLÁSICO / BERMUDA DE CENSURA ELEGANTE (Cubre pelvis, ingle y muslos)
+    // ────────────────────────────────────────────────────────────────────────
+    const pantsGroup = new THREE.Group();
+
+    // Pierna derecha del pantalón (hasta la rodilla)
+    const rightPantsLeg = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.086, 0.068, 0.28, 24),
+      pantsMat
     );
-    archLeft.position.set(-0.48, 0.1, 0);
-    group.add(archLeft);
+    rightPantsLeg.position.set(0.10, 0.46, 0.0);
+    pantsGroup.add(rightPantsLeg);
 
-    const archRight = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.045, 0.045, 1.2, 24),
-      engine.brassMat(0xffd700)
+    // Ribete dorado inferior en pierna derecha
+    const rightPantsCuff = new THREE.Mesh(
+      new THREE.TorusGeometry(0.070, 0.008, 12, 32),
+      sashGoldMat
     );
-    archRight.position.set(0.48, 0.1, 0);
-    group.add(archRight);
+    rightPantsCuff.rotation.x = Math.PI / 2;
+    rightPantsCuff.position.set(0.10, 0.33, 0.0);
+    pantsGroup.add(rightPantsCuff);
 
-    [-0.48, 0.48].forEach(x => {
-      const colBase = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.07, 0.08, 0.06, 24),
-        engine.brassMat(0xd4af37)
-      );
-      colBase.position.set(x, -0.47, 0);
-      group.add(colBase);
+    // Pierna izquierda del pantalón (con leve ángulo de flexión)
+    const leftPantsLeg = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.086, 0.068, 0.28, 24),
+      pantsMat
+    );
+    leftPantsLeg.position.set(-0.13, 0.46, 0.02);
+    leftPantsLeg.rotation.z = -0.10;
+    leftPantsLeg.rotation.x = 0.06;
+    pantsGroup.add(leftPantsLeg);
 
-      const colCap = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.075, 0.05, 0.05, 24),
-        engine.brassMat(0xd4af37)
-      );
-      colCap.position.set(x, 0.7, 0);
-      group.add(colCap);
+    // Ribete dorado inferior en pierna izquierda
+    const leftPantsCuff = new THREE.Mesh(
+      new THREE.TorusGeometry(0.070, 0.008, 12, 32),
+      sashGoldMat
+    );
+    leftPantsCuff.rotation.x = Math.PI / 2;
+    leftPantsCuff.rotation.y = 0.10;
+    leftPantsCuff.position.set(-0.15, 0.33, 0.03);
+    pantsGroup.add(leftPantsCuff);
+
+    // Pelvis / Cintura del pantalón (cubre completamente cadera e ingle)
+    const pelvisPants = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.175, 0.185, 0.18, 24),
+      pantsMat
+    );
+    pelvisPants.position.set(-0.01, 0.61, 0.0);
+    pantsGroup.add(pelvisPants);
+
+    // Fajín / Cinturón clásico drapeado con broche de oro
+    const sashBelt = new THREE.Mesh(
+      new THREE.TorusGeometry(0.182, 0.016, 16, 48),
+      sashGoldMat
+    );
+    sashBelt.rotation.x = Math.PI / 2;
+    sashBelt.position.set(-0.01, 0.68, 0.0);
+    pantsGroup.add(sashBelt);
+
+    // Broche heráldico en el cinto
+    const buckle = new THREE.Mesh(new THREE.CylinderGeometry(0.028, 0.028, 0.015, 16), goldMat);
+    buckle.rotation.x = Math.PI / 2;
+    buckle.position.set(-0.01, 0.68, 0.185);
+    pantsGroup.add(buckle);
+
+    // Pliegue de caída de tela lateral clásica
+    const drapeFold = new THREE.Mesh(
+      new THREE.ConeGeometry(0.06, 0.26, 16),
+      pantsMat
+    );
+    drapeFold.rotation.z = 0.12;
+    drapeFold.position.set(0.16, 0.52, 0.11);
+    pantsGroup.add(drapeFold);
+
+    davidGroup.add(pantsGroup);
+
+    // ────────────────────────────────────────────────────────────────────────
+    // D. TORSO ESCULPIDO EN MÁRMOL (Musculatura, Contrapposto y Pecho)
+    // ────────────────────────────────────────────────────────────────────────
+    const abdomen = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.165, 0.170, 0.18, 24),
+      marbleMat
+    );
+    abdomen.position.set(-0.01, 0.77, 0.0);
+    abdomen.rotation.z = -0.03; // Contrapposto
+    davidGroup.add(abdomen);
+
+    const thorax = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.20, 0.165, 0.22, 24),
+      marbleMat
+    );
+    thorax.position.set(0.0, 0.94, 0.0);
+    thorax.rotation.z = 0.03;
+    davidGroup.add(thorax);
+
+    // Pectorales izquierdo y derecho
+    const pecGeo = new THREE.BoxGeometry(0.11, 0.09, 0.05);
+    const pecLeft = new THREE.Mesh(pecGeo, marbleMat);
+    pecLeft.position.set(-0.068, 0.96, 0.12);
+    pecLeft.rotation.z = 0.08;
+    davidGroup.add(pecLeft);
+
+    const pecRight = new THREE.Mesh(pecGeo, marbleMat);
+    pecRight.position.set(0.068, 0.96, 0.12);
+    pecRight.rotation.z = -0.08;
+    davidGroup.add(pecRight);
+
+    // Hombros esculpidos
+    const leftShoulder = new THREE.Mesh(new THREE.SphereGeometry(0.075, 18, 18), marbleMat);
+    leftShoulder.position.set(-0.24, 1.02, 0.0);
+    davidGroup.add(leftShoulder);
+
+    const rightShoulder = new THREE.Mesh(new THREE.SphereGeometry(0.075, 18, 18), marbleMat);
+    rightShoulder.position.set(0.24, 0.98, 0.0);
+    davidGroup.add(rightShoulder);
+
+    // Cuello
+    const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.062, 0.075, 0.14, 20), marbleMat);
+    neck.position.set(0.01, 1.08, 0.02);
+    neck.rotation.y = 0.35;
+    davidGroup.add(neck);
+
+    // ────────────────────────────────────────────────────────────────────────
+    // E. CABEZA RENACENTISTA Y RULOS ICÓNICOS DEL DAVID
+    // ────────────────────────────────────────────────────────────────────────
+    const headGroup = new THREE.Group();
+    headGroup.position.set(0.01, 1.20, 0.02);
+    headGroup.rotation.y = 0.42; // Mirada atenta hacia la izquierda
+
+    const cranium = new THREE.Mesh(new THREE.SphereGeometry(0.095, 24, 24), marbleMat);
+    headGroup.add(cranium);
+
+    const chin = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.06, 0.08), marbleMat);
+    chin.position.set(0, -0.06, 0.05);
+    headGroup.add(chin);
+
+    const nose = new THREE.Mesh(new THREE.ConeGeometry(0.015, 0.045, 8), marbleMat);
+    nose.rotation.x = Math.PI / 2;
+    nose.position.set(0, -0.01, 0.11);
+    headGroup.add(nose);
+
+    // Rulos renacentistas de mármol
+    const hairOffsets = [
+      [0, 0.08, 0.03], [0.06, 0.07, 0.04], [-0.06, 0.07, 0.04],
+      [0.08, 0.04, 0.02], [-0.08, 0.04, 0.02], [0, 0.09, -0.03],
+      [0.05, 0.07, -0.05], [-0.05, 0.07, -0.05], [0, 0.04, -0.08],
+      [0.06, 0.01, -0.07], [-0.06, 0.01, -0.07], [0.08, -0.03, -0.04],
+      [-0.08, -0.03, -0.04], [0.02, 0.08, 0.07], [-0.02, 0.08, 0.07]
+    ];
+    hairOffsets.forEach(pos => {
+      const curl = new THREE.Mesh(new THREE.SphereGeometry(0.036, 12, 12), marbleSubtle);
+      curl.position.set(pos[0], pos[1], pos[2]);
+      headGroup.add(curl);
+    });
+
+    davidGroup.add(headGroup);
+
+    // ────────────────────────────────────────────────────────────────────────
+    // F. BRAZO DERECHO: Sostiene el Pergamino Dorado del "Estado del Arte"
+    // ────────────────────────────────────────────────────────────────────────
+    const rightArm = new THREE.Mesh(new THREE.CylinderGeometry(0.048, 0.040, 0.30, 16), marbleMat);
+    rightArm.position.set(0.26, 0.82, 0.0);
+    davidGroup.add(rightArm);
+
+    const rightForearm = new THREE.Mesh(new THREE.CylinderGeometry(0.040, 0.034, 0.28, 16), marbleMat);
+    rightForearm.position.set(0.28, 0.56, 0.03);
+    davidGroup.add(rightForearm);
+
+    const rightHand = new THREE.Mesh(new THREE.SphereGeometry(0.042, 14, 14), marbleMat);
+    rightHand.position.set(0.28, 0.40, 0.04);
+    davidGroup.add(rightHand);
+
+    // Pergamino / Rollo Académico Dorado en la mano derecha de David
+    const scrollGroup = new THREE.Group();
+    scrollGroup.position.set(0.30, 0.38, 0.06);
+    scrollGroup.rotation.z = -0.35;
+
+    const scrollCylinder = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.022, 0.022, 0.26, 16),
+      engine.marbleMat(0xfefce8)
+    );
+    scrollGroup.add(scrollCylinder);
+
+    [-0.13, 0.13].forEach(sy => {
+      const scrollCap = new THREE.Mesh(new THREE.CylinderGeometry(0.032, 0.032, 0.02, 16), goldMat);
+      scrollCap.position.y = sy;
+      scrollGroup.add(scrollCap);
+    });
+
+    const seal = new THREE.Mesh(new THREE.CylinderGeometry(0.026, 0.026, 0.025, 12), engine.graniteMat(0x991b1b));
+    seal.rotation.x = Math.PI / 2;
+    seal.position.set(0, 0, 0.024);
+    scrollGroup.add(seal);
+
+    davidGroup.add(scrollGroup);
+
+    // ────────────────────────────────────────────────────────────────────────
+    // G. BRAZO IZQUIERDO: Alza la Gema y Órbitas de la "Vacancia Patagónica"
+    // (Pose clásica con el brazo flexionado hacia el hombro)
+    // ────────────────────────────────────────────────────────────────────────
+    const leftUpperArm = new THREE.Mesh(new THREE.CylinderGeometry(0.048, 0.042, 0.26, 16), marbleMat);
+    leftUpperArm.position.set(-0.30, 0.88, 0.04);
+    leftUpperArm.rotation.z = 0.40;
+    leftUpperArm.rotation.x = 0.15;
+    davidGroup.add(leftUpperArm);
+
+    const leftForearm = new THREE.Mesh(new THREE.CylinderGeometry(0.042, 0.035, 0.26, 16), marbleMat);
+    leftForearm.position.set(-0.25, 1.05, 0.12);
+    leftForearm.rotation.z = -0.65;
+    leftForearm.rotation.x = -0.30;
+    davidGroup.add(leftForearm);
+
+    const leftHand = new THREE.Mesh(new THREE.SphereGeometry(0.044, 14, 14), marbleMat);
+    leftHand.position.set(-0.16, 1.15, 0.18);
+    davidGroup.add(leftHand);
+
+    // Gema / Prisma de Vacancia Sostenido en Alto por David
+    const gemHolder = new THREE.Group();
+    gemHolder.position.set(-0.16, 1.25, 0.22);
+
+    engine.anim17_diamond = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(0.18, 0),
+      engine.glassMat(0x38bdf8, { roughness: 0.04, opacity: 0.92 })
+    );
+    gemHolder.add(engine.anim17_diamond);
+
+    // Aros armilares concéntricos dorados que orbitan sobre la gema
+    engine.anim17_ring = engine.createBrassArmillaryRing(0.28, 0.010);
+    gemHolder.add(engine.anim17_ring);
+
+    engine.anim17_ring2 = engine.createBrassArmillaryRing(0.22, 0.008);
+    gemHolder.add(engine.anim17_ring2);
+
+    const gemLight = new THREE.PointLight(0x38bdf8, 2.4, 2.8);
+    gemHolder.add(gemLight);
+
+    davidGroup.add(gemHolder);
+
+    // ────────────────────────────────────────────────────────────────────────
+    // H. PÓRTICO TRIUNFAL CON COLUMNAS CLÁSICAS DETRÁS DE DAVID
+    // ────────────────────────────────────────────────────────────────────────
+    const archGroup = new THREE.Group();
+    archGroup.position.set(0, 0.25, -0.22);
+
+    [-0.52, 0.52].forEach(x => {
+      const col = engine.createClassicalColumn(1.35, 0.055, 0xd4af37, true);
+      col.position.set(x, 0.15, 0);
+      archGroup.add(col);
     });
 
     const archTop = new THREE.Mesh(
-      new THREE.TorusGeometry(0.48, 0.045, 16, 48, Math.PI),
+      new THREE.TorusGeometry(0.52, 0.040, 16, 48, Math.PI),
       engine.brassMat(0xffd700)
     );
-    archTop.position.set(0, 0.7, 0);
-    group.add(archTop);
+    archTop.position.set(0, 0.82, 0);
+    archGroup.add(archTop);
 
-    // Gema / Diamante central flotante: Vacancia de Conocimiento Patagónico
-    engine.anim17_diamond = new THREE.Mesh(
-      new THREE.OctahedronGeometry(0.32, 0),
-      engine.glassMat(0x38bdf8, { roughness: 0.05, transmission: 0.96, opacity: 0.92 })
+    const keystone = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.14, 0.08), goldMat);
+    keystone.position.set(0, 1.34, 0);
+    archGroup.add(keystone);
+
+    group.add(archGroup);
+    group.add(davidGroup);
+
+    // Etiqueta flotante superior de alta resolución
+    const mainLabel = engine.createLabelSprite(
+      "ESTADO DEL ARTE Y ANTECEDENTES",
+      "David del Conocimiento • Vacancia Disciplinar Patagónica",
+      "#0f2d59",
+      true
     );
-    engine.anim17_diamond.position.set(0, 0.35, 0);
-    group.add(engine.anim17_diamond);
-
-    for (let c = 0; c < 4; c++) {
-      const clawAng = (c * Math.PI) / 2;
-      const claw = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.012, 0.016, 0.22, 12),
-        engine.brassMat(0xffd700)
-      );
-      claw.position.set(Math.cos(clawAng) * 0.18, 0.26, Math.sin(clawAng) * 0.18);
-      claw.rotation.z = Math.cos(clawAng) * 0.25;
-      claw.rotation.x = Math.sin(clawAng) * 0.25;
-      group.add(claw);
-    }
-
-    const gemLight = new THREE.PointLight(0x38bdf8, 2.2, 2.5);
-    gemLight.position.set(0, 0.35, 0);
-    group.add(gemLight);
-
-    engine.anim17_ring = engine.createBrassArmillaryRing(0.52, 0.014);
-    engine.anim17_ring.position.set(0, 0.35, 0);
-    group.add(engine.anim17_ring);
-
-    engine.anim17_ring2 = engine.createBrassArmillaryRing(0.40, 0.010);
-    engine.anim17_ring2.position.set(0, 0.35, 0);
-    group.add(engine.anim17_ring2);
-
-    const mainLabel = engine.createLabelSprite("VACANCIA DISCIPLINAR PATAGÓNICA", "Inexistencia de Estudios 360° en Universidades Descentralizadas", "#0f2d59", true);
-    mainLabel.position.set(0, 1.40, 0.08);
+    mainLabel.position.set(0, 1.55, 0.12);
     group.add(mainLabel);
 
     g.add(group);
@@ -293,17 +560,17 @@ window.Presentation3D_Objects["anim_17"] = {
 
   animate(engine, t) {
     if (engine.anim17_diamond) {
-      engine.anim17_diamond.rotation.y = t * 0.45;
-      engine.anim17_diamond.rotation.x = Math.sin(t * 0.6) * 0.2;
-      engine.anim17_diamond.position.y = 0.35 + Math.sin(t * 1.2) * 0.04;
+      engine.anim17_diamond.rotation.y = t * 0.55;
+      engine.anim17_diamond.rotation.x = Math.sin(t * 0.7) * 0.25;
+      engine.anim17_diamond.position.y = Math.sin(t * 1.4) * 0.025;
     }
     if (engine.anim17_ring) {
-      engine.anim17_ring.rotation.x = t * 0.35;
-      engine.anim17_ring.rotation.y = t * 0.25;
+      engine.anim17_ring.rotation.x = t * 0.40;
+      engine.anim17_ring.rotation.y = t * 0.30;
     }
     if (engine.anim17_ring2) {
-      engine.anim17_ring2.rotation.x = -t * 0.28;
-      engine.anim17_ring2.rotation.z = t * 0.32;
+      engine.anim17_ring2.rotation.x = -t * 0.35;
+      engine.anim17_ring2.rotation.z = t * 0.45;
     }
   }
 };
