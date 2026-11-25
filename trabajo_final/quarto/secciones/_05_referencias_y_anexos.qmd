@@ -7,76 +7,103 @@
 
 # Anexos Metodológicos {.unnumbered}
 
-### Anexo I: Guía Temática de Entrevista Semiestructurada {.unnumbered}
+## Anexo I: Guía Temática de Entrevista Semiestructurada {.unnumbered}
 
-**Proyecto:** *Evaluación del Desempeño Docente y Factibilidad de un Modelo de Retroalimentación 360° en el Departamento de Administración Pública del CURZAS-UNCo (2027)*  
-**Investigador:** Tec. Sup. Héctor Daniel Ayarachi Fuentes  
+*Proyecto:* *Evaluación del Desempeño Docente y Factibilidad de un Modelo de Retroalimentación 360° en el Departamento de Administración Pública del CURZAS-UNCo (2027)*  
+*Investigador:* Tec. Sup. Héctor Daniel Ayarachi Fuentes  
 
-*Objetivo:* Relevar opiniones, percepciones y juicios críticos sobre los mecanismos actuales de evaluación docente y las condiciones de factibilidad para un circuito formativo 360° adaptado a la singularidad institucional.
+*Objetivo:* Relevar opiniones, percepciones y experiencias sobre los mecanismos actuales de evaluación docente y las condiciones que podrían facilitar o limitar una eventual retroalimentación multiactoral en el Departamento de Administración Pública del CURZAS-UNCo.
 
-#### Bloque A: Guía Temática para Docentes de Cátedra y Autoridades Académicas {.unnumbered}
+### Bloque A: Guía Temática para Docentes de Cátedra y Autoridades Académicas {.unnumbered}
 
-1. **Evaluación vigente:** ¿Qué balance realiza de los instrumentos actuales (informes anuales, encuestas estudiantiles y evaluaciones cuatrienales de permanencia)?
-2. **Uso pedagógico:** ¿En qué medida considera que las opiniones estudiantiles actuales se traducen en mejoras de la enseñanza o en planes de capacitación?
-3. **Autoevaluación:** ¿Realiza habitualmente instancias de autorreflexión sobre su práctica pedagógica? ¿Qué utilidad le asigna a formalizar dicha instancia?
-4. **Mirada de pares y cátedras unipersonales:** ¿Qué condiciones de confianza institucional considera necesarias para que la coevaluación entre colegas sea constructiva? En asignaturas de docente único, ¿ve viable la coevaluación horizontal entre pares de materias afines del mismo tramo curricular?
-5. **Nodos Territoriales:** En asignaturas con modalidad híbrida en la Línea Sur y Costa Atlántica, ¿qué aspectos de la labor docente (tutoría virtual, diseño de recursos) deberían valorarse de forma diferenciada?
-6. **Resguardos necesarios:** ¿Qué salvaguardas (anonimato, voluntariedad, desvinculación de legajos sumativos) considera indispensables para legitimar una propuesta de este tipo?
-7. **Articulación departamental:** ¿De qué forma deberían vincularse los resultados con el Programa Anual de Capacitación Docente (Art. 76 del Estatuto UNCo)?
+1. *Evaluación vigente:* ¿Cómo describe su experiencia con los instrumentos actuales de evaluación docente (informes anuales, encuestas estudiantiles y evaluaciones cuatrienales de permanencia)?
+2. *Uso pedagógico:* ¿Cómo percibe que las opiniones estudiantiles actuales se vinculan con posibles mejoras en la enseñanza o en planes de capacitación docente?
+3. *Autoevaluación:* ¿Suele reflexionar sobre su propia práctica pedagógica al finalizar los períodos de clase? ¿Considera útil que la institución cuente con un espacio formal para esa reflexión personal?
+4. *Mirada entre colegas y cátedras unipersonales:* ¿Qué condiciones de confianza institucional considera necesarias para que compartir miradas entre colegas sea constructivo? En asignaturas de docente único, ¿ve viable la coevaluación o intercambio pedagógico horizontal entre pares de materias afines del mismo tramo curricular?
+5. *Nodos Territoriales:* En asignaturas con modalidad híbrida en la Línea Sur y Costa Atlántica, ¿qué aspectos de la labor docente (tutoría virtual, diseño de recursos) considera que deberían valorarse de forma diferenciada?
+6. *Resguardos necesarios:* ¿Qué condiciones (por ejemplo, participación voluntaria o reserva de identidad) considera necesarias para que los docentes participen con tranquilidad en una propuesta de este tipo?
+7. *Articulación departamental:* ¿Considera que los resultados de una eventual retroalimentación podrían orientar las propuestas del Programa Anual de Capacitación Docente (Art. 76 del Estatuto UNCo)?
 
-#### Bloque B: Preguntas Específicas para la Representación Gremial Paritaria (ADUNC) {.unnumbered}
+### Bloque B: Preguntas Específicas para la Representación Gremial Paritaria (ADUNC) {.unnumbered}
 
-1. **Compatibilidad normativa y estabilidad laboral:** ¿Qué condiciones y salvaguardas paritarias considera prioritario establecer para asegurar la plena compatibilidad con los Arts. 74 y 75 del Estatuto UNCo y el Convenio Colectivo de Trabajo Docente (Decreto N° 1246/2015), blindando el carácter estrictamente formativo del modelo frente a cualquier uso sumativo o punitivo?
-2. **Veeduría y custodia de datos:** ¿Qué mecanismos de veeduría y gobernanza gremial deberían incorporarse en la administración y custodia técnica de los formularios para otorgar plena certeza de que los datos diagnósticos no serán transferidos a legajos ni utilizados por jurados de permanencia o acreditación?
+1. *Compatibilidad normativa y estabilidad laboral:* Desde su experiencia en la representación gremial, ¿qué aspectos considera relevantes para resguardar la estabilidad laboral y la normativa estatutaria (CCT y Estatuto UNCo) ante una eventual propuesta de retroalimentación formativa?
+2. *Veeduría y custodia de datos:* ¿Qué mecanismos considera necesarios para garantizar la transparencia, confidencialidad y custodia de la información diagnóstica, asegurando que no se transfiera a legajos ni sea utilizada con fines sumativos?
+3. *Condiciones para una prueba piloto voluntaria:* ¿Qué acuerdos paritarios o garantías institucionales previas considera indispensables para que la representación gremial avale un eventual pilotaje experimental voluntario y no vinculante?
+4. *Articulación paritaria y carrera docente:* En el marco de la paritaria local, ¿cómo visualiza el papel del sindicato para asegurar que la retroalimentación formativa no interfiera con los concursos ni con las evaluaciones reglamentarias de permanencia?
 
-#### Bloque C: Preguntas Específicas para Estudiantes Avanzados {.unnumbered}
+### Bloque C: Preguntas Específicas para Estudiantes Avanzados {.unnumbered}
 
-1. **Utilidad percibida de la evaluación actual:** En base a su trayectoria, ¿qué balance realiza de la utilidad pedagógica real de las encuestas estudiantiles obligatorias que se completan en SIU-Guaraní al término de cada cursada? ¿Considera que sus aportes inciden efectivamente en cambios o mejoras en la enseñanza?
-2. **Condiciones para la retroalimentación constructiva:** ¿Qué condiciones de anonimato y qué tipo de aspectos de la enseñanza (ej. claridad didáctica, acompañamiento tutorial virtual en Nodos, criterios de evaluación y devoluciones) considera más relevantes de incorporar en una retroalimentación formativa para opinar con sinceridad y compromiso?
-
-{{< pagebreak >}}
-
-### Anexo II: Cuestionario Exploratorio de Factibilidad (Escala Likert) {.unnumbered}
-
-*Instrucciones:* Indique su nivel de acuerdo marcando del 1 al 5 (1: Totalmente en desacuerdo; 2: En desacuerdo; 3: Ni de acuerdo ni en desacuerdo; 4: De acuerdo; 5: Totalmente de acuerdo).
-
-| N° | Reactivo | 1 | 2 | 3 | 4 | 5 |
-|:----:|:----------------------------------------------------------|:---:|:---:|:---:|:---:|:---:|
-| 1 | La evaluación docente debería orientarse prioritariamente al aprendizaje pedagógico continuo y no al control formal. | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 2 | Es indispensable que los reportes individuales no integren legajos de permanencia ni concursos laborales. | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 3 | Las plataformas institucionales (Moodle/SIU) son adecuadas para administrar cuestionarios anónimos. | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 4 | Confío en que el sistema informático puede garantizar el anonimato técnico de las respuestas. | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 5 | Un cuestionario breve (hasta 15 preguntas) es suficiente para evaluar la labor docente sin generar sobrecarga. | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 6 | El Departamento dispone de capacidad organizativa para coordinar devoluciones diagnósticas oportunas. | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 7 | Los resultados consolidados deberían alimentar el Programa Anual de Capacitación Docente (Art. 76). | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 8 | Estaría dispuesto/a a participar voluntariamente de una autoevaluación reflexiva sobre mi enseñanza. | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 9 | Considero enriquecedor recibir comentarios constructivos de colegas de cátedra sobre la labor docente. | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 10 | Los estudiantes cuentan con criterio suficiente para opinar con seriedad sobre el acompañamiento pedagógico. | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 11 | En el Departamento existe un clima de confianza que permite dialogar sobre fortalezas y dificultades didácticas. | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 12 | Una propuesta evaluativa formativa debe ser debatida previamente en el Consejo Departamental. | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 13 | El acuerdo de la representación gremial docente (ADUNC) es un requisito central para su viabilidad. | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 14 | En los Nodos Territoriales deben evaluarse aspectos específicos de tutoría y comunicación virtual. | [ ] | [ ] | [ ] | [ ] | [ ] |
-| 15 | Estaría dispuesto/a a participar de una experiencia piloto voluntaria de retroalimentación multiactoral. | [ ] | [ ] | [ ] | [ ] | [ ] |
-
-*Nota.* En el formulario administrado al claustro estudiantil, los reactivos 8 y 9 se adaptan consultando sobre la utilidad percibida de la autoevaluación y coevaluación docente.
-
-**Preguntas Abiertas Complementarias:**
-
-* **Pregunta abierta 1:** ¿Qué condición o resguardo considera prioritario garantizar para participar con confianza en una instancia de retroalimentación docente?  
-  *Respuesta:* `...........................................................................................................................................................`  
-  `...........................................................................................................................................................`
-
-* **Pregunta abierta 2:** ¿Qué aspectos específicos de la cursada (presencial en sede o híbrida en Nodos Territoriales) cree que no están siendo captados por las encuestas actuales?  
-  *Respuesta:* `...........................................................................................................................................................`  
-  `...........................................................................................................................................................`
+1. *Experiencia con la evaluación actual:* En base a su trayectoria, ¿cómo describe su experiencia con las encuestas de evaluación docente que se completan en SIU-Guaraní al término de cada cursada? ¿Percibe que sus opiniones inciden efectivamente en cambios o mejoras en la enseñanza?
+2. *Condiciones para la participación:* ¿Qué condiciones considera necesarias para que una retroalimentación estudiantil sea sincera y constructiva? ¿Qué aspectos de la enseñanza (ej. claridad didáctica, acompañamiento tutorial virtual en Nodos, criterios de evaluación y devoluciones) considera más relevantes de incorporar?
+3. *Confianza en el anonimato digital:* Al responder encuestas en plataformas universitarias (SIU o Moodle), ¿sienten plena seguridad sobre la reserva de su identidad o perciben temores a posibles consecuencias académicas?
+4. *Fatiga de respuesta y devolución pedagógica:* ¿Qué factores desmotivan la participación en encuestas al cierre de cursada y de qué manera una devolución institucional de los resultados incentivaría un mayor compromiso estudiantil?
 
 {{< pagebreak >}}
 
-### Anexo III: Modelo de Nota Institucional de Solicitud de Aval Académico {.unnumbered}
+## Anexo II: Cuestionarios Exploratorios de Factibilidad (Escala Likert) {.unnumbered}
 
-::: {align="center"}
-**SOLICITUD DE AVAL ACADÉMICO PARA INVESTIGACIÓN DE TFG**
-:::
+### Formulario A: Cuestionario para Docentes y Autoridades Académicas {.unnumbered}
+
+*Instrucciones:* Valore su nivel de acuerdo de 1 a 5 (1: *Totalmente en desacuerdo*; 2: *En desacuerdo*; 3: *Neutral*; 4: *De acuerdo*; 5: *Totalmente de acuerdo*) o la opción NS/NC (*No sabe / No contesta*).
+
+**Tabla 5**  
+*Reactivos del Cuestionario para Docentes y Autoridades Académicas (Formulario A)*
+
+| N° | Reactivo | 1 | 2 | 3 | 4 | 5 | NS/NC |
+|:----:|:----------------------------------------------------------|:---:|:---:|:---:|:---:|:---:|:--------:|
+| 1 | La evaluación docente debería orientarse prioritariamente a la retroalimentación formativa y no al control formal. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 2 | Los reportes de retroalimentación docente no deben utilizarse con consecuencias de permanencia laboral. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 3 | Las plataformas institucionales (Moodle/SIU) son adecuadas para administrar cuestionarios confidenciales. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 4 | Desconfío de que los sistemas informáticos del CURZAS puedan garantizar la reserva técnica de las respuestas. *(Ítem con sentido invertido)* | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 5 | La administración de cuestionarios breves no generaría una sobrecarga en las tareas habituales de cátedra. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 6 | La incorporación de un dispositivo evaluativo adicional aumentaría innecesariamente la sobrecarga de trabajo del Departamento. *(Ítem con sentido invertido)* | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 7 | Los resultados diagnósticos consolidados deberían orientar el Programa Anual de Capacitación Docente (Art. 76 del Estatuto UNCo). | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 8 | Estaría dispuesto/a a participar voluntariamente de una prueba piloto experimental de autoevaluación y retroalimentación 360° en mi cátedra. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 9 | El intercambio pedagógico entre docentes de cátedras afines generaría tensiones en el equipo de trabajo. *(Ítem con sentido invertido)* | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 10 | Los estudiantes carecen de criterio suficiente para opinar con seriedad sobre el acompañamiento pedagógico. *(Ítem con sentido invertido)* | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 11 | Considero enriquecedor recibir comentarios constructivos de colegas sobre la labor pedagógica cotidiana. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 12 | Las particularidades pedagógicas de las aulas híbridas y Nodos Territoriales no ameritan dimensiones evaluativas específicas respecto a la sede central. *(Ítem con sentido invertido)* | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 13 | Una propuesta evaluativa formativa debe ser deliberada y consensuada con la representación gremial docente (ADUNC). | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+
+*Nota.* La batería comprende 13 reactivos estructurados (8 en sentido directo y 5 en sentido invertido para neutralizar el sesgo de aquiescencia) y 2 preguntas abiertas cualitativas (total: 15 ítems). La opción NS/NC se procesa como porcentaje independiente de no respuesta y se excluye del cálculo de medias.
+
+*Preguntas Abiertas para Docentes y Autoridades:*
+
+1. *Condiciones de confianza:* ¿Qué aspectos considera prioritarios garantizar para participar con tranquilidad en una eventual instancia de retroalimentación docente? *[Espacio para respuesta abierta]*
+2. *Alcance territorial:* ¿Qué aspectos específicos de la cursada (presencial en sede o híbrida en Nodos Territoriales) cree que no están siendo captados por los instrumentos actuales? *[Espacio para respuesta abierta]*
+
+{{< pagebreak >}}
+
+### Formulario B: Cuestionario Adaptado para Estudiantes Avanzados {.unnumbered}
+
+*Instrucciones:* Valore su nivel de acuerdo de 1 a 5 (1: *Totalmente en desacuerdo*; 2: *En desacuerdo*; 3: *Neutral*; 4: *De acuerdo*; 5: *Totalmente de acuerdo*) o la opción NS/NC (*No sabe / No contesta*).
+
+**Tabla 6**  
+*Reactivos del Cuestionario para Estudiantes Avanzados (Formulario B)*
+
+| N° | Reactivo Adaptado para Estudiantes | 1 | 2 | 3 | 4 | 5 | NS/NC |
+|:----:|:----------------------------------------------------------|:---:|:---:|:---:|:---:|:---:|:--------:|
+| 1 | La evaluación docente debería orientarse a la mejora de la enseñanza y no a un mero control formal. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 2 | Las plataformas institucionales (Moodle/SIU) resultan accesibles para responder consultas pedagógicas. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 3 | Desconfío de que el sistema informático de la universidad garantice la reserva de mis respuestas. *(Ítem con sentido invertido)* | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 4 | Los cuestionarios evaluativos habituales resultan extensos y desmotivan la participación estudiantil. *(Ítem con sentido invertido)* | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 5 | Los estudiantes contamos con criterio para opinar con seriedad sobre el acompañamiento pedagógico recibido. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 6 | Considero valioso que los docentes realicen una autoevaluación reflexiva sobre sus prácticas de enseñanza. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 7 | Las opiniones del estudiantado suelen ser desestimadas en las decisiones de mejora de las cátedras. *(Ítem con sentido invertido)* | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 8 | En la carrera existe un clima adecuado para dialogar con los profesores sobre dificultades de aprendizaje. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 9 | En las cursadas híbridas, la comunicación tutorial virtual resulta distante e insuficiente. *(Ítem con sentido invertido)* | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+| 10 | Estaría dispuesto/a a responder con compromiso una consulta formativa sobre el desempeño de la cátedra. | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+
+*Nota.* Formulario adaptado a la posición situada del estudiante (6 reactivos directos y 4 invertidos para equilibrar la escala psicométrica, más 2 preguntas abiertas, total: 12 ítems). La opción NS/NC se procesa como porcentaje independiente y se excluye del cómputo de medias.
+
+*Preguntas Abiertas para Estudiantes:*
+
+1. *Confianza y participación:* ¿Qué condiciones considera indispensables para que los estudiantes respondan con sinceridad y sin temor sobre la labor docente? *[Espacio para respuesta abierta]*
+2. *Experiencia en cursadas:* ¿Qué aspectos de la enseñanza (ej. claridad explicativa, seguimiento tutorial en Nodos o devoluciones de exámenes) no captan las encuestas actuales? *[Espacio para respuesta abierta]*
+
+{{< pagebreak >}}
+
+## Anexo III: Modelo de Nota Institucional de Solicitud de Aval Académico {.unnumbered}
 
 Viedma, Río Negro, ______ de ________________ de 202___
 
@@ -89,34 +116,35 @@ Me dirijo a Usted como estudiante regular del Ciclo de Complementación Curricul
 
 **"Evaluación del Desempeño Docente y Factibilidad de Implementación de un Modelo de Retroalimentación 360° en el Departamento de Administración Pública del CURZAS-UNCo (2027)"**  
 
-Por la presente, solicito formalmente el correspondiente **aval institucional y autorización de acceso al campo** para llevar adelante las tareas de relevamiento previstas en el diseño:
+Por la presente, solicito formalmente el correspondiente aval institucional y autorización de acceso al campo para llevar adelante las tareas de relevamiento previstas en el diseño:
 
-a) Consulta de documentación reglamentaria y programas de capacitación docente;  
-b) Realización de entrevistas a informantes clave (autoridades, docentes y representantes gremiales);  
-c) Administración de un sondeo digital anónimo y voluntario a docentes y estudiantes en sede Viedma y Nodos Territoriales.  
+a) Consulta de documentación normativa y programas de capacitación docente vinculados con la evaluación del desempeño docente, sujetos a la autorización y a las condiciones de confidencialidad que correspondan;  
+b) Realización de entrevistas semiestructuradas a informantes clave, previa invitación y consentimiento informado de las personas que acepten participar;  
+c) Difusión y administración de un cuestionario digital voluntario a docentes y estudiantes de la sede Viedma y de los Nodos Territoriales, previa autorización institucional y conforme a las condiciones de confidencialidad que resulten aplicables.  
 
-Se garantiza que toda la información se tratará bajo estricto secreto estadístico (Ley N° 25.326) con fines exclusivamente diagnósticos y académicos, sin generar consecuencias laborales ni sumativas.  
+Se garantiza que toda la información se tratará bajo estricta confidencialidad y protección de datos personales conforme a la Ley Nacional N° 25.326, con fines exclusivamente diagnósticos y académicos, sin generar consecuencias laborales ni sumativas.  
 
 Agradeciendo su atención, saludo a Usted atentamente.
 
-
 ::: {.content-visible when-format="typst"}
 ```{=typst}
-#v(1.4cm)
+#v(0.1cm)
 #align(center)[
   #line(length: 65%, stroke: 0.5pt + black)
-  #v(0.6em)
-  #text(weight: "bold")[Tec. Sup. Héctor Daniel Ayarachi Fuentes]   Legajo N° 8252 — DNI N° 35.492.138   Estudiante del CCC de la Licenciatura en Gestión de Recursos Humanos   Departamento de Administración Pública — CURZAS-UNCo
+  #v(0.2em)
+  #text(weight: "bold")[Tec. Sup. Héctor Daniel Ayarachi Fuentes] \
+  Legajo N° 8252 — DNI N° 35.492.138 \
+  Estudiante del CCC de la Licenciatura en Gestión de Recursos Humanos \
+  Departamento de Administración Pública — CURZAS-UNCo
 ]
 ```
 :::
 
 ::: {.content-visible when-format="docx"}
 <br>
-<br>
 
 ::: {align="center"}
-................................................................................................................  
+__________________________________________________  
 **Tec. Sup. Héctor Daniel Ayarachi Fuentes**  
 Legajo N° 8252 — DNI N° 35.492.138  
 Estudiante del CCC de la Licenciatura en Gestión de Recursos Humanos  
@@ -126,28 +154,30 @@ Departamento de Administración Pública — CURZAS-UNCo
 
 {{< pagebreak >}}
 
-### Anexo IV: Formulario de Consentimiento Informado {.unnumbered}
+## Anexo IV: Formulario de Consentimiento Informado {.unnumbered}
 
-::: {align="center"}
-**FORMULARIO DE CONSENTIMIENTO INFORMADO**
-:::
+1. *Proyecto:* *Evaluación del Desempeño Docente y Factibilidad de Implementación de un Modelo de Retroalimentación 360° en el Departamento de Administración Pública del CURZAS-UNCo (2027)*.
+2. *Investigador:* Tec. Sup. Héctor Daniel Ayarachi Fuentes (CURZAS-UNCo).
+3. *Propósito:* Conocer percepciones y experiencias de la comunidad académica sobre la evaluación del desempeño docente y las condiciones de viabilidad para una eventual retroalimentación multiactoral (360°).
+4. *Procedimientos:* Cuestionario digital (~15 minutos) y/o entrevista semiestructurada (~30 a 45 minutos; grabación en audio opcional bajo consentimiento expreso).
+5. *Constancia y Declaración del Participante:*
+   - Participación libre, voluntaria y no remunerada, pudiendo desistir en cualquier momento.
+   - Garantía de anonimato técnico estricto en el cuestionario digital en origen (tokens aleatorios sin registro de IP), y estricta confidencialidad profesional y seudonimización mediante códigos alfanuméricos en las entrevistas cualitativas, conforme a la Ley Nacional N° 25.326 de Protección de los Datos Personales.
+   - Fines estrictamente diagnósticos y académicos para el TFG, sin consecuencias laborales estatutarias ni sumativas.
 
-1. **Proyecto:** *Evaluación del Desempeño Docente y Factibilidad de Implementación de un Modelo de Retroalimentación 360° en el Departamento de Administración Pública del CURZAS-UNCo (2027)*.
-2. **Investigador:** Tec. Sup. Héctor Daniel Ayarachi Fuentes (CURZAS-UNCo).
-3. **Propósito:** Diagnosticar las condiciones de factibilidad para un circuito formativo de retroalimentación docente.
-4. **Constancia y Declaración del Participante:**
+*Declaración de Consentimiento:*
 
-   - Declaro haber recibido información clara y suficiente sobre los objetivos de la investigación.
-   - Mi participación es libre, voluntaria y no remunerada, pudiendo retirarme en cualquier momento sin perjuicio alguno.
-   - Se me garantiza el anonimato estricto y la confidencialidad de mis respuestas (Ley N° 25.326 de Protección de los Datos Personales).
-   - Se me informa que los resultados no afectarán mi situación laboral estatutaria ni mi condición académica.
+* Consiento participar en el cuestionario: &nbsp;&nbsp;&nbsp;&nbsp; Sí ☐ &nbsp;&nbsp;&nbsp;&nbsp; No ☐  
+* Consiento participar en la entrevista: &nbsp;&nbsp;&nbsp;&nbsp; Sí ☐ &nbsp;&nbsp;&nbsp;&nbsp; No ☐  
+* Consiento que la entrevista sea grabada en audio: &nbsp;&nbsp;&nbsp;&nbsp; Sí ☐ &nbsp;&nbsp;&nbsp;&nbsp; No ☐  
 
-<br>
+**Tabla 7**  
+*Registro de Consentimiento y Validación del Participante*
 
 | Campo | Registro del Participante |
 | :--- | :--- |
-| **Lugar y Fecha:** | __________________________________________________ |
-| **Firma (o validación digital):** | __________________________________________________ |
-| **Aclaración de Firma:** | __________________________________________________ |
-| **Estamento / Rol:** | [ ] Docente &nbsp;&nbsp;&nbsp;&nbsp; [ ] Estudiante &nbsp;&nbsp;&nbsp;&nbsp; [ ] Autoridad &nbsp;&nbsp;&nbsp;&nbsp; [ ] Representante Gremial |
+| *Lugar y Fecha:* | __________________________________________________ |
+| *Firma (o validación digital):* | __________________________________________________ |
+| *Aclaración de Firma:* | __________________________________________________ |
+| *Rol / Actor institucional:* | ☐ Docente &nbsp;&nbsp;&nbsp;&nbsp; ☐ Estudiante &nbsp;&nbsp;&nbsp;&nbsp; ☐ Autoridad &nbsp;&nbsp;&nbsp;&nbsp; ☐ Representante Gremial |
   
