@@ -933,14 +933,14 @@ window.Presentation3D_Objects["anim_04"] = {
       0.54,
       0.22,
       "6. ANTECEDENTES",
-      "Estado del Arte • Vacancia",
-      ["DIAGNÓSTICO SITUADO"],
+      "Relevamiento Preliminar",
+      ["POSIBLE VACANCIA (2027)"],
       { theme: "dark" }
     );
     plaqueRight.position.set(0.58, -0.85, 0.38);
     diptychGroup.add(plaqueRight);
 
-    const labelRight = engine.createLabelSprite("6. ANTECEDENTES", "Estado del Arte • Vacancia", "#0f2d59", false);
+    const labelRight = engine.createLabelSprite("6. ANTECEDENTES", "Relevamiento Preliminar", "#0f2d59", false);
     labelRight.position.set(0.58, 0.96, 0);
     diptychGroup.add(labelRight);
 

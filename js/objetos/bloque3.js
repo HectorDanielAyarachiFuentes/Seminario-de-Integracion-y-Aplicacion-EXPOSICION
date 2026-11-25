@@ -633,84 +633,292 @@ window.Presentation3D_Objects["anim_14"] = {
 };
 
 // ──────────────────────────────────────────────────────────────────────────
-// 15. ARQUITECTURA 360° CURZAS: Cúpula Geodésica de los 4 Cuadrantes
+// 15. DISPOSITIVO 360° Y POLIGOBERNANZA: Pirámide de 4 Planos + Red Armilar 360°
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_15"] = {
   build(engine, g) {
-    engine.createMuseumPlinth(g, 1.45, 0.22, -1.22);
+    engine.createMuseumPlinth(g, 1.56, 0.22, -1.22);
 
-    const chassis = engine.createMachinedChassis(1.45, 0.10, 1.45, { color: 0x1e293b });
-    chassis.position.y = -0.92;
+    const chassis = engine.createMachinedChassis(1.56, 0.10, 1.24, { color: 0x1e293b });
+    chassis.position.set(0, -0.92, -0.06);
     g.add(chassis);
 
-    const domeGroup = new THREE.Group();
-    domeGroup.position.set(0, -0.05, 0);
-
-    // Plataforma circular dividida en 4 cuadrantes
-    const baseCircle = new THREE.Mesh(
-      new THREE.CylinderGeometry(1.05, 1.08, 0.06, 48),
-      engine.marbleMat(0xf8fafc)
+    // Atril frontal independiente sobre el borde delantero del plinto (100% despejado)
+    const plaqueCradle = new THREE.Mesh(
+      engine.getRoundedBoxGeo(1.14, 0.13, 0.16, 0.015, 3),
+      engine.graniteMat(0x1e293b, 0.54, 0.15)
     );
-    baseCircle.position.y = -0.55;
-    domeGroup.add(baseCircle);
-
-    // Líneas divisoras en cruz de latón
-    const crossX = new THREE.Mesh(new THREE.BoxGeometry(2.05, 0.016, 0.02), engine.brassMat());
-    crossX.position.y = -0.51;
-    domeGroup.add(crossX);
-
-    const crossZ = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.016, 2.05), engine.brassMat());
-    crossZ.position.y = -0.51;
-    domeGroup.add(crossZ);
-
-    // Escudo académico UNCo grabado en el centro del suelo de la cúpula
-    const seal = engine.createAcademicSeal(0.12);
-    seal.rotation.x = Math.PI / 2;
-    seal.position.y = -0.49;
-    domeGroup.add(seal);
-
-    // Cúpula geodésica protectora de cristal esmerilado translúcida y minimalista (sin colisiones)
-    const domeMesh = new THREE.Mesh(
-      new THREE.SphereGeometry(0.78, 24, 24, 0, Math.PI * 2, 0, Math.PI / 2),
-      engine.glassMat(0xf8fafc, { transmission: 0.88, opacity: 0.75, roughness: 0.10 })
-    );
-    domeMesh.position.y = -0.50;
-    domeGroup.add(domeMesh);
-    engine.anim15_dome = domeMesh;
-
-    // Núcleo iluminado del Art. 76 (Capacitación Continua)
-    const coreLight = new THREE.PointLight(0xffd700, 1.5, 1.6);
-    coreLight.position.y = -0.22;
-    domeGroup.add(coreLight);
-
-    const trainingOrb = new THREE.Mesh(
-      new THREE.SphereGeometry(0.16, 24, 24),
-      engine.marbleMat(0xfdfbf7)
-    );
-    trainingOrb.position.y = -0.22;
-    domeGroup.add(trainingOrb);
-
-    const labelCore = engine.createLabelSprite("NÚCLEO FORMATIVO (ART. 76)", "Desacoplado de Sanciones", "#0f2d59", true);
-    labelCore.position.set(0, 0.72, 0);
-    domeGroup.add(labelCore);
+    plaqueCradle.position.set(0, -0.96, 0.94);
+    plaqueCradle.castShadow = true;
+    plaqueCradle.receiveShadow = true;
+    g.add(plaqueCradle);
 
     const plaqueMaster = engine.createEngravedPlaque(
-      1.05,
-      0.22,
-      "CÚPULA INSTITUCIONAL DE 4 CUADRANTES",
-      "Blindaje Ético y Anonimato del Acto Evaluativo CURZAS",
-      ["ART. 76 CAPACITACIÓN", "DESACOPLE PUNITIVO TOTAL"],
+      1.18,
+      0.24,
+      "DISPOSITIVO 360° Y POLIGOBERNANZA",
+      "Macro (CS) • Meso (CURZAS) • Micro (10 Nodos) • ADUNC",
+      ["4 MIRADAS FORMATIVAS", "PODER COMPARTIDO (MATUS)", "ANONIMATO (OSZLAK)"],
       { theme: "dark" }
     );
-    plaqueMaster.position.set(0, -0.84, 0.74);
+    plaqueMaster.position.set(0, -0.87, 1.00);
+    plaqueMaster.rotation.x = -0.32;
     g.add(plaqueMaster);
 
-    g.add(domeGroup);
+    const poliGroup = new THREE.Group();
+    const ivoryMat = engine.marbleMat(0xf7f5ef, 0.44);
+    const brassMat = engine.brassMat(0xcfa346);
+    const goldMat = engine.goldMat(0xe0ba56);
+
+    // Helper para placa frontal nítida en cada escalón de Poligobernanza
+    const makeTierBanner = (w, h, title, subs, accentHex) => {
+      const cw = Math.round(w * 1500);
+      const ch = Math.round(h * 1500);
+      const canvas = document.createElement("canvas");
+      canvas.width = cw;
+      canvas.height = ch;
+      const ctx = canvas.getContext("2d");
+
+      ctx.fillStyle = "#faf8f3";
+      ctx.fillRect(0, 0, cw, ch);
+      ctx.fillStyle = accentHex;
+      ctx.fillRect(0, 0, cw, Math.max(6, ch * 0.09));
+      ctx.fillRect(0, ch - Math.max(5, ch * 0.06), cw, Math.max(5, ch * 0.06));
+
+      const fitAndDraw = (txt, maxSize, minSize, weight, fam, color, yFrac) => {
+        let px = maxSize;
+        ctx.font = `${weight} ${px}px ${fam}`;
+        while (px > minSize && ctx.measureText(txt).width > cw * 0.90) {
+          px -= 2;
+          ctx.font = `${weight} ${px}px ${fam}`;
+        }
+        ctx.fillStyle = color;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(txt, cw / 2, ch * yFrac);
+      };
+
+      fitAndDraw(title, Math.round(ch * 0.40), 22, "800", "'Cinzel', Georgia, serif", accentHex, 0.36);
+      fitAndDraw(subs, Math.round(ch * 0.24), 15, "600", "'Inter', sans-serif", "#1e293b", 0.72);
+
+      const tex = new THREE.CanvasTexture(canvas);
+      tex.anisotropy = 4;
+      tex.minFilter = THREE.LinearFilter;
+      tex.magFilter = THREE.LinearFilter;
+      tex.generateMipmaps = false;
+
+      return new THREE.Mesh(
+        new THREE.PlaneGeometry(w, h),
+        new THREE.MeshStandardMaterial({ map: tex, roughness: 0.42, metalness: 0.04 })
+      );
+    };
+
+    // 1. Tres Planos Decisionales de Poligobernanza (Cao & Blutman; Aguilar Villanueva)
+    const govTiers = [
+      {
+        w: 1.44, h: 0.16, d: 1.04, y: -0.79, col: 0x1e3a8a, accent: "#1e3a8a",
+        title: "1. NIVEL MACRO • CS Y RECTORADO UNCo",
+        subs: "Estatuto UNCo (Ord. 0988/25) • Carrera Docente"
+      },
+      {
+        w: 1.18, h: 0.16, d: 0.84, y: -0.61, col: 0x0f766e, accent: "#0f766e",
+        title: "2. NIVEL MESO • CD CURZAS Y DPTO.",
+        subs: "Gestión Académica • Capacitación (Art. 76)"
+      },
+      {
+        w: 0.92, h: 0.16, d: 0.64, y: -0.43, col: 0xb45309, accent: "#92400e",
+        title: "3. NIVEL MICRO • 10 NODOS HÍBRIDOS",
+        subs: "Res. 196/22 • Tutoría Territorial Río Negro"
+      }
+    ];
+
+    govTiers.forEach((tier) => {
+      const mat = new THREE.MeshStandardMaterial({
+        color: tier.col,
+        roughness: 0.50,
+        metalness: 0.12,
+        envMapIntensity: 0.80
+      });
+      const body = new THREE.Mesh(engine.getRoundedBoxGeo(tier.w, tier.h, tier.d, 0.014, 3), mat);
+      body.position.set(0, tier.y, -0.10);
+      body.castShadow = true;
+      body.receiveShadow = true;
+      poliGroup.add(body);
+
+      const inlayD = tier.d * 1.02;
+      const inlayH = tier.h * 0.72;
+      const inlay = new THREE.Mesh(
+        engine.getRoundedBoxGeo(tier.w * 0.92, inlayH, inlayD, 0.008, 2),
+        ivoryMat
+      );
+      inlay.position.set(0, tier.y, -0.10);
+      poliGroup.add(inlay);
+
+      const banner = makeTierBanner(tier.w * 0.88, inlayH * 0.90, tier.title, tier.subs, tier.accent);
+      banner.position.set(0, tier.y, -0.10 + inlayD / 2 + 0.004);
+      poliGroup.add(banner);
+    });
+
+    // Anillo Transversal de Concertación Paritaria (ADUNC • Poder Compartido de Matus)
+    const parityRing = new THREE.Mesh(
+      new THREE.TorusGeometry(0.86, 0.015, 18, 72),
+      goldMat
+    );
+    parityRing.rotation.x = Math.PI / 2 - 0.12;
+    parityRing.position.set(0, -0.56, -0.10);
+    poliGroup.add(parityRing);
+    engine.anim15_parityRing = parityRing;
+
+    // Estación Paritaria lateral (ADUNC)
+    const aduncPost = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.030, 0.036, 0.42, 20),
+      brassMat
+    );
+    aduncPost.position.set(0.86, -0.58, 0.08);
+    poliGroup.add(aduncPost);
+
+    const aduncOrb = new THREE.Mesh(
+      new THREE.OctahedronGeometry(0.058, 1),
+      engine.glassMat(0xeab308, { opacity: 0.94, roughness: 0.06 })
+    );
+    aduncOrb.position.set(0.86, -0.34, 0.08);
+    poliGroup.add(aduncOrb);
+
+    const aduncLabel = engine.createLabelSprite(
+      "4. PARITARIA ADUNC",
+      "Poder Compartido (Matus)",
+      "#92400e",
+      false,
+      { x: 0.62, y: 0.18 }
+    );
+    aduncLabel.position.set(1.06, -0.14, 0.12);
+    poliGroup.add(aduncLabel);
+
+    // 2. Pedestal central elevado y Núcleo Plataforma 360° (Oszlak: Moodle/SIU anónimo)
+    const stemPts = [
+      new THREE.Vector2(0, -0.35),
+      new THREE.Vector2(0.18, -0.35),
+      new THREE.Vector2(0.075, -0.20),
+      new THREE.Vector2(0.060, 0.02),
+      new THREE.Vector2(0.12, 0.08),
+      new THREE.Vector2(0, 0.08)
+    ];
+    const centerStem = new THREE.Mesh(new THREE.LatheGeometry(stemPts, 40), ivoryMat);
+    centerStem.position.z = -0.10;
+    centerStem.castShadow = true;
+    poliGroup.add(centerStem);
+
+    const corePos = new THREE.Vector3(0, 0.32, -0.10);
+
+    const coreCrystal = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(0.165, 1),
+      engine.glassMat(0x0284c7, { opacity: 0.88, roughness: 0.06, transmission: 0.65 })
+    );
+    coreCrystal.position.copy(corePos);
+    poliGroup.add(coreCrystal);
+    engine.anim15_core = coreCrystal;
+
+    const innerCoreGold = new THREE.Mesh(
+      new THREE.OctahedronGeometry(0.082, 0),
+      goldMat
+    );
+    innerCoreGold.position.copy(corePos);
+    poliGroup.add(innerCoreGold);
+
+    const coreLight = new THREE.PointLight(0x38bdf8, 1.5, 2.2);
+    coreLight.position.copy(corePos);
+    poliGroup.add(coreLight);
+
+    const ring1 = engine.createBrassArmillaryRing(0.26, 0.011);
+    ring1.position.copy(corePos);
+    poliGroup.add(ring1);
+    engine.anim15_ring1 = ring1;
+
+    const ring2 = engine.createBrassArmillaryRing(0.34, 0.009);
+    ring2.position.copy(corePos);
+    ring2.rotation.x = Math.PI / 3;
+    poliGroup.add(ring2);
+    engine.anim15_ring2 = ring2;
+
+    // 3. Cuatro Miradas del Dispositivo 360° en constelación abierta (sin colisiones entre carteles)
+    const actors360 = [
+      {
+        title: "AUTOEVALUACIÓN", sub: "Reflexión Docente",
+        pos: [-0.70, 0.22, 0.34], labelY: 0.48, hex: 0x0284c7, color: "#0369a1"
+      },
+      {
+        title: "COEVALUACIÓN PARES", sub: "O Pares Horizontales",
+        pos: [0.70, 0.22, 0.34], labelY: 0.48, hex: 0x10b981, color: "#047857"
+      },
+      {
+        title: "ESTUDIANTES", sub: "Sede y 10 Nodos",
+        pos: [-0.66, 0.54, -0.44], labelY: 0.82, hex: 0xf59e0b, color: "#b45309"
+      },
+      {
+        title: "DIRECCIÓN DPTO.", sub: "Articulación Art. 76",
+        pos: [0.66, 0.54, -0.44], labelY: 0.82, hex: 0x7c3aed, color: "#6d28d9"
+      }
+    ];
+
+    actors360.forEach((act) => {
+      const pVec = new THREE.Vector3(act.pos[0], act.pos[1], act.pos[2]);
+
+      const beamCurve = new THREE.LineCurve3(corePos, pVec);
+      const beam = new THREE.Mesh(
+        new THREE.TubeGeometry(beamCurve, 12, 0.008, 8, false),
+        brassMat
+      );
+      poliGroup.add(beam);
+
+      const orb = new THREE.Mesh(
+        new THREE.OctahedronGeometry(0.068, 1),
+        engine.glassMat(act.hex, { opacity: 0.92, roughness: 0.08 })
+      );
+      orb.position.copy(pVec);
+      poliGroup.add(orb);
+
+      const orbHalo = engine.createBrassArmillaryRing(0.095, 0.005);
+      orbHalo.position.copy(pVec);
+      orbHalo.rotation.x = Math.PI / 2;
+      poliGroup.add(orbHalo);
+
+      const actLabel = engine.createLabelSprite(
+        act.title,
+        act.sub,
+        act.color,
+        false,
+        { x: 0.62, y: 0.18 }
+      );
+      actLabel.position.set(act.pos[0], act.labelY, act.pos[2]);
+      poliGroup.add(actLabel);
+    });
+
+    const labelCore = engine.createLabelSprite(
+      "MODELO 360° Y POLIGOBERNANZA",
+      "4 Miradas • 4 Planos • Estado Plataforma (Oszlak)",
+      "#0f2d59",
+      true
+    );
+    labelCore.position.set(0, 1.32, 0);
+    poliGroup.add(labelCore);
+
+    g.add(poliGroup);
   },
 
   animate(engine, t) {
-    if (engine.anim15_dome) {
-      engine.anim15_dome.rotation.y = t * 0.25;
+    if (engine.anim15_core) {
+      engine.anim15_core.rotation.y = t * 0.45;
+    }
+    if (engine.anim15_ring1) {
+      engine.anim15_ring1.rotation.x = t * 0.55;
+      engine.anim15_ring1.rotation.y = t * 0.35;
+    }
+    if (engine.anim15_ring2) {
+      engine.anim15_ring2.rotation.y = -t * 0.45;
+      engine.anim15_ring2.rotation.z = t * 0.30;
+    }
+    if (engine.anim15_parityRing) {
+      engine.anim15_parityRing.rotation.z = t * 0.18;
     }
   }
 };

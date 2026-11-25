@@ -302,141 +302,279 @@ window.Presentation3D_Objects["anim_22"] = {
 };
 
 // ──────────────────────────────────────────────────────────────────────────
-// 23. ÉTICA Y DATOS: Cofre Blindado Ley 25.326 y Pergamino de Inmunidad
+// ──────────────────────────────────────────────────────────────────────────
+// 23. REFLEXIVIDAD Y ÉTICA: Lente Epistemológica, Bóveda 25.326 y Anexo IV
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_23"] = {
   build(engine, g) {
-    engine.createMuseumPlinth(g, 1.5, 0.22, -1.22);
+    engine.createMuseumPlinth(g, 1.56, 0.22, -1.22);
 
-    // Chasis de caoba noble acorazado con cantoneras de latón
-    const chassis = engine.createMachinedChassis(1.50, 0.10, 1.20, { color: 0x2e1204 });
-    chassis.position.y = -0.92;
+    const chassis = engine.createMachinedChassis(1.88, 0.10, 1.18, { color: 0x1e293b });
+    chassis.position.set(0, -0.92, -0.08);
     g.add(chassis);
 
-    // Placa técnica de blindaje legal
+    // Atril frontal independiente sobre el borde delantero del plinto (100% despejado)
+    const plaqueCradle = new THREE.Mesh(
+      engine.getRoundedBoxGeo(1.18, 0.13, 0.16, 0.015, 3),
+      engine.graniteMat(0x1e293b, 0.54, 0.15)
+    );
+    plaqueCradle.position.set(0, -0.96, 0.88);
+    plaqueCradle.castShadow = true;
+    plaqueCradle.receiveShadow = true;
+    g.add(plaqueCradle);
+
     const plaqueMaster = engine.createEngravedPlaque(
-      1.10,
-      0.22,
-      "BLINDAJE ÉTICO Y LEGAL INSTITUCIONAL",
-      "Ley 25.326 de Protección de Datos • CCT Dec. 1246/2015",
-      ["DISOCIACIÓN ESTRICTA", "INMUNIDAD LABORAL ART. 75"],
+      1.22,
+      0.24,
+      "REFLEXIVIDAD Y PROTOCOLO ÉTICO",
+      "Bourdieu (2003) • Guber (2004) • Ley N° 25.326 • CCT 1246/15",
+      ["SONDEO ANÓNIMO SIN IP", "SEUDONIMIA DOC-01", "ANEXO IV • NO SUMATIVO"],
       { theme: "dark" }
     );
-    plaqueMaster.position.set(0, -0.84, 0.68);
+    plaqueMaster.position.set(0, -0.87, 0.94);
+    plaqueMaster.rotation.x = -0.32;
     g.add(plaqueMaster);
 
     const group = new THREE.Group();
-    group.position.set(0, -0.05, 0);
+    const ivoryMat = engine.marbleMat(0xf7f5ef, 0.44);
+    const slateMat = engine.graniteMat(0x1e293b, 0.50, 0.16);
+    const brassMat = engine.brassMat(0xcfa346);
+    const goldMat = engine.goldMat(0xe0ba56);
 
-    // 1. Cofre acorazado de acero y bronce (Protección de Datos Personales)
-    const chestGroup = new THREE.Group();
-    chestGroup.position.set(-0.48, -0.2, 0);
-
-    const chestBody = new THREE.Mesh(
-      new THREE.BoxGeometry(0.62, 0.44, 0.46),
-      engine.graniteMat(0x0f172a, 0.2, 0.8)
+    // Riel de latón en el zócalo conectando los 3 dispositivos (y = -0.86)
+    const conduit = new THREE.Mesh(
+      engine.getRoundedBoxGeo(1.62, 0.025, 0.08, 0.006, 2),
+      brassMat
     );
-    chestGroup.add(chestBody);
+    conduit.position.set(0, -0.86, 0.06);
+    group.add(conduit);
 
-    const chestBands = new THREE.Mesh(
-      new THREE.BoxGeometry(0.64, 0.45, 0.10),
-      engine.brassMat(0xd4af37)
+    // 1. CENTRO: Lente Óptica de Vigilancia Epistemológica (Bourdieu & Guber)
+    const vigilGroup = new THREE.Group();
+    vigilGroup.position.set(0, -0.87, -0.18);
+
+    const centerPedPts = [
+      new THREE.Vector2(0, 0),
+      new THREE.Vector2(0.22, 0),
+      new THREE.Vector2(0.18, 0.06),
+      new THREE.Vector2(0.08, 0.22),
+      new THREE.Vector2(0.07, 0.44),
+      new THREE.Vector2(0.15, 0.54),
+      new THREE.Vector2(0, 0.54)
+    ];
+    const centerPed = new THREE.Mesh(new THREE.LatheGeometry(centerPedPts, 40), ivoryMat);
+    centerPed.castShadow = true;
+    centerPed.receiveShadow = true;
+    vigilGroup.add(centerPed);
+
+    // Horquilla de latón sosteniendo la lente reflexiva
+    const forkBase = new THREE.Mesh(new THREE.CylinderGeometry(0.032, 0.042, 0.12, 20), brassMat);
+    forkBase.position.y = 0.60;
+    vigilGroup.add(forkBase);
+
+    engine.anim23_lens = new THREE.Group();
+    engine.anim23_lens.position.y = 0.88;
+
+    const bezelOuter = new THREE.Mesh(new THREE.TorusGeometry(0.22, 0.022, 20, 64), goldMat);
+    engine.anim23_lens.add(bezelOuter);
+
+    const bezelInner = new THREE.Mesh(new THREE.TorusGeometry(0.16, 0.008, 14, 48), brassMat);
+    engine.anim23_lens.add(bezelInner);
+
+    // Cristal óptico de vigilancia epistemológica (Azul Zafiro claro)
+    const opticGlass = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.20, 0.20, 0.026, 40),
+      engine.glassMat(0x0284c7, { opacity: 0.72, roughness: 0.05, transmission: 0.65 })
     );
-    chestGroup.add(chestBands);
+    opticGlass.rotation.x = Math.PI / 2;
+    engine.anim23_lens.add(opticGlass);
 
-    // Cerradura biomecánica minimalista (sin diales de papel superpuestos)
-    const lockPlate = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.09, 0.09, 0.02, 24),
-      engine.goldMat(0xffd700)
+    // Retícula en cruz sobre la lente (control analítico de doble pertenencia)
+    const crossH = new THREE.Mesh(new THREE.CylinderGeometry(0.004, 0.004, 0.38, 8), goldMat);
+    crossH.rotation.z = Math.PI / 2;
+    engine.anim23_lens.add(crossH);
+    const crossV = new THREE.Mesh(new THREE.CylinderGeometry(0.004, 0.004, 0.38, 8), goldMat);
+    engine.anim23_lens.add(crossV);
+
+    vigilGroup.add(engine.anim23_lens);
+    g.add(vigilGroup);
+
+    const labelVigil = engine.createLabelSprite(
+      "VIGILANCIA EPISTEMOLÓGICA",
+      "Bourdieu (2003) & Guber (2004) • Control de Rol",
+      "#0f2d59",
+      false,
+      { x: 0.72, y: 0.20 }
     );
-    lockPlate.rotation.x = Math.PI / 2;
-    lockPlate.position.set(0, 0.08, 0.24);
-    chestGroup.add(lockPlate);
+    labelVigil.position.set(0, 0.44, -0.18);
+    group.add(labelVigil);
 
-    const lockCore = new THREE.Mesh(
-      new THREE.SphereGeometry(0.045, 16, 16),
-      new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x38bdf8, emissiveIntensity: 0.85 })
+    // 2. IZQUIERDA (-0.78): Bóveda Criptográfica Anclada (Sondeo Anónimo Ley 25.326)
+    const vaultGroup = new THREE.Group();
+    vaultGroup.position.set(-0.78, -0.87, 0.08);
+
+    const vaultPed = new THREE.Mesh(
+      engine.getRoundedBoxGeo(0.54, 0.07, 0.42, 0.012, 2),
+      slateMat
     );
-    lockCore.position.set(0, 0.08, 0.25);
-    chestGroup.add(lockCore);
+    vaultPed.position.y = 0.035;
+    vaultGroup.add(vaultPed);
 
-    group.add(chestGroup);
-
-    const labelCofre = engine.createLabelSprite("PROTECCIÓN LEY 25.326", "Disociación Estricta • Sin IPs ni Correos", "#0369a1", false, { x: 0.65, y: 0.18 });
-    labelCofre.position.set(-0.48, 0.32, 0);
-    group.add(labelCofre);
-
-    // 2. Pergamino oficial de Inmunidad Laboral (CCT Docente Dec. 1246/2015)
-    const scrollGroup = new THREE.Group();
-    scrollGroup.position.set(0.48, -0.2, 0);
-
-    const scrollPaper = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.22, 0.22, 0.58, 32, 1, false, -0.5, Math.PI + 1.0),
-      engine.marbleMat(0xfdfbf7)
+    const vaultBody = new THREE.Mesh(
+      engine.getRoundedBoxGeo(0.46, 0.42, 0.34, 0.022, 3),
+      slateMat
     );
-    scrollPaper.rotation.x = Math.PI / 2;
-    scrollPaper.rotation.z = -0.25;
-    scrollGroup.add(scrollPaper);
+    vaultBody.position.y = 0.28;
+    vaultBody.castShadow = true;
+    vaultGroup.add(vaultBody);
 
-    const waxSeal = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.075, 0.075, 0.025, 24),
-      new THREE.MeshStandardMaterial({ color: 0xdc2626, roughness: 0.35 })
+    const vaultTrim = new THREE.Mesh(
+      engine.getRoundedBoxGeo(0.48, 0.04, 0.36, 0.010, 2),
+      brassMat
     );
-    waxSeal.position.set(0, 0, 0.20);
-    waxSeal.rotation.x = Math.PI / 2;
-    scrollGroup.add(waxSeal);
+    vaultTrim.position.y = 0.47;
+    vaultGroup.add(vaultTrim);
 
-    group.add(scrollGroup);
-
-    const labelPergamino = engine.createLabelSprite("GARANTÍA DE NO AFECTACIÓN", "Sin Injerencia en Permanencia (Art. 75)", "#dc2626", false, { x: 0.65, y: 0.18 });
-    labelPergamino.position.set(0.48, 0.32, 0);
-    group.add(labelPergamino);
-
-    // 3. Balanza ética suspendida en el centro superior (Minimalista, fulcro de latón limpio)
-    engine.anim23_scale = new THREE.Group();
-    engine.anim23_scale.position.set(0, 0.48, 0);
-
-    const scaleBeam = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.014, 0.014, 0.70, 16),
-      engine.brassMat(0xffd700)
+    // Candado dorado escultural frontal con aro
+    const shackle = new THREE.Mesh(
+      new THREE.TorusGeometry(0.075, 0.014, 14, 32, Math.PI),
+      goldMat
     );
-    scaleBeam.rotation.z = Math.PI / 2;
-    engine.anim23_scale.add(scaleBeam);
+    shackle.position.set(0, 0.52, 0.08);
+    vaultGroup.add(shackle);
 
-    const scaleFulcrum = new THREE.Mesh(
-      new THREE.SphereGeometry(0.05, 16, 16),
-      engine.goldMat(0xffd700)
+    const lockDial = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.095, 0.095, 0.026, 32),
+      goldMat
     );
-    engine.anim23_scale.add(scaleFulcrum);
+    lockDial.rotation.x = Math.PI / 2;
+    lockDial.position.set(0, 0.28, 0.178);
+    vaultGroup.add(lockDial);
 
-    [-0.32, 0.32].forEach((px) => {
-      const cord = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.004, 0.004, 0.22, 8),
-        engine.brassMat(0xd4af37)
-      );
-      cord.position.set(px, -0.11, 0);
-      engine.anim23_scale.add(cord);
+    const lockGem = new THREE.Mesh(
+      new THREE.OctahedronGeometry(0.048, 1),
+      engine.glassMat(0x10b981, { opacity: 0.94, roughness: 0.06 })
+    );
+    lockGem.position.set(0, 0.28, 0.20);
+    vaultGroup.add(lockGem);
 
-      const pan = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.10, 0.08, 0.02, 24),
-        engine.brassMat(0xd4af37)
-      );
-      pan.position.set(px, -0.22, 0);
-      engine.anim23_scale.add(pan);
-    });
+    g.add(vaultGroup);
 
-    group.add(engine.anim23_scale);
+    const labelVault = engine.createLabelSprite(
+      "1. SONDEO ANÓNIMO",
+      "Ley 25.326 • Tokens sin IP ni Correos",
+      "#047857",
+      false,
+      { x: 0.66, y: 0.19 }
+    );
+    labelVault.position.set(-0.78, -0.04, 0.08);
+    group.add(labelVault);
 
-    const mainTitle = engine.createLabelSprite("BLINDAJE ÉTICO INSTITUCIONAL", "Protección de Datos y Consentimiento Informado", "#0f2d59", true);
-    mainTitle.position.set(0, 1.05, 0);
+    // 3. DERECHA (+0.78): Atril de Consentimiento Informado (Anexo IV) y Seudonimia (DOC-01)
+    const lecternGroup = new THREE.Group();
+    lecternGroup.position.set(0.78, -0.87, 0.08);
+
+    const lectPts = [
+      new THREE.Vector2(0, 0),
+      new THREE.Vector2(0.18, 0),
+      new THREE.Vector2(0.15, 0.05),
+      new THREE.Vector2(0.055, 0.20),
+      new THREE.Vector2(0.062, 0.36),
+      new THREE.Vector2(0.14, 0.42),
+      new THREE.Vector2(0, 0.42)
+    ];
+    const lectPed = new THREE.Mesh(new THREE.LatheGeometry(lectPts, 36), ivoryMat);
+    lectPed.castShadow = true;
+    lecternGroup.add(lectPed);
+
+    const folioTilt = new THREE.Group();
+    folioTilt.position.set(0, 0.46, 0.02);
+    folioTilt.rotation.x = -0.52;
+
+    const folioBack = new THREE.Mesh(
+      engine.getRoundedBoxGeo(0.56, 0.38, 0.026, 0.008, 2),
+      brassMat
+    );
+    folioBack.castShadow = true;
+    folioTilt.add(folioBack);
+
+    // Página impresa nítida del Anexo IV y garantía CCT
+    const makeDocTex = () => {
+      const cw = 640, ch = 440;
+      const canvas = document.createElement("canvas");
+      canvas.width = cw;
+      canvas.height = ch;
+      const ctx = canvas.getContext("2d");
+
+      ctx.fillStyle = "#fdfbf6";
+      ctx.fillRect(0, 0, cw, ch);
+      ctx.fillStyle = "#0f2d59";
+      ctx.fillRect(0, 0, cw, 64);
+
+      ctx.fillStyle = "#f0cf70";
+      ctx.font = "800 28px 'Cinzel', Georgia, serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText("ANEXO IV • CONSENTIMIENTO INFORMADO", cw / 2, 33);
+
+      ctx.textAlign = "left";
+      ctx.fillStyle = "#1e293b";
+      ctx.font = "700 23px 'Inter', sans-serif";
+      ctx.fillText("✓ Voluntariedad y reserva garantizada", 42, 128);
+      ctx.fillText("✓ Entrevistas: Códigos DOC-01 / GREM-01", 42, 188);
+      ctx.fillText("✓ Custodia cifrada y umbral n ≥ 5", 42, 248);
+
+      ctx.fillStyle = "#991b1b";
+      ctx.font = "800 24px 'Inter', sans-serif";
+      ctx.fillText("⚖ SIN EFECTO ART. 75 • CCT DEC. 1246/15", 42, 330);
+
+      ctx.strokeStyle = "#cfa346";
+      ctx.lineWidth = 4;
+      ctx.strokeRect(12, 12, cw - 24, ch - 24);
+
+      const tex = new THREE.CanvasTexture(canvas);
+      tex.anisotropy = 4;
+      tex.minFilter = THREE.LinearFilter;
+      tex.magFilter = THREE.LinearFilter;
+      tex.generateMipmaps = false;
+      return tex;
+    };
+
+    const folioPage = new THREE.Mesh(
+      new THREE.PlaneGeometry(0.51, 0.34),
+      new THREE.MeshStandardMaterial({ map: makeDocTex(), roughness: 0.45, metalness: 0.03 })
+    );
+    folioPage.position.z = 0.015;
+    folioTilt.add(folioPage);
+
+    lecternGroup.add(folioTilt);
+    g.add(lecternGroup);
+
+    const labelConsent = engine.createLabelSprite(
+      "2. ENTREVISTAS Y ANEXO IV",
+      "Seudonimia DOC-01 • Garantía CCT 1246/15",
+      "#b91c1c",
+      false,
+      { x: 0.66, y: 0.19 }
+    );
+    labelConsent.position.set(0.78, -0.04, 0.08);
+    group.add(labelConsent);
+
+    const mainTitle = engine.createLabelSprite(
+      "REFLEXIVIDAD Y BLINDAJE ÉTICO",
+      "Control de Rol (Bourdieu/Guber) • Ley 25.326 • CCT 1246/15",
+      "#0f2d59",
+      true
+    );
+    mainTitle.position.set(0, 1.16, 0);
     group.add(mainTitle);
 
     g.add(group);
   },
 
   animate(engine, t) {
-    if (engine.anim23_scale) {
-      engine.anim23_scale.rotation.z = Math.sin(t * 1.2) * 0.08;
+    if (engine.anim23_lens) {
+      engine.anim23_lens.rotation.y = Math.sin(t * 0.75) * 0.35;
     }
   }
 };
@@ -741,79 +879,149 @@ window.Presentation3D_Objects["anim_25"] = {
 };
 
 // ──────────────────────────────────────────────────────────────────────────
-// 26. AGRADECIMIENTOS: Monumento de Gratitud Académica (CURZAS • UNCo)
+// 26. AGRADECIMIENTOS: Monumento Ceremonial de Gratitud Académica (CURZAS • UNCo)
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_26"] = {
   build(engine, g) {
-    engine.createMuseumPlinth(g, 1.55, 0.22, -1.22);
+    engine.createMuseumPlinth(g, 1.66, 0.22, -1.22);
 
-    const baseChassis = engine.createMachinedChassis(1.56, 0.10, 1.18, { color: 0x1e293b });
-    baseChassis.position.y = -0.92;
+    const baseChassis = engine.createMachinedChassis(1.66, 0.10, 1.14, { color: 0x1e293b });
+    baseChassis.position.set(0, -0.92, -0.10);
     g.add(baseChassis);
+
+    // Atril frontal independiente oscuro y de alto contraste (sin reflejos blancos)
+    const subCradle = new THREE.Mesh(
+      engine.getRoundedBoxGeo(1.22, 0.13, 0.16, 0.015, 3),
+      engine.graniteMat(0x1e293b, 0.54, 0.15)
+    );
+    subCradle.position.set(0, -0.96, 0.84);
+    subCradle.castShadow = true;
+    subCradle.receiveShadow = true;
+    g.add(subCradle);
+
+    const subPlaque = engine.createEngravedPlaque(
+      1.24,
+      0.24,
+      "PROFUNDA GRATITUD ACADÉMICA Y HUMANA",
+      "Dra. Deborah Noguera • Esp. Federico Abeiro • Esp. María Cecilia Aguirre",
+      ["Sede Viedma & 10 Nodos Territoriales • CURZAS-UNCo 2026"],
+      { theme: "dark" }
+    );
+    subPlaque.position.set(0, -0.87, 0.90);
+    subPlaque.rotation.x = -0.32;
+    g.add(subPlaque);
 
     const group = new THREE.Group();
     group.position.set(0, -0.04, 0);
 
-    // Estela central arquitectónica con placa principal "AGRADECIMIENTOS"
-    const wallSlab = new THREE.Mesh(
-      new THREE.BoxGeometry(1.36, 0.78, 0.075),
-      engine.marbleMat(0xf6f4ee)
+    // Pedestal escalonado ceremonial bajo la estela central
+    const tierBase = new THREE.Mesh(
+      engine.getRoundedBoxGeo(1.44, 0.11, 0.78, 0.014, 3),
+      engine.marbleMat(0xf4f1e8)
     );
-    wallSlab.position.set(0, -0.18, -0.06);
+    tierBase.position.set(0, -0.78, -0.14);
+    tierBase.castShadow = true;
+    tierBase.receiveShadow = true;
+    group.add(tierBase);
+
+    // Estela central arquitectónica con cornisa dorada y sello UNCo
+    const wallSlab = new THREE.Mesh(
+      engine.getRoundedBoxGeo(1.36, 0.78, 0.10, 0.016, 3),
+      engine.graniteMat(0x1e293b, 0.50, 0.16)
+    );
+    wallSlab.position.set(0, -0.22, -0.16);
+    wallSlab.castShadow = true;
     group.add(wallSlab);
 
+    const cornice = new THREE.Mesh(
+      engine.getRoundedBoxGeo(1.44, 0.05, 0.14, 0.010, 2),
+      engine.goldMat(0xe0ba56)
+    );
+    cornice.position.set(0, 0.19, -0.16);
+    group.add(cornice);
+
     const mainPlaque = engine.createEngravedPlaque(
-      1.24,
+      1.22,
       0.52,
       "AGRADECIMIENTOS",
-      "CURZAS • Universidad Nacional del Comahue",
-      ["Equipo Docente SIA • Dpto. Administración Pública", "Familia, Pares y Tribunal Evaluador"],
+      "Universidad Nacional del Comahue — CURZAS",
+      ["CCC Licenciatura en Gestión de Recursos Humanos", "Seminario de Integración y Aplicación (SIA 2026)"],
       { theme: "dark" }
     );
-    mainPlaque.position.set(0, -0.18, 0.00);
+    mainPlaque.position.set(0, -0.22, -0.095);
     group.add(mainPlaque);
 
-    // Dos columnas clásicas flanqueando la estela con coronas armilares giratorias
-    engine.anim26_rings = [];
-    [-0.92, 0.92].forEach((posX, idx) => {
-      const col = engine.createClassicalColumn(0.86, 0.072, 0xcfa346, true);
-      col.position.set(posX, -0.44, -0.05);
-      group.add(col);
-
-      const glassCore = new THREE.Mesh(
-        new THREE.OctahedronGeometry(0.11, 2),
-        engine.glassMat(0xe0f2fe, { opacity: 0.72, roughness: 0.1 })
-      );
-      glassCore.position.set(posX, 0.24, -0.05);
-      group.add(glassCore);
-
-      const ring = new THREE.Mesh(
-        new THREE.TorusGeometry(0.17, 0.011, 18, 64),
-        engine.goldMat(0xe0ba56)
-      );
-      ring.position.set(posX, 0.24, -0.05);
-      ring.rotation.x = idx === 0 ? 0.55 : -0.55;
-      group.add(ring);
-      engine.anim26_rings.push(ring);
-    });
-
-    // Sello UNCo coronando la estela y placa frontal de reconocimiento docente
+    // Sello UNCo coronando el frontón de la estela
     const topSeal = engine.createAcademicSeal(0.18);
     topSeal.rotation.x = Math.PI / 2;
-    topSeal.position.set(0, 0.34, -0.03);
+    topSeal.position.set(0, 0.36, -0.14);
     group.add(topSeal);
 
-    const subPlaque = engine.createEngravedPlaque(
-      1.16,
-      0.22,
-      "PROFUNDAMENTE AGRADECIDO",
-      "Dra. Noguera • Esp. Abeiro • Esp. Aguirre",
-      ["Sede Viedma & 10 Nodos Territoriales • TFG 2026"],
-      { theme: "light" }
-    );
-    subPlaque.position.set(0, -0.68, 0.52);
-    subPlaque.rotation.x = -0.32;
-    group.add(subPlaque);
+    // 4 Monumentos / Faros Honoríficos correspondientes a los 4 reconocimientos de Filmina 14
+    const honors = [
+      {
+        title: "CÁTEDRA SIA", sub: "Noguera • Abeiro • Aguirre",
+        x: -1.04, z: -0.22, h: 0.96, labelY: 0.72, hex: 0x1d4ed8, color: "#1d4ed8", isOuter: true
+      },
+      {
+        title: "TRIBUNAL EVALUADOR", sub: "Lectura y Aportes",
+        x: 1.04, z: -0.22, h: 0.96, labelY: 0.72, hex: 0xd97706, color: "#b45309", isOuter: true
+      },
+      {
+        title: "CURZAS Y 10 NODOS", sub: "Dpto. Adm. Pública",
+        x: -0.88, z: 0.42, h: 0.42, labelY: -0.04, hex: 0x0f766e, color: "#0f766e", isOuter: false
+      },
+      {
+        title: "FAMILIA Y PARES", sub: "Sostén Cotidiano",
+        x: 0.88, z: 0.42, h: 0.42, labelY: -0.04, hex: 0xe11d48, color: "#be123c", isOuter: false
+      }
+    ];
+
+    engine.anim26_rings = [];
+    honors.forEach((hItem, idx) => {
+      const baseTopY = hItem.isOuter ? -0.84 + hItem.h / 2 : -0.84 + hItem.h / 2;
+      if (hItem.isOuter) {
+        const col = engine.createClassicalColumn(hItem.h, 0.072, 0xcfa346, true);
+        col.position.set(hItem.x, -0.36, hItem.z);
+        group.add(col);
+      } else {
+        const podPts = [
+          new THREE.Vector2(0, -0.82),
+          new THREE.Vector2(0.14, -0.82),
+          new THREE.Vector2(0.10, -0.60),
+          new THREE.Vector2(0.13, -0.44),
+          new THREE.Vector2(0, -0.44)
+        ];
+        const pod = new THREE.Mesh(new THREE.LatheGeometry(podPts, 32), engine.marbleMat(0xf4f1e8));
+        pod.position.set(hItem.x, 0, hItem.z);
+        pod.castShadow = true;
+        group.add(pod);
+      }
+
+      const gemY = hItem.isOuter ? 0.30 : -0.31;
+      const gem = new THREE.Mesh(
+        new THREE.OctahedronGeometry(0.105, 1),
+        engine.glassMat(hItem.hex, { opacity: 0.90, roughness: 0.08 })
+      );
+      gem.position.set(hItem.x, gemY, hItem.z);
+      group.add(gem);
+
+      const ring = engine.createBrassArmillaryRing(0.155, 0.010);
+      ring.position.set(hItem.x, gemY, hItem.z);
+      ring.rotation.x = idx % 2 === 0 ? 0.55 : -0.55;
+      group.add(ring);
+      engine.anim26_rings.push(ring);
+
+      const honSprite = engine.createLabelSprite(
+        hItem.title,
+        hItem.sub,
+        hItem.color,
+        false,
+        { x: 0.62, y: 0.18 }
+      );
+      honSprite.position.set(hItem.x, hItem.labelY, hItem.z);
+      group.add(honSprite);
+    });
 
     const titleSprite = engine.createLabelSprite(
       "AGRADECIMIENTOS",
@@ -821,7 +1029,7 @@ window.Presentation3D_Objects["anim_26"] = {
       "#0f2d59",
       true
     );
-    titleSprite.position.set(0, 1.24, 0);
+    titleSprite.position.set(0, 1.30, 0);
     group.add(titleSprite);
 
     g.add(group);
@@ -830,7 +1038,7 @@ window.Presentation3D_Objects["anim_26"] = {
   animate(engine, t) {
     if (engine.anim26_rings) {
       engine.anim26_rings.forEach((ring, idx) => {
-        ring.rotation.y = t * (idx === 0 ? 0.65 : -0.65);
+        ring.rotation.y = t * (idx % 2 === 0 ? 0.65 : -0.65);
         ring.rotation.z = Math.sin(t * 0.9 + idx) * 0.25;
       });
     }
@@ -851,13 +1059,13 @@ window.Presentation3D_Objects["anim_27"] = {
     const group = new THREE.Group();
     group.position.set(0, -0.04, 0);
 
-    // 5 Volúmenes temáticos en cerámica mate y lomos en latón satinado (las 5 ramas de referencias.bib)
+    // 5 Volúmenes ordenados por secuencia de filminas y jerarquía (F1–F11)
     const volumes = [
-      { label: "I. NORMATIVA UNCo", col: 0x0f2d59, h: 0.92, t: 0.13 },
-      { label: "II. GESTIÓN PÚBLICA", col: 0x334155, h: 0.86, t: 0.13 },
-      { label: "III. MODELO 360°", col: 0x1e3a8a, h: 0.96, t: 0.14 },
-      { label: "IV. METODOLOGÍA", col: 0x3f6212, h: 0.88, t: 0.13 },
-      { label: "V. ÉTICA Y DATOS", col: 0x7c2d12, h: 0.80, t: 0.12 }
+      { label: "1. B1 NORMATIVA (F1-F4)", col: 0x0f2d59, h: 0.96, t: 0.14 },
+      { label: "2. B1 PROBLEMA LONGO", col: 0x334155, h: 0.90, t: 0.13 },
+      { label: "3. B2a TEORÍA 360° (F5-F6)", col: 0x1e3a8a, h: 0.94, t: 0.14 },
+      { label: "4. B2b ANTECEDENTES (F7)", col: 0x0f766e, h: 0.88, t: 0.13 },
+      { label: "5. B3 MÉTODO Y ÉTICA (F8-F11)", col: 0x7c2d12, h: 0.84, t: 0.12 }
     ];
 
     engine.anim27_orbit = new THREE.Group();
@@ -927,9 +1135,9 @@ window.Presentation3D_Objects["anim_27"] = {
     const bibPlaque = engine.createEngravedPlaque(
       1.24,
       0.26,
-      "BIBLIOGRAFÍA Y FUENTES",
-      "Corpus Científico, Estatutario y Metodológico (APA 7)",
-      ["Longo • Matus • Oszlak • Cao & Blutman • Wainerman & Sautu", "Decreto 1246/15 • Ord. 0988/25 • Res. 135 & 196/22"],
+      "BIBLIOGRAFÍA DEL TFG (JERÁRQUICA)",
+      "35 Fuentes Ordenadas por Filminas (F1–F11) • APA 7",
+      ["B1: Ley 24.521, Ord. 0988/25, Longo • B2: De la Garza, 360°, Cao", "B2b: Torraco, Cariaga • B3: Sampieri, Flyvbjerg, Bourdieu, Ley 25.326"],
       { theme: "dark" }
     );
     bibPlaque.position.set(0, -0.68, 0.56);
@@ -948,7 +1156,7 @@ window.Presentation3D_Objects["anim_27"] = {
 
     const titleSprite = engine.createLabelSprite(
       "BIBLIOGRAFÍA DE REFERENCIA",
-      "33 Fuentes Académicas, Jurídicas e Institucionales • APA 7",
+      "35 Fuentes Académicas, Jurídicas e Institucionales • APA 7",
       "#0f2d59",
       true
     );

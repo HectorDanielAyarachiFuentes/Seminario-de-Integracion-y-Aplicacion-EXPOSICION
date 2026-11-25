@@ -4,7 +4,7 @@
  * Presentación de Tesina • CURZAS - UNCo
  * =============================================================================
  * 16. anim_16: Mesa Redonda de Cogobierno Paritario y Servidor Criptográfico (Matus + Oszlak)
- * 17. anim_17: Escultura El Oráculo del Conocimiento (Estado del Arte y Vacancia)
+ * 17. anim_17: Escultura El Oráculo del Conocimiento (Estado del Arte y Posible Vacancia)
  * 18. anim_18: Probeta Doble de Triangulación Mixta (CUAL -> cuan) y Bitácora de Caso
  * 19. anim_19: Muestrario de Informantes Clave (9 Entrevistas) y Matriz de 45 Cuestionarios
  * 20. anim_20: Ábaco Matricial de las 5 Dimensiones e Indicadores Empíricos de Factibilidad
@@ -152,7 +152,7 @@ window.Presentation3D_Objects["anim_16"] = {
 };
 
 // ──────────────────────────────────────────────────────────────────────────
-// 17. ESTADO DEL ARTE Y VACANCIA: El Oráculo Esculpido del Conocimiento
+// 17. ESTADO DEL ARTE Y POSIBLE VACANCIA: El Oráculo Esculpido del Conocimiento
 //     (Diseño orgánico de alta poligonización por Lathe + Tube + Códice)
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_17"] = {
@@ -172,9 +172,9 @@ window.Presentation3D_Objects["anim_17"] = {
     const plaqueMaster = engine.createEngravedPlaque(
       1.12,
       0.22,
-      "ESTADO DEL ARTE Y ANTECEDENTES",
-      "Oráculo del Conocimiento • 3 Escalas de Indagación",
-      ["INTERNACIONAL", "NACIONAL", "REGIONAL", "VACANCIA"],
+      "ESTADO DEL ARTE • ANTECEDENTES",
+      "Dialnet • SciELO • Redalyc • EPAA • RDI UNCo",
+      ["INTERNACIONAL", "NACIONAL", "REGIONAL / LOCAL", "POSIBLE VACANCIA"],
       { theme: "dark" }
     );
     plaqueMaster.position.set(0, -0.89, 1.27);
@@ -267,9 +267,9 @@ window.Presentation3D_Objects["anim_17"] = {
 
     // 3 Hitómetros / Plintos de Escala sobre las terrazas escalonadas
     const scaleNodes = [
-      { label: "INTERNACIONAL", sub: "OCDE / Europa", x: -0.84, z: 0.34, col: 0x0ea5e9, yBase: -0.805 },
-      { label: "NACIONAL", sub: "CIN / CONEAU", x: 0.0, z: 0.72, col: 0x10b981, yBase: -0.705 },
-      { label: "REGIONAL", sub: "Patagonia / UNCo", x: 0.84, z: 0.34, col: 0xf59e0b, yBase: -0.805 }
+      { label: "INTERNACIONAL", sub: "México / Ecuador / Cuba", x: -0.84, z: 0.34, col: 0x0ea5e9, yBase: -0.805 },
+      { label: "NACIONAL", sub: "Univ. Públicas Arg.", x: 0.0, z: 0.72, col: 0x10b981, yBase: -0.705 },
+      { label: "REGIONAL / LOCAL", sub: "UNCo / CURZAS", x: 0.84, z: 0.34, col: 0xf59e0b, yBase: -0.805 }
     ];
     scaleNodes.forEach((sn) => {
       const beaconStand = new THREE.Mesh(
@@ -472,7 +472,7 @@ window.Presentation3D_Objects["anim_17"] = {
 
     const headGroup = new THREE.Group();
     headGroup.position.set(0, 1.22, 0.02);
-    headGroup.rotation.y = 0.22; // Ligera inclinación noble hacia el estandarte de vacancia
+    headGroup.rotation.y = 0.22; // Ligera inclinación noble hacia el códice del estado del arte
 
     const cranium = new THREE.Mesh(new THREE.SphereGeometry(0.092, 32, 28), ivoryMat);
     cranium.scale.set(0.90, 1.12, 1.00);
@@ -655,8 +655,8 @@ window.Presentation3D_Objects["anim_17"] = {
 
     // Etiqueta flotante superior de alta resolución
     const mainLabel = engine.createLabelSprite(
-      "ESTADO DEL ARTE Y ANTECEDENTES",
-      "Oráculo del Conocimiento • Vacancia Disciplinar Patagónica",
+      "ESTADO DEL ARTE (RELEVAMIENTO PRELIMINAR)",
+      "5 Claves en Buscadores • Posible Vacancia a Verificar",
       "#0f2d59",
       true
     );
@@ -939,116 +939,180 @@ window.Presentation3D_Objects["anim_19"] = {
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_20"] = {
   build(engine, g) {
-    engine.createMuseumPlinth(g, 1.65, 0.22, -1.22);
+    engine.createMuseumPlinth(g, 1.72, 0.22, -1.22);
 
-    const chassis = engine.createMachinedChassis(1.95, 0.10, 0.70, { color: 0x2e1204 });
-    chassis.position.y = -0.92;
+    const chassis = engine.createMachinedChassis(2.14, 0.10, 0.64, { color: 0x1e293b });
+    chassis.position.set(0, -0.92, -0.10);
     g.add(chassis);
 
+    // Atril frontal independiente adelantado sobre el plinto (cero intersección con la base del ábaco)
+    const plaqueCradle = new THREE.Mesh(
+      engine.getRoundedBoxGeo(1.24, 0.13, 0.16, 0.015, 3),
+      engine.graniteMat(0x1e293b, 0.54, 0.15)
+    );
+    plaqueCradle.position.set(0, -0.96, 0.74);
+    plaqueCradle.castShadow = true;
+    plaqueCradle.receiveShadow = true;
+    g.add(plaqueCradle);
+
     const plaqueMaster = engine.createEngravedPlaque(
-      1.20,
-      0.22,
+      1.26,
+      0.24,
       "MATRIZ DE OPERACIONALIZACIÓN",
-      "5 Dimensiones • Indicadores Empíricos • Fuentes y Técnicas",
+      "5 Dimensiones • Indicadores Empíricos • Fuentes (Tabla 2)",
       ["NORMATIVA • TÉCNICA • ORGANIZACIONAL • CULTURAL • GOBERNANZA"],
       { theme: "dark" }
     );
-    plaqueMaster.position.set(0, -0.84, 0.40);
+    plaqueMaster.position.set(0, -0.87, 0.80);
+    plaqueMaster.rotation.x = -0.30;
     g.add(plaqueMaster);
 
     const group = new THREE.Group();
-    group.position.set(0, -0.05, 0);
+    group.position.set(0, -0.04, -0.10);
 
-    const abacusWidth = 1.95;
+    const abacusWidth = 2.16;
 
     const abacusBase = new THREE.Mesh(
-      new THREE.BoxGeometry(abacusWidth, 0.12, 0.48),
-      engine.graniteMat(0x1e293b)
+      engine.getRoundedBoxGeo(abacusWidth, 0.12, 0.50, 0.014, 3),
+      engine.graniteMat(0x1e293b, 0.50, 0.16)
     );
     abacusBase.position.y = -0.75;
+    abacusBase.castShadow = true;
     group.add(abacusBase);
 
     const baseMolding = new THREE.Mesh(
-      new THREE.BoxGeometry(abacusWidth * 1.02, 0.024, 0.50),
+      engine.getRoundedBoxGeo(abacusWidth * 1.02, 0.026, 0.52, 0.008, 2),
       engine.brassMat(0xd4af37)
     );
-    baseMolding.position.y = -0.69;
+    baseMolding.position.y = -0.68;
     group.add(baseMolding);
 
     const abacusHeader = new THREE.Mesh(
-      new THREE.BoxGeometry(abacusWidth, 0.14, 0.48),
-      engine.graniteMat(0x1e293b)
+      engine.getRoundedBoxGeo(abacusWidth, 0.15, 0.50, 0.014, 3),
+      engine.graniteMat(0x1e293b, 0.50, 0.16)
     );
-    abacusHeader.position.y = 0.55;
+    abacusHeader.position.y = 0.52;
+    abacusHeader.castShadow = true;
     group.add(abacusHeader);
 
     const headerMolding = new THREE.Mesh(
-      new THREE.BoxGeometry(abacusWidth * 1.02, 0.024, 0.50),
+      engine.getRoundedBoxGeo(abacusWidth * 1.02, 0.026, 0.52, 0.008, 2),
       engine.brassMat(0xd4af37)
     );
-    headerMolding.position.y = 0.48;
+    headerMolding.position.y = 0.44;
     group.add(headerMolding);
 
+    // Helper para placa frontal nítida en la viga superior por cada columna
+    const makeHeaderPlate = (title, colHex) => {
+      const cw = 360, ch = 120;
+      const canvas = document.createElement("canvas");
+      canvas.width = cw;
+      canvas.height = ch;
+      const ctx = canvas.getContext("2d");
+
+      ctx.fillStyle = "#faf8f3";
+      ctx.fillRect(0, 0, cw, ch);
+      ctx.fillStyle = colHex;
+      ctx.fillRect(0, 0, cw, 16);
+      ctx.fillRect(0, ch - 8, cw, 8);
+
+      let px = 40;
+      ctx.font = `800 ${px}px 'Inter', sans-serif`;
+      while (px > 20 && ctx.measureText(title).width > cw * 0.88) {
+        px -= 2;
+        ctx.font = `800 ${px}px 'Inter', sans-serif`;
+      }
+      ctx.fillStyle = colHex;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(title, cw / 2, ch * 0.54);
+
+      const tex = new THREE.CanvasTexture(canvas);
+      tex.anisotropy = 4;
+      tex.minFilter = THREE.LinearFilter;
+      tex.magFilter = THREE.LinearFilter;
+      tex.generateMipmaps = false;
+
+      return new THREE.Mesh(
+        new THREE.PlaneGeometry(0.36, 0.11),
+        new THREE.MeshStandardMaterial({ map: tex, roughness: 0.42, metalness: 0.04 })
+      );
+    };
+
     const dimensions = [
-      { name: "1. NORMATIVA", sub: "Estatuto • CCT", col: "#1d4ed8", hex: 0x1d4ed8, x: -0.76 },
-      { name: "2. TÉCNICA", sub: "Moodle • Anonimato", col: "#0284c7", hex: 0x0284c7, x: -0.38 },
-      { name: "3. ORGANIZACIONAL", sub: "Capacitación Art. 76", col: "#d97706", hex: 0xd97706, x: 0.0 },
-      { name: "4. CULTURAL", sub: "Confianza Docente", col: "#16a34a", hex: 0x16a34a, x: 0.38 },
-      { name: "5. GOBERNANZA", sub: "Cogobierno Paritario", col: "#7c3aed", hex: 0x7c3aed, x: 0.76 }
+      { name: "1. NORMATIVA", short: "1. NORMATIVA", sub: "Estatuto • CCT 1246/15", col: "#1d4ed8", hex: 0x1d4ed8, x: -0.84 },
+      { name: "2. TÉCNICA", short: "2. TÉCNICA", sub: "Moodle/SIU • n ≥ 5", col: "#0284c7", hex: 0x0284c7, x: -0.42 },
+      { name: "3. ORGANIZACIONAL", short: "3. ORGANIZAC.", sub: "Capacitación Art. 76", col: "#d97706", hex: 0xd97706, x: 0.0 },
+      { name: "4. CULTURAL", short: "4. CULTURAL", sub: "Confianza y Pares", col: "#16a34a", hex: 0x16a34a, x: 0.42 },
+      { name: "5. GOBERNANZA", short: "5. GOBERNANZA", sub: "Cogobierno • ADUNC", col: "#7c3aed", hex: 0x7c3aed, x: 0.84 }
     ];
 
     engine.anim20_discs = [];
     dimensions.forEach((dim, idx) => {
       const rod = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.020, 0.020, 1.15, 16),
+        new THREE.CylinderGeometry(0.022, 0.022, 1.14, 20),
         engine.brassMat(dim.hex)
       );
-      rod.position.set(dim.x, -0.1, 0);
+      rod.position.set(dim.x, -0.11, 0);
       group.add(rod);
 
+      // Placa incrustada en el dintel superior sobre cada varilla (siempre visible)
+      const colPlate = makeHeaderPlate(dim.short, dim.col);
+      colPlate.position.set(dim.x, 0.525, 0.254);
+      group.add(colPlate);
+
       const finial = new THREE.Mesh(
-        new THREE.SphereGeometry(0.038, 16, 16),
-        engine.brassMat(0xffd700)
+        new THREE.SphereGeometry(0.042, 18, 18),
+        engine.brassMat(0xe0ba56)
       );
-      finial.position.set(dim.x, 0.64, 0);
+      finial.position.set(dim.x, 0.62, 0);
       group.add(finial);
 
+      // 3 Cuentas tricolores (Variables • Indicadores • Fuentes) con alto contraste cromático
       for (let k = 0; k < 3; k++) {
         const beadGroup = new THREE.Group();
         const disc = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.085, 0.085, 0.048, 24),
+          new THREE.CylinderGeometry(0.095, 0.095, 0.052, 28),
           engine.marbleMat(0xf8fafc)
         );
         beadGroup.add(disc);
 
+        const coreBand = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.098, 0.098, 0.022, 28),
+          engine.glassMat(dim.hex, { opacity: 0.90, roughness: 0.14 })
+        );
+        beadGroup.add(coreBand);
+
         const beadRing = new THREE.Mesh(
-          new THREE.TorusGeometry(0.088, 0.008, 12, 24),
-          engine.brassMat(dim.hex)
+          new THREE.TorusGeometry(0.098, 0.008, 12, 28),
+          engine.brassMat(0xcfa346)
         );
         beadRing.rotation.x = Math.PI / 2;
         beadGroup.add(beadRing);
 
-        beadGroup.position.set(dim.x, -0.46 + k * 0.28, 0);
+        beadGroup.position.set(dim.x, -0.44 + k * 0.27, 0);
         group.add(beadGroup);
-        engine.anim20_discs.push({ group: beadGroup, basePosY: -0.46 + k * 0.28, speed: 0.8 + k * 0.4 });
+        engine.anim20_discs.push({ group: beadGroup, basePosY: -0.44 + k * 0.27, speed: 0.8 + k * 0.4 });
       }
 
+      // Carteles grandes escalonados en dos niveles claros (x = 0.70 de ancho, cero superposición)
       const isAlt = idx % 2 === 1;
-      const labelY = isAlt ? 0.94 : 0.76;
-      const label = engine.createLabelSprite(dim.name, dim.sub, dim.col, false, { x: 0.29, y: 0.14 });
-      label.position.set(dim.x, labelY, 0.08);
+      const labelY = isAlt ? 1.15 : 0.84;
+      const label = engine.createLabelSprite(dim.name, dim.sub, dim.col, false, { x: 0.70, y: 0.20 });
+      label.position.set(dim.x, labelY, 0.10);
       group.add(label);
 
+      const connH = labelY - 0.62;
       const connLine = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.004, 0.004, labelY - 0.64, 8),
+        new THREE.CylinderGeometry(0.007, 0.007, connH, 10),
         engine.brassMat(0xd4af37)
       );
-      connLine.position.set(dim.x, 0.64 + (labelY - 0.64) / 2, 0.04);
+      connLine.position.set(dim.x, 0.62 + connH / 2, 0.04);
       group.add(connLine);
     });
 
-    const mainTitle = engine.createLabelSprite("MATRIZ DE OPERACIONALIZACIÓN", "5 Dimensiones • Indicadores Empíricos • Fuentes", "#0f2d59", true);
-    mainTitle.position.set(0, 1.38, 0.08);
+    const mainTitle = engine.createLabelSprite("MATRIZ DE OPERACIONALIZACIÓN", "5 Dimensiones • Indicadores Empíricos • Fuentes (Tabla 2)", "#0f2d59", true);
+    mainTitle.position.set(0, 1.54, 0.08);
     group.add(mainTitle);
 
     g.add(group);
@@ -1057,7 +1121,7 @@ window.Presentation3D_Objects["anim_20"] = {
   animate(engine, t) {
     if (engine.anim20_discs) {
       engine.anim20_discs.forEach((d, i) => {
-        d.group.position.y = d.basePosY + Math.sin(t * d.speed + i) * 0.035;
+        d.group.position.y = d.basePosY + Math.sin(t * d.speed + i) * 0.032;
         d.group.rotation.y = t * 0.25;
       });
     }

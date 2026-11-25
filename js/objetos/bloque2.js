@@ -166,6 +166,135 @@ window.Presentation3D_Objects["anim_06"] = {
     malvinasGroup.add(malvHalo);
     g.add(malvinasGroup);
 
+    // 1.D. Sector Antártico Argentino (Carta Bicontinental, Península Antártica y Pingüinos)
+    const antGroup = new THREE.Group();
+    const antApexX = 1.06;
+    const antApexZ = 1.18;
+    const antRadius = 0.68;
+    const antHalfAng = 0.44; // ~25° semiapertura del huso 74°W–25°W
+
+    // Base triangular con arco polar superior (60°S) en relieve oceánico azul profundo
+    const sectorShape = new THREE.Shape();
+    sectorShape.moveTo(antApexX, -antApexZ);
+    const arcSteps = 20;
+    for (let i = 0; i <= arcSteps; i++) {
+      const ang = -antHalfAng + (i / arcSteps) * (antHalfAng * 2);
+      const px = antApexX + Math.sin(ang) * antRadius;
+      const pz = antApexZ - Math.cos(ang) * antRadius;
+      sectorShape.lineTo(px, -pz);
+    }
+    sectorShape.closePath();
+
+    const sectorGeo = new THREE.ExtrudeGeometry(sectorShape, {
+      depth: 0.018,
+      bevelEnabled: true,
+      bevelThickness: 0.004,
+      bevelSize: 0.004,
+      bevelSegments: 2
+    });
+    const sectorMat = new THREE.MeshStandardMaterial({
+      color: 0x0284c7,
+      roughness: 0.30,
+      metalness: 0.14
+    });
+    const sectorMesh = new THREE.Mesh(sectorGeo, sectorMat);
+    sectorMesh.rotation.x = -Math.PI / 2;
+    sectorMesh.position.y = -1.010;
+    sectorMesh.receiveShadow = true;
+    sectorMesh.add(new THREE.LineSegments(
+      new THREE.EdgesGeometry(sectorGeo, 20),
+      new THREE.LineBasicMaterial({ color: 0xd4af37, transparent: true, opacity: 0.90 })
+    ));
+    antGroup.add(sectorMesh);
+
+    // Península Antártica (Tierra de San Martín) y plataforma glaciar hacia el Polo Sur
+    const peninsulaPts = [
+      [0.86, 0.72], [0.89, 0.68], [0.92, 0.65], [0.93, 0.69],
+      [0.90, 0.76], [0.93, 0.82], [1.00, 0.85], [1.09, 0.85],
+      [1.17, 0.88], [1.21, 0.96], [1.15, 1.08], [1.06, 1.16],
+      [0.97, 1.08], [0.89, 0.95], [0.84, 0.83]
+    ];
+    const iceShelfGeo = new THREE.ExtrudeGeometry(buildShapeFromPts(peninsulaPts), {
+      depth: 0.044,
+      bevelEnabled: true,
+      bevelThickness: 0.008,
+      bevelSize: 0.006,
+      bevelSegments: 2
+    });
+    const iceMat = engine.marbleMat(0xf8fafc, 0.20);
+    const iceMesh = new THREE.Mesh(iceShelfGeo, iceMat);
+    iceMesh.rotation.x = -Math.PI / 2;
+    iceMesh.position.y = -0.992;
+    iceMesh.castShadow = true;
+    iceMesh.receiveShadow = true;
+    iceMesh.add(new THREE.LineSegments(
+      new THREE.EdgesGeometry(iceShelfGeo, 22),
+      new THREE.LineBasicMaterial({ color: 0x1e3a8a, transparent: true, opacity: 0.65 })
+    ));
+    antGroup.add(iceMesh);
+
+    // Pareja de pingüinos antárticos esculpidos sobre la plataforma polar
+    const makePenguin = (px, pz, yaw, scale = 1.0) => {
+      const p = new THREE.Group();
+      const darkFeather = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.45, metalness: 0.1 });
+      const whiteBelly = engine.marbleMat(0xffffff, 0.35);
+      const orangeBeak = new THREE.MeshStandardMaterial({ color: 0xf97316, roughness: 0.4 });
+
+      const body = new THREE.Mesh(new THREE.SphereGeometry(0.028, 16, 14), darkFeather);
+      body.scale.set(0.95, 1.38, 0.88);
+      body.position.y = 0.036;
+      p.add(body);
+
+      const belly = new THREE.Mesh(new THREE.SphereGeometry(0.023, 14, 12), whiteBelly);
+      belly.scale.set(0.84, 1.18, 0.66);
+      belly.position.set(0, 0.033, 0.011);
+      p.add(belly);
+
+      const head = new THREE.Mesh(new THREE.SphereGeometry(0.019, 14, 14), darkFeather);
+      head.position.set(0, 0.075, 0.004);
+      p.add(head);
+
+      const beak = new THREE.Mesh(new THREE.ConeGeometry(0.005, 0.016, 10), orangeBeak);
+      beak.rotation.x = Math.PI / 2;
+      beak.position.set(0, 0.074, 0.023);
+      p.add(beak);
+
+      [-0.026, 0.026].forEach((wx) => {
+        const wing = new THREE.Mesh(new THREE.SphereGeometry(0.012, 10, 10), darkFeather);
+        wing.scale.set(0.35, 1.65, 0.55);
+        wing.position.set(wx, 0.038, 0);
+        wing.rotation.z = wx < 0 ? 0.25 : -0.25;
+        p.add(wing);
+      });
+
+      [-0.010, 0.010].forEach((fx) => {
+        const foot = new THREE.Mesh(new THREE.SphereGeometry(0.007, 8, 8), orangeBeak);
+        foot.scale.set(0.8, 0.45, 1.4);
+        foot.position.set(fx, 0.003, 0.012);
+        p.add(foot);
+      });
+
+      p.position.set(px, -0.942, pz);
+      p.rotation.y = yaw;
+      p.scale.setScalar(scale);
+      return p;
+    };
+
+    antGroup.add(makePenguin(1.025, 0.96, 0.22, 1.08));
+    antGroup.add(makePenguin(1.090, 0.975, -0.24, 0.94));
+
+    const antLabel = engine.createLabelSprite(
+      "ANTÁRTIDA ARGENTINA",
+      "Sector Antártico • Mapa Bicontinental",
+      "#0f2d59",
+      false,
+      { x: 0.52, y: 0.16 }
+    );
+    antLabel.position.set(1.07, -0.74, 0.64);
+    antGroup.add(antLabel);
+
+    g.add(antGroup);
+
     // 2. PROVINCIA DE RÍO NEGRO EN ALTO RELIEVE DE LATÓN DORADO (ALINEADA SOBRE NORPATAGONIA)
     const rnPts = [[-0.155, -0.0418], [-0.0822, -0.0128], [0.0019, 0.0224], [0.0713, 0.0541], [0.1345, 0.0831], [0.1821, 0.121], [0.1816, 0.2002], [0.212, 0.2354], [0.2217, 0.2626], [0.1698, 0.2732], [0.1234, 0.2644], [0.0767, 0.2371], [0.0682, 0.2556], [0.0727, 0.2996], [0.0726, 0.348], [-0.3714, 0.348], [-0.379, 0.3084], [-0.3786, 0.2688], [-0.3518, 0.2556], [-0.3235, 0.2354], [-0.2709, 0.1966], [-0.2154, 0.1474], [-0.159, 0.0946], [-0.1351, 0.0796], [-0.1558, 0.018], [-0.155, -0.0418]];
     const rnGeo = new THREE.ExtrudeGeometry(buildShapeFromPts(rnPts), {

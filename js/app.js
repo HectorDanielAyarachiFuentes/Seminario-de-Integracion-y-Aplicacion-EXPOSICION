@@ -515,27 +515,27 @@ class PresentationApp {
       },
       {
         id: "eje1",
-        code: "EJE I",
-        shortLabel: "1-El Problema",
-        title: "EJE I (Primera Parte): El Problema, Delimitación y Objetivos",
+        code: "BLOQUE 1",
+        shortLabel: "1-Problematización",
+        title: "BLOQUE 1: Problematización (Qué, Por Qué y Objetivos en CURZAS 2027)",
         range: [1, 3], // Filminas 2 a 4
         isEje: true,
         ejeNumber: 1
       },
       {
         id: "eje2",
-        code: "EJE II",
-        shortLabel: "2-Marco Teórico y Estado del Arte",
-        title: "EJE II (Segunda Parte): Marco Teórico, Poligobernanza y Estado del Arte",
+        code: "BLOQUE 2",
+        shortLabel: "2-Marco, Antec. y Conceptos",
+        title: "BLOQUE 2: Marco Teórico, Antecedentes y Conceptualizaciones Aplicadas",
         range: [4, 6], // Filminas 5 a 7
         isEje: true,
         ejeNumber: 2
       },
       {
         id: "eje3",
-        code: "EJE III",
-        shortLabel: "3-Metodología y Viabilidad",
-        title: "EJE III (Tercera Parte): Metodología, Cronograma, Ética y Viabilidad",
+        code: "BLOQUE 3",
+        shortLabel: "3-Metodología",
+        title: "BLOQUE 3: Metodología, Operacionalización, Cronograma y Ética (2027)",
         range: [7, 10], // Filminas 8 a 11
         isEje: true,
         ejeNumber: 3
@@ -543,8 +543,8 @@ class PresentationApp {
       {
         id: "cierre",
         code: "CIERRE",
-        shortLabel: "Cierre, Diseño, Gracias y Bibliografía",
-        title: "Cierre: Proyecciones, Diseño Final, Agradecimientos y Bibliografía",
+        shortLabel: "Cierre y Respaldo",
+        title: "Cierre: Sentido del Proyecto, Diseño Final, Gratitud y Fuentes APA",
         range: [11, 14], // Filminas 12 a 15
         isEje: false
       }
@@ -752,26 +752,26 @@ class PresentationApp {
 
     this.footerMetaElement.innerHTML = `
       <span>📌 ${slide.metadatosFooter}</span>
-      <span>⏱️ Ritmo sugerido: ~1.0 min</span>
+      <span>⏱️ Tiempo sugerido: ${slide.tiempoSugerido || "~1.0 min"}</span>
     `;
 
     if (this.slideCounter) {
       this.slideCounter.textContent = `${index + 1} / ${this.totalSlides}`;
     }
 
-    // Sincronizar tiempo sugerido en el Atril del Orador (~1.2 min por filmina)
+    // Sincronizar tiempo sugerido en el Atril del Orador (~1.0 min por filmina)
     const timePill = document.getElementById("notes-time-pill");
     if (timePill) {
-      const tiempoEst = slide.tiempoSugerido || "~1.2 min";
+      const tiempoEst = slide.tiempoSugerido || "~1.0 min";
       timePill.innerHTML = `⏱️ ${tiempoEst}`;
     }
 
-    // Formateo oratorio profesional: párrafos y chips visuales para pausas y énfasis
+    // Formateo oratorio profesional: párrafos, saltos internos limpios y chips visuales
     const formattedSpeech = (slide.guionOrador || "")
       .replace(/\[Pausa de 2 segundos\]/g, '<span class="notes-cue-pill notes-cue-pause">⏱️ Pausa de 2s</span>')
       .replace(/\[(.*?)\]/g, '<span class="notes-cue-pill notes-cue-emphasis">💡 $1</span>')
       .split('\n\n')
-      .map(p => `<p>${p.trim()}</p>`)
+      .map(p => `<p>${p.trim().replace(/\n/g, '<br>')}</p>`)
       .join('');
 
     this.notesBody.innerHTML = `
@@ -1330,19 +1330,24 @@ class PresentationApp {
       const grupos = {};
       f.bibliografia.forEach((item) => {
         if (!grupos[item.categoria]) grupos[item.categoria] = [];
-        grupos[item.categoria].push(item.cita);
+        grupos[item.categoria].push(item);
       });
       Object.keys(grupos).forEach((cat) => {
         const card = document.createElement("div");
         card.className = "ref-card";
         const itemsHtml = grupos[cat]
-          .map((c) => `<li style="margin-bottom: 0.48rem; line-height: 1.45;">${c}</li>`)
+          .map((item) => {
+            const tag = item.filminas || item.jerarquia
+              ? `<span style="display:inline-block; margin-right:0.35rem; padding:0.1rem 0.4rem; border-radius:4px; background:rgba(15,45,89,0.08); color:#0f2d59; font-weight:700; font-size:0.72rem;">${[item.filminas, item.jerarquia].filter(Boolean).join(" • ")}</span>`
+              : "";
+            return `<li style="margin-bottom: 0.55rem; line-height: 1.45;">${tag}${item.cita}</li>`;
+          })
           .join("");
         card.innerHTML = `
           <h4>📚 ${cat} (${grupos[cat].length})</h4>
-          <ul style="padding-left: 1.1rem; margin-top: 0.45rem; font-size: 0.84rem; color: var(--text-dim, #334155);">
+          <ol style="padding-left: 1.25rem; margin-top: 0.5rem; font-size: 0.84rem; color: var(--text-dim, #334155);">
             ${itemsHtml}
-          </ul>
+          </ol>
         `;
         this.drawerContent.appendChild(card);
       });
