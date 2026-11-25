@@ -60,7 +60,7 @@ class Presentation3D {
     this.focusMode = "default";
     this.baseGroupX = 1.85; // Centrado en la mitad derecha libre
     this.baseGroupScale = 0.72;
-    this.focusAnim = { centerXOffset: 0, scaleMultiplier: 1.0 };
+    this.focusAnim = { centerXOffset: 0, scaleMultiplier: 1.0, objectBlend: 0, offsetY: 0 };
 
     this.init();
   }
@@ -290,8 +290,8 @@ class Presentation3D {
 
   /**
    * Cambia el modo de enfoque de la escultura 3D:
-   * - 'object': centra en pantalla (x: 0) y agranda (+48% escala) para máxima presencia
-   * - 'text': desplaza la escultura un poco más hacia la derecha y la atenúa suavemente
+   * - 'object': alinea dinámicamente con el centro exacto de mira de cámara y agranda (+52%)
+   * - 'text': desplaza la escultura hacia la derecha fuera del cuadro
    * - 'default': regresa a la posición lateral canónica para convivir con la filmina
    */
   setFocusMode(mode) {
@@ -299,33 +299,45 @@ class Presentation3D {
     this.updateCameraViewOffset();
 
     if (!this.focusAnim) {
-      this.focusAnim = { centerXOffset: 0, scaleMultiplier: 1.0 };
+      this.focusAnim = { centerXOffset: 0, scaleMultiplier: 1.0, objectBlend: 0, offsetY: 0 };
     }
 
     let targetOffsetX = 0;
     let targetScale = 1.0;
+    let targetObjectBlend = 0;
+    let targetOffsetY = 0;
 
     if (mode === "object") {
-      targetOffsetX = -1.6;
-      targetScale = 1.48;
+      targetOffsetX = 0;
+      targetScale = 1.52;
+      targetObjectBlend = 1;
+      targetOffsetY = 0.18;
     } else if (mode === "text") {
       targetOffsetX = 4.0; // Desplazar fuera del viewport
       targetScale = 0.01;  // Reducir a 0 para que no asome detrás de la filmina
+      targetObjectBlend = 0;
+      targetOffsetY = 0;
     } else {
       targetOffsetX = 0;
       targetScale = 1.0;
+      targetObjectBlend = 0;
+      targetOffsetY = 0;
     }
 
     if (window.gsap) {
       gsap.to(this.focusAnim, {
         centerXOffset: targetOffsetX,
         scaleMultiplier: targetScale,
+        objectBlend: targetObjectBlend,
+        offsetY: targetOffsetY,
         duration: 0.65,
         ease: "power2.out"
       });
     } else {
       this.focusAnim.centerXOffset = targetOffsetX;
       this.focusAnim.scaleMultiplier = targetScale;
+      this.focusAnim.objectBlend = targetObjectBlend;
+      this.focusAnim.offsetY = targetOffsetY;
     }
   }
 
@@ -868,15 +880,21 @@ class Presentation3D {
     }
 
     // 4. Aplicar rotación orbital y desplazamiento interactivo a la escultura 3D activa
+    const centerOffset = this.focusAnim?.centerXOffset || 0;
+    const objectBlend = this.focusAnim?.objectBlend || 0;
+    const focusOffsetY = this.focusAnim?.offsetY || 0;
+    const scaleMult = this.focusAnim?.scaleMultiplier || 1.0;
+    const basePosX = (this.baseGroupX !== undefined) ? this.baseGroupX : 1.85;
+    const baseScaleMult = (this.baseGroupScale !== undefined) ? this.baseGroupScale : 0.72;
+    const splitPosX = basePosX + centerOffset;
+    const lookCenterX = this.currentLookAt ? this.currentLookAt.x : basePosX;
+    const focusPosX = splitPosX + (lookCenterX - splitPosX) * objectBlend;
+
     const activeGroup = this.scenes[this.currentSceneId];
     if (activeGroup) {
       const enter = this.transitionState?.enterOffset || { x: 0, y: 0, z: 0, scale: 1, rotY: 0, opacity: 1 };
-      const centerOffset = this.focusAnim?.centerXOffset || 0;
-      const scaleMult = this.focusAnim?.scaleMultiplier || 1.0;
-      const basePosX = (this.baseGroupX !== undefined) ? this.baseGroupX : 1.85;
-      const baseScaleMult = (this.baseGroupScale !== undefined) ? this.baseGroupScale : 0.72;
-      activeGroup.position.x = basePosX + centerOffset + this.userPan.x + enter.x;
-      activeGroup.position.y = this.userPan.y + enter.y;
+      activeGroup.position.x = focusPosX + this.userPan.x + enter.x;
+      activeGroup.position.y = focusOffsetY + this.userPan.y + enter.y;
       activeGroup.position.z = enter.z;
       activeGroup.rotation.y = this.userRotation.y + enter.rotY;
       activeGroup.rotation.x = this.userRotation.x;
@@ -899,12 +917,8 @@ class Presentation3D {
     const exitingGroup = this.transitionState?.exitingGroup;
     if (exitingGroup && exitingGroup !== activeGroup) {
       const exit = this.transitionState.exitOffset;
-      const centerOffset = this.focusAnim?.centerXOffset || 0;
-      const scaleMult = this.focusAnim?.scaleMultiplier || 1.0;
-      const basePosX = (this.baseGroupX !== undefined) ? this.baseGroupX : 1.85;
-      const baseScaleMult = (this.baseGroupScale !== undefined) ? this.baseGroupScale : 0.72;
-      exitingGroup.position.x = basePosX + centerOffset + exit.x;
-      exitingGroup.position.y = exit.y;
+      exitingGroup.position.x = focusPosX + exit.x;
+      exitingGroup.position.y = focusOffsetY + exit.y;
       exitingGroup.position.z = exit.z;
       exitingGroup.rotation.y = exit.rotY !== undefined ? exit.rotY : 0;
       exitingGroup.rotation.x = exit.rotX !== undefined ? exit.rotX : 0;
