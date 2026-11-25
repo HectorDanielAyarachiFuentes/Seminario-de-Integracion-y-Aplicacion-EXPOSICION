@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=6.3">
+  <link rel="stylesheet" href="css/styles.css?v=6.4">
   <link rel="icon" type="image/png" href="assets/CURZAS.png">
 </head>
 <body>
@@ -95,6 +95,9 @@
         </div>
       </div>
     </header>
+
+    <!-- Notificación no bloqueante de cierre de tiempo (15:00) -->
+    <div class="timer-toast" id="timer-toast" role="status" aria-live="polite"></div>
 
     <!-- Escenario Principal: Tarjeta de Texto Prioritaria (Primer Plano) -->
     <main class="main-stage" id="main-stage">
@@ -303,6 +306,7 @@
     </div>
     <div class="doc-modal-body" id="doc-modal-body">
       <iframe id="doc-modal-frame" src="" title="Visor de Documento" frameborder="0"></iframe>
+      <img id="doc-modal-img" src="" alt="Documento gráfico de cátedra" style="display: none;">
       <div class="doc-modal-fallback" id="doc-modal-fallback" style="display: none;">
         <div class="doc-fallback-icon">📘</div>
         <h4 class="doc-fallback-title" id="doc-fallback-title">Documento de Office</h4>
@@ -412,27 +416,29 @@
     </div>
   </aside>
 
-  <!-- Librerías Externas y Módulos de la Aplicación -->
-  <!-- 1. Motor Gráfico Three.js (r128 CDN estable) -->
+  <!-- Librerías Externas con Fallback Local Automático (100% resiliente offline) -->
+  <!-- 1. Motor Gráfico Three.js (r128) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <!-- 2. Motor de Animación Profesional GSAP (GreenSock Animation Platform) -->
+  <script>window.THREE || document.write('<script src="js/vendor/three.min.js"><\/script>');</script>
+  <!-- 2. Motor de Animación Profesional GSAP (3.12.5) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>window.gsap || document.write('<script src="js/vendor/gsap.min.js"><\/script>');</script>
   <!-- 3. Base de Datos Externa de Metadatos (12 Filminas Oficiales en 3 Ejes) -->
-  <script src="data/catedra_data.js?v=6.3"></script>
-  <script src="data/presentacion_data.js?v=6.3"></script>
+  <script src="data/catedra_data.js?v=6.4"></script>
+  <script src="data/presentacion_data.js?v=6.4"></script>
   <!-- 4. Módulos de Esculturas 3D y Utilitarios -->
-  <script src="js/objetos/materials.js?v=6.3"></script>
-  <script src="js/objetos/helpers.js?v=6.3"></script>
-  <script src="js/objetos/camera_config.js?v=6.3"></script>
-  <script src="js/objetos/bloque1.js?v=6.3"></script>
-  <script src="js/objetos/bloque2.js?v=6.3"></script>
-  <script src="js/objetos/bloque3.js?v=6.3"></script>
-  <script src="js/objetos/bloque4.js?v=6.3"></script>
-  <script src="js/objetos/bloque5.js?v=6.3"></script>
+  <script src="js/objetos/materials.js?v=6.4"></script>
+  <script src="js/objetos/helpers.js?v=6.4"></script>
+  <script src="js/objetos/camera_config.js?v=6.4"></script>
+  <script src="js/objetos/bloque1.js?v=6.4"></script>
+  <script src="js/objetos/bloque2.js?v=6.4"></script>
+  <script src="js/objetos/bloque3.js?v=6.4"></script>
+  <script src="js/objetos/bloque4.js?v=6.4"></script>
+  <script src="js/objetos/bloque5.js?v=6.4"></script>
   <!-- 5. Motor Orquestador 3D (Three.js + GSAP) -->
-  <script src="js/scene3d.js?v=6.3"></script>
+  <script src="js/scene3d.js?v=6.4"></script>
   <!-- 6. Controlador de Navegación, Temporizador y Eventos -->
-  <script src="js/app.js?v=6.3"></script>
+  <script src="js/app.js?v=6.4"></script>
 
 </body>
 </html>

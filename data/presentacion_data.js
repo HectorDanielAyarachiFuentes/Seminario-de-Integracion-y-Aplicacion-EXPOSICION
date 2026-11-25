@@ -155,8 +155,8 @@ const PRESENTACION_DATA = {
         detalle: "Sede central académica y administrativa del CURZAS. Concentra los claustros docentes, la dirección departamental y los órganos colegiados de cogobierno."
       },
       {
-        sede: "Nodo 1: San Antonio Oeste (Golfo San Matías)",
-        detalle: "Nodo estratégico en la costa atlántica rionegrina, nexo pesquero y portuario con cursadas híbridas mediadas por tecnología."
+        sede: "Nodo 1: San Antonio Oeste / Las Grutas (Golfo San Matías)",
+        detalle: "Nodo estratégico en la costa atlántica rionegrina, nexo pesquero, turístico y portuario con cursadas híbridas mediadas por tecnología."
       },
       {
         sede: "Nodo 2: Sierra Grande (Costa Atlántica Sur)",
@@ -167,8 +167,8 @@ const PRESENTACION_DATA = {
         detalle: "Punto de confluencia vial y productivo sobre el Río Negro que articula el Valle Inferior con el Valle Medio."
       },
       {
-        sede: "Nodo 4: Lamarque (Valle Medio)",
-        detalle: "Inserción territorial en la región productiva del Valle Medio y la isla de Choele Choel."
+        sede: "Nodo 4: Río Colorado (Valle del Río Colorado / Noreste)",
+        detalle: "Portal noreste de la provincia sobre la RN 22 y el límite con La Pampa, con articulación regional para formación universitaria híbrida."
       },
       {
         sede: "Nodo 5: Valcheta (Portal de la Línea Sur)",
@@ -191,8 +191,8 @@ const PRESENTACION_DATA = {
         detalle: "Localidad con rigurosas condiciones climáticas y distancias geográficas que exigen acompañamiento tutorial a distancia."
       },
       {
-        sede: "Nodo 10: Comallo (Precordillera Andina)",
-        detalle: "Nodo situado en el extremo occidental de la Línea Sur, antesala del corredor andino de Bariloche."
+        sede: "Nodo 10: Ingeniero Jacobacci (Línea Sur Oeste)",
+        detalle: "Nodo cabecera del sector occidental de la Línea Sur sobre la Ruta Nacional 23, articulador regional de la meseta patagónica."
       }
     ],
 
@@ -259,14 +259,14 @@ const PRESENTACION_DATA = {
       subtitulo: "Contexto Situado y Nuevas Mediaciones Tecnológicas (Res. CD-CURZA 196/2022)",
       puntosClave: [
         "🏛️ <strong>Sede Cabecera Viedma:</strong> Conducción académica y órganos de cogobierno en el Valle Inferior.",
-        "🌐 <strong>Red de 10 Nodos:</strong> Costa Atlántica, Valle Medio y Línea Sur a más de 500 km.",
+        "🌐 <strong>Red de 10 Nodos:</strong> Costa Atlántica, Noreste y Línea Sur a más de 500 km.",
         "🤝 <strong>Convenios de Cogestión (Hintze):</strong> Articulación municipal para democratizar el acceso universitario.",
         "💻 <strong>Docencia Híbrida Emergente:</strong> Entornos Moodle, presencialidad remota y tutorías a distancia."
       ],
       metadatosFooter: "Primera Parte del TP • Apartado 2: Tema y Contexto • 10 Nodos Territoriales",
       escena3D: "anim_06",
       diagramaSVG: "assets/red_territorial.svg",
-      guionOrador: "Comenzando con la Primera Parte del TP: la delimitación del Tema de Investigación y su contexto territorial.\n\n[Énfasis situado]\nNuestro objeto de estudio no se sitúa en un claustro universitario tradicional ni metropolitano. A más de 500 kilómetros de la sede en Viedma, en plena estepa patagónica y en la costa atlántica, docentes del CURZAS sostienen cotidianamente el derecho a la educación superior pública.\n\nFormalizada por la Resolución 135/2022 y bajo convenios de cogestión municipal, la institución cuenta con una red de 10 nodos regionales: desde Valcheta y Ramos Mexía hasta Los Menucos y Comallo. A su vez, la Resolución 196/2022 formalizó la docencia híbrida: diseñar aulas Moodle y tutorizar a distancia.\n\n[Pausa de 2 segundos]\n\nAquí radica el punto de partida del proyecto: nos proponemos indagar si los instrumentos vigentes de evaluación docente —pensados para el aula física tradicional— resultan adecuados o si evidencian limitaciones para registrar y retroalimentar este esfuerzo pedagógico situado en el territorio."
+      guionOrador: "Comenzando con la Primera Parte del TP: la delimitación del Tema de Investigación y su contexto territorial.\n\n[Énfasis situado]\nNuestro objeto de estudio no se sitúa en un claustro universitario tradicional ni metropolitano. A más de 500 kilómetros de la sede en Viedma, en plena estepa patagónica y en la costa atlántica, docentes del CURZAS sostienen cotidianamente el derecho a la educación superior pública.\n\nFormalizada por la Resolución 135/2022 y bajo convenios de cogestión municipal, la institución cuenta con una red de 10 nodos regionales: desde Valcheta y Ramos Mexía hasta Los Menucos e Ingeniero Jacobacci. A su vez, la Resolución 196/2022 formalizó la docencia híbrida: diseñar aulas Moodle y tutorizar a distancia.\n\n[Pausa de 2 segundos]\n\nAquí radica el punto de partida del proyecto: nos proponemos indagar si los instrumentos vigentes de evaluación docente —pensados para el aula física tradicional— resultan adecuados o si evidencian limitaciones para registrar y retroalimentar este esfuerzo pedagógico situado en el territorio."
     },
 
     {
@@ -383,14 +383,14 @@ const PRESENTACION_DATA = {
       titulo: "Estrategia Metodológica Mixta y Muestra Situada",
       subtitulo: "Estudio de Caso No Experimental, Transversal y Triangulación Metodológica (Ciclo Lectivo 2027)",
       puntosClave: [
-        "🔬 <strong>Enfoque Mixto ($CUAL \\rightarrow cuan$):</strong> Prioridad cualitativa para profundizar en sentidos y acuerdos políticos, complementada con sondeo descriptivo.",
+        "🔬 <strong>Enfoque Mixto (CUAL → cuan):</strong> Prioridad cualitativa para profundizar en sentidos y acuerdos políticos, complementada con sondeo descriptivo.",
         "📍 <strong>Estudio de Caso Situado (Flyvbjerg):</strong> Dpto. de Administración Pública del CURZAS-UNCo (Sede Central Viedma y Nodos).",
         "🎤 <strong>Muestra Cualitativa Proyectada (8 Entrevistas):</strong> 4 docentes (presenciales y tutores virtuales), 2 directivos, 1 referente gremial de ADUNC y 1 estudiante avanzado.",
         "📊 <strong>Sondeo Cuantitativo Previsto (45 Respondientes):</strong> Cuestionario digital autoadministrado a 15 docentes y 30 estudiantes (escala Likert)."
       ],
       metadatosFooter: "Tercera Parte del TP • Apartado 7: Metodología • Diseño Muestral Preliminar",
       escena3D: "anim_19",
-      guionOrador: "Arribamos a la Tercera Parte del TP: Metodología, Fases y Viabilidad.\n\nEn el Apartado 7 diseñamos un enfoque metodológico mixto con preponderancia cualitativa ($CUAL \\rightarrow cuan$).\n\n[Fundamentación del diseño]\nConsideramos que este enfoque es el idóneo porque la dimensión cualitativa permitirá profundizar en las percepciones, temores y condiciones de viabilidad gremial, mientras que el sondeo cuantitativo descriptivo aportará una primera aproximación estructurada a las tendencias de aceptación en la comunidad. Se proyecta como un estudio de caso situado no experimental y transversal delimitado al ciclo 2027.\n\n[Muestra preliminar de referencia]\nTratándose del proyecto previo, la muestra se diseñó bajo criterios de rigor y realismo operativo para un investigador individual: se prevén 8 entrevistas a informantes estratégicos —docentes, directivos, gremio ADUNC y estudiantes avanzados— articuladas con un sondeo exploratorio a 45 participantes y análisis documental normativo."
+      guionOrador: "Arribamos a la Tercera Parte del TP: Metodología, Fases y Viabilidad.\n\nEn el Apartado 7 diseñamos un enfoque metodológico mixto con preponderancia cualitativa (CUAL → cuan).\n\n[Fundamentación del diseño]\nConsideramos que este enfoque es el idóneo porque la dimensión cualitativa permitirá profundizar en las percepciones, temores y condiciones de viabilidad gremial, mientras que el sondeo cuantitativo descriptivo aportará una primera aproximación estructurada a las tendencias de aceptación en la comunidad. Se proyecta como un estudio de caso situado no experimental y transversal delimitado al ciclo 2027.\n\n[Muestra preliminar de referencia]\nTratándose del proyecto previo, la muestra se diseñó bajo criterios de rigor y realismo operativo para un investigador individual: se prevén 8 entrevistas a informantes estratégicos —docentes, directivos, gremio ADUNC y estudiantes avanzados— articuladas con un sondeo exploratorio a 45 participantes y análisis documental normativo."
     },
 
     {
@@ -425,11 +425,11 @@ const PRESENTACION_DATA = {
         "🗓️ <strong>Fase 1 (Mes 1 / Mayo):</strong> Tramitación de avales departamentales, contacto institucional y prueba piloto instrumental.",
         "🗓️ <strong>Fases 2-3 (Meses 2-3 / Jun-Jul):</strong> Relevamiento documental, 8 entrevistas semiestructuradas y aplicación del sondeo digital.",
         "🗓️ <strong>Fases 4-6 (Meses 4-7 / Ago-Nov):</strong> Triangulación analítica, redacción de lineamientos de TFG, supervisión final y defensa oral.",
-        "💰 <strong>Viabilidad Proyectada (Apartado 9):</strong> Estimación de costo marginal cero para el CURZAS mediante recursos tecnológicos preexistentes."
+        "💰 <strong>Viabilidad Proyectada (Apartado 9):</strong> Costo presupuestario cero para el CURZAS (100% autofinanciado por el tesista) mediante recursos tecnológicos preexistentes."
       ],
       metadatosFooter: "Tercera Parte del TP • Apartados 8 y 9: Cronograma y Viabilidad de Recursos",
       escena3D: "anim_21",
-      guionOrador: "En los Apartados 8 y 9 del TP fundamentamos la viabilidad temporal y operativa del proyecto.\n\n[Cronograma proyectado]\nEl trabajo de campo se planificó para desarrollarse a lo largo de 7 meses durante 2027, distribuido en seis fases secuenciales: prevé iniciar en mayo con la solicitud de avales académicos y la prueba piloto; en junio se concretarían las entrevistas cualitativas; en julio se aplicaría el cuestionario digital; en agosto se realizaría la triangulación analítica; y entre septiembre y noviembre se redactarían los lineamientos y el informe final.\n\n[Pausa de 2 segundos]\n\n[Viabilidad de recursos en potencial]\nAsimismo, el Apartado 9 acredita la viabilidad del estudio: se estima que la investigación operará a costo marginal cero para el CURZAS, ya que no demandará erogaciones presupuestarias adicionales al apoyarse en la infraestructura tecnológica y las herramientas analíticas de código abierto ya disponibles."
+      guionOrador: "En los Apartados 8 y 9 del TP fundamentamos la viabilidad temporal y operativa del proyecto.\n\n[Cronograma proyectado]\nEl trabajo de campo se planificó para desarrollarse a lo largo de 7 meses durante 2027, distribuido en seis fases secuenciales: prevé iniciar en mayo con la solicitud de avales académicos y la prueba piloto; en junio se concretarían las entrevistas cualitativas; en julio se aplicaría el cuestionario digital; en agosto se realizaría la triangulación analítica; y entre septiembre y noviembre se redactarían los lineamientos y el informe final.\n\n[Pausa de 2 segundos]\n\n[Viabilidad de recursos en potencial]\nAsimismo, el Apartado 9 acredita la viabilidad del estudio: se estima que la investigación implicará costo presupuestario cero para el CURZAS —asumiéndose con autofinanciamiento propio del tesista—, al apoyarse en la infraestructura tecnológica y las herramientas analíticas de código abierto ya disponibles."
     },
 
     {

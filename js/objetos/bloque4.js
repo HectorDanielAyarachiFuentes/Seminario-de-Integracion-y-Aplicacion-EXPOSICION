@@ -4,7 +4,7 @@
  * Presentación de Tesina • CURZAS - UNCo
  * =============================================================================
  * 16. anim_16: Mesa Redonda de Cogobierno Paritario y Servidor Criptográfico (Matus + Oszlak)
- * 17. anim_17: Muro Escalonado de Antecedentes y Gema de Vacancia Patagónica (Estado del Arte)
+ * 17. anim_17: Escultura El David del Conocimiento (Estado del Arte y Vacancia)
  * 18. anim_18: Probeta Doble de Triangulación Mixta (CUAL -> cuan) y Bitácora de Caso
  * 19. anim_19: Muestrario de Informantes Clave (8 Entrevistas) y Matriz de 45 Cuestionarios
  * 20. anim_20: Ábaco Matricial de las 5 Dimensiones e Indicadores Empíricos de Factibilidad

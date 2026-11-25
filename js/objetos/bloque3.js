@@ -114,10 +114,12 @@ window.Presentation3D_Objects["anim_11"] = {
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_12"] = {
   build(engine, g) {
-    engine.createMuseumPlinth(g, 1.45, 0.18, -0.60);
+    // Basamento monumental estándar (superficie superior en y = -1.0385)
+    engine.createMuseumPlinth(g, 1.50, 0.22, -1.22);
 
-    const chassis = engine.createMachinedChassis(2.40, 0.08, 0.65, { color: 0x1e293b });
-    chassis.position.y = -0.74;
+    // Chasis mecanizado descansando al ras sobre la tarima de mármol
+    const chassis = engine.createMachinedChassis(2.40, 0.10, 0.72, { color: 0x1e293b });
+    chassis.position.y = -0.99;
     g.add(chassis);
 
     const plaqueMaster = engine.createEngravedPlaque(
@@ -128,11 +130,13 @@ window.Presentation3D_Objects["anim_12"] = {
       ["RENDIMIENTO 360°", "DESARROLLO ART. 76", "RELACIONES LABORALES"],
       { theme: "dark" }
     );
-    plaqueMaster.position.set(0, -0.74, 0.38);
+    plaqueMaster.position.set(0, -0.90, 0.42);
+    plaqueMaster.rotation.x = -0.18;
     g.add(plaqueMaster);
 
+    // Posición vertical calibrada para que los 4 collarines de latón (-0.8825) apoyen sobre el chasis (-0.926)
     const longoGroup = new THREE.Group();
-    longoGroup.position.set(0, 0.38, 0);
+    longoGroup.position.set(0, -0.04, 0);
 
     const fullW = 2.34;
     const colY = 0.0;
@@ -393,9 +397,6 @@ window.Presentation3D_Objects["anim_12"] = {
         const prog = (t * 0.6 + idx * 0.08) % 1.0;
         item.pulse.position.lerpVectors(item.from, item.to, prog);
       });
-    }
-    if (engine.anim12_group) {
-      engine.anim12_group.position.y = -0.05 + Math.sin(t * 0.8) * 0.008;
     }
   }
 };

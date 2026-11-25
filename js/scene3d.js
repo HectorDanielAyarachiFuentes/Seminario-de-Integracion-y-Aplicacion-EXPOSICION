@@ -38,8 +38,8 @@ class Presentation3D {
     // Estado de transición cinemática entre pedestales de galería
     this.transitionState = {
       exitingGroup: null,
-      exitOffset: { x: 0, y: 0, z: 0, scale: 1 },
-      enterOffset: { x: 0, y: 0, z: 0, scale: 1, rotY: 0 }
+      exitOffset: { x: 0, y: 0, z: 0, scale: 1, rotX: 0, rotY: 0, opacity: 1 },
+      enterOffset: { x: 0, y: 0, z: 0, scale: 1, rotY: 0, opacity: 1 }
     };
 
     // Coordenadas de cámara importadas desde js/objetos/camera_config.js
@@ -70,8 +70,8 @@ class Presentation3D {
      ═══════════════════════════════════════════════════════════════════════════ */
   init() {
     this.scene = new THREE.Scene();
-    // Atmósfera de galería clásica en blanco marfil con contraste suave
-    this.scene.fog = new THREE.FogExp2(0xf4f6f9, 0.022);
+    // Atmósfera de galería clásica en blanco marfil con niebla suave para profundidad
+    this.scene.fog = new THREE.FogExp2(0xf4f6f9, 0.025);
 
     this.camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 100);
     this.camera.position.copy(this.currentCamPos);
@@ -256,43 +256,84 @@ class Presentation3D {
   }
 
   /* ═══════════════════════════════════════════════════════════════════════════
-     CONSTRUCCIÓN MODULAR DE LAS 20 ESCULTURAS ACADÉMICAS
+     CONSTRUCCIÓN MODULAR DE LAS ESCULTURAS ACADÉMICAS ACTIVAS (CON FALLBACK LAZY)
      ═══════════════════════════════════════════════════════════════════════════ */
-  buildAllScenes() {
-    for (let i = 1; i <= 25; i++) {
-      const id = `anim_${String(i).padStart(2, "0")}`;
-      const group = new THREE.Group();
-      group.position.set(1.6, 0, 0);
-      group.visible = i === 1;
-      this.scenes[id] = group;
-      this.scene.add(group);
+  ensureSceneBuilt(id) {
+    if (this.scenes[id]) return this.scenes[id];
 
-      const objDef = window.Presentation3D_Objects?.[id];
-      if (objDef && typeof objDef.build === "function") {
-        objDef.build(this, group);
+    const group = new THREE.Group();
+    group.position.set(this.baseGroupX, 0, 0);
+    group.visible = false;
+    this.scenes[id] = group;
+    this.scene.add(group);
+
+    const objDef = window.Presentation3D_Objects?.[id];
+    if (objDef && typeof objDef.build === "function") {
+      objDef.build(this, group);
+    }
+    return group;
+  }
+
+  /**
+   * Ajusta de forma segura la opacidad de sprites y materiales translúcidos en una escultura
+   * sin alterar materiales opacos (evita artefactos de depth-sorting en geometrías PBR).
+   */
+  applyGroupOpacity(group, factor = 1) {
+    if (!group) return;
+    const clamped = Math.max(0, Math.min(1, factor));
+    group.traverse((obj) => {
+      if (!obj.material) return;
+      const mats = Array.isArray(obj.material) ? obj.material : [obj.material];
+      mats.forEach((mat) => {
+        if (!mat) return;
+        if (obj.isSprite || mat.transparent === true) {
+          if (mat.userData._baseOpacity === undefined) {
+            mat.userData._baseOpacity = mat.opacity !== undefined ? mat.opacity : 1;
+          }
+          mat.opacity = mat.userData._baseOpacity * clamped;
+        }
+      });
+    });
+  }
+
+  buildAllScenes() {
+    const activeIds = new Set();
+    const slides = window.PRESENTACION_DATA?.slides;
+    if (Array.isArray(slides) && slides.length > 0) {
+      slides.forEach((s) => {
+        if (s?.escena3D) activeIds.add(s.escena3D);
+      });
+    }
+    if (activeIds.size === 0) {
+      for (let i = 1; i <= 25; i++) {
+        activeIds.add(`anim_${String(i).padStart(2, "0")}`);
       }
     }
+
+    const firstId = slides?.[0]?.escena3D || "anim_01";
+    activeIds.forEach((id) => {
+      const group = this.ensureSceneBuilt(id);
+      group.visible = id === firstId;
+    });
   }
 
   /**
    * Precompila exhaustivamente los shaders, texturas y geometrías en la GPU
-   * de forma individual por escena, garantizando 0ms de stutter en primera transición.
+   * de forma individual por escena activa, garantizando 0ms de stutter en primera transición.
    */
   precompileAllScenes() {
     try {
+      const sceneIds = Object.keys(this.scenes);
+
       // 1. Ocultar todas las escenas inicialmente
-      Object.keys(this.scenes).forEach((k) => {
+      sceneIds.forEach((k) => {
         this.scenes[k].visible = false;
       });
 
-      // 2. Calentar y compilar cada una de las 25 escenas individualmente
-      // Esto fuerza a Three.js y al driver GPU a:
-      // a) Compilar el shader exacto correspondiente a las luces propias de cada escena
-      // b) Subir las geometrías complejas (Extrude/Tube) y CanvasTextures a la VRAM
-      for (let i = 1; i <= 25; i++) {
-        const id = `anim_${String(i).padStart(2, "0")}`;
+      // 2. Calentar y compilar cada escena activa individualmente
+      sceneIds.forEach((id) => {
         const grp = this.scenes[id];
-        if (!grp) continue;
+        if (!grp) return;
 
         grp.visible = true;
 
@@ -305,10 +346,10 @@ class Presentation3D {
         this.renderer.render(this.scene, this.camera);
 
         grp.visible = false;
-      }
+      });
 
-      // 3. Restaurar escena canónica inicial (anim_01)
-      const firstId = "anim_01";
+      // 3. Restaurar escena canónica inicial
+      const firstId = window.PRESENTACION_DATA?.slides?.[0]?.escena3D || "anim_01";
       this.currentSceneId = firstId;
       if (this.scenes[firstId]) {
         this.scenes[firstId].visible = true;
@@ -422,6 +463,7 @@ class Presentation3D {
      TRANSICIÓN CINEMATOGRÁFICA ENTRE FILMINAS (GSAP)
      ═══════════════════════════════════════════════════════════════════════════ */
   switchScene(targetId, direction = 1) {
+    this.ensureSceneBuilt(targetId);
     if (targetId === this.currentSceneId && this.scenes[targetId]?.visible) return;
 
     const oldId = this.currentSceneId;
@@ -429,6 +471,12 @@ class Presentation3D {
     const newGroup = this.scenes[targetId];
 
     this.currentSceneId = targetId;
+
+    // Capturar pose interactiva actual para que la escultura saliente se aleje desde donde estaba, sin saltos
+    const prevRotX = this.userRotation.x;
+    const prevRotY = this.userRotation.y;
+    const prevPanX = this.userPan.x;
+    const prevPanY = this.userPan.y;
 
     // Detectar si el usuario está realizando una transición rápida (< 280ms)
     const now = performance.now();
@@ -443,8 +491,9 @@ class Presentation3D {
       gsap.killTweensOf(this.targetLookAt);
     }
 
-    // Ocultar cualquier grupo saliente previo interrumpido
+    // Ocultar cualquier grupo saliente previo interrumpido y restaurar opacidad
     if (this.transitionState.exitingGroup && this.transitionState.exitingGroup !== newGroup) {
+      this.applyGroupOpacity(this.transitionState.exitingGroup, 1);
       this.transitionState.exitingGroup.visible = false;
       this.transitionState.exitingGroup = null;
     }
@@ -452,19 +501,20 @@ class Presentation3D {
     // REGLA CRÍTICA DE RECURSOS: Forzar que NINGUNA escena ajena quede visible en GPU
     Object.keys(this.scenes).forEach((k) => {
       if (k !== targetId && k !== oldId) {
+        this.applyGroupOpacity(this.scenes[k], 1);
         this.scenes[k].visible = false;
       }
     });
 
-    // Restablecer amortiguadamente las modificaciones de usuario
+    // Restablecer amortiguadamente las modificaciones de usuario para la nueva escena
     this.resetUserControls();
 
-    // Duraciones reactivas estilo Prezi (vuelo espacial inmersivo)
-    const exitDuration  = isRapid ? 0.20 : 0.65;
-    const enterDuration = isRapid ? 0.30 : 0.85;
+    const isForward = direction >= 0;
+    const exitDuration  = isRapid ? 0.22 : (isForward ? 0.92 : 0.70);
+    const enterDuration = isRapid ? 0.28 : 0.96;
     const camDuration   = isRapid ? 0.35 : 1.05;
 
-    // 2. Interpolación de Cámara Cinemática al nuevo ángulo canónico (Vuelo orbital / Gran Angular Prezi)
+    // 2. Interpolación de Cámara Cinemática al nuevo ángulo canónico
     const camTarget = this.cameraTargets[targetId] || { pos: [2.3, 1.4, 6.8], lookAt: [1.4, 0.2, 0] };
     if (window.gsap) {
       gsap.to(this.targetCamPos, {
@@ -492,28 +542,62 @@ class Presentation3D {
 
     if (!window.gsap || !oldGroup || isRapid) {
       if (oldGroup) {
+        this.applyGroupOpacity(oldGroup, 1);
         oldGroup.visible = false;
       }
       this.transitionState.exitingGroup = null;
     }
 
-    // 3. Transición cinemática de retroceso y avance sin solapamientos (Efecto Prezi Zoom-to-frame)
+    // 3. Transición natural de profundidad:
+    //    - Al avanzar: la escultura saliente retrocede hacia el fondo y se aleja en perspectiva y niebla;
+    //      la entrante desliza suavemente al escenario.
+    //    - Al retroceder: la saliente sale suavemente y la anterior regresa desde la profundidad.
     newGroup.visible = true;
-
-    const lateralDir = direction >= 0 ? 1 : -1;
+    this.applyGroupOpacity(newGroup, 1);
 
     if (oldGroup && !isRapid && window.gsap) {
       this.transitionState.exitingGroup = oldGroup;
-      this.transitionState.exitOffset = { x: 0, y: 0, z: 0, scale: 1 };
+      this.transitionState.exitOffset = {
+        x: prevPanX,
+        y: prevPanY,
+        z: 0,
+        scale: 1,
+        rotX: prevRotX,
+        rotY: prevRotY,
+        opacity: 1
+      };
+
+      const exitTarget = isForward
+        ? {
+            x: prevPanX - 1.25,
+            y: prevPanY + 0.42,
+            z: -24.0,
+            scale: 0.16,
+            rotX: prevRotX * 0.25,
+            rotY: prevRotY - 0.36,
+            opacity: 0,
+            duration: exitDuration,
+            ease: "power2.inOut"
+          }
+        : {
+            x: prevPanX + 1.85,
+            y: prevPanY - 0.18,
+            z: 2.8,
+            scale: 0.88,
+            rotX: prevRotX * 0.5,
+            rotY: prevRotY + 0.28,
+            opacity: 0,
+            duration: exitDuration,
+            ease: "power2.in"
+          };
+
       gsap.to(this.transitionState.exitOffset, {
-        x: -1.6 * lateralDir,
-        y: -0.15,
-        z: -1.8,
-        scale: 0.72,
-        duration: exitDuration,
-        ease: "power2.inOut",
+        ...exitTarget,
         onComplete: () => {
-          if (oldGroup) oldGroup.visible = false;
+          if (oldGroup) {
+            this.applyGroupOpacity(oldGroup, 1);
+            oldGroup.visible = false;
+          }
           if (this.transitionState.exitingGroup === oldGroup) {
             this.transitionState.exitingGroup = null;
           }
@@ -521,29 +605,57 @@ class Presentation3D {
       });
     } else {
       this.transitionState.exitingGroup = null;
-      if (oldGroup) oldGroup.visible = false;
+      if (oldGroup) {
+        this.applyGroupOpacity(oldGroup, 1);
+        oldGroup.visible = false;
+      }
     }
 
-    this.transitionState.enterOffset = {
-      x: (isRapid ? 0.7 : 1.8) * lateralDir,
-      y: 0.12,
-      z: isRapid ? -0.8 : -1.8,
-      scale: isRapid ? 0.90 : 0.75,
-      rotY: (isRapid ? 0.20 : 0.50) * lateralDir
-    };
+    if (isRapid) {
+      this.transitionState.enterOffset = {
+        x: (isForward ? 0.65 : -0.65),
+        y: 0.08,
+        z: -1.4,
+        scale: 0.88,
+        rotY: (isForward ? 0.18 : -0.18),
+        opacity: 1
+      };
+    } else if (isForward) {
+      this.transitionState.enterOffset = {
+        x: 2.0,
+        y: -0.16,
+        z: 2.2,
+        scale: 0.88,
+        rotY: 0.28,
+        opacity: 0
+      };
+    } else {
+      // Al retroceder, la escultura regresa acercándose desde el fondo
+      this.transitionState.enterOffset = {
+        x: -1.1,
+        y: 0.36,
+        z: -18.0,
+        scale: 0.22,
+        rotY: -0.32,
+        opacity: 0
+      };
+    }
 
     if (window.gsap) {
+      this.applyGroupOpacity(newGroup, this.transitionState.enterOffset.opacity);
       gsap.to(this.transitionState.enterOffset, {
         x: 0,
         y: 0,
         z: 0,
         scale: 1,
         rotY: 0,
+        opacity: 1,
         duration: enterDuration,
+        delay: (!isRapid && oldGroup && isForward) ? 0.08 : 0,
         ease: "power3.out"
       });
     } else {
-      this.transitionState.enterOffset = { x: 0, y: 0, z: 0, scale: 1, rotY: 0 };
+      this.transitionState.enterOffset = { x: 0, y: 0, z: 0, scale: 1, rotY: 0, opacity: 1 };
     }
   }
 
@@ -600,7 +712,7 @@ class Presentation3D {
     // 4. Aplicar rotación orbital y desplazamiento interactivo a la escultura 3D activa
     const activeGroup = this.scenes[this.currentSceneId];
     if (activeGroup) {
-      const enter = this.transitionState?.enterOffset || { x: 0, y: 0, z: 0, scale: 1, rotY: 0 };
+      const enter = this.transitionState?.enterOffset || { x: 0, y: 0, z: 0, scale: 1, rotY: 0, opacity: 1 };
       const centerOffset = this.focusAnim?.centerXOffset || 0;
       const scaleMult = this.focusAnim?.scaleMultiplier || 1.0;
       const basePosX = (this.baseGroupX !== undefined) ? this.baseGroupX : 1.85;
@@ -612,9 +724,10 @@ class Presentation3D {
       activeGroup.rotation.x = this.userRotation.x;
       const baseScale = enter.scale !== undefined ? enter.scale : 1;
       activeGroup.scale.setScalar(baseScale * scaleMult * baseScaleMult);
+      this.applyGroupOpacity(activeGroup, enter.opacity !== undefined ? enter.opacity : 1);
     }
 
-    // 4b. Escultura saliente en suave retroceso de galería
+    // 4b. Escultura saliente alejándose suavemente en profundidad (sin salto de escala)
     const exitingGroup = this.transitionState?.exitingGroup;
     if (exitingGroup && exitingGroup !== activeGroup) {
       const exit = this.transitionState.exitOffset;
@@ -625,9 +738,11 @@ class Presentation3D {
       exitingGroup.position.x = basePosX + centerOffset + exit.x;
       exitingGroup.position.y = exit.y;
       exitingGroup.position.z = exit.z;
-      exitingGroup.scale.setScalar(exit.scale * scaleMult * baseScaleMult);
+      exitingGroup.rotation.y = exit.rotY !== undefined ? exit.rotY : 0;
+      exitingGroup.rotation.x = exit.rotX !== undefined ? exit.rotX : 0;
       const baseScale = exit.scale !== undefined ? exit.scale : 1;
-      exitingGroup.scale.setScalar(baseScale * scaleMult);
+      exitingGroup.scale.setScalar(baseScale * scaleMult * baseScaleMult);
+      this.applyGroupOpacity(exitingGroup, exit.opacity !== undefined ? exit.opacity : 1);
     }
 
     // 5. Animación modular delegada a la escultura activa

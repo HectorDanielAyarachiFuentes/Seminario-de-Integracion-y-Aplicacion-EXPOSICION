@@ -173,16 +173,16 @@ window.Presentation3D_Objects["anim_06"] = {
     // 3. SEDES DEL CURZAS: Viedma y los 10 Nodos Territoriales (Res. CD N° 135/2022)
     engine.sedes06 = [
       { id: "viedma", nombre: "VIEDMA", subtitulo: "Sede Central Académica", tipo: "Sede Cabecera", x: 0.36, z: 0.25, isCentral: true, colorGem: 0xffd700 },
-      { id: "san_antonio", nombre: "SAN ANTONIO OESTE", subtitulo: "Costa Atlántica / Golfo San Matías", tipo: "Nodo Territorial", x: 0.23, z: 0.28, isCentral: false, colorGem: 0x38bdf8 },
+      { id: "san_antonio", nombre: "SAO / LAS GRUTAS", subtitulo: "Costa Atlántica / Golfo San Matías", tipo: "Nodo Territorial", x: 0.23, z: 0.28, isCentral: false, colorGem: 0x38bdf8 },
       { id: "sierra_grande", nombre: "SIERRA GRANDE", subtitulo: "Costa Atlántica Sur", tipo: "Nodo Territorial", x: 0.24, z: 0.40, isCentral: false, colorGem: 0x38bdf8 },
       { id: "conesa", nombre: "GENERAL CONESA", subtitulo: "Valle Conesa / Nexo Vial", tipo: "Nodo Territorial", x: 0.25, z: 0.20, isCentral: false, colorGem: 0x38bdf8 },
-      { id: "lamarque", nombre: "LAMARQUE", subtitulo: "Valle Medio / Isla Choele", tipo: "Nodo Territorial", x: 0.10, z: 0.16, isCentral: false, colorGem: 0x38bdf8 },
+      { id: "rio_colorado", nombre: "RÍO COLORADO", subtitulo: "Valle del Río Colorado / Noreste", tipo: "Nodo Territorial", x: 0.26, z: 0.14, isCentral: false, colorGem: 0x38bdf8 },
       { id: "valcheta", nombre: "VALCHETA", subtitulo: "Portal Línea Sur", tipo: "Nodo Territorial", x: 0.08, z: 0.32, isCentral: false, colorGem: 0x38bdf8 },
       { id: "ramos_mexia", nombre: "RAMOS MEXÍA", subtitulo: "Meseta Central / RN 23", tipo: "Nodo Territorial", x: -0.02, z: 0.30, isCentral: false, colorGem: 0x38bdf8 },
       { id: "sierra_colorada", nombre: "SIERRA COLORADA", subtitulo: "Centro Geográfico Provincial", tipo: "Nodo Territorial", x: -0.10, z: 0.30, isCentral: false, colorGem: 0x38bdf8 },
-      { id: "los_menucos", nombre: "LOS MENUCOS", subtitulo: "Región Sur Central / RP 8", tipo: "Nodo Territorial", x: -0.18, z: 0.30, isCentral: false, colorGem: 0x38bdf8 },
+      { id: "los_menucos", nombre: "LOS MENUCOS", subtitulo: "Región Sur Central / RN 23", tipo: "Nodo Territorial", x: -0.18, z: 0.30, isCentral: false, colorGem: 0x38bdf8 },
       { id: "maquinchao", nombre: "MAQUINCHAO", subtitulo: "Línea Sur Centro-Oeste", tipo: "Nodo Territorial", x: -0.26, z: 0.31, isCentral: false, colorGem: 0x38bdf8 },
-      { id: "comallo", nombre: "COMALLO", subtitulo: "Línea Sur Pre-cordillera", tipo: "Nodo Territorial", x: -0.33, z: 0.30, isCentral: false, colorGem: 0x38bdf8 }
+      { id: "ing_jacobacci", nombre: "ING. JACOBACCI", subtitulo: "Línea Sur Oeste / RN 23", tipo: "Nodo Territorial", x: -0.32, z: 0.31, isCentral: false, colorGem: 0x38bdf8 }
     ];
 
     engine.nodeGems06 = [];
@@ -413,11 +413,11 @@ window.Presentation3D_Objects["anim_07"] = {
       { id: "sierra_colorada", nombre: "SIERRA COLORADA", subtitulo: "Centro Geográfico", tipo: "Nodo Territorial", col: 0x38bdf8 },
       { id: "valcheta", nombre: "VALCHETA", subtitulo: "Portal Línea Sur", tipo: "Nodo Territorial", col: 0x38bdf8 },
       { id: "ramos_mexia", nombre: "RAMOS MEXÍA", subtitulo: "Meseta de Somuncura", tipo: "Nodo Territorial", col: 0x38bdf8 },
-      { id: "san_antonio", nombre: "SAN ANTONIO OESTE", subtitulo: "Costa Atlántica", tipo: "Nodo Territorial", col: 0x38bdf8 },
+      { id: "san_antonio", nombre: "SAO / LAS GRUTAS", subtitulo: "Costa Atlántica", tipo: "Nodo Territorial", col: 0x38bdf8 },
       { id: "conesa", nombre: "GENERAL CONESA", subtitulo: "Valle Conesa / Nexo Vial", tipo: "Nodo Territorial", col: 0x38bdf8 },
-      { id: "lamarque", nombre: "LAMARQUE", subtitulo: "Valle Medio", tipo: "Nodo Territorial", col: 0x38bdf8 },
+      { id: "rio_colorado", nombre: "RÍO COLORADO", subtitulo: "Valle del Río Colorado", tipo: "Nodo Territorial", col: 0x38bdf8 },
       { id: "maquinchao", nombre: "MAQUINCHAO", subtitulo: "Línea Sur Centro-Oeste", tipo: "Nodo Territorial", col: 0x38bdf8 },
-      { id: "comallo", nombre: "COMALLO", subtitulo: "Línea Sur Pre-cordillera", tipo: "Nodo Territorial", col: 0x38bdf8 },
+      { id: "ing_jacobacci", nombre: "ING. JACOBACCI", subtitulo: "Línea Sur Oeste", tipo: "Nodo Territorial", col: 0x38bdf8 },
       { id: "sierra_grande", nombre: "SIERRA GRANDE", subtitulo: "Costa Atlántica Sur", tipo: "Nodo Territorial", col: 0x38bdf8 }
     ];
 

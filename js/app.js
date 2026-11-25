@@ -119,9 +119,8 @@ class PresentationApp {
     this.btnCloseDrawer = document.getElementById("btn-close-drawer");
     this.drawerContent = document.getElementById("drawer-content");
 
-    this.btnDim3d = document.getElementById("btn-dim-3d");
-    this.btnReset3d = document.getElementById("btn-reset-3d");
     this.canvas = document.getElementById("webgl-canvas");
+    this.timerToast = document.getElementById("timer-toast");
 
     // Barra de Progreso Superior
     this.progressBar = document.getElementById("presentation-progress-bar");
@@ -133,8 +132,7 @@ class PresentationApp {
     this.shortcutsBackdrop = document.getElementById("shortcuts-backdrop");
     this.btnCloseShortcuts = document.getElementById("btn-close-shortcuts");
 
-    // Controles táctiles y móviles: Toggle de Filmina / 3D Full-screen
-    this.btnToggle3dView = document.getElementById("btn-toggle-3d-view");
+    // Controles de enfoque visual y vistas
     this.btnFloatingCardToggle = document.getElementById("btn-floating-card-toggle");
     this.mainStage = document.getElementById("main-stage");
     this.isCardMinimized = false;
@@ -168,6 +166,7 @@ class PresentationApp {
     this.docModal = document.getElementById("doc-modal");
     this.docModalBackdrop = document.getElementById("doc-modal-backdrop");
     this.docModalFrame = document.getElementById("doc-modal-frame");
+    this.docModalImg = document.getElementById("doc-modal-img");
     this.docModalFallback = document.getElementById("doc-modal-fallback");
     this.docFallbackTitle = document.getElementById("doc-fallback-title");
     this.docFallbackDesc = document.getElementById("doc-fallback-desc");
@@ -180,10 +179,11 @@ class PresentationApp {
     this.btnDocNewtab = document.getElementById("btn-doc-newtab");
     this.btnDocDownload = document.getElementById("btn-doc-download");
     this.btnCloseDoc = document.getElementById("btn-close-doc");
-    this.btnToggleCatedra = document.getElementById("btn-toggle-catedra");
     this.isDocMaximized = false;
     this.currentCatedraFilter = "all";
     this.currentCatedraSearch = "";
+
+    this.btnReset3d = document.getElementById("btn-reset-3d");
 
   }
 
@@ -258,10 +258,7 @@ class PresentationApp {
       this.slidesIndexBackdrop.addEventListener("click", () => this.toggleSlidesIndex(false));
     }
 
-    // Toggle de filmina / escultura 3D en dispositivos móviles y tablets
-    if (this.btnToggle3dView) {
-      this.btnToggle3dView.addEventListener("click", () => this.toggleMobile3dView());
-    }
+    // Enfoque visual dual: Ver Texto (D) y Ver Objeto 3D (O)
     if (this.btnViewText) {
       this.btnViewText.addEventListener("click", () => this.setViewMode("text"));
     }
@@ -385,17 +382,12 @@ class PresentationApp {
       this.svgViewport.addEventListener("pointercancel", finalizarArrastre);
     }
 
-    // Modo Enfoque de Texto (Atenuar 3D)
-    if (this.btnDim3d) {
-      this.btnDim3d.addEventListener("click", () => this.toggle3dDim());
-    }
-
     // Restablecer y Centrar Vista 3D
     if (this.btnReset3d) {
       this.btnReset3d.addEventListener("click", () => this.engine3D?.resetUserControls());
     }
 
-    // Pestañas del Drawer (7 categorías)
+    // Pestañas del Drawer (8 categorías)
     document.querySelectorAll(".drawer-tab").forEach((tab) => {
       tab.addEventListener("click", (e) => {
         document.querySelectorAll(".drawer-tab").forEach((t) => t.classList.remove("active"));
@@ -406,24 +398,40 @@ class PresentationApp {
 
     // Atajos de Teclado Profesionales
     window.addEventListener("keydown", (e) => {
-      // Si el modal SVG está abierto, priorizar atajos de lupa y escape
+      // No interceptar atajos cuando el usuario escribe en el buscador u otros campos editables
+      const targetTag = e.target?.tagName;
+      const isTyping = targetTag === "INPUT" || targetTag === "TEXTAREA" || targetTag === "SELECT" || e.target?.isContentEditable;
+      if (isTyping) {
+        if (e.key === "Escape") {
+          e.target.blur();
+        }
+        return;
+      }
+
+      // Si el modal de documentos de cátedra está abierto, priorizar sus controles
+      if (this.docModal && this.docModal.classList.contains("open")) {
+        if (e.key === "Escape") {
+          this.closeDocModal();
+        } else if (e.key.toLowerCase() === "m") {
+          this.toggleDocMaximize();
+        }
+        return;
+      }
+
+      // Si el modal SVG está abierto, priorizar atajos de lupa y escape sin pasar filminas detrás
       if (this.svgModal && this.svgModal.classList.contains("open")) {
         if (e.key === "+" || e.key === "=") {
           this.zoomSvg(0.25);
-          return;
         } else if (e.key === "-" || e.key === "_") {
           this.zoomSvg(-0.25);
-          return;
         } else if (e.key === "0") {
           this.resetSvgTransform();
-          return;
         } else if (e.key.toLowerCase() === "m") {
           this.toggleSvgMaximize();
-          return;
         } else if (e.key === "Escape") {
           this.closeSvgModal();
-          return;
         }
+        return;
       }
 
       if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
@@ -452,6 +460,8 @@ class PresentationApp {
         this.toggleNotes();
       } else if (e.key.toLowerCase() === "m") {
         this.toggleDrawer();
+      } else if (e.key.toLowerCase() === "b") {
+        this.toggleCatedraShortcut();
       } else if (e.key.toLowerCase() === "r") {
         this.engine3D?.resetUserControls();
       } else if (e.key.toLowerCase() === "v") {
@@ -476,6 +486,7 @@ class PresentationApp {
       } else if (e.key === "?" || (e.shiftKey && e.key === "/")) {
         this.toggleShortcuts();
       } else if (e.key === "Escape") {
+        this.closeDocModal();
         this.closeSvgModal();
         this.toggleNotes(false);
         this.toggleDrawer(false);
@@ -693,7 +704,7 @@ class PresentationApp {
 
     this.footerMetaElement.innerHTML = `
       <span>📌 ${slide.metadatosFooter}</span>
-      <span>⏱️ Ritmo sugerido: ~1.5 min</span>
+      <span>⏱️ Ritmo sugerido: ~1.25 min</span>
     `;
 
     if (this.slideCounter) {
@@ -956,30 +967,6 @@ class PresentationApp {
     this.renderSlide(index, direction);
   }
 
-  // ─── VISOR MODAL DE DIAGRAMAS SVG EN ALTA DEFINICIÓN ─────────────────────
-  openSvgModal(src, title) {
-    if (!this.svgModal) return;
-    this.svgModalImg.src = src;
-    this.svgModalTitle.textContent = `📐 ${title || "Diagrama Conceptual SVG"}`;
-    this.svgModal.classList.add("open");
-    this.svgModalBackdrop.classList.add("open");
-    if (window.gsap) {
-      gsap.fromTo(this.svgModal,
-        { scale: 0.92, opacity: 0, y: 20 },
-        { scale: 1, opacity: 1, y: 0, duration: 0.38, ease: "back.out(1.3)" }
-      );
-    }
-  }
-
-  closeSvgModal() {
-    if (!this.svgModal) return;
-    this.svgModal.classList.remove("open");
-    this.svgModalBackdrop.classList.remove("open");
-    setTimeout(() => {
-      this.svgModalImg.src = "";
-    }, 300);
-  }
-
   // ─── CRONÓMETRO REGRESIVO DE 15 MINUTOS ──────────────────────────────────
   toggleTimer() {
     if (this.timerRunning) {
@@ -1001,10 +988,21 @@ class PresentationApp {
 
         if (this.elapsedSeconds >= this.totalSeconds) {
           this.pauseTimer();
-          alert("⏱️ Los 15 minutos estipulados para la defensa han concluido.");
+          this.timerDisplay?.classList.add("finished");
+          this.showTimerToast("⏱️ Los 15 minutos estipulados para la defensa han concluido.");
         }
       }, 1000);
     }
+  }
+
+  showTimerToast(message) {
+    if (!this.timerToast) return;
+    this.timerToast.textContent = message;
+    this.timerToast.classList.add("visible");
+    clearTimeout(this._timerToastTimeout);
+    this._timerToastTimeout = setTimeout(() => {
+      this.timerToast?.classList.remove("visible");
+    }, 6500);
   }
 
   pauseTimer() {
@@ -1017,6 +1015,9 @@ class PresentationApp {
   resetTimer() {
     this.pauseTimer();
     this.elapsedSeconds = 0;
+    this.timerDisplay?.classList.remove("finished");
+    this.timerToast?.classList.remove("visible");
+    clearTimeout(this._timerToastTimeout);
     this.updateTimerDisplay();
   }
 
@@ -1026,7 +1027,7 @@ class PresentationApp {
     const s = remainingSeconds % 60;
     this.timerDisplay.textContent = `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 
-    const minutosTranscurridos = Math.floor(this.elapsedSeconds / 60);
+    const minutosTranscurridos = this.elapsedSeconds / 60;
 
     this.timerDisplay.classList.remove("warning", "critical");
     if (minutosTranscurridos >= this.data.timing.alertaRojaMinutos) {
@@ -1053,10 +1054,16 @@ class PresentationApp {
     this.btnToggleNotes.classList.toggle("active", newState);
     document.body.classList.toggle("notes-open", newState);
 
-    // Ocultar pill 3D de nodos y píldora de interacción 3D si las notas están abiertas para no colisionar
+    // Ocultar o restaurar pill 3D de nodos y píldora de interacción 3D según estado
     const radarPill = document.getElementById("node-radar-pill");
-    if (radarPill && (newState || this.currentViewMode === "text")) {
-      radarPill.style.display = "none";
+    const currentSlide = this.data.slides[this.currentSlideIndex];
+    const isRadarSlide = currentSlide && (currentSlide.escena3D === "anim_06" || currentSlide.escena3D === "anim_07");
+    if (radarPill) {
+      if (newState || this.currentViewMode === "text" || !isRadarSlide) {
+        radarPill.style.display = "none";
+      } else if (radarPill.querySelector("#node-radar-title")?.textContent) {
+        radarPill.style.display = "inline-flex";
+      }
     }
     const hint3d = document.getElementById("canvas-3d-hint");
     if (hint3d) {
@@ -1102,10 +1109,16 @@ class PresentationApp {
       this.canvas.classList.toggle("dimmed", newMode === "text");
     }
 
-    // 3. Ocultar indicador de radar 3D y píldora 3D en modo texto o con notas
+    // 3. Ocultar o restaurar indicador de radar 3D y píldora 3D
     const radarPill = document.getElementById("node-radar-pill");
-    if (radarPill && (newMode === "text" || document.body.classList.contains("notes-open"))) {
-      radarPill.style.display = "none";
+    const currentSlide = this.data.slides[this.currentSlideIndex];
+    const isRadarSlide = currentSlide && (currentSlide.escena3D === "anim_06" || currentSlide.escena3D === "anim_07");
+    if (radarPill) {
+      if (newMode === "text" || document.body.classList.contains("notes-open") || !isRadarSlide) {
+        radarPill.style.display = "none";
+      } else if (radarPill.querySelector("#node-radar-title")?.textContent) {
+        radarPill.style.display = "inline-flex";
+      }
     }
     const hint3d = document.getElementById("canvas-3d-hint");
     if (hint3d) {
@@ -1285,6 +1298,12 @@ class PresentationApp {
     if (this.svgModalBackdrop) {
       this.svgModalBackdrop.classList.add("open");
     }
+    if (window.gsap) {
+      gsap.fromTo(this.svgModal,
+        { scale: 0.94, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.30, ease: "power3.out", clearProps: "transform,opacity" }
+      );
+    }
   }
 
   closeSvgModal() {
@@ -1298,6 +1317,11 @@ class PresentationApp {
       this.btnSvgMaximize.textContent = "⛶ Maximizar";
     }
     this.resetSvgTransform();
+    setTimeout(() => {
+      if (!this.svgModal.classList.contains("open") && this.svgModalImg) {
+        this.svgModalImg.src = "";
+      }
+    }, 280);
   }
 
   setSvgZoom(newZoom) {
@@ -1364,6 +1388,16 @@ class PresentationApp {
     }
   }
 
+  toggleCatedraShortcut() {
+    const isDrawerOpen = this.drawerPanel?.classList.contains("open");
+    const isCatedraActive = document.querySelector('.drawer-tab[data-tab="catedra"]')?.classList.contains("active");
+    if (isDrawerOpen && isCatedraActive) {
+      this.toggleDrawer(false);
+    } else {
+      this.openCatedraDrawer();
+    }
+  }
+
   renderCatedraMaterialTab() {
     this.drawerContent.innerHTML = "";
 
@@ -1393,13 +1427,14 @@ class PresentationApp {
         <circle cx="8.5" cy="8.5" r="5"/>
         <path d="M17.5 17.5l-3.8-3.8"/>
       </svg>
-      <input type="search" class="catedra-search-input" id="catedra-search-input" placeholder="Buscar por autor, tema, resolución (ej: Sampieri, Sautu, 266-23)..." value="${this.currentCatedraSearch}">
+      <input type="search" class="catedra-search-input" id="catedra-search-input" placeholder="Buscar por autor, tema, resolución (ej: Sampieri, Sautu, 266-23)...">
       <button class="catedra-search-clear" id="catedra-search-clear" title="Borrar búsqueda">✕</button>
     `;
     this.drawerContent.appendChild(searchWrapper);
 
     const searchInput = searchWrapper.querySelector("#catedra-search-input");
     const searchClear = searchWrapper.querySelector("#catedra-search-clear");
+    searchInput.value = this.currentCatedraSearch || "";
     if (this.currentCatedraSearch) {
       searchClear.style.display = "block";
     }
@@ -1505,6 +1540,7 @@ class PresentationApp {
       if (ext === "pdf") icon = "📕";
       else if (ext === "docx" || ext === "doc") icon = "📘";
       else if (ext === "htm" || ext === "html") icon = "🌐";
+      else if (["jpg", "jpeg", "png", "webp", "svg", "gif"].includes(ext)) icon = "🖼️";
 
       const card = document.createElement("div");
       card.className = `catedra-doc-card ${ext}`;
@@ -1569,11 +1605,27 @@ class PresentationApp {
     }
 
     // Comportamiento según tipo de archivo
+    const isImage = ["jpg", "jpeg", "png", "webp", "svg", "gif"].includes(ext);
     if (ext === "pdf" || ext === "htm" || ext === "html") {
       if (this.docModalFrame) {
         this.docModalFrame.style.display = "block";
         this.docModalFrame.src = safeUrl;
       }
+      if (this.docModalImg) {
+        this.docModalImg.style.display = "none";
+        this.docModalImg.src = "";
+      }
+      if (this.docModalFallback) {
+        this.docModalFallback.style.display = "none";
+      }
+    } else if (isImage && this.docModalImg) {
+      if (this.docModalFrame) {
+        this.docModalFrame.style.display = "none";
+        this.docModalFrame.src = "";
+      }
+      this.docModalImg.style.display = "block";
+      this.docModalImg.src = safeUrl;
+      this.docModalImg.alt = doc.titulo;
       if (this.docModalFallback) {
         this.docModalFallback.style.display = "none";
       }
@@ -1583,6 +1635,10 @@ class PresentationApp {
         this.docModalFrame.style.display = "none";
         this.docModalFrame.src = "";
       }
+      if (this.docModalImg) {
+        this.docModalImg.style.display = "none";
+        this.docModalImg.src = "";
+      }
       if (this.docModalFallback) {
         this.docModalFallback.style.display = "flex";
       }
@@ -1590,7 +1646,7 @@ class PresentationApp {
         this.docFallbackTitle.textContent = doc.titulo;
       }
       if (this.docFallbackDesc) {
-        this.docFallbackDesc.textContent = `Este archivo es un documento oficial de Microsoft Word (${doc.ext.toUpperCase()}, ${doc.tamano}). Podés descargarlo directamente para editarlo o revisarlo en tu aplicación de oficina.`;
+        this.docFallbackDesc.textContent = `Este archivo es un documento de oficina (${doc.ext.toUpperCase()}, ${doc.tamano}). Podés descargarlo directamente para editarlo o revisarlo en tu aplicación de oficina.`;
       }
       if (this.btnDocFallbackDownload) {
         this.btnDocFallbackDownload.href = safeUrl;
@@ -1619,6 +1675,10 @@ class PresentationApp {
     }
     if (this.docModalFrame) {
       this.docModalFrame.src = "";
+    }
+    if (this.docModalImg) {
+      this.docModalImg.src = "";
+      this.docModalImg.style.display = "none";
     }
   }
 
