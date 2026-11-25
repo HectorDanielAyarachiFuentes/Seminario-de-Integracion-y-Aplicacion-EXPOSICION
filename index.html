@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -51,7 +51,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=6.8">
+  <link rel="stylesheet" href="css/styles.css?v=6.9">
+  <link rel="stylesheet" href="css/prezi.css?v=1.0">
 </head>
 
 <body>
@@ -139,7 +140,7 @@
       <article class="slide-card" id="slide-card">
         <div class="slide-header-tags">
           <span class="slide-badge" id="slide-badge">FILMINA 1</span>
-          <span class="slide-bloque-badge" id="slide-bloque-badge">BLOQUE I</span>
+          <span class="slide-bloque-badge is-prezi-clickable" id="slide-bloque-badge" role="button" tabindex="0" title="Ver este Bloque en el Mapa Panorámico Prezi">BLOQUE I</span>
         </div>
         <h2 class="slide-title" id="slide-title">Cargando presentación...</h2>
         <p class="slide-subtitle" id="slide-subtitle">Espere un instante mientras se inicializan los módulos.</p>
@@ -214,6 +215,21 @@
             </svg>
             <span class="tool-text">Centrar</span>
             <span class="tool-key">R</span>
+          </button>
+          <button class="btn-tool" id="btn-prezi-overview" title="Vista Panorámica Prezi y Zoom Jerárquico (P)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"></circle>
+              <circle cx="5" cy="6" r="2.2"></circle>
+              <circle cx="19" cy="7" r="2.2"></circle>
+              <circle cx="18" cy="18" r="2.2"></circle>
+              <circle cx="6" cy="18" r="2.2"></circle>
+              <line x1="9.7" y1="10.1" x2="6.8" y2="7.5"></line>
+              <line x1="14.5" y1="10.4" x2="17.2" y2="8.4"></line>
+              <line x1="14.2" y1="14" x2="16.5" y2="16.3"></line>
+              <line x1="9.8" y1="14" x2="7.5" y2="16.3"></line>
+            </svg>
+            <span class="tool-text">Mapa</span>
+            <span class="tool-key">P</span>
           </button>
         </div>
 
@@ -464,6 +480,7 @@
       <div class="shortcut-row"><kbd>D</kbd><span>Ver Texto (Maximizar contenido)</span></div>
       <div class="shortcut-row"><kbd>O</kbd><span>Ver Objeto (Centrar y agrandar 3D)</span></div>
       <div class="shortcut-row"><kbd>R</kbd><span>Centrar Escultura 3D</span></div>
+      <div class="shortcut-row"><kbd>P</kbd><span>Mapa Panorámico Prezi y Zoom Jerárquico</span></div>
       <div class="shortcut-row"><kbd>?</kbd><span>Ver esta ayuda de atajos</span></div>
       <div class="shortcut-row"><kbd>Esc</kbd><span>Cerrar paneles y modales</span></div>
     </div>
@@ -495,6 +512,54 @@
     </div>
   </aside>
 
+  <!-- Overlay Panorámico Prezi (Vista General y Zoom Jerárquico) -->
+  <div id="prezi-overlay" class="prezi-overlay" role="dialog" aria-label="Mapa panorámico Prezi de la defensa">
+    <div class="prezi-topbar prezi-hud-chrome">
+      <div class="prezi-breadcrumbs" aria-label="Jerarquía de navegación">
+        <button type="button" class="prezi-crumb is-active" id="prezi-crumb-overview">Vista General (5 Bloques)</button>
+        <span class="prezi-crumb-sep prezi-crumb-hidden" id="prezi-crumb-sep-1">›</span>
+        <button type="button" class="prezi-crumb prezi-crumb-hidden" id="prezi-crumb-planet">Bloque</button>
+        <span class="prezi-crumb-sep prezi-crumb-hidden" id="prezi-crumb-sep-2">›</span>
+        <button type="button" class="prezi-crumb prezi-crumb-hidden" id="prezi-crumb-slide">Filmina</button>
+      </div>
+      <div class="prezi-topbar-actions">
+        <span class="prezi-hint-pill">Clic en planeta o satélite · Rueda: zoom · Arrastrar: mover</span>
+        <button type="button" class="prezi-toggle-pill" id="prezi-toggle-autozoom" aria-pressed="true" title="Activar o desactivar vuelo automático estilo Prezi al cambiar entre bloques">
+          <span class="prezi-toggle-dot"></span>
+          <span>Auto-Zoom Bloques</span>
+        </button>
+        <button type="button" class="prezi-close-btn" id="prezi-close-btn" title="Volver a la filmina actual (P / Esc)">
+          <span>Volver a Filmina</span>
+          <kbd>P</kbd>
+        </button>
+      </div>
+    </div>
+
+    <div class="prezi-flight-banner" aria-live="polite">
+      <span class="prezi-flight-pulse"></span>
+      <span id="prezi-flight-text">Navegando al bloque…</span>
+    </div>
+
+    <div id="prezi-viewport" class="prezi-viewport">
+      <div id="prezi-world" class="prezi-world">
+        <svg id="prezi-svg-layer" class="prezi-svg-layer" viewBox="0 0 1600 960" preserveAspectRatio="none"></svg>
+        <div id="prezi-nodes-layer"></div>
+      </div>
+    </div>
+
+    <div class="prezi-bottombar prezi-hud-chrome">
+      <button type="button" class="prezi-ctrl-btn" id="prezi-btn-prev" title="Bloque o Filmina anterior">← Anterior</button>
+      <button type="button" class="prezi-ctrl-btn" id="prezi-btn-overview" title="Vista General completa (0)">Vista General</button>
+      <div class="prezi-ctrl-sep"></div>
+      <button type="button" class="prezi-ctrl-btn" id="prezi-btn-zoom-out" title="Alejar (-)">−</button>
+      <span class="prezi-zoom-readout" id="prezi-zoom-readout">100%</span>
+      <button type="button" class="prezi-ctrl-btn" id="prezi-btn-zoom-in" title="Acercar (+)">+</button>
+      <div class="prezi-ctrl-sep"></div>
+      <button type="button" class="prezi-ctrl-btn" id="prezi-btn-next" title="Siguiente Bloque o Filmina">Siguiente →</button>
+      <button type="button" class="prezi-ctrl-btn is-primary" id="prezi-btn-enter-slide" title="Hacer zoom y abrir la filmina seleccionada (Enter)">Abrir Filmina</button>
+    </div>
+  </div>
+
   <!-- Librerías Externas con Fallback Local Automático (100% resiliente offline) -->
   <!-- 1. Motor Gráfico Three.js (r128) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -516,8 +581,10 @@
   <script src="js/objetos/bloque5.js?v=7.3"></script>
   <!-- 5. Motor Orquestador 3D (Three.js + GSAP) -->
   <script src="js/scene3d.js?v=6.8"></script>
+  <!-- 5.5. Controlador Espacial Prezi -->
+  <script src="js/prezi_map.js?v=1.0"></script>
   <!-- 6. Controlador de Navegación, Temporizador y Eventos -->
-  <script src="js/app.js?v=7.3"></script>
+  <script src="js/app.js?v=7.4"></script>
 
 </body>
 

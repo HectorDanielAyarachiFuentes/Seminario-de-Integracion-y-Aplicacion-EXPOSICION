@@ -79,6 +79,8 @@ class PresentationApp {
       }
     } catch (_) {}
 
+    this._lastNavAt = 0;
+    this.prezi = window.PreziController ? new window.PreziController(this) : null;
     this.renderSlide(initialSlide);
     this.populateDrawerContent();
     this.renderSlidesIndex();
@@ -264,6 +266,25 @@ class PresentationApp {
     }
     if (this.btnView3d) {
       this.btnView3d.addEventListener("click", () => this.setViewMode("object"));
+    }
+
+    // Mapa panorámico Prezi y zoom por bloque
+    const btnPreziOverview = document.getElementById("btn-prezi-overview");
+    if (btnPreziOverview) {
+      btnPreziOverview.addEventListener("click", () => {
+        if (this.prezi) this.prezi.toggleOverlay();
+      });
+    }
+    if (this.bloqueBadgeElement) {
+      this.bloqueBadgeElement.addEventListener("click", () => {
+        if (this.prezi) this.prezi.openPlanetForSlide(this.currentSlideIndex, true);
+      });
+      this.bloqueBadgeElement.addEventListener("keydown", (e) => {
+        if ((e.key === "Enter" || e.key === " ") && this.prezi) {
+          e.preventDefault();
+          this.prezi.openPlanetForSlide(this.currentSlideIndex, true);
+        }
+      });
     }
 
     if (this.btnFloatingCardToggle) {
@@ -486,11 +507,26 @@ class PresentationApp {
         this.toggleTimer();
       } else if (e.key.toLowerCase() === "f") {
         this.toggleFullscreen();
+      } else if (e.key.toLowerCase() === "p") {
+        if (this.prezi) this.prezi.toggleOverlay();
+      } else if (this.prezi && this.prezi.isOpen && !this.prezi.isFlying && (e.key === "+" || e.key === "=")) {
+        e.preventDefault();
+        this.prezi.zoomByFactor(1.22);
+      } else if (this.prezi && this.prezi.isOpen && !this.prezi.isFlying && (e.key === "-" || e.key === "_")) {
+        e.preventDefault();
+        this.prezi.zoomByFactor(0.82);
+      } else if (this.prezi && this.prezi.isOpen && !this.prezi.isFlying && e.key === "0") {
+        e.preventDefault();
+        this.prezi.zoomToOverview(true);
+      } else if (this.prezi && this.prezi.isOpen && !this.prezi.isFlying && e.key === "Enter") {
+        e.preventDefault();
+        this.prezi.drillIntoSlide(this.currentSlideIndex);
       } else if (e.key.toLowerCase() === "i") {
         this.toggleSlidesIndex();
       } else if (e.key === "?" || (e.shiftKey && e.key === "/")) {
         this.toggleShortcuts();
       } else if (e.key === "Escape") {
+        if (this.prezi) this.prezi.closeOverlay(true);
         this.closeDocModal();
         this.closeSvgModal();
         this.toggleNotes(false);
@@ -836,6 +872,11 @@ class PresentationApp {
       });
     }
 
+    // Sincronizar mapa panorámico Prezi con la filmina activa
+    if (this.prezi) {
+      this.prezi.syncActiveState(index);
+    }
+
     // Notificar al motor 3D con la dirección exacta (1 = adelante, -1 = atrás)
     this.engine3D.switchScene(slide.escena3D, direction);
 
@@ -997,22 +1038,64 @@ class PresentationApp {
   }
 
   nextSlide() {
+    if (this.prezi && this.prezi.isOpen && !this.prezi.isFlying) {
+      this.prezi.stepInOverlay(1);
+      return;
+    }
     if (this.currentSlideIndex < this.totalSlides - 1) {
       this.goToSlide(this.currentSlideIndex + 1);
     }
   }
 
   prevSlide() {
+    if (this.prezi && this.prezi.isOpen && !this.prezi.isFlying) {
+      this.prezi.stepInOverlay(-1);
+      return;
+    }
     if (this.currentSlideIndex > 0) {
       this.goToSlide(this.currentSlideIndex - 1);
     }
   }
 
-  goToSlide(index) {
+  goToSlide(index, options = {}) {
     if (index === this.currentSlideIndex || index < 0 || index >= this.totalSlides) return;
-    const direction = index >= this.currentSlideIndex ? 1 : -1;
+    const prevIndex = this.currentSlideIndex;
+    const direction = index >= prevIndex ? 1 : -1;
+    const now = typeof performance !== "undefined" ? performance.now() : Date.now();
+    const isRapid = !!options.isRapid || (now - (this._lastNavAt || 0) < 340);
+    this._lastNavAt = now;
+
+    if (this.prezi && this.prezi.isFlying && !options.skipPreziFlight) {
+      this.prezi.cancelFlight();
+    }
+
+    if (
+      !options.skipPreziFlight &&
+      this.prezi &&
+      this.prezi.maybePlayBlockFlight(prevIndex, index, isRapid, () => {
+        this.currentSlideIndex = index;
+        this.renderSlide(index, direction);
+        if (window.gsap && this.slideCard) {
+          window.gsap.fromTo(
+            this.slideCard,
+            { scale: 0.9, opacity: 0.4 },
+            { scale: 1, opacity: 1, duration: 0.34, ease: "power3.out", clearProps: "transform" }
+          );
+        }
+      })
+    ) {
+      return;
+    }
+
     this.currentSlideIndex = index;
     this.renderSlide(index, direction);
+    if (options.preziEntrance && window.gsap && this.slideCard) {
+      window.gsap.fromTo(
+        this.slideCard,
+        { scale: 0.9, opacity: 0.4 },
+        { scale: 1, opacity: 1, duration: 0.34, ease: "power3.out", clearProps: "transform" }
+      );
+    }
   }
 
   // ─── CRONÓMETRO REGRESIVO DE 15 MINUTOS ──────────────────────────────────
