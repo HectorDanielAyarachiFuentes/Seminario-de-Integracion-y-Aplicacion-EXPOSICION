@@ -4,9 +4,9 @@
  * Presentación de Tesina • CURZAS - UNCo
  * =============================================================================
  * 16. anim_16: Mesa Redonda de Cogobierno Paritario y Servidor Criptográfico (Matus + Oszlak)
- * 17. anim_17: Escultura El David del Conocimiento (Estado del Arte y Vacancia)
+ * 17. anim_17: Escultura El Oráculo del Conocimiento (Estado del Arte y Vacancia)
  * 18. anim_18: Probeta Doble de Triangulación Mixta (CUAL -> cuan) y Bitácora de Caso
- * 19. anim_19: Muestrario de Informantes Clave (8 Entrevistas) y Matriz de 45 Cuestionarios
+ * 19. anim_19: Muestrario de Informantes Clave (9 Entrevistas) y Matriz de 45 Cuestionarios
  * 20. anim_20: Ábaco Matricial de las 5 Dimensiones e Indicadores Empíricos de Factibilidad
  */
 
@@ -699,7 +699,7 @@ window.Presentation3D_Objects["anim_18"] = {
       0.22,
       "DISEÑO METODOLÓGICO MIXTO INTEGRADO",
       "Estrategia Secuencial: CUALITATIVO → cuantitativo",
-      ["8 ENTREVISTAS EN PROFUNDIDAD", "45 CUESTIONARIOS LIKERT"],
+      ["9 ENTREVISTAS EN PROFUNDIDAD", "45 CUESTIONARIOS LIKERT"],
       { theme: "dark" }
     );
     plaqueMaster.position.set(0, -0.84, 0.68);
@@ -829,22 +829,23 @@ window.Presentation3D_Objects["anim_19"] = {
     const group = new THREE.Group();
     group.position.set(0, -0.05, 0);
 
-    // 1. Semicírculo de los 8 Informantes Clave
+    // 1. Semicírculo de los 9 Informantes Clave (Tabla TFG: 4 Doc, 2 Aut, 1 ADUNC, 2 Est)
     const informants = [
       { role: "Docente Presencial 1", col: 0x2563eb },
       { role: "Docente Presencial 2", col: 0x2563eb },
       { role: "Docente Tutor Nodos", col: 0x0284c7 },
       { role: "Docente Titular", col: 0x1d4ed8 },
       { role: "Autoridad Dpto.", col: 0xd97706 },
-      { role: "Autoridad CURZAS", col: 0xb45309 },
+      { role: "Coord. Carrera", col: 0xb45309 },
       { role: "Gremio ADUNC", col: 0xdc2626 },
-      { role: "Estudiante Avanzado", col: 0x16a34a }
+      { role: "Est. Sede Viedma", col: 0x16a34a },
+      { role: "Est. Nodo Híbrido", col: 0x15803d }
     ];
 
     engine.anim19_busts = [];
     const radiusCual = 1.05;
     informants.forEach((inf, idx) => {
-      const angle = -Math.PI * 0.75 + (idx / 7) * Math.PI * 0.9;
+      const angle = -Math.PI * 0.75 + (idx / 8) * Math.PI * 0.9;
       const x = Math.cos(angle) * radiusCual;
       const z = Math.sin(angle) * radiusCual;
 
@@ -883,7 +884,7 @@ window.Presentation3D_Objects["anim_19"] = {
     micHead.position.set(0, -0.05, 0);
     group.add(micHead);
 
-    const labelCual = engine.createLabelSprite("8 ENTREVISTAS EN PROFUNDIDAD", "Docentes • Autoridades • ADUNC • Estudiantes", "#1d4ed8", false, { x: 0.75, y: 0.2 });
+    const labelCual = engine.createLabelSprite("9 ENTREVISTAS EN PROFUNDIDAD", "4 Doc. • 2 Directivos • ADUNC • 2 Est.", "#1d4ed8", false, { x: 0.75, y: 0.2 });
     labelCual.position.set(-0.2, 0.25, 0);
     group.add(labelCual);
 

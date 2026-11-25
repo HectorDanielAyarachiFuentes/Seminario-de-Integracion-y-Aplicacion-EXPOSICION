@@ -84,7 +84,7 @@ window.Presentation3D_Objects["anim_21"] = {
     // 6 Balizas luminosas esféricas a lo largo de la espiral
     const phases = [
       { name: "F1 (MAYO)", sub: "Avales y Prueba Piloto", u: 0.10, col: "#38bdf8", hex: 0x38bdf8 },
-      { name: "F2 (JUNIO)", sub: "8 Entrevistas y Leyes", u: 0.28, col: "#2563eb", hex: 0x2563eb },
+      { name: "F2 (JUNIO)", sub: "9 Entrevistas y Normativa", u: 0.28, col: "#2563eb", hex: 0x2563eb },
       { name: "F3 (JULIO)", sub: "Sondeo 45 Casos", u: 0.46, col: "#059669", hex: 0x059669 },
       { name: "F4 (AGOSTO)", sub: "Triangulación Analítica", u: 0.64, col: "#d97706", hex: 0xd97706 },
       { name: "F5 (SEP-OCT)", sub: "Redacción Lineamientos", u: 0.82, col: "#7c3aed", hex: 0x7c3aed },
@@ -157,8 +157,8 @@ window.Presentation3D_Objects["anim_22"] = {
       1.10,
       0.22,
       "VIABILIDAD INTEGRAL DEL PROYECTO",
-      "Apartado 9 del TFG • Factibilidad Comprobada",
-      ["RECURSOS HUMANOS", "RECURSOS TÉCNICOS", "COSTO MARGINAL CERO"],
+      "Recursos Humanos, Técnicos y Económicos (Tabla 4 TFG)",
+      ["COSTO $0 CURZAS", "AUTOFINANCIADO ($160K)", "SOFTWARE LIBRE"],
       { theme: "dark" }
     );
     plaqueMaster.position.set(0, -0.62, 1.02);
@@ -205,7 +205,7 @@ window.Presentation3D_Objects["anim_22"] = {
       },
       {
         name: "RECURSOS ECONÓMICOS",
-        sub: "Costo Marginal Cero",
+        sub: "$0 CURZAS ($160k Propio)",
         angle: (7 * Math.PI) / 6,
         col: "#15803d",
         hex: 0x16a34a,
@@ -284,7 +284,7 @@ window.Presentation3D_Objects["anim_22"] = {
 
     const mainTitle = engine.createLabelSprite(
       "VIABILIDAD INTEGRAL DEL PROYECTO",
-      "Apartado 9 del TFG • Costo Marginal Cero • Avales",
+      "Costo $0 CURZAS • $160k Autofinanciado • Software Libre",
       "#0f2d59",
       true
     );
@@ -948,7 +948,7 @@ window.Presentation3D_Objects["anim_27"] = {
 
     const titleSprite = engine.createLabelSprite(
       "BIBLIOGRAFÍA DE REFERENCIA",
-      "32 Fuentes Académicas, Jurídicas e Institucionales • APA 7",
+      "33 Fuentes Académicas, Jurídicas e Institucionales • APA 7",
       "#0f2d59",
       true
     );

@@ -125,9 +125,9 @@ window.Presentation3D_Objects["anim_12"] = {
     const plaqueMaster = engine.createEngravedPlaque(
       1.10,
       0.22,
-      "7 SUBSISTEMAS DE RECURSOS HUMANOS",
-      "Francisco Longo (2006) • Marco Teórico de Empleo Público",
-      ["RENDIMIENTO 360°", "DESARROLLO ART. 76", "RELACIONES LABORALES"],
+      "MODELO SISTÉMICO DE RRHH (LONGO)",
+      "Francisco Longo (2006) • 5 Subsistemas Focalizados en TFG",
+      ["RENDIMIENTO 360°", "DESARROLLO ART. 76", "EMPLEO Y RELACIONES"],
       { theme: "dark" }
     );
     plaqueMaster.position.set(0, -0.90, 0.42);

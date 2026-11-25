@@ -1135,15 +1135,15 @@ window.Presentation3D_Objects["anim_05"] = {
     const plaqueRight = engine.createEngravedPlaque(
       0.48,
       0.18,
-      "9. VIABILIDAD",
-      "Humanos • Técnicos • Costo Cero",
-      ["FACTIBILIDAD COMPLETA"],
+      "VIABILIDAD INTEGRAL",
+      "Humanos • Técnicos • Costo $0 CURZAS",
+      ["AUTOFINANCIAMIENTO ($160K)"],
       { theme: "dark" }
     );
     plaqueRight.position.set(0, -0.42, 0.035);
     rightPanel.add(plaqueRight);
 
-    const labelRight = engine.createLabelSprite("9. VIABILIDAD", "Humanos • Técnicos • Costo Cero", "#0f2d59", false);
+    const labelRight = engine.createLabelSprite("VIABILIDAD INTEGRAL", "Humanos • Técnicos • Costo $0 CURZAS", "#0f2d59", false);
     labelRight.position.set(0, -0.68, 0.08);
     rightPanel.add(labelRight);
 

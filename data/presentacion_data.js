@@ -1,6 +1,6 @@
 /**
  * =============================================================================
- * METADATOS Y CONTENIDO DE LA PRESENTACIÓN FINAL — ANTEPROYECTO DE TFG (12 FILMINAS)
+ * METADATOS Y CONTENIDO DE LA PRESENTACIÓN FINAL — ANTEPROYECTO DE TFG (15 FILMINAS)
  * Universidad Nacional del Comahue — CURZAS
  * Seminario de Integración y Aplicación (SIA 2026)
  * Autor: Tec. Sup. en RRHH Héctor Daniel Ayarachi Fuentes
@@ -8,7 +8,7 @@
  * ENFOQUE EPISTEMOLÓGICO: PROYECTO DE INVESTIGACIÓN PREVIO
  * - Modo potencial / condicional (hipótesis abiertas a contrastación empírica en 2027)
  * - Prudencia metodológica: no se dan conclusiones por sentadas ni la viabilidad por cerrada
- * - Estructura canónica espejada del Trabajo Práctico Nº 4 Integral (15 minutos)
+ * - Estructura canónica alineada 1:1 con el Documento TFG completo y Diseño Final 2025
  * - Guiones oratorios con pausas de 2 segundos, énfasis y contraste formativo
  */
 
@@ -31,16 +31,16 @@ const PRESENTACION_DATA = {
       { nombre: "Esp. Federico Abeiro", rol: "Docente de Cátedra" },
       { nombre: "Esp. María Cecilia Aguirre", rol: "Docente de Cátedra" }
     ],
-    normativaMarco: "Resolución CD-CURZAS N° 266/23 (Reglamento de TFG) • Estatuto UNCo (Ord. CS N° 0988/2025)",
+    normativaMarco: "Resolución CD-CURZA N° 266/23 (Reglamento de TFG) • Estatuto UNCo (Ord. CS N° 0988/2025)",
     ano: "2026",
     lugar: "Viedma, Río Negro — República Argentina"
   },
 
   timing: {
     totalMinutos: 15,
-    alertaAmarillaMinutos: 11, // Advertencia visual a los 11 min (quedan 4 min para Metodología)
+    alertaAmarillaMinutos: 11, // Advertencia visual a los 11 min (quedan 4 min para Metodología y Cierre)
     alertaRojaMinutos: 13.5,   // Cierre inminente a los 13:30 min (queda 1:30 min para conclusión)
-    promedioPorSlideMin: 1.25  // ~1:15 min por filmina (12 filminas * 1.25 min = 15:00 min)
+    promedioPorSlideMin: 1.0   // ~1:00 min por filmina (15 filminas * 1.0 min = 15:00 min)
   },
 
   // 6 Pestañas de Respaldo Metodológico para el Tribunal Evaluador (Atajo: Tecla 'M')
@@ -71,19 +71,31 @@ const PRESENTACION_DATA = {
         concepto: "Desnaturalización de las rutinas cotidianas para formular un problema científico genuino, estructurando la investigación en pirámide invertida y matriz de consistencia."
       },
       {
-        autor: "Obando Freire (2014) & Sifuentes (2016)",
-        concepto: "Estudios empíricos sobre evaluación 360° en universidades: aportan evidencia de que la triangulación multiactoral podría alcanzar alta aceptación docente siempre que se resguarde la confidencialidad y el destino formativo."
+        autor: "Obando Freire et al. (2014) & Sifuentes et al. (2016)",
+        concepto: "Estudios empíricos sobre evaluación 360° en educación superior (Ecuador, Cuba y México): demuestran que la triangulación multiactoral favorece la autocrítica pedagógica si media confidencialidad técnica y destino estrictamente formativo."
+      },
+      {
+        autor: "Hernández-Villafaña & Luna Serrano (2023) / Vázquez Cid de León et al. (2021)",
+        concepto: "Evidencia empírica en universidades públicas mexicanas (n=1.431 docentes UABC y tutorías híbridas): el 71,7% usa resultados para mejorar su docencia, rechaza usos punitivos y valora el 360° para competencias de tutoría virtual."
+      },
+      {
+        autor: "Mónica Marquina (2013)",
+        concepto: "Análisis de la profesión académica argentina: constata fragmentación estamentaria y predominio de evaluaciones sumativas y burocráticas, evidenciando una vacancia de circuitos formativos colegiados."
+      },
+      {
+        autor: "Pierre Bourdieu (2003) & Rosana Guber (2004)",
+        concepto: "Vigilancia epistemológica y extrañamiento reflexivo para controlar sesgos de deseabilidad social y asimetrías de poder derivados de la doble pertenencia institucional del tesista."
       }
     ],
 
     normativa: [
       {
-        norma: "Resolución CD-CURZAS N° 266/23",
-        descripcion: "Reglamento formal de Trabajos Finales de Graduación del CURZAS-UNCo. Define la estructura canónica en 3 tiempos/partes y los criterios de viabilidad del TFG."
+        norma: "Resolución CD-CURZA N° 266/23",
+        descripcion: "Reglamento de Trabajos Finales de Graduación (TFG) del CURZAS-UNCo. Define la estructura canónica del proyecto y las pautas de inscripción, dirección y dictamen."
       },
       {
         norma: "Ordenanza CS N° 0988/2025 (Estatuto UNCo)",
-        descripcion: "Nuevo Estatuto: Art. 17 define al CURZAS como Complejo Universitario Regional; Título X regula la Carrera Docente (Art. 75: permanencia sumativa cuatrienal; Art. 76: Programa Anual de Capacitación Departamental)."
+        descripcion: "Texto ordenado del Estatuto: Art. 17 reconoce al CURZAS como Complejo Universitario Regional; Título X regula la Carrera Docente (Art. 74 informes anuales, Art. 75 permanencia cuatrienal, Art. 76 Capacitación continua)."
       },
       {
         norma: "Decreto PEN N° 1246/2015 (CCT Docente Universitario)",
@@ -91,22 +103,22 @@ const PRESENTACION_DATA = {
       },
       {
         norma: "Resolución CD-CURZA N° 196/2022 (Docencia Híbrida)",
-        descripcion: "Reglamenta las mediaciones tecnológicas, la presencialidad remota sincrónica y las tutorías virtuales en la Red de Nodos Territoriales del CURZAS, exigiendo evaluar nuevas competencias docentes."
+        descripcion: "Reglamenta las mediaciones tecnológicas, la presencialidad remota sincrónica y las tutorías virtuales en la Red de Nodos Territoriales del CURZAS (SIED UNCo)."
       },
       {
         norma: "Ordenanza CS N° 0910/1997 y modif.",
-        descripcion: "Reglamento General de Carrera Docente de la UNCo: pautas históricas de informes anuales de cátedra y encuestas estudiantiles sumativas."
+        descripcion: "Reglamento General de Carrera Docente de la UNCo: Título II regula informes anuales de cátedra y encuestas de opinión estudiantil."
       },
       {
         norma: "Ley Nacional N° 25.326",
-        descripcion: "Protección de los Datos Personales. Marco legal para la disociación estricta de identidades, inhabilitación de metadatos/IP y resguardo del anonimato en sondeos."
+        descripcion: "Protección de los Datos Personales. Marco legal para el anonimato técnico en origen (tokens sin IP en sondeo) y confidencialidad/seudonimización en entrevistas."
       }
     ],
 
     objetivos: [
       {
         nivel: "Objetivo General",
-        texto: "Determinar las condiciones de factibilidad organizacional, técnica, normativa y de gobernanza multinivel para la eventual implementación de un modelo de retroalimentación multiactoral (360°) en la evaluación del desempeño docente en el Departamento de Administración Pública del CURZAS-UNCo (2027)."
+        texto: "Analizar las condiciones de factibilidad organizacional, técnica, normativa, cultural y de gobernanza multinivel para la implementación de un modelo de retroalimentación multiactoral (360°) en la evaluación del desempeño docente en el Departamento de Administración Pública del CURZAS-UNCo (2027)."
       },
       {
         nivel: "Objetivo Específico 1 (Dimensión Normativa-Institucional)",
@@ -250,7 +262,7 @@ const PRESENTACION_DATA = {
       },
       {
         categoria: "Evaluación Docente y Modelo 360°",
-        cita: "Alvarado, M., y Morales, R. (2019). Propuesta de evaluación del desempeño docente utilizando la metodología de 360º en educación superior pública. Universidad Nacional Autónoma de México (UNAM)."
+        cita: "Hernández-Villafaña, A. D., y Luna Serrano, E. (2023). Metaevaluación del sistema de evaluación docente en una universidad pública mexicana. Archivos Analíticos de Políticas Educativas, 31(11), 1–24. https://doi.org/10.14507/epaa.31.7501"
       },
       {
         categoria: "Evaluación Docente y Modelo 360°",
@@ -258,31 +270,31 @@ const PRESENTACION_DATA = {
       },
       {
         categoria: "Evaluación Docente y Modelo 360°",
-        cita: "Marquina, M. (2012). ¿Hay un nuevo modelo de profesión académica en Argentina? Debates y tendencias en la universidad pública. Pensamiento Universitario, 15(15), 35–48."
+        cita: "Marquina, M. (2013). ¿Hay una profesión académica argentina? Avances y reflexiones sobre un objeto en construcción. Pensamiento Universitario, 15(15), 35–58."
       },
       {
         categoria: "Evaluación Docente y Modelo 360°",
-        cita: "Obando Freire, F., López Fernández, R., Luna Álvarez, D., Luna Álvarez, E., Luna Álvarez, W., y Alpizar Fernández, R. (2014). Sistema de evaluación docente mediante el modelo 360 grados y el portafolio electrónico. Medisur, 12(1), 334–339."
+        cita: "Obando Freire, F. X., López Fernández, R., Luna Álvarez, D., Luna Álvarez, E., Luna Álvarez, W., y Alpízar Fernández, R. (2014). Sistema de evaluación docente mediante el modelo 360 grados y el portafolio electrónico. Medisur, 12(2), 334–340."
       },
       {
         categoria: "Evaluación Docente y Modelo 360°",
-        cita: "Pérez, M., González, J., y Castro, L. (2021). Evaluación 360° de las tutorías presenciales y en línea en universidades públicas. Unaciencia: Revista de Estudios e Investigaciones, 14(26), 45–58."
+        cita: "Sifuentes Ocegueda, E., Suárez Flores, M., y Lara González, L. M. (2016). La evaluación de 360° aplicada al personal docente de nivel superior. Revista de Investigación en Tecnologías de la Información, 4(7), 17–23."
       },
       {
         categoria: "Evaluación Docente y Modelo 360°",
-        cita: "Reyes, C., y Díaz, Á. (2020). Metaevaluación del sistema de evaluación docente en una universidad pública. Education Policy Analysis Archives, 28(85), 1–25. https://doi.org/10.14507/epaa.28.5142"
-      },
-      {
-        categoria: "Evaluación Docente y Modelo 360°",
-        cita: "Sifuentes Ocegueda, A. T., Suárez Flores, M., y Lara González, L. M. (2016). La evaluación de 360° aplicada al personal docente de nivel superior. RITI, 4(7), 17–26."
+        cita: "Vázquez Cid de León, C., Domínguez Herrera, J. E., Aguilar Cruz, C., Ramírez Castillo, E. A., y Vázquez Arango, M. de L. (2021). Evaluación 360° de las tutorías presenciales y en línea en universidades públicas. UNACIENCIA: Revista de Estudios e Investigaciones, 14(27), 103–120."
       },
       {
         categoria: "Epistemología y Metodología de Investigación",
-        cita: "Bardin, L. (2002). Análisis de contenido. Ediciones Akal."
+        cita: "Bardin, L. (2002). Análisis de contenido. Akal."
       },
       {
         categoria: "Epistemología y Metodología de Investigación",
-        cita: "De la Garza Toledo, E. (2001). La epistemología crítica y el concepto de configuración: Alternativas a la estructura y al sujeto. Revista Mexicana de Sociología, 63(1), 109–127. https://doi.org/10.2307/3541464"
+        cita: "Bourdieu, P. (2003). El oficio de científico: Ciencia de la ciencia y reflexividad. Anagrama."
+      },
+      {
+        categoria: "Epistemología y Metodología de Investigación",
+        cita: "De la Garza Toledo, E. (2001). La epistemología crítica y el concepto de configuración: Alternativas a la estructura y a la acción. En Los retos de las ciencias sociales en el siglo XXI (pp. 45–68). Plaza y Valdés."
       },
       {
         categoria: "Epistemología y Metodología de Investigación",
@@ -290,15 +302,19 @@ const PRESENTACION_DATA = {
       },
       {
         categoria: "Epistemología y Metodología de Investigación",
-        cita: "Flyvbjerg, B. (2005). Cinco malentendidos acerca de la investigación mediante los estudios de caso. Revista Española de Investigaciones Sociológicas (REIS), (106), 33–62. https://doi.org/10.2307/40184584"
+        cita: "Flyvbjerg, B. (2005). Cinco malentendidos acerca de la investigación mediante los estudios de caso. Revista Española de Investigaciones Sociológicas, 106, 33–62."
       },
       {
         categoria: "Epistemología y Metodología de Investigación",
-        cita: "Giménez, G. (2012). El estatuto metodológico del estudio de caso en las ciencias sociales. Cultura y Representaciones Sociales, 7(13), 33–52."
+        cita: "Giménez, G. (2012). El estatuto metodológico del estudio de caso en la investigación social. Cultura y Representaciones Sociales, 7(13), 33–52."
       },
       {
         categoria: "Epistemología y Metodología de Investigación",
         cita: "Glaser, B. G., y Strauss, A. L. (1967). The discovery of grounded theory: Strategies for qualitative research. Aldine Publishing Company."
+      },
+      {
+        categoria: "Epistemología y Metodología de Investigación",
+        cita: "Guber, R. (2004). El salvaje metropolitano: Reconstrucción del conocimiento social en el trabajo de campo. Paidós."
       },
       {
         categoria: "Epistemología y Metodología de Investigación",
@@ -352,49 +368,49 @@ const PRESENTACION_DATA = {
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // LAS 12 FILMINAS ESTRATÉGICAS — ORDEN DEL TRABAJO PRÁCTICO (ENFOQUE POTENCIAL)
+  // LAS 15 FILMINAS ESTRATÉGICAS — ESTRUCTURA COHERENTE CON EL PROYECTO TFG
   // ═══════════════════════════════════════════════════════════════════════════
   slides: [
     // ─────────────────────────────────────────────────────────────────────────
-    // FILMINA 1: APERTURA PROTOCOLAR (Apartado 1 del TP)
+    // FILMINA 1: APERTURA PROTOCOLAR (Carátula Oficial TFG)
     // ─────────────────────────────────────────────────────────────────────────
     {
       id: "slide_1",
       numero: 1,
       bloque: "APERTURA PROTOCOLAR",
-      esquema: "Carátula Oficial y Presentación del Anteproyecto",
-      badge: "UNCo • CURZAS • Proyecto de TFG",
+      esquema: "Carátula Oficial y Presentación del Proyecto TFG",
+      badge: "UNCo • CURZAS • Res. CD-CURZA N° 266/23",
       titulo: "Evaluación Docente y Factibilidad del Modelo 360°",
-      subtitulo: "Proyecto de Investigación Situado en el Dpto. de Administración Pública (2027)",
+      subtitulo: "Proyecto de Investigación Situado en el Dpto. de Administración Pública del CURZAS-UNCo (2027)",
       puntosClave: [
-        "🎓 <strong>Carrera:</strong> Licenciatura en Gestión de Recursos Humanos (CCC) — CURZAS",
-        "👤 <strong>Tesista:</strong> Tec. Sup. en RRHH Héctor Daniel Ayarachi Fuentes (Legajo 8252)",
-        "🏛️ <strong>Marco Institucional:</strong> Universidad Nacional del Comahue (Viedma y Nodos)",
+        "🎓 <strong>Carrera y Materia:</strong> Licenciatura en Gestión de Recursos Humanos (CCC) — Seminario de Integración y Aplicación (Año 2026)",
+        "👤 <strong>Tesista:</strong> Tec. Sup. en RRHH Héctor Daniel Ayarachi Fuentes (Legajo N° 8252 • DNI N° 35.492.138)",
+        "🏛️ <strong>Institución:</strong> UNCo — CURZAS • Dpto. de Administración Pública (Sede Viedma y 10 Nodos)",
         "👥 <strong>Cátedra SIA:</strong> Dra. Deborah Noguera • Esp. Federico Abeiro • Esp. María Cecilia Aguirre"
       ],
-      metadatosFooter: "Proyecto de TFG • Apartado 1 del TP • Res. CD-CURZAS 266/23 • Tiempo: 15:00 min",
+      metadatosFooter: "Final Proyecto TFG • Carátula Oficial • Res. CD-CURZA N° 266/23 • Tiempo: 15:00 min",
       escena3D: "anim_01",
-      guionOrador: "Muy buenos días, Dra. Deborah Noguera, Esp. Federico Abeiro y Esp. María Cecilia Aguirre.\n\nInicio la defensa formal de mi Proyecto de Trabajo Final de Graduación: 'Evaluación del Desempeño Docente y Factibilidad de Implementación de un Modelo de Retroalimentación 360° en el Departamento de Administración Pública del CURZAS-UNCo (2027)'.\n\n[Pausa de 2 segundos]\n\nComo corresponde a una instancia de anteproyecto previo, esta presentación se orienta a fundamentar la pertinencia, el diseño y la viabilidad de la investigación que proyectamos desarrollar. Siguiendo con total fidelidad la estructura de nuestro Trabajo Práctico de cátedra, la exposición se articula en tres momentos clave: primero, El Problema; segundo, el Estado de la Cuestión y Marco Teórico; y tercero, la Metodología y Viabilidad, ajustándome estrictamente al tiempo pautado de 15 minutos."
+      guionOrador: "Muy buenos días, Dra. Deborah Noguera, Esp. Federico Abeiro y Esp. María Cecilia Aguirre.\n\nInicio la defensa formal de mi Proyecto de Trabajo Final de Graduación: 'Evaluación del Desempeño Docente y Factibilidad de Implementación de un Modelo de Retroalimentación 360° en el Departamento de Administración Pública del CURZAS-UNCo (2027)'.\n\n[Pausa de 2 segundos]\n\nComo proyecto de investigación previo bajo la Resolución CD-CURZA N° 266/23, esta exposición fundamenta la pertinencia, el diseño metodológico y la viabilidad del futuro estudio de campo en 2027. La presentación sigue la arquitectura oficial del documento: Primera Parte (El Problema), Segunda Parte (Marco de Referencia y Estado del Arte), Tercera Parte (Metodología, Ética, Cronograma y Viabilidad), cierre con la estructura del Diseño Final, Agradecimientos y Bibliografía."
     },
 
     // ─────────────────────────────────────────────────────────────────────────
-    // EJE I: PRIMERA PARTE DEL TP — 2-EL PROBLEMA (Apartados 2, 3 y 4)
+    // EJE I: PRIMERA PARTE DEL TFG — EL PROBLEMA
     // ─────────────────────────────────────────────────────────────────────────
     {
       id: "slide_2",
       numero: 2,
-      bloque: "EJE I: 2-EL PROBLEMA",
-      esquema: "Tema de Investigación y Territorio (Apartado 2)",
-      badge: "Eje 1 • Tema y Territorio • Res. 135/2022",
+      bloque: "EJE I: EL PROBLEMA",
+      esquema: "Tema de Investigación, Encuadre Longo y Territorio",
+      badge: "Eje 1 • Tema y Territorio • Res. 196/2022",
       titulo: "Tema de Investigación: El CURZAS y sus 10 Nodos",
-      subtitulo: "Contexto Situado y Nuevas Mediaciones Tecnológicas (Res. CD-CURZA 196/2022)",
+      subtitulo: "Capacidades Estatales en el Dpto. de Administración Pública y Docencia Híbrida (Res. CD-CURZA N° 196/2022)",
       puntosClave: [
-        "🏛️ <strong>Sede Cabecera Viedma:</strong> Conducción académica y órganos de cogobierno en el Valle Inferior.",
-        "🌐 <strong>Red de 10 Nodos:</strong> Costa Atlántica, Noreste y Línea Sur a más de 500 km.",
-        "🤝 <strong>Convenios de Cogestión (Hintze):</strong> Articulación municipal para democratizar el acceso universitario.",
-        "💻 <strong>Docencia Híbrida Emergente:</strong> Entornos Moodle, presencialidad remota y tutorías a distancia."
+        "🏛️ <strong>Sede Central Viedma:</strong> Coordina la Lic. en Administración Pública y el CCC de Lic. en Gestión de RRHH.",
+        "🌐 <strong>Red de 10 Nodos en Río Negro:</strong> Valcheta, Ramos Mexía, Sierra Colorada, Los Menucos, Maquinchao, Ing. Jacobacci, SAO/Las Grutas, Sierra Grande, Gral. Conesa y Río Colorado.",
+        "💻 <strong>Docencia Híbrida (Res. CD-CURZA N° 196/2022):</strong> Aulas Moodle, presencialidad remota sincrónica y tutorías territoriales.",
+        "⚖️ <strong>Marco Regulatorio Vigente:</strong> Estatuto UNCo (Ord. CS N° 0988/2025, Título X), Ord. CS N° 0910/1997 y CCT Docente (Dec. PEN N° 1246/2015)."
       ],
-      metadatosFooter: "Primera Parte del TP • Apartado 2: Tema y Contexto • 10 Nodos Territoriales",
+      metadatosFooter: "Primera Parte • Tema, Encuadre de Longo (2006) y Contexto Institucional/Normativo",
       escena3D: "anim_06",
       diagramaSVG: "assets/red_territorial.svg",
       anexoInteractivo: {
@@ -403,193 +419,191 @@ const PRESENTACION_DATA = {
         etiqueta: "🗺️ Ver Anexo: Maqueta 3D Río Negro",
         atajo: "A"
       },
-      guionOrador: "Comenzando con la Primera Parte del TP: la delimitación del Tema de Investigación y su contexto territorial.\n\n[Énfasis situado]\nNuestro objeto de estudio no se sitúa en un claustro universitario tradicional ni metropolitano. A más de 500 kilómetros de la sede en Viedma, en plena estepa patagónica y en la costa atlántica, docentes del CURZAS sostienen cotidianamente el derecho a la educación superior pública.\n\nFormalizada por la Resolución 135/2022 y bajo convenios de cogestión municipal, la institución cuenta con una red de 10 nodos regionales: desde Valcheta y Ramos Mexía hasta Los Menucos e Ingeniero Jacobacci. A su vez, la Resolución 196/2022 formalizó la docencia híbrida: diseñar aulas Moodle y tutorizar a distancia.\n\n[Pausa de 2 segundos]\n\nAquí radica el punto de partida del proyecto: nos proponemos indagar si los instrumentos vigentes de evaluación docente —pensados para el aula física tradicional— resultan adecuados o si evidencian limitaciones para registrar y retroalimentar este esfuerzo pedagógico situado en el territorio."
+      guionOrador: "Comenzando por la Primera Parte del proyecto: la delimitación del Tema de Investigación en la intersección entre la Administración Pública y la Gestión de Recursos Humanos, bajo el enfoque de Francisco Longo y Oscar Oszlak.\n\n[Énfasis situado]\nNuestro caso se ubica en el Departamento de Administración Pública del CURZAS-UNCo, cuya sede central en Viedma articula cursadas presenciales e híbridas con una Red Territorial de 10 Nodos Universitarios distribuidos en la Costa Atlántica, Valle Medio, Noreste y Línea Sur, formalizados bajo pautas de mediación tecnológica por la Resolución CD-CURZA N° 196/2022.\n\n[Pausa de 2 segundos]\n\nEn el plano regulatorio, la permanencia docente descansa en los informes anuales con encuesta estudiantil (Art. 74 del Estatuto UNCo, Ord. CS 0988/2025) y evaluaciones cuatrienales ante jurados con estudiante evaluador y veeduría gremial (Art. 75), en armonía con la Ordenanza 0910/1997 y el Decreto 1246/2015. Desde este marco se formula nuestro supuesto orientador: indagar si estos instrumentos sumativos dejan un área de vacancia respecto a la retroalimentación formativa y colegiada."
     },
 
     {
       id: "slide_3",
       numero: 3,
-      bloque: "EJE I: 2-EL PROBLEMA",
-      esquema: "Delimitación del Problema y Tensión (Apartado 3)",
-      badge: "Eje 1 • Desnaturalización • Hipótesis",
-      titulo: "Delimitación del Objeto Problema y Tensión Normativa",
-      subtitulo: "De la Rutina Administrativa a la Tensión Estatutaria: Art. 75 (Vacancia) vs. Art. 76 (Capacitación)",
+      bloque: "EJE I: EL PROBLEMA",
+      esquema: "Delimitación del Problema, Dimensiones y Justificación",
+      badge: "Eje 1 • Desnaturalización • 5 Dimensiones",
+      titulo: "Delimitación del Problema y Tensión Art. 75 vs. Art. 76",
+      subtitulo: "Problematización Situada (Wainerman & Sautu, 2011) • Alcance 2027 • 3 Planos de Justificación",
       puntosClave: [
-        "🔍 <strong>Desnaturalización (Wainerman & Sautu):</strong> Problematizar la rutina de la encuesta de fin de cursada.",
-        "⚖️ <strong>Art. 75 Estatuto UNCo (Control Sumativo):</strong> Dos evaluaciones desfavorables causan pérdida del cargo docente.",
-        "🌱 <strong>Art. 76 Estatuto UNCo (Capacitación Continua):</strong> Mandato estatutario de formación pedagógica permanente.",
-        "🔑 <strong>Hipótesis de Trabajo Central:</strong> Se postula que desvincular el 360° del Art. 75 y articularlo al Art. 76 posibilitaría una recepción formativa y no punitiva."
+        "🔍 <strong>Problematización y Tensión Normativa:</strong> El Art. 75 (dos evaluaciones negativas determinan vacancia del cargo) genera prevención docente, mientras el Art. 76 consagra la capacitación docente continua.",
+        "📍 <strong>4 Delimitaciones (SIA):</strong> Conceptual (subsistemas de Longo), Espacial (Viedma + 10 Nodos), Temporal (Mayo–Noviembre 2027) y Poblacional (docentes, estudiantes, conducción y ADUNC).",
+        "📐 <strong>5 Dimensiones de Factibilidad:</strong> Normativa/Estatutaria, Técnica/Instrumental, Organizacional/Procedimental, Cultural/Actitudinal y Gobernanza Multinivel.",
+        "🏛️ <strong>Justificación en 3 Planos:</strong> Disciplinar (capacidades estatales en universidades públicas), Institucional (diagnóstico departamental) y Profesional (síntesis LGRH)."
       ],
-      metadatosFooter: "Primera Parte del TP • Apartado 3: Delimitación del Problema • Hipótesis de Desacoplamiento",
+      metadatosFooter: "Primera Parte • Delimitación del Objeto Problema y Justificación en 3 Planos",
       escena3D: "anim_09",
-      guionOrador: "En el Apartado 3 del TP aplicamos la desnaturalización de Wainerman y Sautu para cuestionar la rutina burocrática de la encuesta cerrada de fin de cursada.\n\n[Contraste de tensión normativa]\nAl examinar el marco regulatorio identificamos una tensión estructural en el Estatuto de la UNCo:\nPor un lado, el Artículo 75 dispone que dos evaluaciones negativas consecutivas causan la vacancia del cargo, lo que comprensiblemente suscita prevención gremial ante instrumentos evaluativos no consensuados.\nPor otro lado, el Artículo 76 prescribe la implementación de programas anuales de capacitación docente.\n\n[Pausa de 2 segundos]\n\n[Hipótesis en modo potencial]\nFrente a esta tensión, nuestro proyecto no pretende imponer soluciones predeterminadas, sino formular una hipótesis de indagación central: se postula que un eventual desacoplamiento de la evaluación 360° respecto del régimen del Artículo 75, articulándola exclusivamente al Artículo 76 con estricto anonimato, podría mitigar la prevención sindical y habilitar un clima de confianza para la autorreflexión docente."
+      guionOrador: "Aplicando la desnaturalización de Wainerman y Sautu, cuestionamos la rutina de reducir la evaluación a un trámite administrativo sumativo.\n\n[Tensión estructural en el Estatuto UNCo]\nMientras el Artículo 75 fija consecuencias de vacancia tras dos evaluaciones cuatrienales negativas consecutivas —generando comprensible cautela docente—, el Artículo 76 ordena articular programas anuales de capacitación pedagógica continua sin contar hoy con diagnósticos formativos situados.\n\n[Pausa de 2 segundos]\n\nDelimitamos el estudio al ciclo 2027 (mayo a noviembre) en Sede Viedma y los 10 Nodos Territoriales, examinando cinco dimensiones de factibilidad: normativa, técnica, organizacional, cultural y de gobernanza multinivel, justificadas en los planos cognitivo-disciplinar, social-institucional y profesional."
     },
 
     {
       id: "slide_4",
       numero: 4,
-      bloque: "EJE I: 2-EL PROBLEMA",
-      esquema: "Pregunta Central y Objetivos del TFG (Apartado 4)",
+      bloque: "EJE I: EL PROBLEMA",
+      esquema: "Pregunta General, Objetivos y Matriz de Consistencia",
       badge: "Eje 1 • Consistencia Metodológica • 2027",
-      titulo: "Pregunta de Investigación y Definición de Objetivos",
-      subtitulo: "Determinación de las Condiciones de Factibilidad en el Ciclo Lectivo 2027",
+      titulo: "Pregunta de Investigación, Objetivos y Consistencia",
+      subtitulo: "Matriz Articulada con los Subsistemas de Longo (2006) — Tabla 1 del TFG",
       puntosClave: [
-        "❓ <strong>Pregunta General:</strong> ¿Cuáles son las condiciones de factibilidad organizacional, técnica, normativa y de gobernanza que se requerirían para implementar el modelo 360° formativo?",
-        "🎯 <strong>Objetivo General:</strong> Determinar las condiciones de factibilidad integral para la eventual adopción del modelo en el Departamento.",
-        "📋 <strong>OE1 (Normativo):</strong> Relevar normas y contrastar prescripción estatutaria vs. prácticas empíricas.",
-        "👥 <strong>OE2 (Cultural):</strong> Explorar percepciones, disposiciones y temores de docentes y estudiantes.",
-        "⚙️ <strong>OE3 (Condicionantes):</strong> Identificar cuellos de botella técnicos, anonimato y diálogo paritario.",
-        "💡 <strong>OE4 (Propositivo):</strong> Formular lineamientos orientativos viables en función de los hallazgos."
+        "❓ <strong>Pregunta General:</strong> ¿Cuáles son las condiciones de factibilidad organizacional, técnica, normativa, cultural y de gobernanza multinivel para implementar un modelo 360° en el Dpto. de Adm. Pública (CURZAS-UNCo, 2027)?",
+        "🎯 <strong>Objetivo General:</strong> Analizar las condiciones de factibilidad organizacional, técnica, normativa, cultural y de gobernanza multinivel para la implementación del modelo multiactoral (360°).",
+        "📋 <strong>OE1 (Normativo) y OE2 (Cultural):</strong> Relevar normas vs. prácticas vigentes; explorar percepciones y confianza institucional de docentes, estudiantes y autoridades.",
+        "⚙️ <strong>OE3 (Condicionantes) y OE4 (Propositivo):</strong> Identificar condicionantes técnicos (incluida coevaluación horizontal en cátedras unipersonales), paritarios y de poligobernanza; y proponer lineamientos orientativos."
       ],
-      metadatosFooter: "Primera Parte del TP • Apartado 4: Objetivos del TFG • Matriz de Consistencia",
+      metadatosFooter: "Primera Parte • Pregunta General, Objetivos (General + 4 Específicos) y Tabla 1 de Consistencia",
       escena3D: "anim_11",
-      guionOrador: "Concluimos la Primera Parte del TP definiendo la matriz de consistencia de la investigación.\n\n[Pausa de 2 segundos]\n\nLa pregunta rectora que se proyecta responder es:\n¿Cuáles son las condiciones de factibilidad organizacional, técnica, normativa y de gobernanza multinivel para la eventual implementación de un modelo 360° en el Departamento de Administración Pública durante 2027?\n\n[La matriz de objetivos en potencial]\nPara responder a este interrogante, el Objetivo General se propone determinar dichas condiciones de factibilidad. Los cuatro objetivos específicos desagregan el plan de indagación: primero, caracterizar la brecha entre la norma formal y la práctica real; segundo, explorar las percepciones y disposiciones subjetivas de la comunidad; tercero, relevar los condicionantes técnicos y de cogobierno paritario; y cuarto, formular lineamientos orientativos viables que puedan servir de insumo a las autoridades universitarias."
+      guionOrador: "Concluimos la Primera Parte con la pregunta rectora y los objetivos de la investigación.\n\nLa pregunta general indaga cuáles son las condiciones de factibilidad organizacional, técnica, normativa, cultural y de gobernanza multinivel para implementar un modelo de retroalimentación 360° en el Departamento durante 2027.\n\n[Objetivos y Matriz de Consistencia]\nEl Objetivo General busca analizar esas cinco condiciones de factibilidad, desagregado en cuatro objetivos específicos:\n1. Caracterizar normas estatutarias frente a prácticas vigentes.\n2. Explorar percepciones, disposiciones y confianza institucional en docentes, estudiantes y autoridades.\n3. Identificar condicionantes técnico-organizacionales —incluyendo la resolución de cátedras unipersonales mediante pares horizontales por tramo curricular— junto a resguardos paritarios y de confidencialidad.\n4. Proponer lineamientos orientativos adaptados al caso."
     },
 
     // ─────────────────────────────────────────────────────────────────────────
-    // EJE II: SEGUNDA PARTE DEL TP — 3-ESTADO DE LA CUESTIÓN Y MARCO TEÓRICO (Apartados 5 y 6)
+    // EJE II: SEGUNDA PARTE DEL TFG — MARCO TEÓRICO Y ESTADO DEL ARTE
     // ─────────────────────────────────────────────────────────────────────────
     {
       id: "slide_5",
       numero: 5,
-      bloque: "EJE II: 3-ESTADO DE LA CUESTIÓN Y MARCO TEÓRICO",
-      esquema: "Antecedentes y Estado del Arte (Apartado 5)",
-      badge: "Eje 2 • Estado de la Cuestión • Vacancia",
-      titulo: "Estado de la Cuestión: Antecedentes y Vacancia",
-      subtitulo: "Relevamiento en Tres Escalas (Internacional, Nacional y Regional) y Justificación del Estudio",
+      bloque: "EJE II: MARCO TEÓRICO Y ESTADO DEL ARTE",
+      esquema: "Marco Teórico: De la Garza Toledo y Modelo de Longo",
+      badge: "Eje 2 • Marco Teórico • Lentes Conceptuales",
+      titulo: "Marco Teórico: Epistemología Abierta y Modelo de Longo",
+      subtitulo: "Configuración Abierta (De la Garza, 2001), Pirámide Invertida (Sautu, 2005) y 5 Subsistemas Focalizados",
       puntosClave: [
-        "🌍 <strong>Escala Internacional (Sifuentes, 2016; Obando, 2014):</strong> Evidencia que la aceptación docente del 360° se supedita al anonimato y al fin formativo.",
-        "🇦🇷 <strong>Escala Nacional (Marquina, 2012; Pérez, 2021):</strong> Advierten sobre la primacía de la investigación sobre la didáctica y la tutoría virtual.",
-        "📍 <strong>Escala Regional (UNCo/CURZAS):</strong> Ausencia de registros de dispositivos sistemáticos de retroalimentación formativa y colegiada.",
-        "🎯 <strong>Vacancia Científica Identificada:</strong> No se registran estudios empíricos sobre factibilidad 360° en universidades públicas cogobernadas con redes patagónicas."
+        "🌐 <strong>Epistemología Crítica (De la Garza Toledo, 2001):</strong> La teoría como configuración abierta para reconstruir el campo de lo institucionalmente viable sin dogmatismos.",
+        "🏛️ <strong>Modelo de Empleo Público (Longo, 2006):</strong> Superar la lógica burocrática hacia mérito, flexibilidad y valor público (7 subsistemas generales, 5 focalizados en este estudio).",
+        "⚙️ <strong>Articulación de 5 Subsistemas Clave:</strong> Gestión del Rendimiento (eje formativo), Desarrollo (Art. 76), Organización del Trabajo (aulas híbridas), Empleo (estabilidad CCT) y Relaciones Humanas (clima y ADUNC).",
+        "💡 <strong>Postulado Central:</strong> Evaluar el rendimiento sin ofrecer vías de perfeccionamiento docente (Desarrollo Art. 76) lo reduce a un trámite burocrático estéril."
       ],
-      metadatosFooter: "Segunda Parte del TP • Apartado 5: Antecedentes y Estado del Arte • Justificación de Vacancia",
-      escena3D: "anim_17",
-      guionOrador: "Ingresamos a la Segunda Parte del TP abordando, en primer lugar, el Apartado 5: los Antecedentes y el Estado del Arte de la Cuestión. Tal como simboliza nuestra escultura del David del Conocimiento en pantalla, examinamos la literatura científica en tres escalas geográficas:\n\n[Escala 1: Internacional]\nEstudios de Sifuentes en México y Obando Freire en Cuba indican que la metodología 360° en universidades puede alcanzar alta aceptación entre los docentes, siempre y cuando se asegure el anonimato estricto y la ausencia total de consecuencias sancionatorias.\n\n[Escala 2: Nacional]\nMarquina y Pérez señalan que en las universidades argentinas los regímenes de carrera suelen descuidar la retroalimentación didáctica y las tutorías virtuales.\n\n[Escala 3: Regional y Vacancia]\nY en el ámbito de la UNCo, constatamos una vacancia empírica sobre este tipo de dispositivos.\n\n[Pausa de 2 segundos]\n\nEsta vacancia no es una debilidad, sino la razón de ser del proyecto: justifica la necesidad de realizar un estudio preliminar riguroso sobre las posibilidades reales de implementación en una universidad patagónica descentralizada."
+      metadatosFooter: "Segunda Parte • Marco Teórico: Posicionamiento Epistemológico y Modelo de Francisco Longo",
+      escena3D: "anim_12",
+      diagramaSVG: "assets/Sistemas-longo.svg",
+      guionOrador: "Ingresamos a la Segunda Parte del Proyecto: el Marco Teórico y el Estado del Arte, siguiendo el orden estricto del documento de TFG y del Diseño de Investigación oficial.\n\nEn el plano epistemológico asumimos con Enrique de la Garza Toledo la teoría como una configuración abierta que permite indagar el campo de posibilidades institucionales sin apriorismos dogmáticos, articulada en pirámide invertida según Ruth Sautu.\n\n[Modelo Sistémico de Francisco Longo]\nComo observamos en el diagrama oficial y la arquitectura 3D de subsistemas, la gestión pública de personas integra siete componentes; en nuestra investigación focalizamos cinco subsistemas interdependientes alrededor de la Gestión del Rendimiento: Desarrollo (capacitación del Art. 76), Organización del Trabajo (especificidad de aulas híbridas y nodos), Empleo (estabilidad bajo CCT) y Relaciones Humanas y Sociales (clima de confianza y concertación paritaria)."
     },
 
     {
       id: "slide_6",
       numero: 6,
-      bloque: "EJE II: 3-ESTADO DE LA CUESTIÓN Y MARCO TEÓRICO",
-      esquema: "Marco Teórico: Epistemología y Longo (Apartado 6)",
-      badge: "Eje 2 • Marco Teórico • Lentes Conceptuales",
-      titulo: "Marco Teórico: Enrique de la Garza y Francisco Longo",
-      subtitulo: "La Teoría como Configuración Abierta y el Enfoque Sistémico de Empleo Público",
+      bloque: "EJE II: MARCO TEÓRICO Y ESTADO DEL ARTE",
+      esquema: "Dispositivo 360°, Poligobernanza, Matus y Oszlak",
+      badge: "Eje 2 • Modelo 360° • Poligobernanza",
+      titulo: "Dispositivo 360° y Poligobernanza Universitaria",
+      subtitulo: "Triangulación Multiactoral, 4 Planos Decisionales (Cao & Blutman), Poder Compartido (Matus) y Oszlak",
       puntosClave: [
-        "🌐 <strong>Configuración Abierta (De la Garza):</strong> La teoría como red conceptual flexible para interrogar la realidad sin imponer dogmatismos.",
-        "🏛️ <strong>Modelo de Empleo Público (Longo, 2006):</strong> Gestión estratégica de personas en el Estado orientada al aprendizaje institucional.",
-        "⚙️ <strong>Interdependencia de 4 Subsistemas:</strong> Rendimiento, Desarrollo (capacitación), Organización del Trabajo (nodos) y Relaciones Humanas (CCT).",
-        "💡 <strong>Axioma Conceptual de Longo:</strong> 'Evaluar el rendimiento sin conectarlo con el desarrollo y la capacitación constituye un ejercicio burocrático estéril'."
+        "🔄 <strong>Modelo 360° Formativo (Lepsinger & Lucia, 2009; Chiavenato, 2020):</strong> 4 miradas (Autoevaluación, Pares —o pares horizontales en cátedras unipersonales—, Estudiantes y Dirección Departamental).",
+        "🗺️ <strong>Poligobernanza en 4 Planos (Aguilar Villanueva, 2006; Cao & Blutman, 2021, 2023):</strong> Macro (CS/Rectorado), Meso (CD CURZAS/Dpto.), Micro (10 Nodos) y Transversal (Paritaria ADUNC).",
+        "🤝 <strong>Poder Compartido y Estado Plataforma (Matus, 1993; Oszlak, 2020):</strong> Viabilidad política concertada en cogobierno y capacidades digitales (Moodle/SIU) sin tecno-vigilancia.",
+        "⚖️ <strong>Precisión Categorial:</strong> Diferenciación analítica entre <em>Claustros</em> (estamentos formales Ley 24.521) y <em>Actores Situados</em> (quienes practican y habitan la enseñanza cotidiana)."
       ],
-      metadatosFooter: "Segunda Parte del TP • Apartado 6: Marco Teórico Sustantivo • De la Garza & Longo",
-      escena3D: "anim_12",
-      diagramaSVG: "assets/Sistemas-longo.svg",
-      guionOrador: "En el Apartado 6 del TP establecemos los lentes conceptuales del estudio.\n\nEpistemológicamente nos situamos en Enrique de la Garza Toledo: asumimos la teoría como una configuración abierta, no como un sistema dogmático cerrado, permitiéndonos interrogar la trama social y deliberativa de la universidad pública sin preconceptos.\n\nEn el plano sustantivo, adoptamos el modelo de Francisco Longo (2006). Como observamos en el diagrama oficial, Longo postula que los subsistemas de recursos humanos operan de manera interdependiente:\n\n[Axioma central de Longo - Énfasis conceptual]\n'Evaluar el rendimiento sin conectarlo con el desarrollo y la capacitación constituye un ejercicio burocrático estéril.'\n\nEste postulado orienta nuestra mirada: en el CURZAS, indagar la factibilidad de evaluar formativamente el rendimiento cobra sentido únicamente si se analiza su potencial conexión con la capacitación (Desarrollo), las exigencias de la docencia en los nodos (Organización del Trabajo) y el marco paritario con ADUNC (Relaciones Humanas)."
+      metadatosFooter: "Segunda Parte • Dispositivo 360°, Poligobernanza, Poder Compartido y Actores Situados",
+      escena3D: "anim_15",
+      diagramaSVG: "assets/modelo_360.svg",
+      guionOrador: "Completando el Marco Teórico, precisamos cómo opera el dispositivo 360 grados propuesto frente al régimen sumativo.\n\nIntegra cuatro fuentes complementarias: autoevaluación reflexiva, coevaluación de pares —resolviendo cátedras unipersonales mediante pares horizontales del mismo tramo curricular—, heteroevaluación estudiantil y apreciación departamental.\n\n[Gobernanza y viabilidad política]\nPara analizar su factibilidad en una universidad argentina cogobernada articulamos cuatro planos de poligobernanza (Cao y Blutman; Aguilar Villanueva): Macro en Consejo Superior, Meso en Consejo Directivo CURZAS, Micro en los 10 Nodos y Transversal con ADUNC. Con Carlos Matus ponderamos la negociación sobre poder compartido; con Oscar Oszlak examinamos el uso de Moodle y SIU para fortalecer capacidades estatales con resguardo anónimo; y distinguimos formalmente entre claustros jurídicos (Ley 24.521) y actores situados concretos."
     },
 
     {
       id: "slide_7",
       numero: 7,
-      bloque: "EJE II: 3-ESTADO DE LA CUESTIÓN Y MARCO TEÓRICO",
-      esquema: "Dispositivo 360° y Poligobernanza (Apartado 6)",
-      badge: "Eje 2 • Triangulación 360° • Matus",
-      titulo: "Dispositivo 360° Formativo y Poligobernanza",
-      subtitulo: "Triangulación en Cuatro Cuadrantes, Poder Compartido (Matus) y Estado Plataforma (Oszlak)",
+      bloque: "EJE II: MARCO TEÓRICO Y ESTADO DEL ARTE",
+      esquema: "Antecedentes Empíricos, Estado del Arte y Vacancia",
+      badge: "Eje 2 • Estado del Arte • 3 Escalas",
+      titulo: "Estado del Arte en Tres Escalas y Vacancia Situada",
+      subtitulo: "Revisión Sistemática (Torraco, 2016; Jiménez Becerra, 2008) y Oportunidad Científica en el CURZAS",
       puntosClave: [
-        "🔄 <strong>Triangulación Multiactoral Propuesta:</strong> Explorar la articulación de 4 miradas: autoevaluación, coevaluación de pares, estudiantes y dirección.",
-        "🤝 <strong>Poder Compartido (Carlos Matus):</strong> La viabilidad no puede decretarse; requiere indagar condiciones de acuerdo y concertación en cogobierno.",
-        "🗺️ <strong>Poligobernanza (Cao & Blutman):</strong> Categoría para analizar la articulación horizontal entre Rectorado, Sede Viedma y Nodos.",
-        "🖥️ <strong>Estado Plataforma (Oscar Oszlak):</strong> Tecnologías digitales (Moodle/SIU) analizadas como soporte técnico con resguardo estricto de anonimato."
+        "🌍 <strong>Escala Internacional (México, Ecuador y Cuba):</strong> Sifuentes Ocegueda et al. (2016), Obando Freire et al. (2014), Hernández-Villafaña y Luna Serrano (2023, n=1.431 UABC: 71,7% usa resultados formativos y rechaza uso salarial) y Vázquez Cid de León et al. (2021, tutorías virtuales).",
+        "🇦🇷 <strong>Escala Nacional (Marquina, 2013):</strong> Diagnóstico de fragmentación académica y primacía de dispositivos sumativos; vacancia empírica sobre modelos 360° en universidades nacionales.",
+        "📍 <strong>Escala Regional (UNCo / CURZAS):</strong> Ord. CS N° 0988/2025 (Arts. 74–76), Ord. CS N° 0910/1997, Dec. 1246/2015 y Res. CD-CURZA N° 196/2022 sin dispositivos colegiados formativos.",
+        "🎯 <strong>Vacancia Empírica Identificada:</strong> Ausencia de estudios sobre factibilidad 360° en una unidad académica pública, cogobernada, patagónica y con docencia híbrida en red."
       ],
-      metadatosFooter: "Segunda Parte del TP • Apartado 6: Conceptos Centrales • Matus, Cao/Blutman & Oszlak",
-      escena3D: "anim_15",
-      diagramaSVG: "assets/modelo_360.svg",
-      guionOrador: "Completando los conceptos centrales del Apartado 6, caracterizamos el dispositivo 360 grados cuya factibilidad se busca indagar.\n\n[La propuesta del modelo]\nFrente a las limitaciones de las encuestas tradicionales, el modelo propone triangular cuatro perspectivas: la autoevaluación reflexiva del docente, la coevaluación entre colegas de cátedra o área, la apreciación estudiantil y la visión departamental, con el propósito hipotético de generar reportes cualitativos orientados a la mejora pedagógica.\n\n[Pausa de 2 segundos]\n\nPara analizar si esta propuesta es viable en el CURZAS, recurrimos a tres autores fundamentales:\nCarlos Matus nos enseña que en organizaciones públicas el poder es compartido: la viabilidad dependerá de la concertación con claustros y con ADUNC.\nHoracio Cao y Gustavo Blutman nos brindan la categoría de poligobernanza para entender la complejidad institucional entre Rectorado y Nodos.\nY Oscar Oszlak aporta criterios para examinar si las plataformas Moodle y SIU podrían albergar el sistema garantizando anonimato técnico sin derivar en tecno-vigilancia."
+      metadatosFooter: "Segunda Parte • Estado del Arte (3 Escalas Geográficas) y Síntesis de Vacancia",
+      escena3D: "anim_17",
+      guionOrador: "Siguiendo el orden del documento final, abordamos el Estado del Arte y la Vacancia de la Investigación en tres escalas jerárquicas (Torraco, 2016; Jiménez Becerra, 2008), simbolizado en pantalla por el Oráculo del Conocimiento.\n\n[Tres escalas]\n1. A nivel internacional destacan Sifuentes et al. (2016) en Nayarit, Obando Freire et al. (2014) en Ecuador y Cuba, Hernández-Villafaña y Luna Serrano (2023) sobre 1.431 docentes en México —donde 71,7% valoró el uso formativo rechazando el punitivo—, y Vázquez Cid de León et al. (2021) sobre tutorías virtuales 360°.\n2. En el plano nacional, Marquina (2013) advierte el peso burocrático-sumativo de la carrera académica, sin registrarse estudios empíricos previos sobre factibilidad 360° en universidades públicas argentinas.\n3. Regionalmente, la normativa UNCo y CURZAS (Ord. 0988/25, Ord. 0910/97, Dec. 1246/15 y Res. 196/22) no contempla circuitos confidenciales formativos, delimitando con claridad nuestra vacancia situada."
     },
 
     // ─────────────────────────────────────────────────────────────────────────
-    // EJE III: TERCERA PARTE DEL TP — 4-METODOLOGÍA (Apartados 7, 8 y 9)
+    // EJE III: TERCERA PARTE DEL TFG — METODOLOGÍA, CRONOGRAMA, ÉTICA Y VIABILIDAD
     // ─────────────────────────────────────────────────────────────────────────
     {
       id: "slide_8",
       numero: 8,
-      bloque: "EJE III: 4-METODOLOGÍA",
-      esquema: "Diseño Metodológico Mixto y Muestra (Apartado 7)",
-      badge: "Eje 3 • Enfoque Mixto CUAL->cuan",
-      titulo: "Estrategia Metodológica Mixta y Muestra Situada",
-      subtitulo: "Estudio de Caso No Experimental, Transversal y Triangulación Metodológica (Ciclo Lectivo 2027)",
+      bloque: "EJE III: METODOLOGÍA Y VIABILIDAD",
+      esquema: "Enfoque Mixto, Población, Muestra e Instrumentos",
+      badge: "Eje 3 • Mixto CUAL→cuan • n=9 + n=45",
+      titulo: "Diseño Metodológico, Población y Muestra Situada",
+      subtitulo: "Estudio de Caso No Experimental Transversal (2027) • Triangulación Normativa, Entrevistas y Sondeo",
       puntosClave: [
-        "🔬 <strong>Enfoque Mixto (CUAL → cuan):</strong> Prioridad cualitativa para profundizar en sentidos y acuerdos políticos, complementada con sondeo descriptivo.",
-        "📍 <strong>Estudio de Caso Situado (Flyvbjerg):</strong> Dpto. de Administración Pública del CURZAS-UNCo (Sede Central Viedma y Nodos).",
-        "🎤 <strong>Muestra Cualitativa Proyectada (8 Entrevistas):</strong> 4 docentes (presenciales y tutores virtuales), 2 directivos, 1 referente gremial de ADUNC y 1 estudiante avanzado.",
-        "📊 <strong>Sondeo Cuantitativo Previsto (45 Respondientes):</strong> Cuestionario digital autoadministrado a 15 docentes y 30 estudiantes (escala Likert)."
+        "🔬 <strong>Diseño y Alcance:</strong> Enfoque mixto CUAL → cuan (Hernández-Sampieri et al., 2014); estudio de caso descriptivo, exploratorio y propositivo (Flyvbjerg, 2005; Giménez, 2012).",
+        "🏫 <strong>Población Estimada (N):</strong> N_doc ≈ 38 docentes (sede y nodos), N_est ≈ 130 estudiantes avanzados (3°-4° LAP y CCC-LGRH) y N_inst = 5 actores de gestión/ADUNC.",
+        "🎤 <strong>Submuestra Cualitativa (n = 9 Informantes Clave):</strong> 4 docentes (saturación teórica, Glaser & Strauss), 2 directivos, 1 paritario ADUNC y 2 estudiantes (1 presencial Viedma + 1 híbrido Nodos).",
+        "📊 <strong>Sondeo Cuantitativo (n = 45) y Técnicas:</strong> 15 docentes (Form. A: 13 Likert + 2 abiertas) y 30 estudiantes (Form. B: 10 Likert + 2 abiertas); análisis de contenido (Bardin, 2002) y triangulación (Denzin, 1978)."
       ],
-      metadatosFooter: "Tercera Parte del TP • Apartado 7: Metodología • Diseño Muestral Preliminar",
+      metadatosFooter: "Tercera Parte • Metodología: Diseño, Población, Muestra (n=9 / n=45) y Técnicas (Anexos I y II)",
       escena3D: "anim_19",
-      guionOrador: "Arribamos a la Tercera Parte del TP: Metodología, Fases y Viabilidad.\n\nEn el Apartado 7 diseñamos un enfoque metodológico mixto con preponderancia cualitativa (CUAL → cuan).\n\n[Fundamentación del diseño]\nConsideramos que este enfoque es el idóneo porque la dimensión cualitativa permitirá profundizar en las percepciones, temores y condiciones de viabilidad gremial, mientras que el sondeo cuantitativo descriptivo aportará una primera aproximación estructurada a las tendencias de aceptación en la comunidad. Se proyecta como un estudio de caso situado no experimental y transversal delimitado al ciclo 2027.\n\n[Muestra preliminar de referencia]\nTratándose del proyecto previo, la muestra se diseñó bajo criterios de rigor y realismo operativo para un investigador individual: se prevén 8 entrevistas a informantes estratégicos —docentes, directivos, gremio ADUNC y estudiantes avanzados— articuladas con un sondeo exploratorio a 45 participantes y análisis documental normativo."
+      guionOrador: "Ingresamos a la Tercera Parte del Proyecto: Metodología, Materiales, Técnicas y Métodos.\n\nDiseñamos una estrategia mixta de predominio cualitativo complementada con un sondeo descriptivo (CUAL → cuan), estructurada como estudio de caso no experimental y transversal para el ciclo 2027.\n\n[Población y Muestra exacta]\nSobre una población de referencia estimada en ~38 docentes, ~130 estudiantes avanzados y 5 actores de conducción y paritaria ADUNC, seleccionamos:\n- Una submuestra cualitativa de 9 informantes clave: 4 docentes (bajo criterio de saturación teórica), 2 autoridades académicas, 1 representante gremial de ADUNC y 2 estudiantes avanzados (uno presencial de Viedma y uno híbrido de Nodos Territoriales).\n- Un sondeo exploratorio a 45 participantes (15 docentes con el Formulario A de 15 ítems y 30 estudiantes con el Formulario B de 12 ítems), excluyendo a quienes participen de la prueba piloto (2 docentes y 5 estudiantes)."
     },
 
     {
       id: "slide_9",
       numero: 9,
-      bloque: "EJE III: 4-METODOLOGÍA",
-      esquema: "Matriz de Operacionalización (Apartado 7)",
-      badge: "Eje 3 • 5 Dimensiones Analíticas",
+      bloque: "EJE III: METODOLOGÍA Y VIABILIDAD",
+      esquema: "Matriz de Operacionalización en 5 Dimensiones (Tabla 2)",
+      badge: "Eje 3 • Tabla 2 • 5 Dimensiones",
       titulo: "Matriz de Operacionalización en Cinco Dimensiones",
-      subtitulo: "Variables, Indicadores Empíricos y Fuentes para Indagar la Factibilidad Integral",
+      subtitulo: "Variables, Definiciones Operacionales, Indicadores Empíricos y Fuentes (Tabla 2 del TFG)",
       puntosClave: [
-        "⚖️ <strong>1. Dimensión Normativa y Estatutaria:</strong> Indagar la compatibilidad estatutaria (Art. 75 vs 76) y la no sumatividad en el marco del CCT.",
-        "💻 <strong>2. Dimensión Técnica e Instrumental:</strong> Evaluar la capacidad de Moodle/SIU para formularios breves con inhabilitación de IPs y logs.",
-        "🏢 <strong>3. Dimensión Organizacional y Procedimental:</strong> Examinar la capacidad departamental para canalizar diagnósticos hacia la capacitación.",
-        "🤝 <strong>4. Dimensión Cultural y Actitudinal:</strong> Auscultar el clima de confianza institucional y la disposición docente a la autorreflexión.",
-        "🗳️ <strong>5. Dimensión Gobernanza Multinivel:</strong> Explorar la viabilidad de acuerdos colegiados en el Consejo Directivo y concertación con ADUNC."
+        "⚖️ <strong>1. Normativa y Estatutaria:</strong> Compatibilidad con Ord. CS 0988/25, Ord. 0910/97 y CCT 1246/15; cláusula de no sumatividad y deslinde de permanencia.",
+        "💻 <strong>2. Técnica e Instrumental:</strong> Accesibilidad Moodle/SIU (<15 min), tokens sin IP, custodia neutral futura, umbral mínimo n ≥ 5 y tope de ≤15 ítems anti-fatiga.",
+        "🏢 <strong>3. Organizacional y Procedimental:</strong> Circuitos de procesamiento en Departamento, plazos de reporte y transferencia de insumos al plan del Art. 76.",
+        "🤝 <strong>4. Cultural y Actitudinal:</strong> Confianza institucional, hábito de autoevaluación, disposición a pares (cátedras afines) y pertinencia del juicio estudiantil.",
+        "🗳️ <strong>5. Gobernanza Multinivel:</strong> Legitimación en Consejo Departamental/Directivo y concertación paritaria previa con ADUNC."
       ],
-      metadatosFooter: "Tercera Parte del TP • Apartado 7: Matriz de Operacionalización • Categorías de Indagación",
+      metadatosFooter: "Tercera Parte • Tabla 2: Matriz de Operacionalización y Criterios Métricos (R / PSPP)",
       escena3D: "anim_20",
-      guionOrador: "Para guiar el futuro trabajo de campo empírico, operacionalizamos la noción de factibilidad en cinco dimensiones analíticas interrelacionadas:\n\n[Las 5 dimensiones como guías de campo]\n1. Dimensión Normativa: indagar la compatibilidad legal estatutaria y la preservación de la estabilidad laboral.\n2. Dimensión Técnica: explorar si las plataformas Moodle y SIU ofrecen condiciones seguras de anonimato técnico y accesibilidad en nodos remotos.\n3. Dimensión Organizacional: relevar la capacidad institucional del Departamento para procesar la información.\n4. Dimensión Cultural: auscultar las actitudes, temores y expectativas del cuerpo docente y estudiantil ante la coevaluación.\n5. Dimensión de Gobernanza: evaluar las condiciones de deliberación y búsqueda de consensos en cogobierno y con la representación paritaria de ADUNC.\n\n[Pausa de 2 segundos]\n\nEsta matriz define las variables, indicadores empíricos y fuentes documentales que se aplicarán en el terreno."
+      guionOrador: "La Tabla 2 del documento operacionaliza la factibilidad en cinco dimensiones analíticas con sus variables, indicadores empíricos e instrumentos:\n\n1. Normativa: articulación jurídica y cláusula estricta de destino formativo.\n2. Técnica: usabilidad de Moodle/SIU, brevedad para mitigar fatiga (máximo 15 reactivos) y regla protectora de umbral mínimo (n mayor o igual a 5 reportes por curso) en un eventual modelo futuro.\n3. Organizacional: capacidad operativa de canalizar demandas hacia la capacitación del Art. 76.\n4. Cultural: confianza institucional, autorreflexión docente y criterio estudiantil.\n5. Gobernanza Multinivel: consensos colegiados y acuerdo paritario con ADUNC.\n\nEn el procesamiento cuantitativo por R/PSPP los reactivos invertidos se recodifican automáticamente (6 menos puntaje) excluyendo NS/NC del promedio."
     },
 
     {
       id: "slide_10",
       numero: 10,
-      bloque: "EJE III: 4-METODOLOGÍA",
-      esquema: "Cronograma y Viabilidad de Recursos (Apartados 8 y 9)",
-      badge: "Eje 3 • Plan 2027 • Costo Cero",
-      titulo: "Fases de Campo, Cronograma (7 Meses) y Viabilidad",
-      subtitulo: "Seis Fases Proyectadas de Ejecución (Mayo a Noviembre 2027) y Recursos Disponibles",
+      bloque: "EJE III: METODOLOGÍA Y VIABILIDAD",
+      esquema: "Cronograma (7 Meses / 6 Fases) y Viabilidad Presupuestaria",
+      badge: "Eje 3 • Mayo–Nov 2027 • $0 CURZAS",
+      titulo: "Cronograma (7 Meses) y Viabilidad de Recursos",
+      subtitulo: "Seis Fases Secuenciales (Tabla 3) • Presupuesto Autofinanciado $160.000 ARS / $0 para CURZAS (Tabla 4)",
       puntosClave: [
-        "🗓️ <strong>Fase 1 (Mes 1 / Mayo):</strong> Tramitación de avales departamentales, contacto institucional y prueba piloto instrumental.",
-        "🗓️ <strong>Fases 2-3 (Meses 2-3 / Jun-Jul):</strong> Relevamiento documental, 8 entrevistas semiestructuradas y aplicación del sondeo digital.",
-        "🗓️ <strong>Fases 4-6 (Meses 4-7 / Ago-Nov):</strong> Triangulación analítica, redacción de lineamientos de TFG, supervisión final y defensa oral.",
-        "💰 <strong>Viabilidad Proyectada (Apartado 9):</strong> Costo presupuestario cero para el CURZAS (100% autofinanciado por el tesista) mediante recursos tecnológicos preexistentes."
+        "🗓️ <strong>Fases 1–3 (May–Jul 2027):</strong> Aval departamental (Anexo III) y prueba piloto (2 doc. + 5 est.) en mayo; relevamiento documental y 9 entrevistas en junio; sondeo (n=45) en jun–jul.",
+        "🗓️ <strong>Fases 4–6 (Ago–Nov 2027):</strong> Triangulación analítica en agosto; formulación de lineamientos y borrador TFG en sep–oct; revisión final y entrega por mesa de entradas en noviembre.",
+        "💰 <strong>Viabilidad Económica (Tabla 4):</strong> Costo presupuestario $0 para el CURZAS; gasto directo estimado de $160.000 ARS (nov. 2026 ajustables por IPC-INDEC) 100% autofinanciado por el tesista (nodos por vía digital/remota).",
+        "🛠️ <strong>Recursos Humanos y Técnicos:</strong> Dedicación 15–20 h/sem del tesista, Director/a de TFG a designar, Moodle/SIU y entorno abierto Docs-as-Code (Quarto/Typst/R/Zotero, $0)."
       ],
-      metadatosFooter: "Tercera Parte del TP • Apartados 8 y 9: Cronograma y Viabilidad de Recursos",
+      metadatosFooter: "Tercera Parte • Tabla 3 (Cronograma Mayo–Nov 2027) y Tabla 4 (Presupuesto Autofinanciado)",
       escena3D: "anim_21",
-      guionOrador: "En los Apartados 8 y 9 del TP fundamentamos la viabilidad temporal y operativa del proyecto.\n\n[Cronograma proyectado]\nEl trabajo de campo se planificó para desarrollarse a lo largo de 7 meses durante 2027, distribuido en seis fases secuenciales: prevé iniciar en mayo con la solicitud de avales académicos y la prueba piloto; en junio se concretarían las entrevistas cualitativas; en julio se aplicaría el cuestionario digital; en agosto se realizaría la triangulación analítica; y entre septiembre y noviembre se redactarían los lineamientos y el informe final.\n\n[Pausa de 2 segundos]\n\n[Viabilidad de recursos en potencial]\nAsimismo, el Apartado 9 acredita la viabilidad del estudio: se estima que la investigación implicará costo presupuestario cero para el CURZAS —asumiéndose con autofinanciamiento propio del tesista—, al apoyarse en la infraestructura tecnológica y las herramientas analíticas de código abierto ya disponibles."
+      guionOrador: "Las Tablas 3 y 4 del Proyecto acreditan su factibilidad operativa y financiera en 2027.\n\n[Cronograma en 6 Fases - 7 Meses]\nSe ejecuta entre mayo y noviembre de 2027: en mayo se gestionan avales (Anexo III) y prueba piloto con 2 docentes y 5 estudiantes; en junio el análisis documental y las 9 entrevistas; entre junio y julio el sondeo digital en Viedma y los 10 Nodos considerando el receso invernal; en agosto la triangulación; en septiembre y octubre la redacción de lineamientos y borrador; y en noviembre la presentación formal por mesa de entradas para el circuito de tribunal.\n\n[Viabilidad Financiera Real]\nImplica costo presupuestario cero para la institución: el presupuesto operativo directo estimado en $160.000 ARS (insumos, conectividad domiciliaria, traslados urbanos en Viedma y encuadernación) es asumido 100% mediante autofinanciamiento del tesista, apoyado en software libre ($0) y relevamiento digital remoto en nodos."
     },
 
     {
       id: "slide_11",
       numero: 11,
-      bloque: "EJE III: 4-METODOLOGÍA",
-      esquema: "Garantías Éticas y Ley 25.326 (Apartado 9 - Ética)",
-      badge: "Eje 3 • Ley Nacional N° 25.326",
-      titulo: "Garantías Éticas, Protección de Datos y No Afectación",
-      subtitulo: "Blindaje Institucional Proyectado para Asegurar la Participación Libre y Segura",
+      bloque: "EJE III: METODOLOGÍA Y VIABILIDAD",
+      esquema: "Reflexividad Metodológica y Consideraciones Éticas",
+      badge: "Eje 3 • Bourdieu/Guber • Ley 25.326",
+      titulo: "Vigilancia Epistemológica, Reflexividad y Ética",
+      subtitulo: "Resguardo ante Doble Pertenencia Institucional y Protocolo Diferenciado (Ley N° 25.326 • Anexo IV)",
       puntosClave: [
-        "🛡️ <strong>Protección de Datos (Ley 25.326):</strong> Protocolo de anonimato técnico, sin registro de direcciones IP, correos ni metadatos.",
-        "🧩 <strong>Mitigación de Deducción Identitaria:</strong> Agrupamiento de variables demográficas en cátedras unipersonales para impedir inferencias.",
-        "📝 <strong>Consentimiento Informado:</strong> Validación voluntaria previa para entrevistas y sondeos, con revocabilidad en cualquier etapa.",
-        "🤝 <strong>Compromiso de No Afectación Laboral:</strong> Los datos se reservarán a fines académicos del TFG, sin acceso para jurados de permanencia ni sumarios."
+        "🔍 <strong>Reflexividad Situada (Bourdieu, 2003; Guber, 2004):</strong> Control explícito de deseabilidad social y asimetrías de rol (tesista alumno/egresado) mediante extrañamiento reflexivo y triangulación.",
+        "🔐 <strong>Sondeo vs. Entrevistas (Ley 25.326):</strong> Anonimato técnico en sondeo (tokens sin IP/correos) vs. confidencialidad y seudonimización (DOC-01, GREM-01) con atribución funcional agregada en entrevistas.",
+        "🛡️ <strong>Deslinde de Custodia y Umbral n ≥ 5:</strong> En el estudio, custodia cifrada del tesista; en un eventual modelo 360° futuro, custodia pedagógica externa a Dirección y bloqueo de reportes con n < 5.",
+        "📝 <strong>Consentimiento Informado y CCT:</strong> Validación voluntaria previa (Anexo IV) y garantía expresa de no afectación laboral bajo el Decreto N° 1246/2015."
       ],
-      metadatosFooter: "Tercera Parte del TP • Criterios Éticos • Ley 25.326 • Tutela Gremial Paritaria",
+      metadatosFooter: "Tercera Parte • Vigilancia Epistemológica, Protocolo Ley 25.326 y Anexos III–IV",
       escena3D: "anim_23",
-      guionOrador: "Para cerrar la Tercera Parte, establecemos el marco ético que regirá la recolección de datos.\n\n[Los tres compromisos éticos proyectados]\nEn primer lugar, bajo las previsiones de la Ley Nacional 25.326 de Protección de Datos Personales, se diseñó un protocolo que garantiza la disociación de identidades, impidiendo el registro de correos electrónicos o direcciones IP.\n\nEn segundo lugar, para cátedras con dotaciones reducidas o unipersonales, se prevé agrupar categorías demográficas para neutralizar cualquier posibilidad de deducción identitaria.\n\n[Pausa de 2 segundos]\n\nY en tercer lugar, se establece el compromiso explícito de no afectación laboral: la información recabada tendrá exclusivo destino científico para este TFG y no podrá formar parte de legajos de permanencia ni expedientes disciplinarios."
+      guionOrador: "Un eje decisivo del documento es la articulación entre reflexividad metodológica y resguardos éticos.\n\nSiguiendo a Pierre Bourdieu y Rosana Guber, asumimos explícitamente la doble condición situada del tesista dentro del CURZAS para controlar riesgos de deseabilidad social o asimetría de rol.\n\n[Protocolo ético diferenciado bajo Ley 25.326]\n1. En el sondeo digital rige anonimato técnico en origen mediante tokens sin IP ni correos.\n2. En las entrevistas rige confidencialidad profesional con códigos seudonimizados y atribución funcional agregada para cargos únicos.\n3. Se deslindan las garantías de este TFG frente al futuro modelo institucional (custodia externa a Dirección y umbral mínimo de 5 respuestas por curso), resguardado por consentimiento informado escrito (Anexo IV) y garantía de no afectación laboral (Decreto 1246/2015)."
     },
 
     // ─────────────────────────────────────────────────────────────────────────
-    // FILMINA 12: CIERRE, PROYECCIONES DE FACTIBILIDAD Y ESPACIO PARA EL TRIBUNAL
+    // FILMINA 12: CIERRE, PROYECCIONES Y ESPACIO PARA EL TRIBUNAL
     // ─────────────────────────────────────────────────────────────────────────
     {
       id: "slide_12",
@@ -598,16 +612,16 @@ const PRESENTACION_DATA = {
       esquema: "Proyecciones de Factibilidad y Apertura al Tribunal",
       badge: "Proyecto de TFG • Hipótesis Abierta",
       titulo: "Proyecciones de la Investigación, Valor Público y Cierre",
-      subtitulo: "Aportes Esperados para el CURZAS-UNCo • Espacio de Intercambio con el Tribunal Evaluador",
+      subtitulo: "Aportes Esperados para el CURZAS-UNCo • Espacio de Intercambio con Cátedra y Tribunal",
       puntosClave: [
-        "🎯 <strong>Hipótesis Central a Contrastar:</strong> Se postula que el modelo 360° resultaría factible si se lograra consensuar su carácter formativo (Art. 76) y el anonimato técnico.",
-        "🔬 <strong>Prudencia Epistemológica:</strong> Al ser un proyecto previo, no se dan conclusiones por sentadas; corresponderá al trabajo de campo en 2027 determinar su viabilidad real.",
-        "🏛️ <strong>Aporte y Valor Público Esperado:</strong> De corroborarse la viabilidad, aportaría evidencia situada propia para fortalecer la docencia híbrida en territorio patagónico.",
-        "💬 <strong>Intercambio con el Tribunal:</strong> Quedo a entera disposición para recibir sus observaciones, críticas constructivas y sugerencias metodológicas."
+        "🎯 <strong>Hipótesis Abierta a Contrastación:</strong> La factibilidad del 360° dependerá de verificar empíricamente el consenso paritario, el deslinde del Art. 75 (Art. 76) y el anonimato técnico.",
+        "🔬 <strong>Prudencia Epistemológica:</strong> Al ser un proyecto de investigación previo, el trabajo de campo en 2027 determinará los alcances y límites reales de viabilidad sin anticipar resultados.",
+        "🏛️ <strong>Valor Público Esperado:</strong> Dotar al Departamento de Administración Pública de lineamientos situados propios para fortalecer la docencia presencial e híbrida en la Patagonia.",
+        "💬 <strong>Espacio de Devolución:</strong> Quedo a entera disposición de la cátedra del SIA para recibir observaciones, sugerencias metodológicas y ajustes previos a la ejecución."
       ],
-      metadatosFooter: "Cierre de Anteproyecto • Límite 15:00 Minutos • Seminario de Integración y Aplicación",
+      metadatosFooter: "Cierre de Proyecto • Tiempo Total: 15:00 Minutos • Seminario de Integración y Aplicación",
       escena3D: "anim_25",
-      guionOrador: "[Cierre en modo potencial - Prudencia epistemológica]\nPara concluir esta exposición, reitero que nos encontramos ante la defensa de un Proyecto de Investigación previo: no partimos de conclusiones cerradas ni damos la viabilidad por sentada.\n\nNuestra hipótesis de trabajo plantea que un dispositivo de retroalimentación 360° podría constituir una alternativa viable y enriquecedora siempre que se logre un desacoplamiento efectivo del régimen sumativo del Artículo 75 y se garantice el anonimato técnico.\n\n[Pausa de 2 segundos]\n\nSerá el trabajo de campo empírico planificado para 2027 el que contraste estas condiciones, identifique los límites reales y determine en qué medida es factible avanzar hacia su adopción en nuestra universidad pública patagónica.\n\nAgradezco profundamente las orientaciones recibidas durante el cursado del SIA por parte de la Dra. Deborah Noguera, el Esp. Federico Abeiro y la Esp. Cecilia Aguirre.\n\nConcluyo en tiempo reglamentario y quedo a entera disposición del tribunal para responder a sus preguntas y recibir sus valiosas sugerencias para seguir perfeccionando este proyecto. Muchas gracias."
+      guionOrador: "[Cierre en modo potencial - Prudencia epistemológica]\nPara cerrar la presentación sustantiva del proyecto, subrayo nuestra prudencia metodológica: no partimos de certezas cerradas ni damos por descontada la viabilidad del modelo 360 grados.\n\nSerá el trabajo de campo planificado para 2027 —con sus 9 entrevistas, 45 cuestionarios y análisis normativo documental— el que contraste en qué medida el deslinde del Artículo 75, la articulación al Artículo 76 y el resguardo técnico generan condiciones reales de viabilidad en el CURZAS.\n\n[Pausa de 2 segundos]\n\nDe verificarse estas condiciones, aspiramos a ofrecer al Departamento de Administración Pública lineamientos situados que enriquezcan la enseñanza en Viedma y en sus 10 Nodos Territoriales. Quedo a entera disposición del equipo docente para recibir sus aportes y sugerencias."
     },
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -620,15 +634,15 @@ const PRESENTACION_DATA = {
       esquema: "Diseño de Investigación Completo (Estructura Informe Final)",
       badge: "Guía Oficial UNCo-CURZAS • Informe Final",
       titulo: "Diseño de Investigación Completo: Estructura del Informe Final",
-      subtitulo: "Modelo Canónico de Cátedra (UNCo-CURZAS) • Cómo Queda Articulado el Documento Definitivo",
+      subtitulo: "Esquema Canónico de Cátedra (UNCo-CURZAS) — Integración Completa en el Documento Definitivo",
       puntosClave: [
-        "🏛️ <strong>Preliminares (Carátula, Título y Área Temática):</strong> Universidad (UNCo-CURZAS), Carrera (Lic. Gestión RRHH / Adm. Pública), Asignatura (SIA), Docentes, Título, Estudiantes, e-mail y Año.",
-        "🧭 <strong>1. Problema (1.1 a 1.4):</strong> Descripción del tema y contexto socioeconómico/histórico, formulación espacial-temporal con pregunta general, objetivos (general y específicos) y justificación.",
-        "📚 <strong>2. Marco de Referencia (2.1 a 2.4):</strong> Marco teórico y esquema conceptual, Estado del Arte, preguntas de investigación derivadas de los objetivos específicos e hipótesis / supuestos.",
-        "🔬 <strong>3. Metodología (3.1 a 3.5):</strong> Tipo de estudio, técnicas e instrumentos de recolección, población/muestra y muestreo, fuentes secundarias y técnicas de análisis de la información.",
-        "📅 <strong>4. Bibliografía (APA) y 5. Cronograma:</strong> Referencias completas bajo Normas APA y plan de trabajo tentativo estructurado considerando un año de plazo."
+        "🏛️ <strong>Preliminares (Carátula, Título y Área Temática):</strong> Universidad (UNCo-CURZAS), Carrera (Lic. Gestión RRHH / Adm. Pública), Asignatura (SIA), Docentes, Título descriptivo, Tesista, e-mail y Año 2026.",
+        "🧭 <strong>1. Problema (1.1 a 1.4):</strong> Tema y contexto socioeconómico/histórico, formulación espacial-temporal (CURZAS 2027) con pregunta general, objetivos (general y específicos) y justificación.",
+        "📚 <strong>2. Marco de Referencia (2.1 a 2.4):</strong> Marco teórico y esquema conceptual (Longo, De la Garza, Poligobernanza), Estado del Arte en 3 escalas, preguntas específicas e hipótesis / supuestos.",
+        "🔬 <strong>3. Metodología (3.1 a 3.5):</strong> Tipo de estudio (mixto CUAL→cuan), técnicas e instrumentos (Anexos I–IV), población (N), muestra (n=9 / n=45), fuentes secundarias y análisis (Bardin / R / Denzin).",
+        "📅 <strong>4. Bibliografía (APA) y 5. Cronograma:</strong> Referencias completas bajo Normas APA 7ª Ed. y plan de trabajo tentativo (articulado dentro del horizonte anual reglamentario en 6 fases)."
       ],
-      metadatosFooter: "Documento Oficial: Diseño de Investigación Completo 2025 • UNCo-CURZAS • Entrega Final",
+      metadatosFooter: "Planilla Oficial: Diseño de Investigación Completo 2025 • UNCo-CURZAS • Correspondencia 1:1 con TFG",
       escena3D: "anim_28",
       anexoInteractivo: {
         archivo: "Material Catedra/Diseño de Investigación completo 2025.pdf",
@@ -636,7 +650,7 @@ const PRESENTACION_DATA = {
         etiqueta: "📄 Ver Planilla Oficial (PDF)",
         atajo: "A"
       },
-      guionOrador: "Antes de los agradecimientos finales, sintetizamos cómo queda ensamblado el Informe Final completo del Diseño de Investigación siguiendo estrictamente la guía oficial de UNCo-CURZAS.\n\nEn los Preliminares se consolidan la Carátula institucional (Universidad, Carrera, Asignatura, docentes, tesista, correo electrónico y año), el Título descriptivo y el Área Temática.\n\nEl cuerpo central articula los cinco capítulos canónicos:\n1. Problema (1.1 contexto socioeconómico e histórico; 1.2 formulación con delimitación espacio-temporal y pregunta general; 1.3 objetivos general y específicos; 1.4 justificación).\n2. Marco de Referencia (2.1 marco teórico y esquema conceptual; 2.2 estado del arte; 2.3 preguntas específicas; 2.4 supuestos e hipótesis).\n3. Metodología (3.1 tipo de estudio; 3.2 técnicas e instrumentos; 3.3 población, muestra y muestreo; 3.4 fuentes secundarias; 3.5 técnicas de análisis).\n\nFinalmente, se cierra con el apartado 4 de Bibliografía completa bajo Normas APA y el apartado 5 de Cronograma con el plan de trabajo proyectado a un año de plazo. Pueden abrir la planilla oficial PDF desde el botón adjunto o con la tecla A."
+      guionOrador: "Antes de los agradecimientos finales, sintetizamos en este cierre cómo todo el contenido defendido queda ensamblado exactamente dentro de la estructura oficial del Diseño de Investigación Completo (UNCo-CURZAS).\n\nEn los Preliminares figuran Carátula reglamentaria, Título y Área Temática.\nLuego los cinco apartados canónicos que acabamos de desarrollar:\n1. Problema (1.1 contexto socioeconómico-institucional; 1.2 formulación espacio-temporal y pregunta general; 1.3 objetivos; 1.4 justificación).\n2. Marco de Referencia (2.1 marco teórico y esquema conceptual; 2.2 estado del arte; 2.3 preguntas derivadas; 2.4 supuestos).\n3. Metodología (3.1 tipo de estudio; 3.2 técnicas e instrumentos de Anexos I y II; 3.3 población y muestra n=9 / n=45; 3.4 fuentes secundarias normativas; 3.5 técnicas de análisis cuali-cuantitativo).\n\nSe completa con 4. Bibliografía en Normas APA y 5. Cronograma proyectado en fases dentro del plazo anual reglamentario. Pueden abrir la guía PDF oficial desde el botón adjunto o presionando la tecla A."
     },
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -669,19 +683,19 @@ const PRESENTACION_DATA = {
       numero: 15,
       bloque: "BIBLIOGRAFÍA",
       esquema: "Bibliografía y Marco Normativo (Sección Final)",
-      badge: "Normas APA 7 • 32 Fuentes",
+      badge: "Normas APA 7 • 33 Fuentes",
       titulo: "Bibliografía y Fuentes de Referencia",
-      subtitulo: "Corpus Teórico, Metodológico, Jurídico e Institucional del Anteproyecto",
+      subtitulo: "Corpus Teórico, Metodológico, Jurídico e Institucional Citado en el Documento TFG",
       puntosClave: [
-        "📚 <strong>Gestión Pública y Capacidades Estatales:</strong> Longo (2006); Matus (1993); Oszlak (2020); Cao y Blutman (2021, 2023); Aguilar Villanueva (2006).",
-        "🔄 <strong>Evaluación Docente y Modelo 360°:</strong> Chiavenato (2020); Lepsinger y Lucia (2009); Sifuentes Ocegueda et al. (2016); Obando Freire et al. (2014); Pérez et al. (2021); Reyes y Díaz (2020); Marquina (2012).",
-        "🔬 <strong>Epistemología y Metodología:</strong> Wainerman y Sautu (2011); Sautu (2005); De la Garza Toledo (2001); Hernández Sampieri et al. (2014); Flyvbjerg (2005); Giménez (2012); Denzin (1978); Bardin (2002); Torraco (2016); Jiménez Becerra (2008).",
-        "📜 <strong>Marco Legal y Normativo UNCo:</strong> Ley N° 24.521; Ley N° 25.326; Decreto N° 1246/2015 (CCT); Ord. CS N° 0988/2025 y 0910/1997; Res. CD-CURZAS N° 135/2022, 196/2022 y 266/2023."
+        "📚 <strong>Gestión Pública y Poligobernanza:</strong> Longo (2004/2006); Matus (1993); Oszlak (2020); Cao y Blutman (2021, 2023); Aguilar Villanueva (2006).",
+        "🔄 <strong>Evaluación Docente y Modelo 360°:</strong> Chiavenato (2020); Lepsinger y Lucia (2009); Sifuentes Ocegueda et al. (2016); Obando Freire et al. (2014); Hernández-Villafaña y Luna Serrano (2023); Vázquez Cid de León et al. (2021); Marquina (2013).",
+        "🔬 <strong>Epistemología, Metodología y Reflexividad:</strong> Wainerman y Sautu (2011); Sautu (2005); De la Garza Toledo (2001); Bourdieu (2003); Guber (2004); Hernández-Sampieri et al. (2014); Flyvbjerg (2005); Giménez (2012); Glaser y Strauss (1967); Denzin (1978); Bardin (2002); Torraco (2016); Jiménez Becerra (2008).",
+        "📜 <strong>Marco Legal y Normativo UNCo:</strong> Ley N° 24.521; Ley N° 25.326; Decreto PEN N° 1246/2015 (CCT); Ord. CS N° 0988/2025 y 0910/1997; Res. CD-CURZA N° 196/2022 y N° 266/2023."
       ],
       metadatosFooter: "Sección de Bibliografía (Normas APA 7ª Ed.) • Trabajo Final de Graduación • CURZAS - UNCo",
       escena3D: "anim_27",
       abrirTabDrawer: "bibliografia",
-      guionOrador: "Como cierre documental de esta presentación, ponemos a disposición del Tribunal la bibliografía y el marco normativo que sustentan el anteproyecto.\n\nEl corpus integra cuatro pilares complementarios: teoría de la gestión pública y el empleo estatal con Longo, Matus, Oszlak y Cao & Blutman; antecedentes de evaluación docente 360 grados con Lepsinger, Chiavenato y experiencias en universidades públicas latinoamericanas; diseño metodológico mixto y estudio de caso con Wainerman, Sautu, Flyvbjerg y Hernández Sampieri; y la base jurídica vigente de la UNCo, el Decreto 1246/2015 y la Ley 25.326.\n\nTodas las citas completas en formato APA 7 pueden consultarse en detalle desde el panel de Respaldo Metodológico en la pestaña Bibliografía."
+      guionOrador: "Como cierre documental de esta presentación, ponemos a disposición las 33 referencias bibliográficas y normativas que sustentan íntegramente el documento del Proyecto de Trabajo Final de Graduación.\n\nEl corpus integra cuatro pilares verificables: gestión pública y poligobernanza (Longo, Matus, Oszlak, Aguilar Villanueva, Cao y Blutman); antecedentes empíricos 360 grados (Lepsinger y Lucia, Chiavenato, Sifuentes Ocegueda et al., Obando Freire et al., Hernández-Villafaña y Luna Serrano, Vázquez Cid de León et al., y Marquina); epistemología, metodología y reflexividad (De la Garza Toledo, Wainerman y Sautu, Bourdieu, Guber, Flyvbjerg, Giménez, Hernández-Sampieri et al., Bardin, Denzin y Glaser & Strauss); y la base jurídica vigente UNCo-CURZAS.\n\nTodas las citas completas en formato APA 7 pueden consultarse en detalle desde la pestaña Bibliografía del panel de Respaldo."
     }
   ]
 };
