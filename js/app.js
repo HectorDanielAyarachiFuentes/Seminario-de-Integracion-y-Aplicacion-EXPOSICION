@@ -79,7 +79,6 @@ class PresentationApp {
       }
     } catch (_) {}
 
-    this.inlinePrezi = window.InlinePreziStage ? new window.InlinePreziStage(this) : null;
     this.renderSlide(initialSlide);
     this.populateDrawerContent();
     this.renderSlidesIndex();
@@ -492,9 +491,6 @@ class PresentationApp {
       } else if (e.key === "?" || (e.shiftKey && e.key === "/")) {
         this.toggleShortcuts();
       } else if (e.key === "Escape") {
-        if (this.inlinePrezi && this.inlinePrezi.mounted && this.inlinePrezi.level > 0) {
-          this.inlinePrezi.stepBack();
-        }
         this.closeDocModal();
         this.closeSvgModal();
         this.toggleNotes(false);
@@ -686,25 +682,15 @@ class PresentationApp {
     }
 
     this.bulletsElement.innerHTML = "";
-    if (this.cardElement) {
-      this.cardElement.classList.toggle("has-inline-prezi", !!slide.preziInline);
-    }
-    if (slide.preziInline && this.inlinePrezi) {
-      this.bulletsElement.hidden = true;
-      this.inlinePrezi.mount(slide.preziInline);
-    } else {
-      this.bulletsElement.hidden = false;
-      if (this.inlinePrezi) this.inlinePrezi.unmount();
-      slide.puntosClave.forEach((punto) => {
-        const li = document.createElement("li");
-        if (punto.indexOf("<") !== -1) {
-          li.innerHTML = punto;
-        } else {
-          li.textContent = punto;
-        }
-        this.bulletsElement.appendChild(li);
-      });
-    }
+    slide.puntosClave.forEach((punto) => {
+      const li = document.createElement("li");
+      if (punto.indexOf("<") !== -1) {
+        li.innerHTML = punto;
+      } else {
+        li.textContent = punto;
+      }
+      this.bulletsElement.appendChild(li);
+    });
 
     if (slide.diagramaSVG || slide.anexoInteractivo || slide.abrirTabDrawer) {
       const actionBox = document.createElement("div");

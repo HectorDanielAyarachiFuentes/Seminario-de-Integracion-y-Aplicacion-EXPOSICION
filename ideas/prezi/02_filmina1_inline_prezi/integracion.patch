@@ -1,0 +1,386 @@
+diff --git a/data/presentacion_data.js b/data/presentacion_data.js
+index ed57054..e68d68e 100644
+--- a/data/presentacion_data.js
++++ b/data/presentacion_data.js
+@@ -480,6 +480,238 @@ const PRESENTACION_DATA = {
+       ],
+       metadatosFooter: "Apertura • Defensa de Proyecto TFG • Res. CD-CURZA N° 266/23",
+       escena3D: "anim_01",
++      preziInline: {
++        master: {
++          eyebrow: "ANTEPROYECTO TFG • SIA 2026",
++          title: "Evaluación Docente 360°",
++          subtitle: "Factibilidad en el Dpto. de Administración Pública • CURZAS–UNCo (2027)",
++          pills: [
++            "Lic. en Gestión de RR.HH. (CCC) • Leg. 8252",
++            "Sede Viedma + 10 Nodos Territoriales"
++          ]
++        },
++        topics: [
++          {
++            id: "encuadre",
++            kicker: "01 · ENCUADRE",
++            title: "Identidad y Cátedra",
++            meta: "4 ejes · Res. 266/23",
++            theme: "apertura",
++            subtopics: [
++              {
++                kicker: "TESISTA Y CARRERA",
++                title: "RR.HH. (CCC) • Leg. 8252",
++                lead: "Tec. Sup. en RRHH Héctor Daniel Ayarachi Fuentes",
++                detail: "Anteproyecto de Trabajo Final de Graduación del Ciclo de Complementación Curricular de la Licenciatura en Gestión de Recursos Humanos (SIA 2026), en Viedma, Río Negro.",
++                tags: ["SIA 2026", "CURZAS–UNCo", "DNI 35.492.138", "Res. CD-CURZA 266/23"]
++              },
++              {
++                kicker: "EQUIPO DE CÁTEDRA",
++                title: "Tribunal y Cátedra SIA",
++                lead: "Seminario de Integración y Aplicación (Defensa 15:00 min)",
++                detail: "Presentación ante la Dra. Deborah Noguera (Docente Responsable) y los docentes de cátedra Esp. Federico Abeiro y Esp. María Cecilia Aguirre bajo modalidad virtual.",
++                tags: ["Dra. Noguera", "Esp. Abeiro", "Esp. Aguirre", "3 Bloques / 15:00 min"]
++              },
++              {
++                kicker: "RECORTE ESPACIAL",
++                title: "Sede Viedma y 10 Nodos",
++                lead: "Dpto. de Administración Pública (LAP y CCC LGRH)",
++                detail: "Abarca la sede cabecera en Viedma y diez nodos territoriales con aulas híbridas en Río Negro (SAO, Sierra Grande, Conesa, Río Colorado y Línea Sur) bajo Res. CD-CURZA N° 196/2022.",
++                tags: ["Viedma", "10 Nodos Híbridos", "Res. 196/2022", "SIED UNCo"],
++                targetSlide: 1,
++                targetLabel: "Ir a Filmina 2 (Territorio) ↗"
++              },
++              {
++                kicker: "HORIZONTE 2027",
++                title: "Proyecto Previo Situado",
++                lead: "Prudencia epistemológica y contraste en campo",
++                detail: "Diseño previo de investigación proyectado para mayo–noviembre de 2027. Las condiciones de factibilidad se enuncian como hipótesis de indagación abiertas a evidencia empírica.",
++                tags: ["Campo 2027", "Mayo–Noviembre", "Sin presuponer viabilidad"]
++              }
++            ]
++          },
++          {
++            id: "bloque1",
++            kicker: "BLOQUE 1",
++            title: "Problematización",
++            meta: "F2–F4 · 3:40 min",
++            theme: "bloque1",
++            subtopics: [
++              {
++                kicker: "MARCO VIGENTE (F2)",
++                title: "Ley 24.521, Estatuto y CCT",
++                lead: "Qué ocurre hoy en las cátedras del Departamento",
++                detail: "Rigen los informes anuales de cátedra con encuesta estudiantil (Art. 74 del Estatuto UNCo Ord. 0988/25 y Ord. 0910/97) y las evaluaciones cuatrienales (Art. 75), bajo tutela del CCT Dec. 1246/2015.",
++                tags: ["Art. 74–75 Estatuto", "Ord. 0910/97", "CCT Dec. 1246/15"],
++                targetSlide: 1,
++                targetLabel: "Ir a Filmina 2 ↗"
++              },
++              {
++                kicker: "TENSIÓN CENTRAL (F3)",
++                title: "Permanencia vs. Formación",
++                lead: "Art. 75 (control/vacancia) vs. Art. 76 (capacitación)",
++                detail: "El problema radica en la primacía de circuitos sumativos de permanencia (pérdida de estabilidad tras dos evaluaciones negativas) frente al derecho y deber estatutario de capacitación continua (Art. 76).",
++                tags: ["Art. 75 vs. Art. 76", "Sesgo sumativo", "Dilema institucional"],
++                targetSlide: 2,
++                targetLabel: "Ir a Filmina 3 ↗"
++              },
++              {
++                kicker: "CONSISTENCIA (F4)",
++                title: "Objetivo General y 5 EE.",
++                lead: "Arquitectura de investigación y supuestos abiertos",
++                detail: "Se indagan 5 dimensiones clave para valorar si es posible implementar devolución multiactoral desacoplada de sanciones punitivas y consensuada en ámbitos colegiados y paritarios.",
++                tags: ["Wainerman y Sautu", "1 OG + 5 OE", "Recorte 2027"],
++                targetSlide: 3,
++                targetLabel: "Ir a Filmina 4 ↗"
++              },
++              {
++                kicker: "5 DIMENSIONES",
++                title: "Mapa Analítico 360°",
++                lead: "Factibilidad integral (no meramente técnica)",
++                detail: "1) Normativa; 2) Técnica e infraestructura (Moodle/SIU); 3) Organizacional; 4) Cultural docente y confianza; 5) Gobernanza multinivel y articulación gremial paritaria.",
++                tags: ["Normativa", "Técnica", "Organizacional", "Cultural", "Gobernanza"],
++                targetSlide: 3,
++                targetLabel: "Ver Objetivos en F4 ↗"
++              }
++            ]
++          },
++          {
++            id: "bloque2",
++            kicker: "BLOQUE 2",
++            title: "Marco y Conceptos",
++            meta: "F5–F7 · 4:00 min",
++            theme: "bloque2",
++            subtopics: [
++              {
++                kicker: "ESTADO DEL ARTE (F5)",
++                title: "Revisión en 3 Escalas",
++                lead: "Búsqueda exploratoria preliminar (Dialnet, SciELO, Redalyc, EPAA, RDI)",
++                detail: "Integra estudios internacionales (Obando Freire 2014; Sifuentes 2016; Hernández-Villafaña 2023 n=1.431; Vázquez Cid 2021), nacionales (Chiroleu 2002; Marquina 2013) y locales en CURZA (Cariaga 2019).",
++                tags: ["Internacional", "Nacional Argentina", "Local CURZA (Cariaga)"],
++                targetSlide: 4,
++                targetLabel: "Ir a Filmina 5 ↗"
++              },
++              {
++                kicker: "VACANCIA SITUADA (F5)",
++                title: "Brecha en Redes Híbridas",
++                lead: "Aporte del diagnóstico patagónico en UNCo",
++                detail: "Los antecedentes verifican aceptación cuando la devolución es formativa (71,7% en UABC), pero no abordan cómo articular un modelo 360° en universidades nacionales con nodos híbridos dispersos.",
++                tags: ["Vacancia preliminar", "SNRD/SEDICI en TFG", "Docencia híbrida"],
++                targetSlide: 4,
++                targetLabel: "Ver Vacancia en F5 ↗"
++              },
++              {
++                kicker: "NÚCLEO FORMATIVO (F6)",
++                title: "Longo, De la Garza y 360°",
++                lead: "Configuración abierta y 4 miradas convergentes",
++                detail: "Integra la gestión pública estratégica de rendimiento/desarrollo (Longo 2006), la teoría como configuración abierta (De la Garza 2001) y las 4 perspectivas 360° (Lepsinger y Lucia) vinculadas al Art. 76.",
++                tags: ["Longo (2006)", "De la Garza (2001)", "4 Miradas Art. 76"],
++                targetSlide: 5,
++                targetLabel: "Ir a Filmina 6 ↗"
++              },
++              {
++                kicker: "GOBERNANZA (F7)",
++                title: "Matus, Oszlak y Poligobernanza",
++                lead: "Viabilidad política en arenas de poder compartido",
++                detail: "La viabilidad requiere negociación en cogobierno y paritarias (Matus 1993), capacidades digitales no punitivas en Estado plataforma (Oszlak 2020) y coordinación multinivel sede-nodos (Cao y Blutman 2023).",
++                tags: ["Matus (PES)", "Oszlak (2020)", "Cao y Blutman (2023)"],
++                targetSlide: 6,
++                targetLabel: "Ir a Filmina 7 ↗"
++              }
++            ]
++          },
++          {
++            id: "bloque3",
++            kicker: "BLOQUE 3",
++            title: "Metodología y Ética",
++            meta: "F8–F11 · 4:50 min",
++            theme: "bloque3",
++            subtopics: [
++              {
++                kicker: "DISEÑO MIXTO (F8)",
++                title: "Caso Único y Vigilancia",
++                lead: "Descriptivo-exploratorio • Triangulación QUAN+QUAL",
++                detail: "Articula corte cuantitativo y cualitativo (Hernández Sampieri) manteniendo vigilancia epistemológica (Bourdieu) y extrañamiento reflexivo (Guber) por la doble pertenencia del tesista al CURZAS.",
++                tags: ["Caso único", "QUAN + QUAL", "Bourdieu y Guber"],
++                targetSlide: 7,
++                targetLabel: "Ir a Filmina 8 ↗"
++              },
++              {
++                kicker: "MATRIZ 5×N (F9)",
++                title: "Operacionalización Empírica",
++                lead: "Traducción de las 5 dimensiones a indicadores verificables",
++                detail: "Cada dimensión (Normativa, Técnica, Organizacional, Cultural y Gobernanza) se desagrega en variables observables e ítems cruzados en encuesta digital, guías de entrevista y grilla documental.",
++                tags: ["5 Dimensiones", "Indicadores", "Fuentes Cruzadas"],
++                targetSlide: 8,
++                targetLabel: "Ir a Filmina 9 ↗"
++              },
++              {
++                kicker: "TÉCNICAS DE CAMPO (F10)",
++                title: "Sondeo, Entrevistas y Docs",
++                lead: "Trabajo de campo estratificado (Viedma y 10 Nodos)",
++                detail: "Sondeo digital censal (~45–60 casos entre docentes y estudiantes), ~10–15 entrevistas semiestructuradas intencionales (autoridades, gremio ADUNC, referentes de nodos) y análisis de contenido (Bardin).",
++                tags: ["Censo digital", "~10–15 entrevistas", "Análisis Bardin"],
++                targetSlide: 9,
++                targetLabel: "Ir a Filmina 10 ↗"
++              },
++              {
++                kicker: "BLINDAJE ÉTICO (F11)",
++                title: "Ley 25.326 y Tutela CCT",
++                lead: "Garantía técnica y normativa de no afectación laboral",
++                detail: "Tokens disociados sin registro de IP ni correos en el sondeo (Ley 25.326), consentimiento informado, seudonimización de transcripciones y garantía paritaria de no injerencia sobre el Art. 75.",
++                tags: ["Sin IP ni correo", "Ley 25.326", "Consentimiento", "CCT 1246/15"],
++                targetSlide: 10,
++                targetLabel: "Ir a Filmina 11 ↗"
++              }
++            ]
++          },
++          {
++            id: "cierre",
++            kicker: "CIERRE",
++            title: "Proyección y Respaldo",
++            meta: "F12–F15 · 1:50 min",
++            theme: "cierre",
++            subtopics: [
++              {
++                kicker: "TRANSFERENCIA (F12)",
++                title: "Aporte Situado al Dpto.",
++                lead: "Insumo diagnóstico para políticas de desarrollo docente",
++                detail: "Generar evidencia local útil para comisiones académicas y paritarias del CURZAS-UNCo sobre condiciones reales de implementación formativa, evitando extrapolaciones mecánicas.",
++                tags: ["Política formativa", "Diagnóstico CURZAS", "Art. 76"],
++                targetSlide: 11,
++                targetLabel: "Ir a Filmina 12 ↗"
++              },
++              {
++                kicker: "LIMITACIONES (F13)",
++                title: "Alcance y Resguardos",
++                lead: "Lo que el proyecto evalúa y lo que no da por supuesto",
++                detail: "El anteproyecto determina condiciones de factibilidad y tensiones previas; no ejecuta aún el sistema 360° ni infiere generalización estadística fuera del Departamento estudiado.",
++                tags: ["Validez interna", "Saturación teórica", "Sin extrapolación"],
++                targetSlide: 12,
++                targetLabel: "Ir a Filmina 13 ↗"
++              },
++              {
++                kicker: "SÍNTESIS FINAL (F14)",
++                title: "Agradecimientos y Cierre",
++                lead: "Institución, familia, cátedra y comunidad CURZAS",
++                detail: "Cierre protocolar de los 15 minutos reglamentarios con espacio abierto para preguntas, intercambios metodológicos y devoluciones del tribunal evaluador.",
++                tags: ["Agradecimientos", "15:00 exactos", "Espacio Tribunal"],
++                targetSlide: 13,
++                targetLabel: "Ir a Filmina 14 ↗"
++              },
++              {
++                kicker: "BIBLIOGRAFÍA (F15)",
++                title: "35 Fuentes Jerarquizadas",
++                lead: "Normas APA 7 ordenadas por bloque e importancia",
++                detail: "Corpus completo articulado con el TFG: normativa universitaria y paritaria, gestión pública y gobernanza, antecedentes empíricos de 3 escalas y bibliografía metodológica.",
++                tags: ["35 Referencias APA 7", "Normativa + Teoría", "Panel Respaldo (M)"],
++                targetSlide: 14,
++                targetLabel: "Ir a Filmina 15 ↗"
++              }
++            ]
++          }
++        ]
++      },
+       guionOrador: "[Saludo y propósito • 0:40 min]\nBuenos días al equipo docente evaluador: Dra. Deborah Noguera, Esp. Federico Abeiro y Esp. María Cecilia Aguirre.\n\nDefiendo mi proyecto de investigación previo bajo Resolución 266/23 sobre la factibilidad de un modelo de retroalimentación docente 360° en el Departamento de Administración Pública del CURZAS para 2027.\n\n[Hoja de ruta]\nOrganizo la exposición en tres bloques: 1) qué problema indagamos; 2) con qué conceptos y antecedentes lo abordamos; y 3) cómo y con qué resguardos haremos el trabajo de campo en 15 minutos exactos."
+     },
+ 
+diff --git a/index.html b/index.html
+index 0948e09..e315f33 100644
+--- a/index.html
++++ b/index.html
+@@ -1,4 +1,4 @@
+-﻿<!DOCTYPE html>
++<!DOCTYPE html>
+ <html lang="es">
+ 
+ <head>
+@@ -51,7 +51,8 @@
+   <link
+     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap"
+     rel="stylesheet">
+-  <link rel="stylesheet" href="css/styles.css?v=6.8">
++  <link rel="stylesheet" href="css/styles.css?v=6.9">
++  <link rel="stylesheet" href="css/prezi.css?v=2.0">
+ </head>
+ 
+ <body>
+@@ -143,6 +144,44 @@
+         </div>
+         <h2 class="slide-title" id="slide-title">Cargando presentación...</h2>
+         <p class="slide-subtitle" id="slide-subtitle">Espere un instante mientras se inicializan los módulos.</p>
++        <div class="slide-prezi-stage" id="slide-prezi-stage" hidden>
++          <div class="slide-prezi-hud">
++            <div class="slide-prezi-crumbs" aria-label="Jerarquía Prezi de la carátula">
++              <button type="button" class="slide-prezi-crumb is-active" id="prezi-inline-crumb-root">Panorama 360°</button>
++              <span class="slide-prezi-sep is-hidden" id="prezi-inline-sep-1">›</span>
++              <button type="button" class="slide-prezi-crumb is-hidden" id="prezi-inline-crumb-topic">Bloque</button>
++              <span class="slide-prezi-sep is-hidden" id="prezi-inline-sep-2">›</span>
++              <button type="button" class="slide-prezi-crumb is-hidden" id="prezi-inline-crumb-sub">Detalle</button>
++            </div>
++            <div class="slide-prezi-controls">
++              <button type="button" class="slide-prezi-btn is-hidden" id="prezi-inline-btn-back" title="Volver al nivel anterior (Achique)">‹ Volver</button>
++              <button type="button" class="slide-prezi-btn" id="prezi-inline-btn-zoom-out" title="Alejar">−</button>
++              <span class="slide-prezi-zoom" id="prezi-inline-zoom-readout">100%</span>
++              <button type="button" class="slide-prezi-btn" id="prezi-inline-btn-zoom-in" title="Acercar">+</button>
++              <button type="button" class="slide-prezi-btn is-accent" id="prezi-inline-btn-overview" title="Encuadrar Vista Amplia">Vista Amplia</button>
++            </div>
++          </div>
++          <div class="slide-prezi-viewport" id="slide-prezi-viewport">
++            <div class="slide-prezi-world" id="slide-prezi-world">
++              <svg class="slide-prezi-svg" id="slide-prezi-svg" viewBox="0 0 1280 840" preserveAspectRatio="none"></svg>
++              <div id="slide-prezi-nodes"></div>
++            </div>
++            <span class="slide-prezi-tip" id="slide-prezi-tip">Clic en cualquier círculo para hacer zoom · Rueda: acercar/alejar · Arrastrar: mover</span>
++            <div class="slide-prezi-detail-lens" id="slide-prezi-detail-lens" hidden>
++              <div class="slide-prezi-detail-card" id="slide-prezi-detail-card">
++                <span class="slide-prezi-detail-badge" id="prezi-detail-badge">DETALLE</span>
++                <h4 class="slide-prezi-detail-title" id="prezi-detail-title"></h4>
++                <p class="slide-prezi-detail-lead" id="prezi-detail-lead"></p>
++                <p class="slide-prezi-detail-body" id="prezi-detail-body"></p>
++                <div class="slide-prezi-detail-tags" id="prezi-detail-tags"></div>
++                <div class="slide-prezi-detail-actions">
++                  <button type="button" class="slide-prezi-btn is-back" id="prezi-detail-btn-back">‹ Volver al Bloque</button>
++                  <button type="button" class="slide-prezi-btn is-jump is-hidden" id="prezi-detail-btn-jump">Ir a Filmina ↗</button>
++                </div>
++              </div>
++            </div>
++          </div>
++        </div>
+         <ul class="slide-bullets" id="slide-bullets"></ul>
+         <footer class="slide-footer-meta" id="slide-footer-meta"></footer>
+       </article>
+@@ -504,7 +543,7 @@
+   <script>window.gsap || document.write('<script src="js/vendor/gsap.min.js"><\/script>');</script>
+   <!-- 3. Base de Datos Externa de Metadatos (12 Filminas Oficiales en 3 Ejes) -->
+   <script src="data/catedra_data.js?v=6.7"></script>
+-  <script src="data/presentacion_data.js?v=7.3"></script>
++  <script src="data/presentacion_data.js?v=7.4"></script>
+   <!-- 4. Módulos de Esculturas 3D y Utilitarios -->
+   <script src="js/objetos/materials.js?v=6.7"></script>
+   <script src="js/objetos/helpers.js?v=6.7"></script>
+@@ -516,8 +555,10 @@
+   <script src="js/objetos/bloque5.js?v=7.3"></script>
+   <!-- 5. Motor Orquestador 3D (Three.js + GSAP) -->
+   <script src="js/scene3d.js?v=6.8"></script>
++  <!-- 5.5. Escenario Prezi Integrado en Carátula -->
++  <script src="js/prezi_map.js?v=2.0"></script>
+   <!-- 6. Controlador de Navegación, Temporizador y Eventos -->
+-  <script src="js/app.js?v=7.3"></script>
++  <script src="js/app.js?v=7.5"></script>
+ 
+ </body>
+ 
+diff --git a/js/app.js b/js/app.js
+index 5d48eaa..98a4d4e 100644
+--- a/js/app.js
++++ b/js/app.js
+@@ -79,6 +79,7 @@ class PresentationApp {
+       }
+     } catch (_) {}
+ 
++    this.inlinePrezi = window.InlinePreziStage ? new window.InlinePreziStage(this) : null;
+     this.renderSlide(initialSlide);
+     this.populateDrawerContent();
+     this.renderSlidesIndex();
+@@ -491,6 +492,9 @@ class PresentationApp {
+       } else if (e.key === "?" || (e.shiftKey && e.key === "/")) {
+         this.toggleShortcuts();
+       } else if (e.key === "Escape") {
++        if (this.inlinePrezi && this.inlinePrezi.mounted && this.inlinePrezi.level > 0) {
++          this.inlinePrezi.stepBack();
++        }
+         this.closeDocModal();
+         this.closeSvgModal();
+         this.toggleNotes(false);
+@@ -682,15 +686,25 @@ class PresentationApp {
+     }
+ 
+     this.bulletsElement.innerHTML = "";
+-    slide.puntosClave.forEach((punto) => {
+-      const li = document.createElement("li");
+-      if (punto.indexOf("<") !== -1) {
+-        li.innerHTML = punto;
+-      } else {
+-        li.textContent = punto;
+-      }
+-      this.bulletsElement.appendChild(li);
+-    });
++    if (this.cardElement) {
++      this.cardElement.classList.toggle("has-inline-prezi", !!slide.preziInline);
++    }
++    if (slide.preziInline && this.inlinePrezi) {
++      this.bulletsElement.hidden = true;
++      this.inlinePrezi.mount(slide.preziInline);
++    } else {
++      this.bulletsElement.hidden = false;
++      if (this.inlinePrezi) this.inlinePrezi.unmount();
++      slide.puntosClave.forEach((punto) => {
++        const li = document.createElement("li");
++        if (punto.indexOf("<") !== -1) {
++          li.innerHTML = punto;
++        } else {
++          li.textContent = punto;
++        }
++        this.bulletsElement.appendChild(li);
++      });
++    }
+ 
+     if (slide.diagramaSVG || slide.anexoInteractivo || slide.abrirTabDrawer) {
+       const actionBox = document.createElement("div");

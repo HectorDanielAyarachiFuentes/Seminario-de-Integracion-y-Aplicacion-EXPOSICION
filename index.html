@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -51,8 +51,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=6.9">
-  <link rel="stylesheet" href="css/prezi.css?v=2.0">
+  <link rel="stylesheet" href="css/styles.css?v=6.8">
 </head>
 
 <body>
@@ -144,44 +143,6 @@
         </div>
         <h2 class="slide-title" id="slide-title">Cargando presentación...</h2>
         <p class="slide-subtitle" id="slide-subtitle">Espere un instante mientras se inicializan los módulos.</p>
-        <div class="slide-prezi-stage" id="slide-prezi-stage" hidden>
-          <div class="slide-prezi-hud">
-            <div class="slide-prezi-crumbs" aria-label="Jerarquía Prezi de la carátula">
-              <button type="button" class="slide-prezi-crumb is-active" id="prezi-inline-crumb-root">Panorama 360°</button>
-              <span class="slide-prezi-sep is-hidden" id="prezi-inline-sep-1">›</span>
-              <button type="button" class="slide-prezi-crumb is-hidden" id="prezi-inline-crumb-topic">Bloque</button>
-              <span class="slide-prezi-sep is-hidden" id="prezi-inline-sep-2">›</span>
-              <button type="button" class="slide-prezi-crumb is-hidden" id="prezi-inline-crumb-sub">Detalle</button>
-            </div>
-            <div class="slide-prezi-controls">
-              <button type="button" class="slide-prezi-btn is-hidden" id="prezi-inline-btn-back" title="Volver al nivel anterior (Achique)">‹ Volver</button>
-              <button type="button" class="slide-prezi-btn" id="prezi-inline-btn-zoom-out" title="Alejar">−</button>
-              <span class="slide-prezi-zoom" id="prezi-inline-zoom-readout">100%</span>
-              <button type="button" class="slide-prezi-btn" id="prezi-inline-btn-zoom-in" title="Acercar">+</button>
-              <button type="button" class="slide-prezi-btn is-accent" id="prezi-inline-btn-overview" title="Encuadrar Vista Amplia">Vista Amplia</button>
-            </div>
-          </div>
-          <div class="slide-prezi-viewport" id="slide-prezi-viewport">
-            <div class="slide-prezi-world" id="slide-prezi-world">
-              <svg class="slide-prezi-svg" id="slide-prezi-svg" viewBox="0 0 1280 840" preserveAspectRatio="none"></svg>
-              <div id="slide-prezi-nodes"></div>
-            </div>
-            <span class="slide-prezi-tip" id="slide-prezi-tip">Clic en cualquier círculo para hacer zoom · Rueda: acercar/alejar · Arrastrar: mover</span>
-            <div class="slide-prezi-detail-lens" id="slide-prezi-detail-lens" hidden>
-              <div class="slide-prezi-detail-card" id="slide-prezi-detail-card">
-                <span class="slide-prezi-detail-badge" id="prezi-detail-badge">DETALLE</span>
-                <h4 class="slide-prezi-detail-title" id="prezi-detail-title"></h4>
-                <p class="slide-prezi-detail-lead" id="prezi-detail-lead"></p>
-                <p class="slide-prezi-detail-body" id="prezi-detail-body"></p>
-                <div class="slide-prezi-detail-tags" id="prezi-detail-tags"></div>
-                <div class="slide-prezi-detail-actions">
-                  <button type="button" class="slide-prezi-btn is-back" id="prezi-detail-btn-back">‹ Volver al Bloque</button>
-                  <button type="button" class="slide-prezi-btn is-jump is-hidden" id="prezi-detail-btn-jump">Ir a Filmina ↗</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         <ul class="slide-bullets" id="slide-bullets"></ul>
         <footer class="slide-footer-meta" id="slide-footer-meta"></footer>
       </article>
@@ -543,7 +504,7 @@
   <script>window.gsap || document.write('<script src="js/vendor/gsap.min.js"><\/script>');</script>
   <!-- 3. Base de Datos Externa de Metadatos (12 Filminas Oficiales en 3 Ejes) -->
   <script src="data/catedra_data.js?v=6.7"></script>
-  <script src="data/presentacion_data.js?v=7.4"></script>
+  <script src="data/presentacion_data.js?v=7.3"></script>
   <!-- 4. Módulos de Esculturas 3D y Utilitarios -->
   <script src="js/objetos/materials.js?v=6.7"></script>
   <script src="js/objetos/helpers.js?v=6.7"></script>
@@ -555,10 +516,8 @@
   <script src="js/objetos/bloque5.js?v=7.3"></script>
   <!-- 5. Motor Orquestador 3D (Three.js + GSAP) -->
   <script src="js/scene3d.js?v=6.8"></script>
-  <!-- 5.5. Escenario Prezi Integrado en Carátula -->
-  <script src="js/prezi_map.js?v=2.0"></script>
   <!-- 6. Controlador de Navegación, Temporizador y Eventos -->
-  <script src="js/app.js?v=7.5"></script>
+  <script src="js/app.js?v=7.3"></script>
 
 </body>
 
