@@ -26,7 +26,7 @@ window.Presentation3D_Objects["anim_21"] = {
     engine.createMuseumPlinth(g, 1.45, 0.22, -1.22);
 
     // Chasis mecanizado con cantoneras de latón
-    const chassis = engine.createMachinedChassis(1.50, 0.10, 1.50, { color: 0x1e293b });
+    const chassis = engine.createMachinedChassis(1.64, 0.10, 1.64, { color: 0x1e293b });
     chassis.position.y = -0.92;
     g.add(chassis);
 
@@ -39,29 +39,29 @@ window.Presentation3D_Objects["anim_21"] = {
       ["6 FASES SECUENCIALES", "DEFENSA ORAL 2027"],
       { theme: "dark" }
     );
-    plaqueMaster.position.set(0, -0.84, 0.74);
+    plaqueMaster.position.set(0, -0.84, 0.81);
     g.add(plaqueMaster);
 
     const group = new THREE.Group();
     group.position.set(0, -0.05, 0);
 
-    // Reloj astronómico de base: anillo graduado de 12 divisiones en el zócalo
-    const dialBase = engine.createGraduatedDial(0.85, {
+    // Reloj astronómico horizontal sobre el chasis (anillo graduado de 12 divisiones)
+    const dialBase = engine.createGraduatedDial(0.68, {
       divisions: 12,
       title: "2027",
       sub: "7 MESES",
       theme: "dark"
     });
-    dialBase.rotation.x = Math.PI / 2;
-    dialBase.position.y = -0.78;
+    dialBase.rotation.x = 0;
+    dialBase.position.y = -0.80;
     group.add(dialBase);
 
-    // Eje central de latón pulido (Gnomon)
+    // Eje central de latón pulido (Gnomon) emergiendo del centro del dial
     const gnomon = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.035, 0.05, 1.55, 16),
+      new THREE.CylinderGeometry(0.032, 0.048, 1.54, 24),
       engine.brassMat(0xd4af37)
     );
-    gnomon.position.y = 0.0;
+    gnomon.position.y = -0.02;
     group.add(gnomon);
 
     // Espiral helicoidal ascendente (inicia a y = -0.55 con radio 0.75, sin colisionar con la base)
@@ -736,6 +736,231 @@ window.Presentation3D_Objects["anim_25"] = {
   animate(engine, t) {
     if (engine.anim25_medal) {
       engine.anim25_medal.rotation.y = Math.sin(t * 0.5) * 0.15;
+    }
+  }
+};
+
+// ──────────────────────────────────────────────────────────────────────────
+// 26. AGRADECIMIENTOS: Monumento de Gratitud Académica (CURZAS • UNCo)
+// ──────────────────────────────────────────────────────────────────────────
+window.Presentation3D_Objects["anim_26"] = {
+  build(engine, g) {
+    engine.createMuseumPlinth(g, 1.55, 0.22, -1.22);
+
+    const baseChassis = engine.createMachinedChassis(1.56, 0.10, 1.18, { color: 0x1e293b });
+    baseChassis.position.y = -0.92;
+    g.add(baseChassis);
+
+    const group = new THREE.Group();
+    group.position.set(0, -0.04, 0);
+
+    // Estela central arquitectónica con placa principal "AGRADECIMIENTOS"
+    const wallSlab = new THREE.Mesh(
+      new THREE.BoxGeometry(1.36, 0.78, 0.075),
+      engine.marbleMat(0xf6f4ee)
+    );
+    wallSlab.position.set(0, -0.18, -0.06);
+    group.add(wallSlab);
+
+    const mainPlaque = engine.createEngravedPlaque(
+      1.24,
+      0.52,
+      "AGRADECIMIENTOS",
+      "CURZAS • Universidad Nacional del Comahue",
+      ["Equipo Docente SIA • Dpto. Administración Pública", "Familia, Pares y Tribunal Evaluador"],
+      { theme: "dark" }
+    );
+    mainPlaque.position.set(0, -0.18, 0.00);
+    group.add(mainPlaque);
+
+    // Dos columnas clásicas flanqueando la estela con coronas armilares giratorias
+    engine.anim26_rings = [];
+    [-0.92, 0.92].forEach((posX, idx) => {
+      const col = engine.createClassicalColumn(0.86, 0.072, 0xcfa346, true);
+      col.position.set(posX, -0.44, -0.05);
+      group.add(col);
+
+      const glassCore = new THREE.Mesh(
+        new THREE.OctahedronGeometry(0.11, 2),
+        engine.glassMat(0xe0f2fe, { opacity: 0.72, roughness: 0.1 })
+      );
+      glassCore.position.set(posX, 0.24, -0.05);
+      group.add(glassCore);
+
+      const ring = new THREE.Mesh(
+        new THREE.TorusGeometry(0.17, 0.011, 18, 64),
+        engine.goldMat(0xe0ba56)
+      );
+      ring.position.set(posX, 0.24, -0.05);
+      ring.rotation.x = idx === 0 ? 0.55 : -0.55;
+      group.add(ring);
+      engine.anim26_rings.push(ring);
+    });
+
+    // Sello UNCo coronando la estela y placa frontal de reconocimiento docente
+    const topSeal = engine.createAcademicSeal(0.18);
+    topSeal.rotation.x = Math.PI / 2;
+    topSeal.position.set(0, 0.34, -0.03);
+    group.add(topSeal);
+
+    const subPlaque = engine.createEngravedPlaque(
+      1.16,
+      0.22,
+      "PROFUNDAMENTE AGRADECIDO",
+      "Dra. Noguera • Esp. Abeiro • Esp. Aguirre",
+      ["Sede Viedma & 10 Nodos Territoriales • TFG 2026"],
+      { theme: "light" }
+    );
+    subPlaque.position.set(0, -0.68, 0.52);
+    subPlaque.rotation.x = -0.32;
+    group.add(subPlaque);
+
+    const titleSprite = engine.createLabelSprite(
+      "AGRADECIMIENTOS",
+      "Reconocimiento Institucional y Humano • CURZAS-UNCo",
+      "#0f2d59",
+      true
+    );
+    titleSprite.position.set(0, 1.24, 0);
+    group.add(titleSprite);
+
+    g.add(group);
+  },
+
+  animate(engine, t) {
+    if (engine.anim26_rings) {
+      engine.anim26_rings.forEach((ring, idx) => {
+        ring.rotation.y = t * (idx === 0 ? 0.65 : -0.65);
+        ring.rotation.z = Math.sin(t * 0.9 + idx) * 0.25;
+      });
+    }
+  }
+};
+
+// ──────────────────────────────────────────────────────────────────────────
+// 27. BIBLIOGRAFÍA: Códice de Fuentes Científicas y Marco Normativo
+// ──────────────────────────────────────────────────────────────────────────
+window.Presentation3D_Objects["anim_27"] = {
+  build(engine, g) {
+    engine.createMuseumPlinth(g, 1.55, 0.22, -1.22);
+
+    const baseRack = engine.createMachinedChassis(1.62, 0.11, 1.18, { color: 0x1e293b });
+    baseRack.position.y = -0.92;
+    g.add(baseRack);
+
+    const group = new THREE.Group();
+    group.position.set(0, -0.04, 0);
+
+    // 5 Volúmenes temáticos en cerámica mate y lomos en latón satinado (las 5 ramas de referencias.bib)
+    const volumes = [
+      { label: "I. NORMATIVA UNCo", col: 0x0f2d59, h: 0.92, t: 0.13 },
+      { label: "II. GESTIÓN PÚBLICA", col: 0x334155, h: 0.86, t: 0.13 },
+      { label: "III. MODELO 360°", col: 0x1e3a8a, h: 0.96, t: 0.14 },
+      { label: "IV. METODOLOGÍA", col: 0x3f6212, h: 0.88, t: 0.13 },
+      { label: "V. ÉTICA Y DATOS", col: 0x7c2d12, h: 0.80, t: 0.12 }
+    ];
+
+    engine.anim27_orbit = new THREE.Group();
+    const startX = -0.52;
+    const stepX = 0.26;
+
+    volumes.forEach((v, idx) => {
+      const volGroup = new THREE.Group();
+      const xPos = startX + idx * stepX;
+      volGroup.position.set(xPos, -0.82 + v.h / 2, -0.06);
+      volGroup.rotation.y = (idx - 2) * 0.05;
+
+      // Bloque de páginas marfil mate
+      const pagesMesh = new THREE.Mesh(
+        new THREE.BoxGeometry(v.t * 0.86, v.h * 0.94, 0.56),
+        engine.marbleMat(0xf6f4ee)
+      );
+      volGroup.add(pagesMesh);
+
+      // Lomo y tapas en tono mate editorial
+      const coverMat = new THREE.MeshStandardMaterial({
+        color: v.col,
+        roughness: 0.56,
+        metalness: 0.12,
+        envMapIntensity: 0.72
+      });
+      const spineMesh = new THREE.Mesh(
+        new THREE.BoxGeometry(v.t, v.h, 0.06),
+        coverMat
+      );
+      spineMesh.position.z = 0.28;
+      volGroup.add(spineMesh);
+
+      [-v.t * 0.45, v.t * 0.45].forEach((cx) => {
+        const sideCover = new THREE.Mesh(
+          new THREE.BoxGeometry(0.018, v.h, 0.58),
+          coverMat
+        );
+        sideCover.position.x = cx;
+        volGroup.add(sideCover);
+      });
+
+      // Filetes dorados en el lomo
+      [-0.24, 0.24].forEach((by) => {
+        const band = new THREE.Mesh(
+          new THREE.BoxGeometry(v.t * 1.03, 0.016, 0.068),
+          engine.brassMat(0xcfa346)
+        );
+        band.position.set(0, v.h * by, 0.28);
+        volGroup.add(band);
+      });
+
+      group.add(volGroup);
+    });
+
+    // Sujetalibros satinados laterales
+    [-0.70, 0.70].forEach((bx) => {
+      const endPlate = new THREE.Mesh(
+        new THREE.BoxGeometry(0.04, 0.44, 0.52),
+        engine.brassMat(0xcfa346)
+      );
+      endPlate.position.set(bx, -0.60, -0.06);
+      group.add(endPlate);
+    });
+
+    // Placa frontal de referencia bibliográfica
+    const bibPlaque = engine.createEngravedPlaque(
+      1.24,
+      0.26,
+      "BIBLIOGRAFÍA Y FUENTES",
+      "Corpus Científico, Estatutario y Metodológico (APA 7)",
+      ["Longo • Matus • Oszlak • Cao & Blutman • Wainerman & Sautu", "Decreto 1246/15 • Ord. 0988/25 • Res. 135 & 196/22"],
+      { theme: "dark" }
+    );
+    bibPlaque.position.set(0, -0.68, 0.56);
+    bibPlaque.rotation.x = -0.32;
+    group.add(bibPlaque);
+
+    // Aro armilar editorial flotando sobre la colección
+    const bibRing = new THREE.Mesh(
+      new THREE.TorusGeometry(0.76, 0.012, 18, 72),
+      engine.brassMat(0xcfa346)
+    );
+    bibRing.rotation.x = Math.PI / 2 - 0.16;
+    engine.anim27_orbit.position.set(0, 0.28, -0.06);
+    engine.anim27_orbit.add(bibRing);
+    group.add(engine.anim27_orbit);
+
+    const titleSprite = engine.createLabelSprite(
+      "BIBLIOGRAFÍA DE REFERENCIA",
+      "32 Fuentes Académicas, Jurídicas e Institucionales • APA 7",
+      "#0f2d59",
+      true
+    );
+    titleSprite.position.set(0, 1.24, 0);
+    group.add(titleSprite);
+
+    g.add(group);
+  },
+
+  animate(engine, t) {
+    if (engine.anim27_orbit) {
+      engine.anim27_orbit.rotation.y = t * 0.35;
     }
   }
 };

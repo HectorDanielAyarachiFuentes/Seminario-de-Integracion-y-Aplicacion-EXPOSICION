@@ -33,5 +33,7 @@ window.Scene3DCameraConfig = {
   anim_22: { pos: [2.2, 1.6, 6.3], lookAt: [1.3, 0.1, 0] },
   anim_23: { pos: [2.1, 1.5, 6.2], lookAt: [1.2, 0.1, 0] },
   anim_24: { pos: [2.4, 1.7, 6.6], lookAt: [1.3, 0.1, 0] },
-  anim_25: { pos: [2.2, 1.5, 6.5], lookAt: [1.3, 0.1, 0] }
+  anim_25: { pos: [2.2, 1.5, 6.5], lookAt: [1.3, 0.1, 0] },
+  anim_26: { pos: [2.25, 1.48, 6.45], lookAt: [1.3, 0.08, 0] }, // Agradecimientos Institucionales
+  anim_27: { pos: [2.30, 1.52, 6.50], lookAt: [1.3, 0.08, 0] }  // Bibliografía y Fuentes
 };

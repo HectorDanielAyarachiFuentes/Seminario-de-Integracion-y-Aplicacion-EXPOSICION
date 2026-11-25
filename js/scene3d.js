@@ -46,10 +46,10 @@ class Presentation3D {
     this.cameraTargets = window.Scene3DCameraConfig || {};
 
     const initialCam = this.cameraTargets.anim_01 || { pos: [2.3, 1.4, 6.8], lookAt: [1.4, 0.2, 0] };
-    this.currentCamPos  = new THREE.Vector3(...initialCam.pos);
-    this.targetCamPos   = new THREE.Vector3(...initialCam.pos);
-    this.currentLookAt  = new THREE.Vector3(...initialCam.lookAt);
-    this.targetLookAt   = new THREE.Vector3(...initialCam.lookAt);
+    this.currentCamPos = new THREE.Vector3(...initialCam.pos);
+    this.targetCamPos = new THREE.Vector3(...initialCam.pos);
+    this.currentLookAt = new THREE.Vector3(...initialCam.lookAt);
+    this.targetLookAt = new THREE.Vector3(...initialCam.lookAt);
 
     // Buffers vectoriales reutilizables para el bucle de render (Zero Garbage Collection)
     this._tmpCamDir = new THREE.Vector3();
@@ -89,9 +89,10 @@ class Presentation3D {
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1.05;
     this.renderer.shadowMap.enabled = true;
-    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    this.renderer.shadowMap.type = THREE.PCFShadowMap; // Respeta shadow.radius para bordes suaves reales
 
-    // Iluminación de museo / galería de esculturas clásicas con luz natural
+    // Iluminación IBL de estudio fotográfico + sombras reales en suelo de galería (Opción A)
+    this.setupStudioEnvironment();
     this.setupMuseumLighting();
 
     // Motes sutiles de polvo dorado de biblioteca bajo la luz del sol
@@ -112,39 +113,112 @@ class Presentation3D {
     this.animate();
   }
 
+  setupStudioEnvironment() {
+    if (!THREE.PMREMGenerator) return;
+    try {
+      const pmrem = new THREE.PMREMGenerator(this.renderer);
+      pmrem.compileEquirectangularShader();
+
+      const envScene = new THREE.Scene();
+      envScene.background = new THREE.Color(0xf3f5f8);
+
+      // Softboxes fotográficas para reflejos IBL satinados en cerámica mate y latón champán
+      const topSoftbox = new THREE.Mesh(
+        new THREE.PlaneGeometry(14, 14),
+        new THREE.MeshBasicMaterial({ color: 0xfffaf0, side: THREE.DoubleSide })
+      );
+      topSoftbox.position.set(0, 7.5, 0);
+      topSoftbox.rotation.x = Math.PI / 2;
+      envScene.add(topSoftbox);
+
+      const keyPanel = new THREE.Mesh(
+        new THREE.PlaneGeometry(9, 7),
+        new THREE.MeshBasicMaterial({ color: 0xffffff, side: THREE.DoubleSide })
+      );
+      keyPanel.position.set(7.5, 3.2, 5.5);
+      keyPanel.lookAt(0, 0, 0);
+      envScene.add(keyPanel);
+
+      const coolFillPanel = new THREE.Mesh(
+        new THREE.PlaneGeometry(10, 7),
+        new THREE.MeshBasicMaterial({ color: 0xdbeafe, side: THREE.DoubleSide })
+      );
+      coolFillPanel.position.set(-8.0, 2.5, 2.0);
+      coolFillPanel.lookAt(0, 0, 0);
+      envScene.add(coolFillPanel);
+
+      const warmRimPanel = new THREE.Mesh(
+        new THREE.PlaneGeometry(8, 5),
+        new THREE.MeshBasicMaterial({ color: 0xfef3c7, side: THREE.DoubleSide })
+      );
+      warmRimPanel.position.set(-1.5, 4.0, -7.5);
+      warmRimPanel.lookAt(0, 0, 0);
+      envScene.add(warmRimPanel);
+
+      const groundBounce = new THREE.Mesh(
+        new THREE.PlaneGeometry(20, 20),
+        new THREE.MeshBasicMaterial({ color: 0x334155, side: THREE.DoubleSide })
+      );
+      groundBounce.position.set(0, -6.0, 0);
+      groundBounce.rotation.x = -Math.PI / 2;
+      envScene.add(groundBounce);
+
+      const envRT = pmrem.fromScene(envScene, 0.04);
+      this.scene.environment = envRT.texture;
+      pmrem.dispose();
+    } catch (err) {
+      console.warn("Entorno IBL omitido:", err);
+    }
+  }
+
   setupMuseumLighting() {
-    // 1. Luz Ambiental suave para contraste PBR profundo
-    const amb = new THREE.AmbientLight(0xffffff, 0.42);
+    // 1. Luz Ambiental y de Hemisferio calibradas para Opción A (cerámica mate cálida)
+    const amb = new THREE.AmbientLight(0xffffff, 0.36);
     this.scene.add(amb);
 
-    // 1b. Luz de Hemisferio para gradiente natural entre cielo cálido y suelo pizarra
-    const hemi = new THREE.HemisphereLight(0xfffbf2, 0x334155, 0.45);
+    const hemi = new THREE.HemisphereLight(0xfffdf8, 0x94a3b8, 0.50);
     this.scene.add(hemi);
 
-    // 2. Lucarna Cenital Principal con sombras suaves
-    const skylight = new THREE.DirectionalLight(0xfff8ee, 1.35);
-    skylight.position.set(4.5, 9.0, 5.5);
+    // 2. Lucarna Cenital Suave (ángulo casi cenital para sombra realista apoyada, no desplazada)
+    const skylight = new THREE.DirectionalLight(0xfff9f0, 1.22);
+    skylight.position.set(1.1, 13.5, 1.8);
     skylight.castShadow = true;
-    skylight.shadow.mapSize.width = 1024;
-    skylight.shadow.mapSize.height = 1024;
+    skylight.shadow.mapSize.set(1024, 1024);
+    skylight.shadow.camera.left = -4.5;
+    skylight.shadow.camera.right = 6.5;
+    skylight.shadow.camera.top = 4.5;
+    skylight.shadow.camera.bottom = -4.5;
+    skylight.shadow.camera.near = 1;
+    skylight.shadow.camera.far = 25;
     skylight.shadow.bias = -0.0002;
-    skylight.shadow.radius = 2.0;
+    skylight.shadow.normalBias = 0.025;
+    skylight.shadow.radius = 7.5; // Penumbra amplia y orgánica sin borde de plataforma
     this.scene.add(skylight);
 
-    // 3. Luz de Relleno Lateral Suave (Elimina sombras duras en el lado sombrío)
-    const fillLight = new THREE.DirectionalLight(0xe0f2fe, 0.55);
+    // 3. Luz de Relleno Lateral Suave y Recorte posterior
+    const fillLight = new THREE.DirectionalLight(0xe0f2fe, 0.46);
     fillLight.position.set(-5, 4, 3);
     this.scene.add(fillLight);
 
-    // 4. Luz de Recorte (Rim Light) posterior para destacar siluetas
-    const rimLight = new THREE.DirectionalLight(0xffedd5, 0.75);
-    rimLight.position.set(-2, 3, -4);
+    const rimLight = new THREE.DirectionalLight(0xfef3c7, 0.68);
+    rimLight.position.set(-2, 3.2, -4.2);
     this.scene.add(rimLight);
 
-    // 5. Foco cálido inferior para realzar relieves dorados y basamentos
-    const bottomLight = new THREE.PointLight(0xffd700, 0.5, 12);
+    // 4. Foco cálido suave para realzar biseles inferiores
+    const bottomLight = new THREE.PointLight(0xe5c16c, 0.34, 12);
     bottomLight.position.set(1.6, -1.5, 3.8);
     this.scene.add(bottomLight);
+
+    // 5. Plano receptor invisible sincronizado dinámicamente bajo el zócalo activo (ShadowMaterial tenue)
+    const floorCatcher = new THREE.Mesh(
+      new THREE.PlaneGeometry(24, 24),
+      new THREE.ShadowMaterial({ color: 0x0f172a, opacity: 0.036 })
+    );
+    floorCatcher.rotation.x = -Math.PI / 2;
+    floorCatcher.position.set(this.baseGroupX, -1.292 * this.baseGroupScale - 0.002, 0);
+    floorCatcher.receiveShadow = true;
+    this.scene.add(floorCatcher);
+    this.floorCatcher = floorCatcher;
   }
 
   createAtmosphericMotes() {
@@ -153,7 +227,7 @@ class Presentation3D {
     const positions = new Float32Array(count * 3);
 
     for (let i = 0; i < count; i++) {
-      positions[i * 3]     = 1.6 + (Math.random() - 0.5) * 4.2;
+      positions[i * 3] = 1.6 + (Math.random() - 0.5) * 4.2;
       positions[i * 3 + 1] = (Math.random() - 0.5) * 3.5;
       positions[i * 3 + 2] = (Math.random() - 0.5) * 3.0;
     }
@@ -270,8 +344,92 @@ class Presentation3D {
     const objDef = window.Presentation3D_Objects?.[id];
     if (objDef && typeof objDef.build === "function") {
       objDef.build(this, group);
+      this.refineSceneGeometry(group);
     }
     return group;
+  }
+
+  /**
+   * Pule automáticamente cantos duros "años 90" en todas las esculturas:
+   * - Reemplaza cajas geométricas secas por cajas con chaflán/bisel suavizado (getRoundedBoxGeo)
+   * - Eleva la teselación de cilindros y aros de bajos segmentos a curvas suaves
+   * - Habilita sombras suaves sobre sólidos opacos manteniendo sprites y micropartículas
+   */
+  refineSceneGeometry(group) {
+    if (!group || typeof this.getRoundedBoxGeo !== "function") return;
+    group.traverse((obj) => {
+      if (!obj.isMesh || !obj.geometry) return;
+      const g = obj.geometry;
+      if (g.userData && g.userData._isRefinedRoundedBox) return;
+
+      const p = g.parameters;
+      const gType = g.type || "";
+
+      const matCheck = obj.material;
+      const hasMappedTexture = Array.isArray(matCheck)
+        ? matCheck.some((m) => Boolean(m && m.map))
+        : Boolean(matCheck && matCheck.map);
+
+      if ((gType === "BoxGeometry" || gType === "BoxBufferGeometry") && p && !hasMappedTexture && !Array.isArray(matCheck)) {
+        const w = p.width;
+        const h = p.height;
+        const d = p.depth;
+        const minDim = Math.min(w, h, d);
+        const maxDim = Math.max(w, h, d);
+        // Solo biselar piezas volumétricas reales (omitir tiras/láseres ultra delgados)
+        if (w > 0 && h > 0 && d > 0 && minDim >= 0.008 && maxDim >= 0.025) {
+          const prevUserData = g.userData;
+          obj.geometry = this.getRoundedBoxGeo(w, h, d);
+          if (prevUserData && obj.geometry.userData) {
+            Object.assign(obj.geometry.userData, prevUserData);
+          }
+        }
+      } else if ((gType === "CylinderGeometry" || gType === "CylinderBufferGeometry") && p) {
+        const radial = p.radialSegments || 8;
+        const theta = p.thetaLength !== undefined ? p.thetaLength : Math.PI * 2;
+        // Suavizar cilindros redondeados (preservando prismas intencionales <= 6 caras)
+        if (radial >= 8 && radial < 44 && Math.abs(theta - Math.PI * 2) < 0.01) {
+          const rTop = p.radiusTop !== undefined ? p.radiusTop : 1;
+          const rBot = p.radiusBottom !== undefined ? p.radiusBottom : 1;
+          const h = p.height !== undefined ? p.height : 1;
+          obj.geometry = new THREE.CylinderGeometry(
+            rTop,
+            rBot,
+            h,
+            48,
+            p.heightSegments || 1,
+            !!p.openEnded
+          );
+        }
+      } else if ((gType === "TorusGeometry" || gType === "TorusBufferGeometry") && p) {
+        const tubSeg = p.tubularSegments || 8;
+        if (tubSeg < 48 && Math.abs((p.arc !== undefined ? p.arc : Math.PI * 2) - Math.PI * 2) < 0.01) {
+          obj.geometry = new THREE.TorusGeometry(
+            p.radius,
+            p.tube,
+            Math.max(18, p.radialSegments || 12),
+            64
+          );
+        }
+      }
+
+      const mat = Array.isArray(obj.material) ? obj.material[0] : obj.material;
+      if (mat && !mat.transparent) {
+        g.computeBoundingBox?.();
+        const box = g.boundingBox;
+        if (box) {
+          const sz = Math.max(
+            box.max.x - box.min.x,
+            box.max.y - box.min.y,
+            box.max.z - box.min.z
+          );
+          if (sz >= 0.04) {
+            obj.castShadow = true;
+            obj.receiveShadow = true;
+          }
+        }
+      }
+    });
   }
 
   /**
@@ -379,7 +537,7 @@ class Presentation3D {
       this.dragButton = e.button;
       this.previousPointerPos = { x: e.clientX, y: e.clientY };
       this.canvas.style.cursor = "grabbing";
-      try { this.canvas.setPointerCapture(e.pointerId); } catch (_) {}
+      try { this.canvas.setPointerCapture(e.pointerId); } catch (_) { }
     });
 
     window.addEventListener("pointermove", (e) => {
@@ -404,7 +562,7 @@ class Presentation3D {
       if (this.isDragging) {
         this.isDragging = false;
         this.canvas.style.cursor = "grab";
-        try { if (e && e.pointerId) this.canvas.releasePointerCapture(e.pointerId); } catch (_) {}
+        try { if (e && e.pointerId) this.canvas.releasePointerCapture(e.pointerId); } catch (_) { }
       }
     };
     window.addEventListener("pointerup", stopDrag);
@@ -510,9 +668,9 @@ class Presentation3D {
     this.resetUserControls();
 
     const isForward = direction >= 0;
-    const exitDuration  = isRapid ? 0.22 : (isForward ? 0.92 : 0.70);
+    const exitDuration = isRapid ? 0.22 : (isForward ? 0.92 : 0.70);
     const enterDuration = isRapid ? 0.28 : 0.96;
-    const camDuration   = isRapid ? 0.35 : 1.05;
+    const camDuration = isRapid ? 0.35 : 1.05;
 
     // 2. Interpolación de Cámara Cinemática al nuevo ángulo canónico
     const camTarget = this.cameraTargets[targetId] || { pos: [2.3, 1.4, 6.8], lookAt: [1.4, 0.2, 0] };
@@ -569,27 +727,27 @@ class Presentation3D {
 
       const exitTarget = isForward
         ? {
-            x: prevPanX - 1.25,
-            y: prevPanY + 0.42,
-            z: -24.0,
-            scale: 0.16,
-            rotX: prevRotX * 0.25,
-            rotY: prevRotY - 0.36,
-            opacity: 0,
-            duration: exitDuration,
-            ease: "power2.inOut"
-          }
+          x: prevPanX - 1.25,
+          y: prevPanY + 0.42,
+          z: -24.0,
+          scale: 0.16,
+          rotX: prevRotX * 0.25,
+          rotY: prevRotY - 0.36,
+          opacity: 0,
+          duration: exitDuration,
+          ease: "power2.inOut"
+        }
         : {
-            x: prevPanX + 1.85,
-            y: prevPanY - 0.18,
-            z: 2.8,
-            scale: 0.88,
-            rotX: prevRotX * 0.5,
-            rotY: prevRotY + 0.28,
-            opacity: 0,
-            duration: exitDuration,
-            ease: "power2.in"
-          };
+          x: prevPanX + 1.85,
+          y: prevPanY - 0.18,
+          z: 2.8,
+          scale: 0.88,
+          rotX: prevRotX * 0.5,
+          rotY: prevRotY + 0.28,
+          opacity: 0,
+          duration: exitDuration,
+          ease: "power2.in"
+        };
 
       gsap.to(this.transitionState.exitOffset, {
         ...exitTarget,
@@ -669,11 +827,11 @@ class Presentation3D {
     if (document.hidden) return;
 
     const dt = Math.min(this.clock.getDelta(), 0.05);
-    const t  = this.clock.getElapsedTime();
+    const t = this.clock.getElapsedTime();
 
     // Lerp adaptativo e independiente de la tasa de refresco (60Hz, 120Hz, 144Hz)
     const smoothFactor = 1 - Math.exp(-14 * dt);
-    const userFactor   = 1 - Math.exp(-12 * dt);
+    const userFactor = 1 - Math.exp(-12 * dt);
 
     // 1. Amortiguación e interpolación suave (Lerp) de las órdenes del usuario
     this.userRotation.x += (this.targetUserRotation.x - this.userRotation.x) * userFactor;
@@ -723,8 +881,18 @@ class Presentation3D {
       activeGroup.rotation.y = this.userRotation.y + enter.rotY;
       activeGroup.rotation.x = this.userRotation.x;
       const baseScale = enter.scale !== undefined ? enter.scale : 1;
-      activeGroup.scale.setScalar(baseScale * scaleMult * baseScaleMult);
+      const effectiveScale = baseScale * scaleMult * baseScaleMult;
+      activeGroup.scale.setScalar(effectiveScale);
       this.applyGroupOpacity(activeGroup, enter.opacity !== undefined ? enter.opacity : 1);
+
+      if (this.floorCatcher) {
+        this.floorCatcher.visible = effectiveScale > 0.12;
+        this.floorCatcher.position.set(
+          activeGroup.position.x,
+          activeGroup.position.y - 1.292 * effectiveScale - 0.002,
+          activeGroup.position.z
+        );
+      }
     }
 
     // 4b. Escultura saliente alejándose suavemente en profundidad (sin salto de escala)

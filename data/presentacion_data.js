@@ -217,6 +217,137 @@ const PRESENTACION_DATA = {
         pregunta: "¿Cuál es el aporte esperado que este TFG busca brindar al CURZAS?",
         respuesta: "Brindar evidencia empírica rigurosa y un diagnóstico de factibilidad situado en la Patagonia, permitiendo a las autoridades universitarias tomar decisiones fundamentadas sobre políticas de desarrollo docente sin importar recetas prefabricadas."
       }
+    ],
+
+    bibliografia: [
+      {
+        categoria: "Gestión Pública, Talento y Políticas Estatales",
+        cita: "Aguilar Villanueva, L. F. (2006). Gobernanza y gestión pública. Fondo de Cultura Económica."
+      },
+      {
+        categoria: "Gestión Pública, Talento y Políticas Estatales",
+        cita: "Cao, H., y Blutman, G. (2021). Escenarios prospectivos para el Estado y la administración pública argentina: El modelo de la poligobernanza y las transformaciones tecnológicas. Instituto Nacional de la Administración Pública (INAP)."
+      },
+      {
+        categoria: "Gestión Pública, Talento y Políticas Estatales",
+        cita: "Cao, H., y Blutman, G. (2023). Escenarios futuros para el Estado y la Administración Pública. Colección, 34(1), 143–176. https://doi.org/10.46553/colec.34.2023.p143-176"
+      },
+      {
+        categoria: "Gestión Pública, Talento y Políticas Estatales",
+        cita: "Chiavenato, I. (2020). Gestión del talento humano: El nuevo papel de los recursos humanos en las organizaciones (5.ª ed.). McGraw-Hill Interamericana."
+      },
+      {
+        categoria: "Gestión Pública, Talento y Políticas Estatales",
+        cita: "Longo, F. (2006). Mérito y flexibilidad: La gestión de las personas en las organizaciones del sector público. Paidós."
+      },
+      {
+        categoria: "Gestión Pública, Talento y Políticas Estatales",
+        cita: "Matus, C. (1993). Política, planificación y gobierno. Fundación ALTADIR."
+      },
+      {
+        categoria: "Gestión Pública, Talento y Políticas Estatales",
+        cita: "Oszlak, O. (2020). El Estado en la era exponencial. Instituto Nacional de la Administración Pública."
+      },
+      {
+        categoria: "Evaluación Docente y Modelo 360°",
+        cita: "Alvarado, M., y Morales, R. (2019). Propuesta de evaluación del desempeño docente utilizando la metodología de 360º en educación superior pública. Universidad Nacional Autónoma de México (UNAM)."
+      },
+      {
+        categoria: "Evaluación Docente y Modelo 360°",
+        cita: "Lepsinger, R., y Lucia, A. D. (2009). The art and science of 360 degree feedback (2.ª ed.). Pfeiffer."
+      },
+      {
+        categoria: "Evaluación Docente y Modelo 360°",
+        cita: "Marquina, M. (2012). ¿Hay un nuevo modelo de profesión académica en Argentina? Debates y tendencias en la universidad pública. Pensamiento Universitario, 15(15), 35–48."
+      },
+      {
+        categoria: "Evaluación Docente y Modelo 360°",
+        cita: "Obando Freire, F., López Fernández, R., Luna Álvarez, D., Luna Álvarez, E., Luna Álvarez, W., y Alpizar Fernández, R. (2014). Sistema de evaluación docente mediante el modelo 360 grados y el portafolio electrónico. Medisur, 12(1), 334–339."
+      },
+      {
+        categoria: "Evaluación Docente y Modelo 360°",
+        cita: "Pérez, M., González, J., y Castro, L. (2021). Evaluación 360° de las tutorías presenciales y en línea en universidades públicas. Unaciencia: Revista de Estudios e Investigaciones, 14(26), 45–58."
+      },
+      {
+        categoria: "Evaluación Docente y Modelo 360°",
+        cita: "Reyes, C., y Díaz, Á. (2020). Metaevaluación del sistema de evaluación docente en una universidad pública. Education Policy Analysis Archives, 28(85), 1–25. https://doi.org/10.14507/epaa.28.5142"
+      },
+      {
+        categoria: "Evaluación Docente y Modelo 360°",
+        cita: "Sifuentes Ocegueda, A. T., Suárez Flores, M., y Lara González, L. M. (2016). La evaluación de 360° aplicada al personal docente de nivel superior. RITI, 4(7), 17–26."
+      },
+      {
+        categoria: "Epistemología y Metodología de Investigación",
+        cita: "Bardin, L. (2002). Análisis de contenido. Ediciones Akal."
+      },
+      {
+        categoria: "Epistemología y Metodología de Investigación",
+        cita: "De la Garza Toledo, E. (2001). La epistemología crítica y el concepto de configuración: Alternativas a la estructura y al sujeto. Revista Mexicana de Sociología, 63(1), 109–127. https://doi.org/10.2307/3541464"
+      },
+      {
+        categoria: "Epistemología y Metodología de Investigación",
+        cita: "Denzin, N. K. (1978). The research act: A theoretical introduction to sociological methods (2.ª ed.). McGraw-Hill."
+      },
+      {
+        categoria: "Epistemología y Metodología de Investigación",
+        cita: "Flyvbjerg, B. (2005). Cinco malentendidos acerca de la investigación mediante los estudios de caso. Revista Española de Investigaciones Sociológicas (REIS), (106), 33–62. https://doi.org/10.2307/40184584"
+      },
+      {
+        categoria: "Epistemología y Metodología de Investigación",
+        cita: "Giménez, G. (2012). El estatuto metodológico del estudio de caso en las ciencias sociales. Cultura y Representaciones Sociales, 7(13), 33–52."
+      },
+      {
+        categoria: "Epistemología y Metodología de Investigación",
+        cita: "Glaser, B. G., y Strauss, A. L. (1967). The discovery of grounded theory: Strategies for qualitative research. Aldine Publishing Company."
+      },
+      {
+        categoria: "Epistemología y Metodología de Investigación",
+        cita: "Hernández Sampieri, R., Fernández Collado, C., y Baptista Lucio, M. P. (2014). Metodología de la investigación (6.ª ed.). McGraw-Hill Interamericana."
+      },
+      {
+        categoria: "Epistemología y Metodología de Investigación",
+        cita: "Jiménez Becerra, A. (2008). El estado del arte y la investigación de la investigación: Reflexiones metodológicas. En La práctica investigativa en ciencias sociales (pp. 27–42). UPN / CLACSO."
+      },
+      {
+        categoria: "Epistemología y Metodología de Investigación",
+        cita: "Sautu, R. (2005). Todo es teoría: Objetivos y métodos de investigación. Lumiere."
+      },
+      {
+        categoria: "Epistemología y Metodología de Investigación",
+        cita: "Torraco, R. J. (2016). Writing integrative literature reviews: Using the past and present to explore the future. Human Resource Development Review, 15(4), 404–428. https://doi.org/10.1177/1534484316671606"
+      },
+      {
+        categoria: "Epistemología y Metodología de Investigación",
+        cita: "Wainerman, C., y Sautu, R. (2011). La trastienda de la investigación (4.ª ed.). Manantial."
+      },
+      {
+        categoria: "Marco Legal, Estatutario e Institucional",
+        cita: "Congreso de la Nación Argentina. (2000). Ley N° 25.326: Protección de los Datos Personales. Boletín Oficial de la República Argentina."
+      },
+      {
+        categoria: "Marco Legal, Estatutario e Institucional",
+        cita: "Ministerio de Educación. (1995). Ley N° 24.521 de Educación Superior. Boletín Oficial de la República Argentina."
+      },
+      {
+        categoria: "Marco Legal, Estatutario e Institucional",
+        cita: "Poder Ejecutivo Nacional. (2015). Decreto N° 1246/2015: Convenio Colectivo de Trabajo para los Docentes de las Instituciones Universitarias Nacionales. Boletín Oficial."
+      },
+      {
+        categoria: "Marco Legal, Estatutario e Institucional",
+        cita: "Universidad Nacional del Comahue. (1997). Ordenanza CS N° 0910/1997: Reglamento de Carrera Docente (texto ordenado a Ord. CS N° 0887/2021). Consejo Superior."
+      },
+      {
+        categoria: "Marco Legal, Estatutario e Institucional",
+        cita: "Universidad Nacional del Comahue. (2025). Ordenanza CS N° 0988/2025: Texto ordenado del Estatuto UNCo (Título X: De la Carrera Docente). Asamblea Universitaria."
+      },
+      {
+        categoria: "Marco Legal, Estatutario e Institucional",
+        cita: "Consejo Directivo del CURZAS. (2022). Resolución CD N° 135/2022 y Resolución CD-CURZA N° 196/2022: Nodos Territoriales y Pautas de Docencia Híbrida (SIED UNCo)."
+      },
+      {
+        categoria: "Marco Legal, Estatutario e Institucional",
+        cita: "Consejo Directivo del CURZAS. (2023). Resolución CD-CURZAS N° 266/2023: Reglamento de Trabajo Final de Graduación del Departamento de Administración Pública."
+      }
     ]
   },
 
@@ -477,6 +608,51 @@ const PRESENTACION_DATA = {
       metadatosFooter: "Cierre de Anteproyecto • Límite 15:00 Minutos • Seminario de Integración y Aplicación",
       escena3D: "anim_25",
       guionOrador: "[Cierre en modo potencial - Prudencia epistemológica]\nPara concluir esta exposición, reitero que nos encontramos ante la defensa de un Proyecto de Investigación previo: no partimos de conclusiones cerradas ni damos la viabilidad por sentada.\n\nNuestra hipótesis de trabajo plantea que un dispositivo de retroalimentación 360° podría constituir una alternativa viable y enriquecedora siempre que se logre un desacoplamiento efectivo del régimen sumativo del Artículo 75 y se garantice el anonimato técnico.\n\n[Pausa de 2 segundos]\n\nSerá el trabajo de campo empírico planificado para 2027 el que contraste estas condiciones, identifique los límites reales y determine en qué medida es factible avanzar hacia su adopción en nuestra universidad pública patagónica.\n\nAgradezco profundamente las orientaciones recibidas durante el cursado del SIA por parte de la Dra. Deborah Noguera, el Esp. Federico Abeiro y la Esp. Cecilia Aguirre.\n\nConcluyo en tiempo reglamentario y quedo a entera disposición del tribunal para responder a sus preguntas y recibir sus valiosas sugerencias para seguir perfeccionando este proyecto. Muchas gracias."
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // FILMINA 13: AGRADECIMIENTOS INSTITUCIONALES Y HUMANOS
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      id: "slide_13",
+      numero: 13,
+      bloque: "CIERRE Y RECONOCIMIENTO",
+      esquema: "Agradecimientos",
+      badge: "CURZAS • UNCo • Gratitud",
+      titulo: "Agradecimientos",
+      subtitulo: "Reconocimiento a Quienes Acompañaron la Construcción de este Proyecto",
+      puntosClave: [
+        "🎓 <strong>Cátedra SIA (UNCo-CURZAS):</strong> A la Dra. Deborah Noguera, el Esp. Federico Abeiro y la Esp. María Cecilia Aguirre por su guía metodológica y rigor crítico.",
+        "🏛️ <strong>Comunidad CURZAS y Red Territorial:</strong> Al Departamento de Administración Pública, Sede Viedma y los 10 Nodos de Río Negro que inspiraron este estudio situado.",
+        "🤝 <strong>Compañeros, Familia y Pares:</strong> Por el acompañamiento cotidiano, el diálogo académico y el sostén durante todo el trayecto de formación.",
+        "⚖️ <strong>Honorable Tribunal Evaluador:</strong> Muchas gracias por su tiempo, lectura atenta y aportes para fortalecer la futura ejecución del Trabajo Final de Graduación."
+      ],
+      metadatosFooter: "Agradecimientos • Licenciatura en Gestión de Recursos Humanos (CCC) • CURZAS-UNCo",
+      escena3D: "anim_26",
+      guionOrador: "Antes de presentar las fuentes de respaldo, deseo expresar un sincero agradecimiento.\n\nEn primer lugar, al equipo docente del Seminario de Integración y Aplicación —Dra. Deborah Noguera, Esp. Federico Abeiro y Esp. María Cecilia Aguirre— por su acompañamiento exigente y constructivo durante todo el proceso.\n\nEn segundo término, al CURZAS y a la Universidad Nacional del Comahue, junto a quienes sostienen la educación superior pública tanto en Viedma como en cada uno de los 10 Nodos rionegrinos.\n\nFinalmente, a mi familia, compañeros de carrera y al Tribunal Evaluador por su escucha y valiosas devoluciones."
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // FILMINA 14 (ÚLTIMA): SECCIÓN DE BIBLIOGRAFÍA Y MARCO NORMATIVO
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      id: "slide_14",
+      numero: 14,
+      bloque: "BIBLIOGRAFÍA",
+      esquema: "Bibliografía y Marco Normativo (Sección Final)",
+      badge: "Normas APA 7 • 32 Fuentes",
+      titulo: "Bibliografía y Fuentes de Referencia",
+      subtitulo: "Corpus Teórico, Metodológico, Jurídico e Institucional del Anteproyecto",
+      puntosClave: [
+        "📚 <strong>Gestión Pública y Capacidades Estatales:</strong> Longo (2006); Matus (1993); Oszlak (2020); Cao y Blutman (2021, 2023); Aguilar Villanueva (2006).",
+        "🔄 <strong>Evaluación Docente y Modelo 360°:</strong> Chiavenato (2020); Lepsinger y Lucia (2009); Sifuentes Ocegueda et al. (2016); Obando Freire et al. (2014); Pérez et al. (2021); Reyes y Díaz (2020); Marquina (2012).",
+        "🔬 <strong>Epistemología y Metodología:</strong> Wainerman y Sautu (2011); Sautu (2005); De la Garza Toledo (2001); Hernández Sampieri et al. (2014); Flyvbjerg (2005); Giménez (2012); Denzin (1978); Bardin (2002); Torraco (2016); Jiménez Becerra (2008).",
+        "📜 <strong>Marco Legal y Normativo UNCo:</strong> Ley N° 24.521; Ley N° 25.326; Decreto N° 1246/2015 (CCT); Ord. CS N° 0988/2025 y 0910/1997; Res. CD-CURZAS N° 135/2022, 196/2022 y 266/2023."
+      ],
+      metadatosFooter: "Sección de Bibliografía (Normas APA 7ª Ed.) • Trabajo Final de Graduación • CURZAS - UNCo",
+      escena3D: "anim_27",
+      abrirTabDrawer: "bibliografia",
+      guionOrador: "Como cierre documental de esta presentación, ponemos a disposición del Tribunal la bibliografía y el marco normativo que sustentan el anteproyecto.\n\nEl corpus integra cuatro pilares complementarios: teoría de la gestión pública y el empleo estatal con Longo, Matus, Oszlak y Cao & Blutman; antecedentes de evaluación docente 360 grados con Lepsinger, Chiavenato y experiencias en universidades públicas latinoamericanas; diseño metodológico mixto y estudio de caso con Wainerman, Sautu, Flyvbjerg y Hernández Sampieri; y la base jurídica vigente de la UNCo, el Decreto 1246/2015 y la Ley 25.326.\n\nTodas las citas completas en formato APA 7 pueden consultarse en detalle desde el panel de Respaldo Metodológico en la pestaña Bibliografía."
     }
   ]
 };

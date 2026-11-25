@@ -3,7 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Río Negro 3D — Cartografía Oficial y Nodos Regionales (CURZAS • UNCo)</title>
+  <title>Maqueta 3D Río Negro y 10 Nodos CURZAS | UNCo</title>
+  <meta name="description" content="Cartografía 3D interactiva de la Provincia de Río Negro, sus 13 departamentos y la Red Territorial de 10 Nodos del CURZAS - UNCo (Res. CD 135/2022 y 196/2022).">
+  <meta name="theme-color" content="#0b1b3d">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:site_name" content="CURZAS • Universidad Nacional del Comahue">
+  <meta property="og:url" content="https://hectordanielayarachifuentes.github.io/Seminario-de-Integracion-y-Aplicacion-EXPOSICION/assets/maqueta_rionegro_3d.html">
+  <meta property="og:title" content="Maqueta 3D Río Negro y 10 Nodos CURZAS | UNCo">
+  <meta property="og:description" content="Explorador territorial interactivo en 3D de los 13 departamentos de Río Negro y la red de 10 nodos regionales del CURZAS.">
+  <meta property="og:image" content="https://hectordanielayarachifuentes.github.io/Seminario-de-Integracion-y-Aplicacion-EXPOSICION/assets/og_preview.png">
+  <meta property="og:image:secure_url" content="https://hectordanielayarachifuentes.github.io/Seminario-de-Integracion-y-Aplicacion-EXPOSICION/assets/og_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Logo oficial CURZAS UNCo y Maqueta Territorial 3D de Río Negro">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Maqueta 3D Río Negro y 10 Nodos CURZAS | UNCo">
+  <meta name="twitter:description" content="Cartografía 3D interactiva de los 13 departamentos de Río Negro y la red de 10 nodos CURZAS.">
+  <meta name="twitter:image" content="https://hectordanielayarachifuentes.github.io/Seminario-de-Integracion-y-Aplicacion-EXPOSICION/assets/og_preview.png">
+  <link rel="icon" type="image/png" href="CURZAS.png">
+  <link rel="apple-touch-icon" href="CURZAS.png">
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Three.js + OrbitControls + SVGLoader + FontAwesome Icons -->
@@ -704,11 +723,21 @@
       steps: 1,
       depth: 14,
       bevelEnabled: true,
-      bevelThickness: 2.2,
-      bevelSize: 1.5,
-      bevelSegments: 2,
-      curveSegments: 8
+      bevelThickness: 2.6,
+      bevelSize: 1.8,
+      bevelSegments: 3,
+      curveSegments: 10
     };
+
+    // Suelo receptor de sombras suaves de estudio bajo la maqueta
+    const stageShadowFloor = new THREE.Mesh(
+      new THREE.PlaneGeometry(2400, 1800),
+      new THREE.ShadowMaterial({ color: 0x0f172a, opacity: 0.11 })
+    );
+    stageShadowFloor.rotation.x = -Math.PI / 2;
+    stageShadowFloor.position.y = -0.6;
+    stageShadowFloor.receiveShadow = true;
+    scene.add(stageShadowFloor);
 
     const svgLoader = new THREE.SVGLoader();
 
@@ -738,8 +767,8 @@
         const colorObj = new THREE.Color(dept.colorHex);
         const mat = new THREE.MeshStandardMaterial({
           color: colorObj,
-          roughness: 0.36,
-          metalness: 0.08,
+          roughness: 0.58,
+          metalness: 0.04,
           side: THREE.DoubleSide
         });
 
@@ -753,11 +782,11 @@
           targetLift: 0
         };
 
-        const edgesGeom = new THREE.EdgesGeometry(geom, 28);
+        const edgesGeom = new THREE.EdgesGeometry(geom, 32);
         const edgesMat = new THREE.LineBasicMaterial({
-          color: 0x475569,
+          color: 0x334155,
           transparent: true,
-          opacity: 0.65
+          opacity: 0.36
         });
         const wire = new THREE.LineSegments(edgesGeom, edgesMat);
         mesh.add(wire);

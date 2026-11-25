@@ -543,9 +543,9 @@ class PresentationApp {
       {
         id: "cierre",
         code: "CIERRE",
-        shortLabel: "Cierre y Defensa",
-        title: "Cierre: Proyecciones de Factibilidad y Espacio para el Tribunal",
-        range: [11, 11], // Filmina 12
+        shortLabel: "Cierre, Gracias y Bibliografía",
+        title: "Cierre: Proyecciones, Agradecimientos y Bibliografía Final",
+        range: [11, 13], // Filminas 12 a 14
         isEje: false
       }
     ];
@@ -692,10 +692,10 @@ class PresentationApp {
       this.bulletsElement.appendChild(li);
     });
 
-    if (slide.diagramaSVG || slide.anexoInteractivo) {
+    if (slide.diagramaSVG || slide.anexoInteractivo || slide.abrirTabDrawer) {
       const actionBox = document.createElement("div");
       actionBox.className = "slide-svg-action";
-      if (slide.diagramaSVG && slide.anexoInteractivo) {
+      if ((slide.diagramaSVG ? 1 : 0) + (slide.anexoInteractivo ? 1 : 0) + (slide.abrirTabDrawer ? 1 : 0) > 1) {
         actionBox.classList.add("has-dual");
       }
 
@@ -728,6 +728,23 @@ class PresentationApp {
           this.openAnexoModal(anexo);
         });
         actionBox.appendChild(anexoBtn);
+      }
+
+      if (slide.abrirTabDrawer) {
+        const tabKey = slide.abrirTabDrawer;
+        const drawerBtn = document.createElement("button");
+        drawerBtn.type = "button";
+        drawerBtn.className = "btn-open-svg btn-open-anexo";
+        drawerBtn.title = "Abrir Sección Completa de Bibliografía APA 7 en el Panel de Respaldo (Atajo: M)";
+        drawerBtn.innerHTML = `
+          <span>📚 Explorar Bibliografía Completa (APA 7)</span>
+          <span class="shortcut-pill">M</span>
+        `;
+        drawerBtn.addEventListener("click", () => {
+          this.toggleDrawer(true);
+          document.querySelector(`.drawer-tab[data-tab="${tabKey}"]`)?.click();
+        });
+        actionBox.appendChild(drawerBtn);
       }
 
       this.bulletsElement.appendChild(actionBox);
@@ -1309,6 +1326,26 @@ class PresentationApp {
       });
     } else if (tabType === "catedra") {
       this.renderCatedraMaterialTab();
+    } else if (tabType === "bibliografia" && f.bibliografia) {
+      const grupos = {};
+      f.bibliografia.forEach((item) => {
+        if (!grupos[item.categoria]) grupos[item.categoria] = [];
+        grupos[item.categoria].push(item.cita);
+      });
+      Object.keys(grupos).forEach((cat) => {
+        const card = document.createElement("div");
+        card.className = "ref-card";
+        const itemsHtml = grupos[cat]
+          .map((c) => `<li style="margin-bottom: 0.48rem; line-height: 1.45;">${c}</li>`)
+          .join("");
+        card.innerHTML = `
+          <h4>📚 ${cat} (${grupos[cat].length})</h4>
+          <ul style="padding-left: 1.1rem; margin-top: 0.45rem; font-size: 0.84rem; color: var(--text-dim, #334155);">
+            ${itemsHtml}
+          </ul>
+        `;
+        this.drawerContent.appendChild(card);
+      });
     }
   }
 

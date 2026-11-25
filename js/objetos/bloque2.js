@@ -587,9 +587,9 @@ window.Presentation3D_Objects["anim_08"] = {
     const ruptureGroup = new THREE.Group();
     ruptureGroup.position.set(0, -0.1, 0);
 
-    // Banco de trabajo / Chasis maquinado en caoba y latón
+    // Banco de trabajo / Chasis maquinado en caoba y latón (asentado al ras del plinto)
     const benchChassis = engine.createMachinedChassis(1.76, 0.12, 0.68, { color: 0x2e1204 });
-    benchChassis.position.y = -0.92;
+    benchChassis.position.y = -0.87;
     ruptureGroup.add(benchChassis);
 
     // 1. Bloque de carbón / roca opaca izquierda (La rutina administrativa cotidiana)
@@ -659,15 +659,15 @@ window.Presentation3D_Objects["anim_08"] = {
     prismMesh.castShadow = true;
     prismGroup.add(prismMesh);
 
-    // Cuadrante / Dial graduado en la base del prisma
+    // Cuadrante / Dial graduado horizontal en la base del prisma (sin cruzar la geometría)
     const prismDial = engine.createGraduatedDial(0.12, {
       title: "VIGILANCIA",
       sub: "EPIST",
       divisions: 24,
       theme: "dark"
     });
-    prismDial.position.set(0, -0.38, 0);
-    prismDial.rotation.x = Math.PI / 2;
+    prismDial.position.set(0, -0.375, 0);
+    prismDial.rotation.x = 0;
     prismGroup.add(prismDial);
 
     ruptureGroup.add(prismGroup);
@@ -752,7 +752,7 @@ window.Presentation3D_Objects["anim_09"] = {
     centralPillar.position.set(0, -0.35, 0);
     scaleGroup.add(centralPillar);
 
-    // Cuadrante graduado de inclinación de la balanza en el fulcro
+    // Cuadrante graduado de inclinación de la balanza en el fulcro (orientado hacia el frente)
     const balanceDial = engine.createGraduatedDial(0.14, {
       title: "EQUILIBRIO",
       sub: "ART. 75/76",
@@ -760,6 +760,7 @@ window.Presentation3D_Objects["anim_09"] = {
       theme: "dark"
     });
     balanceDial.position.set(0, 0.38, 0.06);
+    balanceDial.rotation.x = Math.PI / 2;
     scaleGroup.add(balanceDial);
 
     // Barra oscilante de latón maquinado

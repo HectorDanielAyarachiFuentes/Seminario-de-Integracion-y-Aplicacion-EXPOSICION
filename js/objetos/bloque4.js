@@ -59,12 +59,12 @@ window.Presentation3D_Objects["anim_16"] = {
     seal.position.set(0, -0.25, 0.42);
     group.add(seal);
 
-    // Columna central de soporte de la mesa
+    // Columna central de soporte de la mesa (apoyada limpiamente sobre el chasis)
     const tablePedestal = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.22, 0.32, 0.8, 32),
+      new THREE.CylinderGeometry(0.22, 0.32, 0.50, 32),
       engine.marbleMat(0xf8fafc)
     );
-    tablePedestal.position.y = -0.74;
+    tablePedestal.position.y = -0.58;
     group.add(tablePedestal);
 
     // 2. 4 Escaños de representación colegiada en la mesa
@@ -152,407 +152,515 @@ window.Presentation3D_Objects["anim_16"] = {
 };
 
 // ──────────────────────────────────────────────────────────────────────────
-// 17. ESTADO DEL ARTE Y VACANCIA: Escultura de Miguel Ángel (El David del Conocimiento)
+// 17. ESTADO DEL ARTE Y VACANCIA: El Oráculo Esculpido del Conocimiento
+//     (Diseño orgánico de alta poligonización por Lathe + Tube + Códice)
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_17"] = {
   build(engine, g) {
     engine.createMuseumPlinth(g, 1.55, 0.22, -1.22);
 
-    const chassis = engine.createMachinedChassis(1.55, 0.10, 1.55, { color: 0x1e293b });
-    chassis.position.y = -0.92;
-    g.add(chassis);
+    // Atril frontal independiente sobre el borde delantero del plinto (100% despejado delante del podio)
+    const plaqueCradle = new THREE.Mesh(
+      engine.getRoundedBoxGeo(1.10, 0.13, 0.15, 0.015, 3),
+      engine.graniteMat(0x1e293b, 0.54, 0.15)
+    );
+    plaqueCradle.position.set(0, -0.965, 1.21);
+    plaqueCradle.castShadow = true;
+    plaqueCradle.receiveShadow = true;
+    g.add(plaqueCradle);
 
     const plaqueMaster = engine.createEngravedPlaque(
-      1.18,
+      1.12,
       0.22,
       "ESTADO DEL ARTE Y ANTECEDENTES",
-      "David del Conocimiento • 3 Escalas de Indagación",
+      "Oráculo del Conocimiento • 3 Escalas de Indagación",
       ["INTERNACIONAL", "NACIONAL", "REGIONAL", "VACANCIA"],
       { theme: "dark" }
     );
-    plaqueMaster.position.set(0, -0.84, 0.78);
+    plaqueMaster.position.set(0, -0.89, 1.27);
+    plaqueMaster.rotation.x = -0.30;
     g.add(plaqueMaster);
 
     const group = new THREE.Group();
     group.position.set(0, -0.05, 0);
 
-    // 1. Podio escalonado de mármol de Carrara y molduras de latón dorado
-    const base1 = new THREE.Mesh(
-      new THREE.CylinderGeometry(1.28, 1.36, 0.22, 48),
-      engine.graniteMat(0x1e293b)
+    const ivoryMat = engine.marbleMat(0xf8f6f0, 0.44);
+    const warmMarbleMat = engine.marbleMat(0xf2efe6, 0.50);
+    const slateMat = engine.graniteMat(0x1e293b, 0.54, 0.15);
+    const goldMat = engine.goldMat(0xe0ba56);
+    const brassMat = engine.brassMat(0xcfa346);
+    const togaMat = new THREE.MeshStandardMaterial({
+      color: 0x163868,
+      roughness: 0.62,
+      metalness: 0.08
+    });
+
+    // 1. Rotonda circular escalonada y altar central amplio (sin chasis cuadrado ni desbordes)
+    const base0 = new THREE.Mesh(
+      new THREE.CylinderGeometry(1.08, 1.14, 0.08, 64),
+      slateMat
     );
-    base1.position.y = -0.95;
+    base0.position.y = -0.945;
+    base0.receiveShadow = true;
+    base0.castShadow = true;
+    group.add(base0);
+
+    const base1 = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.98, 1.03, 0.10, 64),
+      warmMarbleMat
+    );
+    base1.position.y = -0.855;
+    base1.receiveShadow = true;
     group.add(base1);
 
     const rim1 = new THREE.Mesh(
-      new THREE.TorusGeometry(1.30, 0.016, 16, 64),
-      engine.brassMat(0xd4af37)
+      new THREE.TorusGeometry(0.99, 0.013, 18, 72),
+      brassMat
     );
     rim1.rotation.x = Math.PI / 2;
-    rim1.position.y = -0.84;
+    rim1.position.y = -0.805;
     group.add(rim1);
 
     const base2 = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.96, 1.04, 0.22, 48),
-      engine.marbleMat(0xf1f5f9)
+      new THREE.CylinderGeometry(0.80, 0.86, 0.10, 64),
+      ivoryMat
     );
-    base2.position.y = -0.73;
+    base2.position.y = -0.755;
+    base2.receiveShadow = true;
     group.add(base2);
 
     const rim2 = new THREE.Mesh(
-      new THREE.TorusGeometry(0.98, 0.015, 16, 64),
-      engine.brassMat(0xd4af37)
+      new THREE.TorusGeometry(0.81, 0.012, 18, 64),
+      brassMat
     );
     rim2.rotation.x = Math.PI / 2;
-    rim2.position.y = -0.62;
+    rim2.position.y = -0.705;
     group.add(rim2);
 
-    // Pedestal octogonal clásico donde descansa la estatua
-    const pedestalOcto = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.56, 0.64, 0.24, 8),
-      engine.marbleMat(0xfcfbf9)
-    );
-    pedestalOcto.position.y = -0.50;
-    group.add(pedestalOcto);
-
-    const rimPedestal = new THREE.Mesh(
-      new THREE.TorusGeometry(0.58, 0.014, 16, 48),
-      engine.brassMat(0xd4af37)
-    );
-    rimPedestal.rotation.x = Math.PI / 2;
-    rimPedestal.position.y = -0.38;
-    group.add(rimPedestal);
-
-    // ────────────────────────────────────────────────────────────────────────
-    // ESCULTURA DE MIGUEL ÁNGEL: EL DAVID DEL CONOCIMIENTO
-    // ────────────────────────────────────────────────────────────────────────
-    const davidGroup = new THREE.Group();
-    davidGroup.position.set(0, -0.38, 0);
-
-    const marbleMat = engine.marbleMat(0xfcfbf9, 0.26);
-    const marbleSubtle = engine.marbleMat(0xf4f1eb, 0.32);
-    const goldMat = engine.goldMat(0xffd700);
-    const brassMat = engine.brassMat(0xd4af37);
-
-    // Pantalón / Ropaje clásico de censura y elegancia (Azul marino académico y oro)
-    const pantsMat = new THREE.MeshStandardMaterial({
-      color: 0x0f2d59, // Azul marino universitario UNCo
-      roughness: 0.52,
-      metalness: 0.16
-    });
-    const sashGoldMat = engine.brassMat(0xd4af37);
-
-    // A. Tronco de apoyo clásico (detrás de la pierna de apoyo, fiel a la escultura de Miguel Ángel)
-    const stumpGeo = new THREE.CylinderGeometry(0.08, 0.12, 0.44, 16);
-    const treeStump = new THREE.Mesh(stumpGeo, marbleSubtle);
-    treeStump.position.set(0.18, 0.22, -0.08);
-    treeStump.rotation.z = -0.06;
-    davidGroup.add(treeStump);
-
-    // B. Piernas y Pies en Contrapposto Clásico
-    // Pie derecho (apoyo directo firme de mármol)
-    const rightFoot = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.04, 0.16), marbleMat);
-    rightFoot.position.set(0.10, 0.02, 0.04);
-    davidGroup.add(rightFoot);
-
-    // Pierna derecha (pierna de apoyo vertical que soporta el peso)
-    const rightShin = new THREE.Mesh(new THREE.CylinderGeometry(0.052, 0.042, 0.30, 20), marbleMat);
-    rightShin.position.set(0.10, 0.18, 0.0);
-    davidGroup.add(rightShin);
-
-    const rightKnee = new THREE.Mesh(new THREE.SphereGeometry(0.054, 16, 16), marbleMat);
-    rightKnee.position.set(0.10, 0.33, 0.02);
-    davidGroup.add(rightKnee);
-
-    // Pie izquierdo (relajado, ligeramente adelantado y abierto en ángulo)
-    const leftFoot = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.04, 0.16), marbleMat);
-    leftFoot.position.set(-0.20, 0.02, -0.02);
-    leftFoot.rotation.y = -0.25;
-    davidGroup.add(leftFoot);
-
-    // Pierna izquierda (relajada, ligeramente flexionada)
-    const leftShin = new THREE.Mesh(new THREE.CylinderGeometry(0.050, 0.040, 0.30, 20), marbleMat);
-    leftShin.position.set(-0.18, 0.18, -0.02);
-    leftShin.rotation.z = -0.08;
-    leftShin.rotation.x = 0.06;
-    davidGroup.add(leftShin);
-
-    const leftKnee = new THREE.Mesh(new THREE.SphereGeometry(0.052, 16, 16), marbleMat);
-    leftKnee.position.set(-0.16, 0.33, 0.04);
-    davidGroup.add(leftKnee);
-
-    // ────────────────────────────────────────────────────────────────────────
-    // C. PANTALÓN CLÁSICO / BERMUDA DE CENSURA ELEGANTE (Cubre pelvis, ingle y muslos)
-    // ────────────────────────────────────────────────────────────────────────
-    const pantsGroup = new THREE.Group();
-
-    // Pierna derecha del pantalón (hasta la rodilla)
-    const rightPantsLeg = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.086, 0.068, 0.28, 24),
-      pantsMat
-    );
-    rightPantsLeg.position.set(0.10, 0.46, 0.0);
-    pantsGroup.add(rightPantsLeg);
-
-    // Ribete dorado inferior en pierna derecha
-    const rightPantsCuff = new THREE.Mesh(
-      new THREE.TorusGeometry(0.070, 0.008, 12, 32),
-      sashGoldMat
-    );
-    rightPantsCuff.rotation.x = Math.PI / 2;
-    rightPantsCuff.position.set(0.10, 0.33, 0.0);
-    pantsGroup.add(rightPantsCuff);
-
-    // Pierna izquierda del pantalón (con leve ángulo de flexión)
-    const leftPantsLeg = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.086, 0.068, 0.28, 24),
-      pantsMat
-    );
-    leftPantsLeg.position.set(-0.13, 0.46, 0.02);
-    leftPantsLeg.rotation.z = -0.10;
-    leftPantsLeg.rotation.x = 0.06;
-    pantsGroup.add(leftPantsLeg);
-
-    // Ribete dorado inferior en pierna izquierda
-    const leftPantsCuff = new THREE.Mesh(
-      new THREE.TorusGeometry(0.070, 0.008, 12, 32),
-      sashGoldMat
-    );
-    leftPantsCuff.rotation.x = Math.PI / 2;
-    leftPantsCuff.rotation.y = 0.10;
-    leftPantsCuff.position.set(-0.15, 0.33, 0.03);
-    pantsGroup.add(leftPantsCuff);
-
-    // Pelvis / Cintura del pantalón (cubre completamente cadera e ingle)
-    const pelvisPants = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.175, 0.185, 0.18, 24),
-      pantsMat
-    );
-    pelvisPants.position.set(-0.01, 0.61, 0.0);
-    pantsGroup.add(pelvisPants);
-
-    // Fajín / Cinturón clásico drapeado con broche de oro
-    const sashBelt = new THREE.Mesh(
-      new THREE.TorusGeometry(0.182, 0.016, 16, 48),
-      sashGoldMat
-    );
-    sashBelt.rotation.x = Math.PI / 2;
-    sashBelt.position.set(-0.01, 0.68, 0.0);
-    pantsGroup.add(sashBelt);
-
-    // Broche heráldico en el cinto
-    const buckle = new THREE.Mesh(new THREE.CylinderGeometry(0.028, 0.028, 0.015, 16), goldMat);
-    buckle.rotation.x = Math.PI / 2;
-    buckle.position.set(-0.01, 0.68, 0.185);
-    pantsGroup.add(buckle);
-
-    // Pliegue de caída de tela lateral clásica
-    const drapeFold = new THREE.Mesh(
-      new THREE.ConeGeometry(0.06, 0.26, 16),
-      pantsMat
-    );
-    drapeFold.rotation.z = 0.12;
-    drapeFold.position.set(0.16, 0.52, 0.11);
-    pantsGroup.add(drapeFold);
-
-    davidGroup.add(pantsGroup);
-
-    // ────────────────────────────────────────────────────────────────────────
-    // D. TORSO ESCULPIDO EN MÁRMOL (Musculatura, Contrapposto y Pecho)
-    // ────────────────────────────────────────────────────────────────────────
-    const abdomen = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.165, 0.170, 0.18, 24),
-      marbleMat
-    );
-    abdomen.position.set(-0.01, 0.77, 0.0);
-    abdomen.rotation.z = -0.03; // Contrapposto
-    davidGroup.add(abdomen);
-
-    const thorax = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.20, 0.165, 0.22, 24),
-      marbleMat
-    );
-    thorax.position.set(0.0, 0.94, 0.0);
-    thorax.rotation.z = 0.03;
-    davidGroup.add(thorax);
-
-    // Pectorales izquierdo y derecho
-    const pecGeo = new THREE.BoxGeometry(0.11, 0.09, 0.05);
-    const pecLeft = new THREE.Mesh(pecGeo, marbleMat);
-    pecLeft.position.set(-0.068, 0.96, 0.12);
-    pecLeft.rotation.z = 0.08;
-    davidGroup.add(pecLeft);
-
-    const pecRight = new THREE.Mesh(pecGeo, marbleMat);
-    pecRight.position.set(0.068, 0.96, 0.12);
-    pecRight.rotation.z = -0.08;
-    davidGroup.add(pecRight);
-
-    // Hombros esculpidos
-    const leftShoulder = new THREE.Mesh(new THREE.SphereGeometry(0.075, 18, 18), marbleMat);
-    leftShoulder.position.set(-0.24, 1.02, 0.0);
-    davidGroup.add(leftShoulder);
-
-    const rightShoulder = new THREE.Mesh(new THREE.SphereGeometry(0.075, 18, 18), marbleMat);
-    rightShoulder.position.set(0.24, 0.98, 0.0);
-    davidGroup.add(rightShoulder);
-
-    // Cuello
-    const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.062, 0.075, 0.14, 20), marbleMat);
-    neck.position.set(0.01, 1.08, 0.02);
-    neck.rotation.y = 0.35;
-    davidGroup.add(neck);
-
-    // ────────────────────────────────────────────────────────────────────────
-    // E. CABEZA RENACENTISTA Y RULOS ICÓNICOS DEL DAVID
-    // ────────────────────────────────────────────────────────────────────────
-    const headGroup = new THREE.Group();
-    headGroup.position.set(0.01, 1.20, 0.02);
-    headGroup.rotation.y = 0.42; // Mirada atenta hacia la izquierda
-
-    const cranium = new THREE.Mesh(new THREE.SphereGeometry(0.095, 24, 24), marbleMat);
-    headGroup.add(cranium);
-
-    const chin = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.06, 0.08), marbleMat);
-    chin.position.set(0, -0.06, 0.05);
-    headGroup.add(chin);
-
-    const nose = new THREE.Mesh(new THREE.ConeGeometry(0.015, 0.045, 8), marbleMat);
-    nose.rotation.x = Math.PI / 2;
-    nose.position.set(0, -0.01, 0.11);
-    headGroup.add(nose);
-
-    // Rulos renacentistas de mármol
-    const hairOffsets = [
-      [0, 0.08, 0.03], [0.06, 0.07, 0.04], [-0.06, 0.07, 0.04],
-      [0.08, 0.04, 0.02], [-0.08, 0.04, 0.02], [0, 0.09, -0.03],
-      [0.05, 0.07, -0.05], [-0.05, 0.07, -0.05], [0, 0.04, -0.08],
-      [0.06, 0.01, -0.07], [-0.06, 0.01, -0.07], [0.08, -0.03, -0.04],
-      [-0.08, -0.03, -0.04], [0.02, 0.08, 0.07], [-0.02, 0.08, 0.07]
+    // Altar torneado de perfil clásico moldurado (y in [-0.705, -0.36], corona superior r = 0.61)
+    const altarProfile = [
+      new THREE.Vector2(0, -0.705),
+      new THREE.Vector2(0.68, -0.705),
+      new THREE.Vector2(0.65, -0.65),
+      new THREE.Vector2(0.54, -0.59),
+      new THREE.Vector2(0.49, -0.50),
+      new THREE.Vector2(0.53, -0.42),
+      new THREE.Vector2(0.62, -0.375),
+      new THREE.Vector2(0.61, -0.36),
+      new THREE.Vector2(0, -0.36)
     ];
-    hairOffsets.forEach(pos => {
-      const curl = new THREE.Mesh(new THREE.SphereGeometry(0.036, 12, 12), marbleSubtle);
-      curl.position.set(pos[0], pos[1], pos[2]);
-      headGroup.add(curl);
+    const pedestalAltar = new THREE.Mesh(
+      new THREE.LatheGeometry(altarProfile, 48),
+      ivoryMat
+    );
+    pedestalAltar.castShadow = true;
+    pedestalAltar.receiveShadow = true;
+    group.add(pedestalAltar);
+
+    const altarRim = new THREE.Mesh(
+      new THREE.TorusGeometry(0.615, 0.013, 18, 64),
+      goldMat
+    );
+    altarRim.rotation.x = Math.PI / 2;
+    altarRim.position.y = -0.36;
+    group.add(altarRim);
+
+    // 3 Hitómetros / Plintos de Escala sobre las terrazas escalonadas
+    const scaleNodes = [
+      { label: "INTERNACIONAL", sub: "OCDE / Europa", x: -0.84, z: 0.34, col: 0x0ea5e9, yBase: -0.805 },
+      { label: "NACIONAL", sub: "CIN / CONEAU", x: 0.0, z: 0.72, col: 0x10b981, yBase: -0.705 },
+      { label: "REGIONAL", sub: "Patagonia / UNCo", x: 0.84, z: 0.34, col: 0xf59e0b, yBase: -0.805 }
+    ];
+    scaleNodes.forEach((sn) => {
+      const beaconStand = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.055, 0.075, 0.055, 24),
+        brassMat
+      );
+      beaconStand.position.set(sn.x, sn.yBase + 0.0275, sn.z);
+      group.add(beaconStand);
+
+      const orb = new THREE.Mesh(
+        new THREE.OctahedronGeometry(0.052, 1),
+        engine.glassMat(sn.col, { opacity: 0.92, roughness: 0.08 })
+      );
+      orb.position.set(sn.x, sn.yBase + 0.105, sn.z);
+      group.add(orb);
     });
 
-    davidGroup.add(headGroup);
-
     // ────────────────────────────────────────────────────────────────────────
-    // F. BRAZO DERECHO: Sostiene el Pergamino Dorado del "Estado del Arte"
-    // ────────────────────────────────────────────────────────────────────────
-    const rightArm = new THREE.Mesh(new THREE.CylinderGeometry(0.048, 0.040, 0.30, 16), marbleMat);
-    rightArm.position.set(0.26, 0.82, 0.0);
-    davidGroup.add(rightArm);
-
-    const rightForearm = new THREE.Mesh(new THREE.CylinderGeometry(0.040, 0.034, 0.28, 16), marbleMat);
-    rightForearm.position.set(0.28, 0.56, 0.03);
-    davidGroup.add(rightForearm);
-
-    const rightHand = new THREE.Mesh(new THREE.SphereGeometry(0.042, 14, 14), marbleMat);
-    rightHand.position.set(0.28, 0.40, 0.04);
-    davidGroup.add(rightHand);
-
-    // Pergamino / Rollo Académico Dorado en la mano derecha de David
-    const scrollGroup = new THREE.Group();
-    scrollGroup.position.set(0.30, 0.38, 0.06);
-    scrollGroup.rotation.z = -0.35;
-
-    const scrollCylinder = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.022, 0.022, 0.26, 16),
-      engine.marbleMat(0xfefce8)
-    );
-    scrollGroup.add(scrollCylinder);
-
-    [-0.13, 0.13].forEach(sy => {
-      const scrollCap = new THREE.Mesh(new THREE.CylinderGeometry(0.032, 0.032, 0.02, 16), goldMat);
-      scrollCap.position.y = sy;
-      scrollGroup.add(scrollCap);
-    });
-
-    const seal = new THREE.Mesh(new THREE.CylinderGeometry(0.026, 0.026, 0.025, 12), engine.graniteMat(0x991b1b));
-    seal.rotation.x = Math.PI / 2;
-    seal.position.set(0, 0, 0.024);
-    scrollGroup.add(seal);
-
-    davidGroup.add(scrollGroup);
-
-    // ────────────────────────────────────────────────────────────────────────
-    // G. BRAZO IZQUIERDO: Alza la Gema y Órbitas de la "Vacancia Patagónica"
-    // (Pose clásica con el brazo flexionado hacia el hombro)
-    // ────────────────────────────────────────────────────────────────────────
-    const leftUpperArm = new THREE.Mesh(new THREE.CylinderGeometry(0.048, 0.042, 0.26, 16), marbleMat);
-    leftUpperArm.position.set(-0.30, 0.88, 0.04);
-    leftUpperArm.rotation.z = 0.40;
-    leftUpperArm.rotation.x = 0.15;
-    davidGroup.add(leftUpperArm);
-
-    const leftForearm = new THREE.Mesh(new THREE.CylinderGeometry(0.042, 0.035, 0.26, 16), marbleMat);
-    leftForearm.position.set(-0.25, 1.05, 0.12);
-    leftForearm.rotation.z = -0.65;
-    leftForearm.rotation.x = -0.30;
-    davidGroup.add(leftForearm);
-
-    const leftHand = new THREE.Mesh(new THREE.SphereGeometry(0.044, 14, 14), marbleMat);
-    leftHand.position.set(-0.16, 1.15, 0.18);
-    davidGroup.add(leftHand);
-
-    // Gema / Prisma de Vacancia Sostenido en Alto por David
-    const gemHolder = new THREE.Group();
-    gemHolder.position.set(-0.16, 1.25, 0.22);
-
-    engine.anim17_diamond = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(0.18, 0),
-      engine.glassMat(0x38bdf8, { roughness: 0.04, opacity: 0.92 })
-    );
-    gemHolder.add(engine.anim17_diamond);
-
-    // Aros armilares concéntricos dorados que orbitan sobre la gema
-    engine.anim17_ring = engine.createBrassArmillaryRing(0.28, 0.010);
-    gemHolder.add(engine.anim17_ring);
-
-    engine.anim17_ring2 = engine.createBrassArmillaryRing(0.22, 0.008);
-    gemHolder.add(engine.anim17_ring2);
-
-    const gemLight = new THREE.PointLight(0x38bdf8, 2.4, 2.8);
-    gemHolder.add(gemLight);
-
-    davidGroup.add(gemHolder);
-
-    // ────────────────────────────────────────────────────────────────────────
-    // H. PÓRTICO TRIUNFAL CON COLUMNAS CLÁSICAS DETRÁS DE DAVID
+    // PÓRTICO TRIUNFAL CLÁSICO ENRAIZADO SOBRE EL PODIO (cero columnas flotantes)
     // ────────────────────────────────────────────────────────────────────────
     const archGroup = new THREE.Group();
-    archGroup.position.set(0, 0.25, -0.22);
+    archGroup.position.set(0, 0, -0.26);
 
-    [-0.52, 0.52].forEach(x => {
-      const col = engine.createClassicalColumn(1.35, 0.055, 0xd4af37, true);
-      col.position.set(x, 0.15, 0);
+    [-0.64, 0.64].forEach((x) => {
+      // Base de columna asentada exactamente en y = -0.705 (top de base2)
+      const col = engine.createClassicalColumn(1.54, 0.062, 0xcfa346, true);
+      col.position.set(x, 0.065, 0); // bottom: 0.065 - 0.77 = -0.705; top: +0.835
       archGroup.add(col);
     });
 
-    const archTop = new THREE.Mesh(
-      new THREE.TorusGeometry(0.52, 0.040, 16, 48, Math.PI),
-      engine.brassMat(0xffd700)
+    const archOuter = new THREE.Mesh(
+      new THREE.TorusGeometry(0.64, 0.036, 24, 72, Math.PI),
+      brassMat
     );
-    archTop.position.set(0, 0.82, 0);
-    archGroup.add(archTop);
+    archOuter.position.set(0, 0.835, 0);
+    archGroup.add(archOuter);
 
-    const keystone = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.14, 0.08), goldMat);
-    keystone.position.set(0, 1.34, 0);
-    archGroup.add(keystone);
+    const archInner = new THREE.Mesh(
+      new THREE.TorusGeometry(0.56, 0.014, 18, 64, Math.PI),
+      ivoryMat
+    );
+    archInner.position.set(0, 0.835, 0);
+    archGroup.add(archInner);
+
+    const archSeal = engine.createAcademicSeal(0.13);
+    archSeal.rotation.x = Math.PI / 2;
+    archSeal.position.set(0, 1.475, 0.03);
+    archGroup.add(archSeal);
 
     group.add(archGroup);
-    group.add(davidGroup);
+
+    // ────────────────────────────────────────────────────────────────────────
+    // ESCULTURA DE ALTA POLIGONIZACIÓN: EL ORÁCULO DEL CONOCIMIENTO (SIN CAJAS)
+    // ────────────────────────────────────────────────────────────────────────
+    const figureGroup = new THREE.Group();
+    figureGroup.position.set(0, -0.36, 0.02);
+
+    // Helper orgánico para extremidades esculpidas suaves por Lathe
+    const makeLimb = (rBot, rMid, rTop, len, mat) => {
+      const pts = [
+        new THREE.Vector2(0, 0),
+        new THREE.Vector2(rBot, 0),
+        new THREE.Vector2(rBot * 1.15, len * 0.18),
+        new THREE.Vector2(rMid, len * 0.56),
+        new THREE.Vector2(rTop * 0.96, len * 0.86),
+        new THREE.Vector2(rTop, len),
+        new THREE.Vector2(0, len)
+      ];
+      const m = new THREE.Mesh(new THREE.LatheGeometry(pts, 28), mat);
+      m.castShadow = true;
+      return m;
+    };
+
+    // Calzado/Sandalias esculpidas orgánicamente (sin bloques rectangulares)
+    const buildSandaledFoot = (px, pz, yaw) => {
+      const f = new THREE.Group();
+      const sole = new THREE.Mesh(new THREE.SphereGeometry(0.052, 20, 14), ivoryMat);
+      sole.scale.set(0.76, 0.36, 1.65);
+      sole.position.y = 0.018;
+      f.add(sole);
+      const strap = new THREE.Mesh(new THREE.TorusGeometry(0.038, 0.007, 12, 24), goldMat);
+      strap.rotation.x = Math.PI / 2.4;
+      strap.position.set(0, 0.034, 0.015);
+      f.add(strap);
+      f.position.set(px, 0, pz);
+      f.rotation.y = yaw;
+      return f;
+    };
+
+    figureGroup.add(buildSandaledFoot(0.11, 0.04, 0.12));
+    figureGroup.add(buildSandaledFoot(-0.15, -0.02, -0.22));
+
+    // Piernas en contrapposto (pantorrilla torneada y rodilla suavizada)
+    const rightLeg = makeLimb(0.036, 0.056, 0.054, 0.34, ivoryMat);
+    rightLeg.position.set(0.11, 0.02, 0.02);
+    figureGroup.add(rightLeg);
+
+    const leftLeg = makeLimb(0.035, 0.054, 0.052, 0.34, ivoryMat);
+    leftLeg.position.set(-0.14, 0.02, -0.01);
+    leftLeg.rotation.z = -0.07;
+    leftLeg.rotation.x = 0.08;
+    figureGroup.add(leftLeg);
+
+    // Túnica inferior académica drapeada (Lathe acampanado con pliegues y fajín dorado)
+    const skirtProfile = [
+      new THREE.Vector2(0, 0.30),
+      new THREE.Vector2(0.24, 0.30),
+      new THREE.Vector2(0.22, 0.38),
+      new THREE.Vector2(0.19, 0.50),
+      new THREE.Vector2(0.165, 0.62),
+      new THREE.Vector2(0.15, 0.66),
+      new THREE.Vector2(0, 0.66)
+    ];
+    const tunicSkirt = new THREE.Mesh(new THREE.LatheGeometry(skirtProfile, 48), togaMat);
+    tunicSkirt.scale.set(1.12, 1, 0.86);
+    tunicSkirt.castShadow = true;
+    figureGroup.add(tunicSkirt);
+
+    // Pliegues verticales esculpidos en la caída de la túnica
+    for (let i = 0; i < 6; i++) {
+      const a = -0.9 + i * 0.36;
+      const foldCurve = new THREE.CatmullRomCurve3([
+        new THREE.Vector3(Math.sin(a) * 0.17, 0.64, Math.cos(a) * 0.14),
+        new THREE.Vector3(Math.sin(a) * 0.21, 0.48, Math.cos(a) * 0.16),
+        new THREE.Vector3(Math.sin(a) * 0.24, 0.31, Math.cos(a) * 0.18)
+      ]);
+      const fold = new THREE.Mesh(
+        new THREE.TubeGeometry(foldCurve, 16, 0.018, 12, false),
+        togaMat
+      );
+      figureGroup.add(fold);
+    }
+
+    const hemTrim = new THREE.Mesh(
+      new THREE.TorusGeometry(0.235, 0.008, 14, 56),
+      goldMat
+    );
+    hemTrim.rotation.x = Math.PI / 2;
+    hemTrim.scale.set(1.12, 0.86, 1);
+    hemTrim.position.y = 0.305;
+    figureGroup.add(hemTrim);
+
+    const waistBelt = new THREE.Mesh(
+      new THREE.TorusGeometry(0.168, 0.013, 16, 48),
+      goldMat
+    );
+    waistBelt.rotation.x = Math.PI / 2;
+    waistBelt.scale.set(1.12, 0.84, 1);
+    waistBelt.position.y = 0.65;
+    figureGroup.add(waistBelt);
+
+    // Torso anatómico esculpido por Lathe (perfil orgánico pecho-cintura-clavícula)
+    const torsoProfile = [
+      new THREE.Vector2(0, 0.62),
+      new THREE.Vector2(0.155, 0.62),
+      new THREE.Vector2(0.145, 0.72),
+      new THREE.Vector2(0.168, 0.84),
+      new THREE.Vector2(0.188, 0.96),
+      new THREE.Vector2(0.175, 1.03),
+      new THREE.Vector2(0.105, 1.06),
+      new THREE.Vector2(0.062, 1.08),
+      new THREE.Vector2(0, 1.08)
+    ];
+    const torsoMesh = new THREE.Mesh(new THREE.LatheGeometry(torsoProfile, 48), ivoryMat);
+    torsoMesh.scale.set(1.22, 1.0, 0.72);
+    torsoMesh.castShadow = true;
+    figureGroup.add(torsoMesh);
+
+    // Deltoides hombros redondeados + banda/manto diagonal académico con fíbula dorada
+    const shoulderLeft = new THREE.Mesh(new THREE.SphereGeometry(0.072, 24, 24), ivoryMat);
+    shoulderLeft.position.set(-0.22, 0.99, 0.0);
+    figureGroup.add(shoulderLeft);
+
+    const shoulderRight = new THREE.Mesh(new THREE.SphereGeometry(0.070, 24, 24), ivoryMat);
+    shoulderRight.position.set(0.22, 0.98, 0.0);
+    figureGroup.add(shoulderRight);
+
+    const sashCurve = new THREE.CatmullRomCurve3([
+      new THREE.Vector3(0.20, 1.02, -0.04),
+      new THREE.Vector3(0.18, 0.96, 0.11),
+      new THREE.Vector3(0.02, 0.80, 0.15),
+      new THREE.Vector3(-0.18, 0.65, 0.10),
+      new THREE.Vector3(-0.21, 0.45, 0.04)
+    ]);
+    const togaSash = new THREE.Mesh(
+      new THREE.TubeGeometry(sashCurve, 32, 0.036, 16, false),
+      togaMat
+    );
+    figureGroup.add(togaSash);
+
+    const fibula = new THREE.Mesh(new THREE.CylinderGeometry(0.032, 0.032, 0.016, 24), goldMat);
+    fibula.rotation.x = Math.PI / 2.2;
+    fibula.position.set(0.17, 0.98, 0.11);
+    figureGroup.add(fibula);
+
+    // Cuello y Cabeza Clásica Laureada (MIRADA DESPEJADA SIN OBSTRUCCIÓN)
+    const neck = makeLimb(0.068, 0.056, 0.054, 0.12, ivoryMat);
+    neck.position.set(0, 1.06, 0.01);
+    figureGroup.add(neck);
+
+    const headGroup = new THREE.Group();
+    headGroup.position.set(0, 1.22, 0.02);
+    headGroup.rotation.y = 0.22; // Ligera inclinación noble hacia el estandarte de vacancia
+
+    const cranium = new THREE.Mesh(new THREE.SphereGeometry(0.092, 32, 28), ivoryMat);
+    cranium.scale.set(0.90, 1.12, 1.00);
+    cranium.castShadow = true;
+    headGroup.add(cranium);
+
+    // Perfil facial suave (sin cajas): puente nasal y arco supraciliar sutiles
+    const noseCurve = new THREE.CatmullRomCurve3([
+      new THREE.Vector3(0, 0.024, 0.088),
+      new THREE.Vector3(0, -0.014, 0.105)
+    ]);
+    const nose = new THREE.Mesh(new THREE.TubeGeometry(noseCurve, 8, 0.011, 10, false), ivoryMat);
+    headGroup.add(nose);
+
+    const chin = new THREE.Mesh(new THREE.SphereGeometry(0.034, 18, 16), ivoryMat);
+    chin.scale.set(0.88, 0.95, 0.92);
+    chin.position.set(0, -0.072, 0.055);
+    headGroup.add(chin);
+
+    // Corona de Laurel Académica dorada enmarcando la frente
+    const laurelCrown = new THREE.Mesh(
+      new THREE.TorusGeometry(0.095, 0.012, 14, 36),
+      goldMat
+    );
+    laurelCrown.rotation.x = Math.PI / 2.35;
+    laurelCrown.position.set(0, 0.048, -0.005);
+    headGroup.add(laurelCrown);
+
+    // Rulos clásicos posteriores alrededor de la nuca y sienes
+    [
+      [-0.07, 0.06, -0.03], [0.07, 0.06, -0.03], [-0.08, 0.02, -0.05],
+      [0.08, 0.02, -0.05], [0, 0.07, -0.06], [-0.05, -0.02, -0.07],
+      [0.05, -0.02, -0.07], [0, 0.09, -0.01], [-0.04, 0.08, 0.02], [0.04, 0.08, 0.02]
+    ].forEach(([hx, hy, hz]) => {
+      const curl = new THREE.Mesh(new THREE.SphereGeometry(0.034, 14, 14), warmMarbleMat);
+      curl.position.set(hx, hy, hz);
+      headGroup.add(curl);
+    });
+
+    figureGroup.add(headGroup);
+
+    // ────────────────────────────────────────────────────────────────────────
+    // BRAZO IZQUIERDO DEL VISOR (-X): Alza el Báculo del Astrolabio y Gema Geodésica
+    // (Ubicado lateralmente en X = -0.50 para dejar el rostro 100% despejado)
+    // ────────────────────────────────────────────────────────────────────────
+    const leftArmCurve = new THREE.CatmullRomCurve3([
+      new THREE.Vector3(-0.22, 0.99, 0.0),
+      new THREE.Vector3(-0.35, 0.98, 0.07),
+      new THREE.Vector3(-0.44, 1.09, 0.12),
+      new THREE.Vector3(-0.47, 1.18, 0.12)
+    ]);
+    const leftArmMesh = new THREE.Mesh(
+      new THREE.TubeGeometry(leftArmCurve, 28, 0.040, 16, false),
+      ivoryMat
+    );
+    leftArmMesh.castShadow = true;
+    figureGroup.add(leftArmMesh);
+
+    const leftHand = new THREE.Mesh(new THREE.SphereGeometry(0.042, 18, 18), ivoryMat);
+    leftHand.position.set(-0.47, 1.18, 0.12);
+    figureGroup.add(leftHand);
+
+    // Báculo astronómico de latón apoyado desde el altar hasta la gema geodésica
+    const staffShaft = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.015, 0.020, 1.24, 24),
+      brassMat
+    );
+    staffShaft.position.set(-0.47, 0.62, 0.12);
+    figureGroup.add(staffShaft);
+
+    const staffFoot = new THREE.Mesh(new THREE.CylinderGeometry(0.032, 0.044, 0.06, 24), goldMat);
+    staffFoot.position.set(-0.47, 0.03, 0.12);
+    figureGroup.add(staffFoot);
+
+    const gemHolder = new THREE.Group();
+    gemHolder.position.set(-0.47, 1.44, 0.12);
+
+    // Núcleo geodésico poliédrico de alta definición (detail=1 -> 80 caras cristalinas)
+    engine.anim17_diamond = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(0.145, 1),
+      engine.glassMat(0x38bdf8, { roughness: 0.05, opacity: 0.88 })
+    );
+    gemHolder.add(engine.anim17_diamond);
+
+    const innerPrism = new THREE.Mesh(
+      new THREE.OctahedronGeometry(0.082, 0),
+      goldMat
+    );
+    gemHolder.add(innerPrism);
+
+    engine.anim17_ring = engine.createBrassArmillaryRing(0.24, 0.010);
+    gemHolder.add(engine.anim17_ring);
+
+    engine.anim17_ring2 = engine.createBrassArmillaryRing(0.19, 0.008);
+    gemHolder.add(engine.anim17_ring2);
+
+    const gemLight = new THREE.PointLight(0x38bdf8, 1.8, 2.4);
+    gemHolder.add(gemLight);
+
+    figureGroup.add(gemHolder);
+
+    // ────────────────────────────────────────────────────────────────────────
+    // BRAZO DERECHO DEL VISOR (+X): Señala el Atril y Códice del Estado del Arte
+    // ────────────────────────────────────────────────────────────────────────
+    const rightArmCurve = new THREE.CatmullRomCurve3([
+      new THREE.Vector3(0.22, 0.98, 0.0),
+      new THREE.Vector3(0.32, 0.82, 0.04),
+      new THREE.Vector3(0.37, 0.68, 0.11),
+      new THREE.Vector3(0.41, 0.64, 0.14)
+    ]);
+    const rightArmMesh = new THREE.Mesh(
+      new THREE.TubeGeometry(rightArmCurve, 24, 0.039, 16, false),
+      ivoryMat
+    );
+    rightArmMesh.castShadow = true;
+    figureGroup.add(rightArmMesh);
+
+    const rightHand = new THREE.Mesh(new THREE.SphereGeometry(0.040, 16, 16), ivoryMat);
+    rightHand.position.set(0.41, 0.64, 0.14);
+    figureGroup.add(rightHand);
+
+    // Atril esbelto torneado por revolución junto a la figura (+X) sosteniendo códice abierto y pergamino
+    const lecternPts = [
+      new THREE.Vector2(0, 0),
+      new THREE.Vector2(0.11, 0),
+      new THREE.Vector2(0.09, 0.05),
+      new THREE.Vector2(0.038, 0.25),
+      new THREE.Vector2(0.045, 0.48),
+      new THREE.Vector2(0.12, 0.56),
+      new THREE.Vector2(0, 0.56)
+    ];
+    const lecternPedestal = new THREE.Mesh(new THREE.LatheGeometry(lecternPts, 32), warmMarbleMat);
+    lecternPedestal.position.set(0.41, 0, 0.12);
+    figureGroup.add(lecternPedestal);
+
+    const codexGroup = new THREE.Group();
+    codexGroup.position.set(0.41, 0.58, 0.12);
+    codexGroup.rotation.x = 0.35;
+
+    const deskTray = new THREE.Mesh(
+      engine.getRoundedBoxGeo(0.28, 0.022, 0.20, 0.006, 3),
+      brassMat
+    );
+    codexGroup.add(deskTray);
+
+    // Páginas abiertas en doble curvatura orgánica (Tube/Cylinder)
+    [-0.06, 0.06].forEach((px, idx) => {
+      const pageCurve = new THREE.CatmullRomCurve3([
+        new THREE.Vector3(0, 0.015, -0.07),
+        new THREE.Vector3(px * 0.9, 0.032, -0.04),
+        new THREE.Vector3(px * 1.6, 0.020, 0.04)
+      ]);
+      const pageRib = new THREE.Mesh(
+        new THREE.TubeGeometry(pageCurve, 12, 0.016, 12, false),
+        ivoryMat
+      );
+      pageRib.scale.set(1.4, 0.45, 2.2);
+      codexGroup.add(pageRib);
+    });
+
+    const scrollCylinder = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.020, 0.020, 0.24, 20),
+      ivoryMat
+    );
+    scrollCylinder.rotation.z = Math.PI / 2;
+    scrollCylinder.position.set(0, 0.030, 0.065);
+    codexGroup.add(scrollCylinder);
+
+    const waxSeal = new THREE.Mesh(
+      new THREE.SphereGeometry(0.018, 16, 14),
+      new THREE.MeshStandardMaterial({ color: 0x991b1b, roughness: 0.4 })
+    );
+    waxSeal.position.set(0, 0.045, 0.065);
+    codexGroup.add(waxSeal);
+
+    figureGroup.add(codexGroup);
+
+    group.add(archGroup);
+    group.add(figureGroup);
 
     // Etiqueta flotante superior de alta resolución
     const mainLabel = engine.createLabelSprite(
       "ESTADO DEL ARTE Y ANTECEDENTES",
-      "David del Conocimiento • Vacancia Disciplinar Patagónica",
+      "Oráculo del Conocimiento • Vacancia Disciplinar Patagónica",
       "#0f2d59",
       true
     );
-    mainLabel.position.set(0, 1.55, 0.12);
+    mainLabel.position.set(0, 1.62, 0.12);
     group.add(mainLabel);
 
     g.add(group);
@@ -561,8 +669,8 @@ window.Presentation3D_Objects["anim_17"] = {
   animate(engine, t) {
     if (engine.anim17_diamond) {
       engine.anim17_diamond.rotation.y = t * 0.55;
-      engine.anim17_diamond.rotation.x = Math.sin(t * 0.7) * 0.25;
-      engine.anim17_diamond.position.y = Math.sin(t * 1.4) * 0.025;
+      engine.anim17_diamond.rotation.x = Math.sin(t * 0.7) * 0.22;
+      engine.anim17_diamond.position.y = Math.sin(t * 1.4) * 0.022;
     }
     if (engine.anim17_ring) {
       engine.anim17_ring.rotation.x = t * 0.40;

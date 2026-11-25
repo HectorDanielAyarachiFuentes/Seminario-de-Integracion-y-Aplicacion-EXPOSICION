@@ -848,7 +848,7 @@ window.Presentation3D_Objects["anim_04"] = {
     engine.createMuseumPlinth(g, 1.50, 0.22, -1.22);
 
     const diptychGroup = new THREE.Group();
-    diptychGroup.position.set(0, -0.15, 0);
+    diptychGroup.position.set(0, -0.02, 0);
 
     // Chasis de caoba noble monumental con cantoneras
     const pedChassis = engine.createMachinedChassis(1.72, 0.12, 0.72, { color: 0x2e1204 });
