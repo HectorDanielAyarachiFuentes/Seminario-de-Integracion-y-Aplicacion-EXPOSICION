@@ -266,6 +266,12 @@ const PRESENTACION_DATA = {
       metadatosFooter: "Primera Parte del TP • Apartado 2: Tema y Contexto • 10 Nodos Territoriales",
       escena3D: "anim_06",
       diagramaSVG: "assets/red_territorial.svg",
+      anexoInteractivo: {
+        titulo: "Anexo Interactivo — Maqueta 3D de Río Negro y 10 Nodos CURZAS",
+        archivo: "assets/maqueta_rionegro_3d.html",
+        etiqueta: "🗺️ Ver Anexo: Maqueta 3D Río Negro",
+        atajo: "A"
+      },
       guionOrador: "Comenzando con la Primera Parte del TP: la delimitación del Tema de Investigación y su contexto territorial.\n\n[Énfasis situado]\nNuestro objeto de estudio no se sitúa en un claustro universitario tradicional ni metropolitano. A más de 500 kilómetros de la sede en Viedma, en plena estepa patagónica y en la costa atlántica, docentes del CURZAS sostienen cotidianamente el derecho a la educación superior pública.\n\nFormalizada por la Resolución 135/2022 y bajo convenios de cogestión municipal, la institución cuenta con una red de 10 nodos regionales: desde Valcheta y Ramos Mexía hasta Los Menucos e Ingeniero Jacobacci. A su vez, la Resolución 196/2022 formalizó la docencia híbrida: diseñar aulas Moodle y tutorizar a distancia.\n\n[Pausa de 2 segundos]\n\nAquí radica el punto de partida del proyecto: nos proponemos indagar si los instrumentos vigentes de evaluación docente —pensados para el aula física tradicional— resultan adecuados o si evidencian limitaciones para registrar y retroalimentar este esfuerzo pedagógico situado en el territorio."
     },
 

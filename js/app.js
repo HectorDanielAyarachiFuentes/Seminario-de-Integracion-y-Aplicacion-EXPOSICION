@@ -473,6 +473,11 @@ class PresentationApp {
           this.toggleDrawer(true);
           document.querySelector('[data-tab="svgs"]')?.click();
         }
+      } else if (e.key.toLowerCase() === "a") {
+        const slide = this.data.slides[this.currentSlideIndex];
+        if (slide?.anexoInteractivo) {
+          this.openAnexoModal(slide.anexoInteractivo);
+        }
       } else if (e.key.toLowerCase() === "d") {
         this.setViewMode("text");
       } else if (e.key.toLowerCase() === "o") {
@@ -687,19 +692,45 @@ class PresentationApp {
       this.bulletsElement.appendChild(li);
     });
 
-    if (slide.diagramaSVG) {
-      const svgActionBox = document.createElement("div");
-      svgActionBox.className = "slide-svg-action";
-      svgActionBox.innerHTML = `
-        <button class="btn-open-svg" title="Agrandar y Explorar Mapa SVG en Alta Definición (Atajo: V)">
+    if (slide.diagramaSVG || slide.anexoInteractivo) {
+      const actionBox = document.createElement("div");
+      actionBox.className = "slide-svg-action";
+      if (slide.diagramaSVG && slide.anexoInteractivo) {
+        actionBox.classList.add("has-dual");
+      }
+
+      if (slide.diagramaSVG) {
+        const svgBtn = document.createElement("button");
+        svgBtn.type = "button";
+        svgBtn.className = "btn-open-svg";
+        svgBtn.title = "Agrandar y Explorar Mapa SVG en Alta Definición (Atajo: V)";
+        svgBtn.innerHTML = `
           <span>🔍 Agrandar y Explorar Mapa Conceptual (SVG)</span>
           <span class="shortcut-pill">V</span>
-        </button>
-      `;
-      svgActionBox.querySelector("button").addEventListener("click", () => {
-        this.openSvgModal(slide.diagramaSVG, slide.titulo);
-      });
-      this.bulletsElement.appendChild(svgActionBox);
+        `;
+        svgBtn.addEventListener("click", () => {
+          this.openSvgModal(slide.diagramaSVG, slide.titulo);
+        });
+        actionBox.appendChild(svgBtn);
+      }
+
+      if (slide.anexoInteractivo) {
+        const anexo = slide.anexoInteractivo;
+        const anexoBtn = document.createElement("button");
+        anexoBtn.type = "button";
+        anexoBtn.className = "btn-open-svg btn-open-anexo";
+        anexoBtn.title = `Abrir ${anexo.titulo || "Anexo Interactivo"} (Atajo: ${anexo.atajo || "A"})`;
+        anexoBtn.innerHTML = `
+          <span>${anexo.etiqueta || "🗺️ Ver Anexo Interactivo"}</span>
+          <span class="shortcut-pill">${anexo.atajo || "A"}</span>
+        `;
+        anexoBtn.addEventListener("click", () => {
+          this.openAnexoModal(anexo);
+        });
+        actionBox.appendChild(anexoBtn);
+      }
+
+      this.bulletsElement.appendChild(actionBox);
     }
 
     this.footerMetaElement.innerHTML = `
@@ -1571,6 +1602,19 @@ class PresentationApp {
       });
 
       listContainer.appendChild(card);
+    });
+  }
+
+  // ─── MODAL VISOR DE ANEXO INTERACTIVO (HTML 3D / EMBED) ─────────────────
+  openAnexoModal(anexo) {
+    if (!anexo?.archivo) return;
+    const fileName = anexo.archivo.split("/").pop() || "anexo.html";
+    this.openDocModal({
+      titulo: anexo.titulo || "Anexo Interactivo",
+      nombre: fileName,
+      ext: ".html",
+      ruta: anexo.archivo,
+      tamano: "Anexo Interactivo"
     });
   }
 

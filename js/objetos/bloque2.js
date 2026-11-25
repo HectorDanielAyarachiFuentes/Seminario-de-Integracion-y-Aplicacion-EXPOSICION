@@ -21,195 +21,209 @@ window.Presentation3D_Objects["anim_06"] = {
   build(engine, g) {
     engine.createMuseumPlinth(g, 1.95);
 
-    // 1. Mar Argentino / Océano Atlántico Sur (Bandeja elíptica de granito negro y cristal)
+    const buildShapeFromPts = (pts) => {
+      const s = new THREE.Shape();
+      pts.forEach(([x, z], idx) => {
+        if (idx === 0) s.moveTo(x, -z);
+        else s.lineTo(x, -z);
+      });
+      s.closePath();
+      return s;
+    };
+
+    // 1. Mar Argentino / Océano Atlántico Sur (elevado sobre la meseta de mármol y = -1.0385)
     const oceanPlate = new THREE.Mesh(
-      new THREE.CylinderGeometry(1.90, 1.92, 0.05, 64),
-      engine.graniteMat(0x060c18, 0.25, 0.4)
+      new THREE.CylinderGeometry(1.88, 1.91, 0.024, 64),
+      engine.graniteMat(0x071a33, 0.25, 0.45)
     );
-    oceanPlate.position.y = -1.11;
+    oceanPlate.position.y = -1.026;
+    oceanPlate.receiveShadow = true;
     g.add(oceanPlate);
 
     const oceanRim = new THREE.Mesh(
-      new THREE.TorusGeometry(1.92, 0.024, 16, 64),
+      new THREE.TorusGeometry(1.89, 0.022, 16, 64),
       engine.brassMat(0xd4af37)
     );
     oceanRim.rotation.x = Math.PI / 2;
-    oceanRim.position.y = -1.10;
+    oceanRim.position.y = -1.015;
     g.add(oceanRim);
 
     const seaWater = new THREE.Mesh(
-      new THREE.CylinderGeometry(1.88, 1.88, 0.02, 64),
+      new THREE.CylinderGeometry(1.86, 1.86, 0.016, 64),
       new THREE.MeshStandardMaterial({
-        color: 0x0284c7,
-        roughness: 0.12,
-        metalness: 0.15,
+        color: 0x0369a1,
+        emissive: 0x072642,
+        emissiveIntensity: 0.35,
+        roughness: 0.16,
+        metalness: 0.18,
         transparent: true,
-        opacity: 0.75
+        opacity: 0.86
       })
     );
-    seaWater.position.y = -1.08;
+    seaWater.position.y = -1.012;
+    seaWater.receiveShadow = true;
     g.add(seaWater);
 
-    // Cartela cartográfica técnica en latón grabado de alta definición
+    // Cartela cartográfica técnica en latón grabado con pie anclado limpiamente dentro del plato oceánico
+    const cartoucheGroup = new THREE.Group();
+    cartoucheGroup.position.set(-1.00, -0.71, 0.86);
+    cartoucheGroup.rotation.y = Math.PI * 0.12;
+
     const cartouche = engine.createEngravedPlaque(
-      0.88,
-      0.36,
+      0.92,
+      0.38,
       "PROVINCIA DE RÍO NEGRO",
-      "Sede Central Viedma + 10 Nodos Territoriales (Res. CD 135/22)",
-      ["CENTRO UNIVERSITARIO REGIONAL ZONA ATLÁNTICA", "CURZAS • UNCo"],
+      "Sede Viedma • 10 Nodos (Res. CD 135/22)",
+      ["CURZAS • UNCo", "Docencia Híbrida • Res. 196/22"],
       { theme: "dark" }
     );
-    cartouche.position.set(-0.95, -0.68, 0.95);
-    cartouche.rotation.x = -Math.PI * 0.15;
-    g.add(cartouche);
+    cartouche.rotation.x = -Math.PI * 0.16;
+    cartoucheGroup.add(cartouche);
 
-    // Rosa de los vientos / Dial de orientación geodésica
-    const compassRose = engine.createGraduatedDial(0.22, {
+    const plaqueFoot = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.020, 0.028, 0.29, 16),
+      engine.brassMat(0xd4af37)
+    );
+    plaqueFoot.position.set(0, -0.16, -0.02);
+    cartoucheGroup.add(plaqueFoot);
+
+    const plaqueBase = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.085, 0.105, 0.022, 24),
+      engine.brassMat(0xd4af37)
+    );
+    plaqueBase.position.set(0, -0.295, -0.02);
+    cartoucheGroup.add(plaqueBase);
+    g.add(cartoucheGroup);
+
+    // Rosa de los vientos / Dial de orientación geodésica apoyado plano sobre la plataforma
+    const compassRose = engine.createGraduatedDial(0.21, {
       title: "N",
       sub: "SUR",
       divisions: 36,
       theme: "dark"
     });
-    compassRose.rotation.x = -Math.PI / 2;
-    compassRose.position.set(-1.18, -1.06, -0.70);
+    compassRose.position.set(-1.18, -0.986, -0.80);
     g.add(compassRose);
 
-    // 1.B. Territorio Continental Argentino en Relieve Escultórico
-    const argShape = new THREE.Shape();
-    argShape.moveTo(-0.45, 1.35);  // Norte: La Quiaca (Jujuy)
-    argShape.lineTo(0.20, 1.42);   // Iguazú (Misiones)
-    argShape.lineTo(0.35, 1.25);   // Meseta misionera
-    argShape.lineTo(0.25, 0.90);   // Corrientes y Entre Ríos
-    argShape.lineTo(0.42, 0.55);   // Río de la Plata y Delta
-    argShape.lineTo(0.55, 0.22);   // Bahía Samborombón y Cabo San Antonio
-    argShape.lineTo(0.40, -0.05);  // Costa bonaerense / Mar del Plata
-    argShape.lineTo(0.18, -0.32);  // Bahía Blanca
-    argShape.lineTo(0.36, -0.45);  // Golfo San Matías y Punta Bermeja (Río Negro)
-    argShape.lineTo(0.28, -0.72);  // Península Valdés (Chubut)
-    argShape.lineTo(0.15, -1.02);  // Golfo San Jorge (Comodoro Rivadavia)
-    argShape.lineTo(0.08, -1.35);  // Ría de Puerto Deseado y San Julián
-    argShape.lineTo(-0.02, -1.65); // Cabo Vírgenes y Estrecho de Magallanes
-    argShape.lineTo(0.12, -1.78);  // Tierra del Fuego (Costa Atlántica)
-    argShape.lineTo(-0.05, -1.90); // Canal Beagle / Ushuaia
-    argShape.lineTo(-0.16, -1.78); // Límite internacional fueguino
-    argShape.lineTo(-0.25, -1.45); // Cordillera patagónica austral (Santa Cruz)
-    argShape.lineTo(-0.35, -0.95); // Cordillera de Chubut (Esquel / Los Alerces)
-    argShape.lineTo(-0.42, -0.50); // Cordillera rionegrina (Bariloche / El Bolsón)
-    argShape.lineTo(-0.40, -0.15); // Cordillera neuquina (San Martín / Chos Malal)
-    argShape.lineTo(-0.48, 0.35);  // Cordillera de Cuyo (Mendoza / Aconcagua)
-    argShape.lineTo(-0.52, 0.85);  // Cordillera sanjuanina y riojana
-    argShape.lineTo(-0.58, 1.20);  // Puna catamarqueña y salteña
-    argShape.closePath();
+    // 1.B. Territorio Continental Argentino + Tierra del Fuego (Coordenadas Geodésicas 50m)
+    const argPts = [[0.626, -0.6913], [0.6044, -0.6561], [0.5904, -0.5654], [0.574, -0.539], [0.5705, -0.4475], [0.5513, -0.4343], [0.5392, -0.3859], [0.5484, -0.3393], [0.5384, -0.3296], [0.5539, -0.2962], [0.6302, -0.2363], [0.6119, -0.1888], [0.6308, -0.1536], [0.6557, -0.1457], [0.6512, -0.0955], [0.5867, 0.0039], [0.5412, 0.0347], [0.3377, 0.0831], [0.2538, 0.0664], [0.2559, 0.1051], [0.2727, 0.1166], [0.2638, 0.1174], [0.2664, 0.157], [0.2475, 0.1896], [0.2568, 0.231], [0.2471, 0.2503], [0.1652, 0.2741], [0.082, 0.2371], [0.0687, 0.2433], [0.0754, 0.3568], [0.1127, 0.3858], [0.1335, 0.3823], [0.125, 0.3674], [0.1537, 0.3577], [0.1646, 0.4096], [0.1374, 0.4254], [0.1082, 0.3929], [0.0772, 0.407], [0.1194, 0.4334], [0.0603, 0.4862], [0.0588, 0.5557], [0.0367, 0.5821], [0.038, 0.6129], [0.0037, 0.6094], [-0.0421, 0.6349], [-0.0799, 0.7044], [-0.0729, 0.7387], [-0.0268, 0.7889], [0.0293, 0.8021], [0.0349, 0.8382], [0.0088, 0.861], [0.0333, 0.8707], [-0.0605, 0.9596], [-0.0813, 1.0502], [-0.1005, 1.0608], [-0.1255, 1.03], [-0.1239, 1.0467], [-0.1417, 1.052], [-0.1092, 1.0661], [-0.1372, 1.0854], [-0.1566, 1.1426], [-0.148, 1.1391], [-0.1369, 1.1884], [-0.1586, 1.191], [-0.1306, 1.1998], [-0.0967, 1.2553], [-0.1828, 1.2289], [-0.2922, 1.2245], [-0.3203, 1.1875], [-0.325, 1.1118], [-0.3696, 1.1171], [-0.396, 1.0626], [-0.4066, 1.015], [-0.4027, 0.9913], [-0.3845, 0.9904], [-0.3812, 0.9649], [-0.3592, 0.9455], [-0.3619, 0.9218], [-0.346, 0.8962], [-0.3629, 0.8654], [-0.3559, 0.8311], [-0.3329, 0.8056], [-0.338, 0.773], [-0.3251, 0.7572], [-0.3403, 0.7141], [-0.3268, 0.6956], [-0.3373, 0.663], [-0.3155, 0.6322], [-0.3635, 0.5918], [-0.3136, 0.5909], [-0.3089, 0.5733], [-0.3518, 0.5574], [-0.3467, 0.5178], [-0.3662, 0.4668], [-0.3568, 0.4571], [-0.3846, 0.4351], [-0.3883, 0.37], [-0.3664, 0.3524], [-0.3891, 0.2327], [-0.3768, 0.2054], [-0.3832, 0.1403], [-0.3713, 0.1368], [-0.3666, 0.0778], [-0.3318, 0.0488], [-0.3588, -0.0251], [-0.3664, -0.1061], [-0.3593, -0.1342], [-0.3153, -0.1747], [-0.3314, -0.246], [-0.2998, -0.3296], [-0.2857, -0.3366], [-0.2882, -0.4194], [-0.3077, -0.4264], [-0.3049, -0.4546], [-0.3342, -0.525], [-0.3266, -0.5355], [-0.3533, -0.5698], [-0.3532, -0.5918], [-0.3359, -0.6182], [-0.3284, -0.6737], [-0.3043, -0.693], [-0.3227, -0.7678], [-0.2981, -0.8479], [-0.262, -0.891], [-0.2398, -0.9588], [-0.1988, -0.9746], [-0.2216, -1.0186], [-0.2084, -1.0468], [-0.2254, -1.1049], [-0.2091, -1.1401], [-0.2208, -1.1806], [-0.1293, -1.2334], [-0.1038, -1.324], [-0.1196, -1.3398], [-0.0808, -1.3926], [-0.0524, -1.4023], [-0.0414, -1.4296], [-0.0043, -1.4032], [0.0911, -1.3918], [0.114, -1.339], [0.1465, -1.4094], [0.2346, -1.412], [0.3076, -1.3187], [0.3792, -1.258], [0.4702, -1.2281], [0.6451, -1.119], [0.6506, -1.1014], [0.6051, -1.0442], [0.5622, -0.9447], [0.7298, -0.9236], [0.753, -0.9438], [0.7868, -0.9359], [0.8683, -1.0134], [0.8853, -1.097], [0.9222, -1.1022], [0.9419, -1.089], [0.955, -1.0345], [0.9358, -0.9614], [0.8555, -0.9236], [0.7814, -0.8664], [0.7834, -0.8506], [0.768, -0.8514], [0.626, -0.6913]];
+    const tdfPts = [[-0.0956, 1.4788], [-0.1072, 1.2852], [-0.0841, 1.323], [-0.0943, 1.3213], [-0.0964, 1.3389], [-0.0787, 1.3433], [-0.0696, 1.3653], [-0.03, 1.4084], [0.0256, 1.4506], [0.08, 1.4638], [0.0656, 1.4841], [0.0134, 1.4946], [-0.0184, 1.4832], [-0.0956, 1.4788]];
 
     const argExtrudeOpts = {
-      depth: 0.05,
+      depth: 0.048,
       bevelEnabled: true,
-      bevelThickness: 0.012,
-      bevelSize: 0.010,
-      bevelSegments: 1
+      bevelThickness: 0.008,
+      bevelSize: 0.006,
+      bevelSegments: 2
     };
-    const argGeo = new THREE.ExtrudeGeometry(argShape, argExtrudeOpts);
-    const argMesh = new THREE.Mesh(argGeo, engine.marbleMat(0x2d3748));
-    argMesh.rotation.x = -Math.PI / 2;
-    argMesh.position.set(0.12, -1.06, 0.15);
-    g.add(argMesh);
+    const argMat = engine.marbleMat(0xdce6f2, 0.35);
+    const argEdgeMat = new THREE.LineBasicMaterial({ color: 0x1e293b, transparent: true, opacity: 0.5 });
 
-    // 1.C. Islas Malvinas
+    [argPts, tdfPts].forEach((pts) => {
+      const geo = new THREE.ExtrudeGeometry(buildShapeFromPts(pts), argExtrudeOpts);
+      const mesh = new THREE.Mesh(geo, argMat);
+      mesh.rotation.x = -Math.PI / 2;
+      mesh.position.y = -1.010;
+      mesh.castShadow = true;
+      mesh.receiveShadow = true;
+      mesh.add(new THREE.LineSegments(new THREE.EdgesGeometry(geo, 24), argEdgeMat));
+      g.add(mesh);
+    });
+
+    // 1.C. Islas Malvinas (Gran Malvina e Isla Soledad en relieve alabastro con borde dorado sobre el Mar Argentino)
+    const malvGranPts = [[0.4005, 1.1517], [0.4122, 1.1541], [0.4304, 1.1427], [0.4404, 1.1504], [0.4669, 1.1453], [0.4728, 1.1389], [0.4818, 1.1478], [0.4263, 1.2168], [0.4011, 1.2193], [0.3882, 1.2397], [0.3645, 1.2448], [0.3441, 1.2282], [0.3603, 1.2142], [0.3738, 1.2142], [0.4025, 1.1913], [0.3996, 1.1849], [0.3819, 1.19], [0.376, 1.1836], [0.4033, 1.1746], [0.3828, 1.1555], [0.3789, 1.1389], [0.4005, 1.1517]];
+    const malvSolPts = [[0.5166, 1.1275], [0.5281, 1.135], [0.5497, 1.1338], [0.5532, 1.1402], [0.5504, 1.1466], [0.5416, 1.1466], [0.5419, 1.1541], [0.56, 1.1657], [0.5623, 1.1669], [0.5596, 1.1517], [0.5623, 1.1466], [0.5849, 1.1427], [0.597, 1.1594], [0.5845, 1.1669], [0.5973, 1.1746], [0.5926, 1.1836], [0.524, 1.2129], [0.5249, 1.2333], [0.4824, 1.2232], [0.4914, 1.2423], [0.4699, 1.2461], [0.4644, 1.2601], [0.4549, 1.2512], [0.4462, 1.2384], [0.4468, 1.2307], [0.4562, 1.2168], [0.4541, 1.2104], [0.4801, 1.1874], [0.4963, 1.181], [0.4949, 1.1555], [0.5127, 1.1389], [0.5111, 1.1275], [0.5166, 1.1275]];
+
     const malvinasGroup = new THREE.Group();
-    malvinasGroup.position.set(0.55, -1.05, 1.15);
+    const malvExtrudeOpts = {
+      depth: 0.056,
+      bevelEnabled: true,
+      bevelThickness: 0.010,
+      bevelSize: 0.007,
+      bevelSegments: 2
+    };
+    const malvMat = engine.marbleMat(0xfef9e7, 0.22);
+    const malvEdgeMat = new THREE.LineBasicMaterial({ color: 0xd4af37, transparent: true, opacity: 0.92 });
 
-    const soledadShape = new THREE.Shape();
-    soledadShape.moveTo(0.02, 0.04);
-    soledadShape.lineTo(0.06, 0.08);
-    soledadShape.lineTo(0.09, 0.05);
-    soledadShape.lineTo(0.08, -0.04);
-    soledadShape.lineTo(0.03, -0.06);
-    soledadShape.closePath();
+    [malvGranPts, malvSolPts].forEach((pts) => {
+      const geo = new THREE.ExtrudeGeometry(buildShapeFromPts(pts), malvExtrudeOpts);
+      const islandMesh = new THREE.Mesh(geo, malvMat);
+      islandMesh.rotation.x = -Math.PI / 2;
+      islandMesh.position.y = -1.010;
+      islandMesh.castShadow = true;
+      islandMesh.receiveShadow = true;
+      islandMesh.add(new THREE.LineSegments(new THREE.EdgesGeometry(geo, 16), malvEdgeMat));
+      malvinasGroup.add(islandMesh);
+    });
 
-    const soledadMesh = new THREE.Mesh(
-      new THREE.ExtrudeGeometry(soledadShape, { depth: 0.03, bevelEnabled: true, bevelThickness: 0.006, bevelSize: 0.005, bevelSegments: 2 }),
-      engine.marbleMat(0xfdfbf7)
+    // Plataforma submarina sutil alrededor de Malvinas para resaltarlas sobre el Mar Argentino
+    const malvHalo = new THREE.Mesh(
+      new THREE.RingGeometry(0.14, 0.165, 36),
+      new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.35, side: THREE.DoubleSide })
     );
-    soledadMesh.rotation.x = -Math.PI / 2;
-    malvinasGroup.add(soledadMesh);
-
-    const granMalvinaShape = new THREE.Shape();
-    granMalvinaShape.moveTo(-0.08, 0.03);
-    granMalvinaShape.lineTo(-0.04, 0.07);
-    granMalvinaShape.lineTo(-0.02, 0.02);
-    granMalvinaShape.lineTo(-0.04, -0.05);
-    granMalvinaShape.lineTo(-0.07, -0.04);
-    granMalvinaShape.closePath();
-
-    const granMalvinaMesh = new THREE.Mesh(
-      new THREE.ExtrudeGeometry(granMalvinaShape, { depth: 0.03, bevelEnabled: true, bevelThickness: 0.006, bevelSize: 0.005, bevelSegments: 2 }),
-      engine.marbleMat(0xfdfbf7)
-    );
-    granMalvinaMesh.rotation.x = -Math.PI / 2;
-    malvinasGroup.add(granMalvinaMesh);
-
+    malvHalo.rotation.x = -Math.PI / 2;
+    malvHalo.position.set(0.47, -1.002, 1.19);
+    malvinasGroup.add(malvHalo);
     g.add(malvinasGroup);
 
-    // 2. PROVINCIA DE RÍO NEGRO EN ALTO RELIEVE DE LATÓN DORADO
-    const rnShape = new THREE.Shape();
-    rnShape.moveTo(-0.26, -0.12);
-    rnShape.lineTo(0.08, -0.14);
-    rnShape.lineTo(0.28, -0.18);
-    rnShape.lineTo(0.36, -0.25);
-    rnShape.lineTo(0.25, -0.33);
-    rnShape.lineTo(0.23, -0.42);
-    rnShape.lineTo(-0.36, -0.42);
-    rnShape.lineTo(-0.38, -0.38);
-    rnShape.lineTo(-0.34, -0.28);
-    rnShape.lineTo(-0.24, -0.19);
-    rnShape.closePath();
-
-    const rnGeo = new THREE.ExtrudeGeometry(rnShape, { depth: 0.12, bevelEnabled: true, bevelThickness: 0.02, bevelSize: 0.015, bevelSegments: 1 });
+    // 2. PROVINCIA DE RÍO NEGRO EN ALTO RELIEVE DE LATÓN DORADO (ALINEADA SOBRE NORPATAGONIA)
+    const rnPts = [[-0.155, -0.0418], [-0.0822, -0.0128], [0.0019, 0.0224], [0.0713, 0.0541], [0.1345, 0.0831], [0.1821, 0.121], [0.1816, 0.2002], [0.212, 0.2354], [0.2217, 0.2626], [0.1698, 0.2732], [0.1234, 0.2644], [0.0767, 0.2371], [0.0682, 0.2556], [0.0727, 0.2996], [0.0726, 0.348], [-0.3714, 0.348], [-0.379, 0.3084], [-0.3786, 0.2688], [-0.3518, 0.2556], [-0.3235, 0.2354], [-0.2709, 0.1966], [-0.2154, 0.1474], [-0.159, 0.0946], [-0.1351, 0.0796], [-0.1558, 0.018], [-0.155, -0.0418]];
+    const rnGeo = new THREE.ExtrudeGeometry(buildShapeFromPts(rnPts), {
+      depth: 0.068,
+      bevelEnabled: true,
+      bevelThickness: 0.012,
+      bevelSize: 0.009,
+      bevelSegments: 2
+    });
     const rnMesh = new THREE.Mesh(rnGeo, engine.brassMat(0xd4af37));
     rnMesh.rotation.x = -Math.PI / 2;
-    rnMesh.position.set(0, -1.00, 0);
+    rnMesh.position.y = -0.960;
+    rnMesh.castShadow = true;
+    rnMesh.receiveShadow = true;
+    rnMesh.add(new THREE.LineSegments(new THREE.EdgesGeometry(rnGeo, 24), new THREE.LineBasicMaterial({ color: 0xfef08a, transparent: true, opacity: 0.55 })));
     g.add(rnMesh);
 
     // 3. SEDES DEL CURZAS: Viedma y los 10 Nodos Territoriales (Res. CD N° 135/2022)
     engine.sedes06 = [
-      { id: "viedma", nombre: "VIEDMA", subtitulo: "Sede Central Académica", tipo: "Sede Cabecera", x: 0.36, z: 0.25, isCentral: true, colorGem: 0xffd700 },
-      { id: "san_antonio", nombre: "SAO / LAS GRUTAS", subtitulo: "Costa Atlántica / Golfo San Matías", tipo: "Nodo Territorial", x: 0.23, z: 0.28, isCentral: false, colorGem: 0x38bdf8 },
-      { id: "sierra_grande", nombre: "SIERRA GRANDE", subtitulo: "Costa Atlántica Sur", tipo: "Nodo Territorial", x: 0.24, z: 0.40, isCentral: false, colorGem: 0x38bdf8 },
-      { id: "conesa", nombre: "GENERAL CONESA", subtitulo: "Valle Conesa / Nexo Vial", tipo: "Nodo Territorial", x: 0.25, z: 0.20, isCentral: false, colorGem: 0x38bdf8 },
-      { id: "rio_colorado", nombre: "RÍO COLORADO", subtitulo: "Valle del Río Colorado / Noreste", tipo: "Nodo Territorial", x: 0.26, z: 0.14, isCentral: false, colorGem: 0x38bdf8 },
-      { id: "valcheta", nombre: "VALCHETA", subtitulo: "Portal Línea Sur", tipo: "Nodo Territorial", x: 0.08, z: 0.32, isCentral: false, colorGem: 0x38bdf8 },
-      { id: "ramos_mexia", nombre: "RAMOS MEXÍA", subtitulo: "Meseta Central / RN 23", tipo: "Nodo Territorial", x: -0.02, z: 0.30, isCentral: false, colorGem: 0x38bdf8 },
-      { id: "sierra_colorada", nombre: "SIERRA COLORADA", subtitulo: "Centro Geográfico Provincial", tipo: "Nodo Territorial", x: -0.10, z: 0.30, isCentral: false, colorGem: 0x38bdf8 },
-      { id: "los_menucos", nombre: "LOS MENUCOS", subtitulo: "Región Sur Central / RN 23", tipo: "Nodo Territorial", x: -0.18, z: 0.30, isCentral: false, colorGem: 0x38bdf8 },
-      { id: "maquinchao", nombre: "MAQUINCHAO", subtitulo: "Línea Sur Centro-Oeste", tipo: "Nodo Territorial", x: -0.26, z: 0.31, isCentral: false, colorGem: 0x38bdf8 },
-      { id: "ing_jacobacci", nombre: "ING. JACOBACCI", subtitulo: "Línea Sur Oeste / RN 23", tipo: "Nodo Territorial", x: -0.32, z: 0.31, isCentral: false, colorGem: 0x38bdf8 }
+      { id: "viedma", nombre: "VIEDMA", subtitulo: "Sede Central Académica", tipo: "Sede Cabecera", x: 0.2033, z: 0.2442, isCentral: true, colorGem: 0xffd700 },
+      { id: "san_antonio", nombre: "SAO / LAS GRUTAS", subtitulo: "Costa Atlántica / Golfo San Matías", tipo: "Nodo Territorial", x: 0.0773, z: 0.2318, isCentral: false, colorGem: 0x38bdf8 },
+      { id: "sierra_grande", nombre: "SIERRA GRANDE", subtitulo: "Costa Atlántica Sur", tipo: "Nodo Territorial", x: 0.0505, z: 0.3137, isCentral: false, colorGem: 0x38bdf8 },
+      { id: "conesa", nombre: "GENERAL CONESA", subtitulo: "Valle Conesa / Nexo Vial", tipo: "Nodo Territorial", x: 0.1097, z: 0.1808, isCentral: false, colorGem: 0x38bdf8 },
+      { id: "rio_colorado", nombre: "RÍO COLORADO", subtitulo: "Valle del Río Colorado / Noreste", tipo: "Nodo Territorial", x: 0.1338, z: 0.0875, isCentral: false, colorGem: 0x38bdf8 },
+      { id: "valcheta", nombre: "VALCHETA", subtitulo: "Portal Línea Sur", tipo: "Nodo Territorial", x: -0.0041, z: 0.2318, isCentral: false, colorGem: 0x38bdf8 },
+      { id: "ramos_mexia", nombre: "RAMOS MEXÍA", subtitulo: "Meseta Central / RN 23", tipo: "Nodo Territorial", x: -0.0754, z: 0.2169, isCentral: false, colorGem: 0x38bdf8 },
+      { id: "sierra_colorada", nombre: "SIERRA COLORADA", subtitulo: "Centro Geográfico Provincial", tipo: "Nodo Territorial", x: -0.1113, z: 0.223, isCentral: false, colorGem: 0x38bdf8 },
+      { id: "los_menucos", nombre: "LOS MENUCOS", subtitulo: "Región Sur Central / RN 23", tipo: "Nodo Territorial", x: -0.1323, z: 0.2459, isCentral: false, colorGem: 0x38bdf8 },
+      { id: "maquinchao", nombre: "MAQUINCHAO", subtitulo: "Línea Sur Centro-Oeste", tipo: "Nodo Territorial", x: -0.171, z: 0.282, isCentral: false, colorGem: 0x38bdf8 },
+      { id: "ing_jacobacci", nombre: "ING. JACOBACCI", subtitulo: "Línea Sur Oeste / RN 23", tipo: "Nodo Territorial", x: -0.2267, z: 0.289, isCentral: false, colorGem: 0x38bdf8 }
     ];
 
     engine.nodeGems06 = [];
     engine.nodeArcs06 = [];
-    const viedmaPos = new THREE.Vector3(0.36, -0.56, 0.25);
+    const viedmaSede = engine.sedes06[0];
+    const viedmaPos = new THREE.Vector3(viedmaSede.x, -0.54, viedmaSede.z);
 
     // Luz cálida de Sede Viedma
     const viedmaLight = new THREE.PointLight(0xffd700, 1.3, 1.8);
-    viedmaLight.position.set(0.36, -0.48, 0.25);
+    viedmaLight.position.set(viedmaSede.x, -0.46, viedmaSede.z);
     g.add(viedmaLight);
 
-    // Luz dinámica de escaneo radar (1 sola luz que viaja entre nodos, evitando recompilar shaders)
+    // Luz dinámica de escaneo radar
     const radarPingLight = new THREE.PointLight(0x38bdf8, 0.9, 1.2);
-    radarPingLight.position.set(0.36, -0.68, 0.25);
+    radarPingLight.position.set(viedmaSede.x, -0.68, viedmaSede.z);
     g.add(radarPingLight);
     engine.anim06_radarLight = radarPingLight;
 
     engine.sedes06.forEach((sede) => {
       const pinGroup = new THREE.Group();
       if (sede.isCentral) {
-        // Obelisco Viedma
-        const col = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.065, 0.42, 24), engine.marbleMat(0xffffff));
-        col.position.y = -0.72;
+        // Obelisco Viedma apoyado sobre Río Negro (tope y = -0.880)
+        const col = new THREE.Mesh(new THREE.CylinderGeometry(0.028, 0.044, 0.34, 24), engine.marbleMat(0xffffff));
+        col.position.y = -0.71;
         pinGroup.add(col);
 
         const orb = new THREE.Mesh(
-          new THREE.SphereGeometry(0.06, 20, 20),
+          new THREE.SphereGeometry(0.044, 20, 20),
           new THREE.MeshStandardMaterial({
             color: 0xffd700,
             roughness: 0.08,
@@ -217,46 +231,46 @@ window.Presentation3D_Objects["anim_06"] = {
             emissive: 0xb45309,
             emissiveIntensity: 0.35,
             transparent: true,
-            opacity: 0.90
+            opacity: 0.92
           })
         );
-        orb.position.y = -0.48;
+        orb.position.y = -0.52;
         pinGroup.add(orb);
         engine.nodeGems06.push({ mesh: orb, sede });
       } else {
-        // Balizas Nodos
-        const mast = new THREE.Mesh(new THREE.CylinderGeometry(0.008, 0.008, 0.16, 12), engine.brassMat());
-        mast.position.y = -0.80;
+        // Balizas de los 10 Nodos (proporcionadas sin colisión)
+        const mast = new THREE.Mesh(new THREE.CylinderGeometry(0.0055, 0.007, 0.14, 12), engine.brassMat());
+        mast.position.y = -0.81;
         pinGroup.add(mast);
 
         const gem = new THREE.Mesh(
-          new THREE.SphereGeometry(0.026, 16, 16),
+          new THREE.SphereGeometry(0.015, 16, 16),
           new THREE.MeshStandardMaterial({
             color: 0x38bdf8,
             emissive: 0x0284c7,
-            emissiveIntensity: 0.5,
+            emissiveIntensity: 0.55,
             roughness: 0.2,
             metalness: 0.1
           })
         );
-        gem.position.y = -0.70;
+        gem.position.y = -0.73;
         pinGroup.add(gem);
         engine.nodeGems06.push({ mesh: gem, sede });
 
-        // Arco de transmisión
-        const nodeTarget = new THREE.Vector3(sede.x, -0.70, sede.z);
+        // Arco de transmisión desde Viedma
+        const nodeTarget = new THREE.Vector3(sede.x, -0.73, sede.z);
         const dist = viedmaPos.distanceTo(nodeTarget);
         const mid = new THREE.Vector3().addVectors(viedmaPos, nodeTarget).multiplyScalar(0.5);
-        mid.y = -0.52 + dist * 0.55;
+        mid.y = -0.52 + dist * 0.52;
 
         const curve = new THREE.QuadraticBezierCurve3(viedmaPos, mid, nodeTarget);
         const tube = new THREE.Mesh(
-          new THREE.TubeGeometry(curve, 24, 0.0032, 6, false),
-          new THREE.MeshStandardMaterial({ color: 0xe6b800, roughness: 0.2, metalness: 0.8, emissive: 0x996515, emissiveIntensity: 0.15, transparent: true, opacity: 0.75 })
+          new THREE.TubeGeometry(curve, 24, 0.0026, 6, false),
+          new THREE.MeshStandardMaterial({ color: 0xe6b800, roughness: 0.2, metalness: 0.8, emissive: 0x996515, emissiveIntensity: 0.15, transparent: true, opacity: 0.78 })
         );
         g.add(tube);
 
-        const pulse = new THREE.Mesh(new THREE.SphereGeometry(0.012, 12, 12), new THREE.MeshBasicMaterial({ color: 0xfffad0 }));
+        const pulse = new THREE.Mesh(new THREE.SphereGeometry(0.009, 12, 12), new THREE.MeshBasicMaterial({ color: 0xfffad0 }));
         pulse.position.copy(nodeTarget);
         g.add(pulse);
 
@@ -268,11 +282,11 @@ window.Presentation3D_Objects["anim_06"] = {
     });
 
     const activeHalo = new THREE.Mesh(
-      new THREE.RingGeometry(0.025, 0.048, 32),
-      new THREE.MeshBasicMaterial({ color: 0xffd700, transparent: true, opacity: 0.85, side: THREE.DoubleSide })
+      new THREE.RingGeometry(0.016, 0.032, 32),
+      new THREE.MeshBasicMaterial({ color: 0xffd700, transparent: true, opacity: 0.88, side: THREE.DoubleSide })
     );
     activeHalo.rotation.x = -Math.PI / 2;
-    activeHalo.position.set(0.36, -0.865, 0.25);
+    activeHalo.position.set(viedmaSede.x, -0.874, viedmaSede.z);
     g.add(activeHalo);
     engine.nodeActiveHalo06 = activeHalo;
   },
@@ -292,13 +306,13 @@ window.Presentation3D_Objects["anim_06"] = {
 
       const activeNode = engine.sedes06[activeIdx];
       if (engine.nodeActiveHalo06) {
-        engine.nodeActiveHalo06.position.set(activeNode.x, -0.865, activeNode.z);
+        engine.nodeActiveHalo06.position.set(activeNode.x, -0.874, activeNode.z);
         const s = 1.0 + Math.sin(t * 5) * 0.22;
         engine.nodeActiveHalo06.scale.set(s, s, s);
       }
 
       if (engine.anim06_radarLight) {
-        engine.anim06_radarLight.position.set(activeNode.x, -0.68, activeNode.z);
+        engine.anim06_radarLight.position.set(activeNode.x, -0.71, activeNode.z);
         engine.anim06_radarLight.color.setHex(activeNode.isCentral ? 0xffd700 : 0x38bdf8);
         engine.anim06_radarLight.intensity = 0.85 + Math.sin(t * 5) * 0.3;
       }

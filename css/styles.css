@@ -708,6 +708,34 @@ body.notes-open .slide-card {
   flex-shrink: 0;
 }
 
+.slide-svg-action.has-dual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+}
+
+.slide-svg-action.has-dual .btn-open-svg {
+  height: 100%;
+  gap: 0.5rem;
+  text-align: left;
+  line-height: 1.25;
+  padding: clamp(0.48rem, 0.9vh, 0.65rem) clamp(0.7rem, 1.1vw, 0.95rem);
+  font-size: clamp(0.66rem, 0.92vh, 0.76rem);
+}
+
+.slide-svg-action .shortcut-pill {
+  flex-shrink: 0;
+}
+
+.btn-open-anexo {
+  background: linear-gradient(135deg, #fffdf7 0%, #fef8e7 100%);
+  border-color: var(--gold-main);
+}
+
+.btn-open-anexo:hover {
+  background: #fdf3d7;
+}
+
 .btn-open-svg {
   display: flex;
   align-items: center;
@@ -2107,6 +2135,10 @@ body.notes-open .slide-card {
   .slide-bullets li::before {
     font-size: 0.72rem;
   }
+  .slide-svg-action.has-dual {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
   .btn-open-svg {
     padding: 0.42rem 0.65rem;
     font-size: 0.68rem;
@@ -2798,7 +2830,8 @@ body.notes-open .slide-card {
   border: 1px solid #38bdf8;
 }
 
-.doc-modal-badge.htm {
+.doc-modal-badge.htm,
+.doc-modal-badge.html {
   background: #fef3c7;
   color: #92400e;
   border: 1px solid #fcd34d;

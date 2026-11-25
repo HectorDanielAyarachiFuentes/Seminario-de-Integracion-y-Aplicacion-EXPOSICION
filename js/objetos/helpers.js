@@ -434,40 +434,76 @@ window.Scene3DHelpers = {
     ctx.fillStyle = isDark ? "#0a1424" : "#f8f6f0";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Doble filete perimetral dorado
+    // Doble filete perimetral dorado con amplio margen interno para tornillos
     ctx.strokeStyle = "#d4af37";
     ctx.lineWidth = 4;
-    ctx.strokeRect(28, 28, canvas.width - 56, canvas.height - 56);
+    ctx.strokeRect(22, 22, canvas.width - 44, canvas.height - 44);
     ctx.lineWidth = 1.5;
-    ctx.strokeRect(38, 38, canvas.width - 76, canvas.height - 76);
+    ctx.strokeRect(34, 34, canvas.width - 68, canvas.height - 68);
 
-    // Textos
-    ctx.textAlign = "center";
-    ctx.fillStyle = isDark ? "#ffd700" : "#0f2d59";
-    ctx.font = `bold ${Math.round(canvas.height * 0.16)}px 'Cinzel', serif, Georgia`;
-    ctx.fillText(title, canvas.width / 2, canvas.height * 0.32);
+    // Helper para ajustar automáticamente la tipografía al ancho seguro interior (sin solapar tornillos ni bordes)
+    const maxSafeWidth = canvas.width - 170;
+    const drawFittedLine = (text, startPx, minPx, weight, family, color, yPos) => {
+      let size = Math.max(minPx, Math.round(startPx));
+      ctx.font = `${weight} ${size}px ${family}`;
+      while (size > minPx && ctx.measureText(text).width > maxSafeWidth) {
+        size -= 2;
+        ctx.font = `${weight} ${size}px ${family}`;
+      }
+      ctx.fillStyle = color;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(text, canvas.width / 2, yPos);
+    };
+
+    // Textos centrados y balanceados verticalmente
+    drawFittedLine(
+      title,
+      canvas.height * 0.165,
+      20,
+      "bold",
+      "'Cinzel', serif, Georgia",
+      isDark ? "#ffd700" : "#0f2d59",
+      canvas.height * 0.28
+    );
 
     if (subtitle) {
-      ctx.fillStyle = isDark ? "#94a3b8" : "#475569";
-      ctx.font = `600 ${Math.round(canvas.height * 0.10)}px 'Inter', sans-serif`;
-      ctx.fillText(subtitle, canvas.width / 2, canvas.height * 0.50);
+      drawFittedLine(
+        subtitle,
+        canvas.height * 0.105,
+        15,
+        "600",
+        "'Inter', sans-serif",
+        isDark ? "#e2e8f0" : "#334155",
+        canvas.height * 0.50
+      );
     }
 
     if (details && details.length > 0) {
-      ctx.strokeStyle = "rgba(212, 175, 55, 0.4)";
+      ctx.strokeStyle = "rgba(212, 175, 55, 0.45)";
       ctx.lineWidth = 1.5;
       ctx.beginPath();
-      ctx.moveTo(canvas.width * 0.15, canvas.height * 0.60);
-      ctx.lineTo(canvas.width * 0.85, canvas.height * 0.60);
+      ctx.moveTo(canvas.width * 0.14, canvas.height * 0.63);
+      ctx.lineTo(canvas.width * 0.86, canvas.height * 0.63);
       ctx.stroke();
 
-      ctx.fillStyle = isDark ? "#cbd5e1" : "#334155";
-      ctx.font = `500 ${Math.round(canvas.height * 0.08)}px 'Inter', sans-serif`;
       const detailText = details.join("  •  ");
-      ctx.fillText(detailText, canvas.width / 2, canvas.height * 0.78);
+      drawFittedLine(
+        detailText,
+        canvas.height * 0.088,
+        13,
+        "500",
+        "'Inter', sans-serif",
+        isDark ? "#cbd5e1" : "#475569",
+        canvas.height * 0.79
+      );
     }
 
     const plaqueTex = new THREE.CanvasTexture(canvas);
+    plaqueTex.minFilter = THREE.LinearFilter;
+    plaqueTex.magFilter = THREE.LinearFilter;
+    plaqueTex.generateMipmaps = false;
+
     const faceMesh = new THREE.Mesh(
       new THREE.BoxGeometry(w * 0.95, h * 0.94, 0.008),
       new THREE.MeshStandardMaterial({
@@ -479,13 +515,13 @@ window.Scene3DHelpers = {
     faceMesh.position.z = 0.014;
     plaqueGroup.add(faceMesh);
 
-    // 3. 4 Tornillos ranurados de latón en las esquinas
-    const sx = w * 0.44;
-    const sy = h * 0.41;
+    // 3. 4 Tornillos ranurados de latón ubicados limpiamente en las esquinas
+    const sx = w * 0.455;
+    const sy = h * 0.42;
     const screwCoords = [[-sx, -sy], [sx, -sy], [-sx, sy], [sx, sy]];
     screwCoords.forEach(([cx, cy]) => {
       const screw = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.016, 0.016, 0.006, 16),
+        new THREE.CylinderGeometry(0.013, 0.013, 0.006, 16),
         this.goldMat(0xffd700)
       );
       screw.rotation.x = Math.PI / 2;
@@ -494,7 +530,7 @@ window.Scene3DHelpers = {
 
       // Ranura del tornillo
       const slot = new THREE.Mesh(
-        new THREE.BoxGeometry(0.024, 0.004, 0.002),
+        new THREE.BoxGeometry(0.020, 0.0035, 0.002),
         this.graniteMat(0x0f172a)
       );
       slot.position.set(cx, cy, 0.020);
