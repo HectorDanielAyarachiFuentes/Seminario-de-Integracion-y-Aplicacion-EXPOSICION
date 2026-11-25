@@ -1,519 +1,499 @@
 /* ==========================================================================
-   SISTEMA ESPACIAL PREZI — VISTA PANORÁMICA Y ZOOM JERÁRQUICO
-   Estética: Editorial Académica (Alabastro, Azul Oxford, Oro Mate y Verde Azulado)
+   ESCENARIO PREZI INTEGRADO EN FILMINA 1 (#slide-card > #slide-prezi-stage)
+   Estética Editorial Académica (Alabastro, Azul Oxford, Oro Mate, Verde Azulado)
    ========================================================================== */
 
 :root {
-  --prezi-bg: #f6f8fc;
+  --prezi-bg: #f7f9fc;
   --prezi-grid-dot: rgba(15, 45, 89, 0.14);
   --prezi-grid-subdot: rgba(180, 131, 36, 0.16);
-  --prezi-orbit-stroke: rgba(15, 45, 89, 0.14);
-  --prezi-orbit-active: rgba(180, 131, 36, 0.58);
 }
 
-/* Botón interactivo del bloque en la tarjeta de filmina */
-.slide-bloque-badge.is-prezi-clickable {
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+/* Ajuste armónico de la tarjeta cuando aloja el lienzo Prezi interactivo */
+.slide-card.has-inline-prezi {
+  min-height: clamp(470px, 64vh, 660px);
+  max-height: calc(100vh - clamp(104px, 11.5vh, 128px));
+  padding-top: clamp(1rem, 1.8vh, 1.45rem);
+  padding-bottom: clamp(0.85rem, 1.4vh, 1.2rem);
 }
 
-.slide-bloque-badge.is-prezi-clickable:hover {
-  transform: translateY(-1px);
-  border-color: var(--gold-main, #996515);
-  background: rgba(180, 131, 36, 0.1);
-  color: #0f2d59;
-  box-shadow: 0 3px 10px rgba(15, 45, 89, 0.08);
+.slide-card.has-inline-prezi .slide-header-tags {
+  margin-bottom: 0.35rem;
 }
 
-.slide-bloque-badge.is-prezi-clickable::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--gold-light, #b48324);
-  display: inline-block;
-  flex-shrink: 0;
+.slide-card.has-inline-prezi .slide-title {
+  margin-bottom: 0.2rem;
+  font-size: clamp(1.38rem, 1.85vw, 1.82rem);
+  line-height: 1.18;
+}
+
+.slide-card.has-inline-prezi .slide-subtitle {
+  margin-bottom: 0.55rem;
+  font-size: clamp(0.85rem, 1vw, 0.96rem);
+}
+
+.slide-card.has-inline-prezi.focus-text .slide-title {
+  font-size: clamp(1.65rem, 2.2vw, 2.2rem) !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.slide-card.has-inline-prezi.focus-text .slide-subtitle {
+  margin-bottom: 0.65rem !important;
+}
+
+.slide-card.has-inline-prezi .slide-footer-meta {
+  margin-top: 0.55rem;
+  padding-top: 0.5rem;
 }
 
 /* ==========================================================================
-   OVERLAY PRINCIPAL DEL LIENZO PREZI
+   CONTENEDOR PREZI DENTRO DEL DIV DE LA FILMINA
    ========================================================================== */
-.prezi-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 65;
-  display: none;
-  flex-direction: column;
-  background: radial-gradient(circle at 50% 45%, #ffffff 0%, #f5f7fb 58%, #ebeff7 100%);
-  opacity: 0;
-  user-select: none;
-  overflow: hidden;
-  font-family: var(--font-body, 'Inter', sans-serif);
-}
-
-.prezi-overlay.is-open {
-  display: flex;
-}
-
-.prezi-overlay.is-flight-mode {
-  pointer-events: none;
-}
-
-.prezi-overlay.is-flight-mode .prezi-hud-chrome {
-  opacity: 0.92;
-}
-
-/* Barra superior: Breadcrumb jerárquico y badge de vuelo */
-.prezi-topbar {
+.slide-prezi-stage {
   position: relative;
-  z-index: 20;
+  flex: 1 1 auto;
+  min-height: 295px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  border: 1.5px solid rgba(15, 45, 89, 0.14);
+  background: radial-gradient(circle at 38% 50%, #ffffff 0%, #f5f7fc 65%, #ebf0f8 100%);
+  box-shadow: inset 0 2px 10px rgba(15, 45, 89, 0.04);
+  overflow: hidden;
+  user-select: none;
+}
+
+.slide-bullets[hidden],
+.slide-card.has-inline-prezi .slide-bullets {
+  display: none !important;
+}
+
+.slide-prezi-stage[hidden] {
+  display: none !important;
+}
+
+/* Barra HUD superior dentro de la filmina */
+.slide-prezi-hud {
+  position: relative;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 12px 22px;
-  background: rgba(255, 255, 255, 0.86);
-  backdrop-filter: blur(12px);
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 7px 12px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(15, 45, 89, 0.09);
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
 }
 
-.prezi-breadcrumbs {
+.slide-prezi-crumbs {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 4px;
   min-width: 0;
 }
 
-.prezi-crumb {
+.slide-prezi-crumb {
   appearance: none;
   border: 1px solid transparent;
   background: transparent;
   color: #475569;
   font-family: var(--font-body, 'Inter', sans-serif);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  padding: 5px 10px;
+  padding: 3px 8px;
   border-radius: 999px;
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s ease;
+  transition: all 0.18s ease;
   white-space: nowrap;
 }
 
-.prezi-crumb:hover {
-  background: rgba(15, 45, 89, 0.06);
+.slide-prezi-crumb:hover {
+  background: rgba(15, 45, 89, 0.07);
   color: #0f2d59;
 }
 
-.prezi-crumb.is-active {
-  background: rgba(15, 45, 89, 0.08);
-  border-color: rgba(15, 45, 89, 0.16);
+.slide-prezi-crumb.is-active {
+  background: rgba(15, 45, 89, 0.1);
+  border-color: rgba(15, 45, 89, 0.18);
   color: #0f2d59;
 }
 
-.prezi-crumb-sep {
+.slide-prezi-sep {
   color: #94a3b8;
-  font-size: 0.8rem;
-  user-select: none;
+  font-size: 0.75rem;
 }
 
-.prezi-crumb-hidden {
-  display: none !important;
-}
-
-.prezi-topbar-actions {
+.slide-prezi-controls {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   flex-shrink: 0;
 }
 
-.prezi-hint-pill {
-  font-size: 0.72rem;
-  color: #64748b;
-  background: rgba(15, 23, 42, 0.04);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  border-radius: 999px;
-  padding: 5px 12px;
-  letter-spacing: 0.01em;
-}
-
-.prezi-toggle-pill {
+.slide-prezi-btn {
   appearance: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(180, 131, 36, 0.35);
-  background: rgba(180, 131, 36, 0.08);
-  color: #7c520d;
-  font-size: 0.74rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.prezi-toggle-pill:hover {
-  background: rgba(180, 131, 36, 0.16);
-}
-
-.prezi-toggle-pill[aria-pressed="false"] {
-  border-color: rgba(15, 23, 42, 0.14);
-  background: rgba(255, 255, 255, 0.9);
-  color: #64748b;
-}
-
-.prezi-toggle-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #b48324;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.prezi-toggle-pill[aria-pressed="false"] .prezi-toggle-dot {
-  background: #94a3b8;
-}
-
-.prezi-close-btn {
-  appearance: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 6px 13px;
-  border-radius: 10px;
-  border: 1px solid rgba(15, 45, 89, 0.18);
-  background: #0f2d59;
-  color: #ffffff;
-  font-size: 0.75rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.18s ease, background 0.2s ease, box-shadow 0.2s ease;
-}
-
-.prezi-close-btn:hover {
-  background: #163e7a;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(15, 45, 89, 0.2);
-}
-
-.prezi-close-btn kbd {
+  border: 1px solid rgba(15, 45, 89, 0.14);
+  background: #ffffff;
+  color: #1e293b;
   font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.slide-prezi-btn:hover {
+  border-color: rgba(180, 131, 36, 0.55);
+  color: #0f2d59;
+  background: #fffdf8;
+}
+
+.slide-prezi-btn.is-accent {
+  background: #0f2d59;
+  border-color: #0f2d59;
+  color: #ffffff;
+}
+
+.slide-prezi-btn.is-accent:hover {
+  background: #173f7d;
+  color: #ffffff;
+}
+
+.slide-prezi-btn.is-back {
+  background: rgba(180, 131, 36, 0.1);
+  border-color: rgba(180, 131, 36, 0.38);
+  color: #7c520d;
+}
+
+.slide-prezi-btn.is-jump {
+  background: #0f2d59;
+  border-color: #0f2d59;
+  color: #ffffff;
+}
+
+.slide-prezi-zoom {
+  min-width: 38px;
+  text-align: center;
+  font-size: 0.69rem;
+  font-weight: 700;
+  color: #0f2d59;
+  font-variant-numeric: tabular-nums;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+/* Pie de pista interactiva sutil abajo del lienzo */
+.slide-prezi-tip {
+  position: absolute;
+  left: 12px;
+  bottom: 10px;
+  z-index: 6;
   font-size: 0.65rem;
-  padding: 1px 5px;
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.18);
-  color: #f8fafc;
+  font-weight: 600;
+  color: #64748b;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(15, 45, 89, 0.09);
+  padding: 3px 9px;
+  border-radius: 999px;
+  pointer-events: none;
 }
 
 /* ==========================================================================
-   VIEWPORT INTERACTIVO Y LIENZO MUNDIAL (1600 x 960 LÓGICO)
+   VIEWPORT Y MUNDO ESPACIAL (1140 x 680 LÓGICO)
    ========================================================================== */
-.prezi-viewport {
+.slide-prezi-viewport {
   position: relative;
-  flex: 1;
+  flex: 1 1 auto;
   width: 100%;
-  height: 100%;
+  min-height: 0;
   overflow: hidden;
   cursor: grab;
   touch-action: none;
 }
 
-.prezi-viewport.is-panning {
+.slide-prezi-viewport.is-panning {
   cursor: grabbing;
 }
 
-.prezi-world {
+.slide-prezi-world {
   position: absolute;
   top: 0;
   left: 0;
-  width: 1600px;
-  height: 960px;
+  width: 1280px;
+  height: 840px;
   transform-origin: 0 0;
   will-change: transform;
-  /* Cuadrícula sutil de puntos estilo Prezi sobre lienzo técnico */
   background-image:
-    radial-gradient(circle, var(--prezi-grid-dot) 1.3px, transparent 1.3px),
+    radial-gradient(circle, var(--prezi-grid-dot) 1.25px, transparent 1.25px),
     radial-gradient(circle, var(--prezi-grid-subdot) 1px, transparent 1px);
-  background-size: 40px 40px, 120px 120px;
-  background-position: 0 0, 20px 20px;
-  border-radius: 28px;
+  background-size: 36px 36px, 108px 108px;
+  background-position: 0 0, 18px 18px;
 }
 
-/* Capa vectorial de órbitas y trayectorias */
-.prezi-svg-layer {
+.slide-prezi-svg {
   position: absolute;
   inset: 0;
-  width: 1600px;
-  height: 960px;
+  width: 1280px;
+  height: 840px;
   pointer-events: none;
   overflow: visible;
 }
 
-.prezi-spoke-line {
+.pzl-arc-track {
   fill: none;
   stroke: rgba(15, 45, 89, 0.14);
-  stroke-width: 2.2;
-  stroke-dasharray: 6 7;
-  transition: stroke 0.35s ease, opacity 0.35s ease;
-}
-
-.prezi-spoke-line.is-active {
-  stroke: rgba(180, 131, 36, 0.62);
-  stroke-dasharray: none;
-  stroke-width: 2.8;
-}
-
-.prezi-sequence-arc {
-  fill: none;
-  stroke: rgba(180, 131, 36, 0.28);
   stroke-width: 2;
+  stroke-dasharray: 7 7;
   transition: opacity 0.35s ease;
 }
 
-.prezi-orbit-ring {
+.pzl-master-ray {
   fill: none;
-  stroke: rgba(15, 45, 89, 0.14);
-  stroke-width: 1.5;
-  stroke-dasharray: 4 6;
-  transition: opacity 0.35s ease, stroke 0.35s ease;
+  stroke: rgba(180, 131, 36, 0.28);
+  stroke-width: 2;
+  transition: opacity 0.35s ease, stroke 0.3s ease;
 }
 
-.prezi-subspoke-line {
+.pzl-orbit-ring {
   fill: none;
-  stroke: rgba(15, 45, 89, 0.22);
+  stroke: rgba(15, 45, 89, 0.18);
+  stroke-width: 1.6;
+  stroke-dasharray: 5 5;
+  opacity: 0;
+  transition: opacity 0.32s ease;
+}
+
+.pzl-sub-spoke {
+  fill: none;
+  stroke: rgba(15, 45, 89, 0.26);
   stroke-width: 1.8;
-  transition: stroke 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  transition: opacity 0.32s ease;
 }
 
-.prezi-step-dot {
-  fill: rgba(180, 131, 36, 0.55);
+/* Atenuación de nodos al hacer zoom en un Planeta (Nivel 1) */
+.slide-prezi-world.is-planet-level .pzl-master,
+.slide-prezi-world.is-planet-level .pzl-arc-track,
+.slide-prezi-world.is-planet-level .pzl-master-ray {
+  opacity: 0.14;
 }
 
-/* Halo de atenuación cuando se enfoca un planeta */
-.prezi-world.has-planet-focus .prezi-planet:not(.is-focused) {
-  opacity: 0.28;
-  filter: saturate(0.65);
-}
-
-.prezi-world.has-planet-focus .prezi-subtopic:not(.is-focused-child) {
-  opacity: 0.2;
-  transform: scale(0.92);
-}
-
-.prezi-world.has-planet-focus .prezi-hub {
-  opacity: 0.24;
-}
-
-.prezi-world.has-planet-focus .prezi-spoke-line:not(.is-focused-edge),
-.prezi-world.has-planet-focus .prezi-sequence-arc {
-  opacity: 0.18;
-}
-
-.prezi-world.has-planet-focus .prezi-orbit-ring:not(.is-focused-edge),
-.prezi-world.has-planet-focus .prezi-subspoke-line:not(.is-focused-edge) {
+.slide-prezi-world.is-planet-level .pzl-topic:not(.is-focused) {
   opacity: 0.12;
+  pointer-events: none;
+  transform: scale(0.88);
+}
+
+.slide-prezi-world.is-planet-level .pzl-orbit-ring.is-focused-edge,
+.slide-prezi-world.is-planet-level .pzl-sub-spoke.is-focused-edge {
+  opacity: 1;
 }
 
 /* ==========================================================================
-   NÚCLEO CENTRAL (HUB)
+   PLANETA MAESTRO (IZQUIERDA — VISTA GENERAL)
    ========================================================================== */
-.prezi-hub {
+.pzl-master {
   position: absolute;
-  width: 204px;
-  height: 204px;
-  margin-left: -102px;
-  margin-top: -102px;
+  width: 324px;
+  height: 324px;
+  margin-left: -162px;
+  margin-top: -162px;
   border-radius: 50%;
-  background: radial-gradient(circle at 32% 28%, #ffffff 0%, #f8f5ec 60%, #efe6d1 100%);
-  border: 2.5px solid #b48324;
+  background: radial-gradient(circle at 28% 26%, #244880 0%, #0f2d59 68%, #091c3a 100%);
+  border: 4px solid #ffffff;
   box-shadow:
-    0 18px 40px rgba(15, 45, 89, 0.12),
-    inset 0 0 0 8px rgba(255, 255, 255, 0.72),
-    0 0 0 10px rgba(180, 131, 36, 0.08);
+    0 22px 48px rgba(15, 45, 89, 0.24),
+    inset 0 0 0 8px rgba(255, 255, 255, 0.08),
+    0 0 0 3px rgba(180, 131, 36, 0.58),
+    0 0 0 12px rgba(180, 131, 36, 0.1);
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 18px;
+  padding: 26px 24px;
   cursor: pointer;
-  transition: transform 0.28s ease, box-shadow 0.28s ease, opacity 0.35s ease;
-  z-index: 5;
+  z-index: 4;
+  transition: transform 0.3s ease, opacity 0.35s ease, box-shadow 0.3s ease;
 }
 
-.prezi-hub:hover {
-  transform: scale(1.04);
-  box-shadow:
-    0 22px 46px rgba(15, 45, 89, 0.17),
-    inset 0 0 0 8px rgba(255, 255, 255, 0.85),
-    0 0 0 14px rgba(180, 131, 36, 0.14);
+.pzl-master:hover {
+  transform: scale(1.02);
 }
 
-.prezi-hub-eyebrow {
-  font-size: 0.62rem;
+.pzl-master-eyebrow {
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #996515;
-  margin-bottom: 5px;
+  color: #f3d284;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
 }
 
-.prezi-hub-title {
+.pzl-master-title {
   font-family: var(--font-title, 'Cormorant Garamond', Georgia, serif);
-  font-size: 1.24rem;
+  font-size: 1.9rem;
   font-weight: 700;
-  line-height: 1.12;
-  color: #0f2d59;
-  margin: 0 0 7px 0;
+  line-height: 1.05;
+  margin: 0 0 8px 0;
+  color: #ffffff;
 }
 
-.prezi-hub-meta {
-  font-size: 0.68rem;
+.pzl-master-sub {
+  font-size: 0.78rem;
+  line-height: 1.32;
+  color: rgba(241, 245, 249, 0.9);
+  margin: 0 0 12px 0;
+  max-width: 245px;
+}
+
+.pzl-master-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+.pzl-master-pill {
+  font-size: 0.67rem;
   font-weight: 600;
-  color: #475569;
-  background: rgba(15, 45, 89, 0.07);
-  padding: 4px 10px;
+  color: #f8fafc;
+  background: rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 3px 10px;
   border-radius: 999px;
 }
 
 /* ==========================================================================
-   PLANETAS TEMÁTICOS (NIVEL 1 DE JERARQUÍA — 5 BLOQUES)
+   PLANETAS TEMÁTICOS (ARCO ORBITAL DERECHO — NIVEL 1)
    ========================================================================== */
-.prezi-planet {
+.pzl-topic {
   position: absolute;
-  width: 172px;
-  height: 172px;
-  margin-left: -86px;
-  margin-top: -86px;
+  width: 112px;
+  height: 112px;
+  margin-left: -56px;
+  margin-top: -56px;
   border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.95);
+  box-shadow:
+    0 12px 26px rgba(15, 23, 42, 0.16),
+    inset 0 2px 6px rgba(255, 255, 255, 0.25);
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 16px 14px;
+  padding: 10px 8px;
   cursor: pointer;
-  z-index: 7;
-  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease, opacity 0.35s ease, filter 0.35s ease;
-  box-shadow:
-    0 14px 32px rgba(15, 23, 42, 0.14),
-    inset 0 2px 6px rgba(255, 255, 255, 0.28);
-  border: 3px solid rgba(255, 255, 255, 0.9);
-  color: #ffffff;
+  z-index: 6;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.32s ease, box-shadow 0.28s ease;
 }
 
-.prezi-planet::before {
+.pzl-topic::before {
   content: "";
   position: absolute;
-  inset: -9px;
+  inset: -6px;
   border-radius: 50%;
-  border: 1.5px dashed rgba(15, 45, 89, 0.2);
+  border: 1.5px dashed rgba(15, 45, 89, 0.22);
   pointer-events: none;
-  transition: transform 0.35s ease, border-color 0.35s ease;
 }
 
-.prezi-planet:hover {
-  transform: scale(1.055);
+.pzl-topic:hover {
+  transform: scale(1.09);
+  box-shadow: 0 18px 34px rgba(15, 23, 42, 0.24);
+  z-index: 9;
+}
+
+.pzl-topic.is-focused {
+  transform: scale(1.1);
+  z-index: 10;
   box-shadow:
-    0 20px 40px rgba(15, 23, 42, 0.2),
-    inset 0 2px 8px rgba(255, 255, 255, 0.35);
+    0 20px 38px rgba(15, 23, 42, 0.22),
+    0 0 0 6px rgba(180, 131, 36, 0.2);
 }
 
-.prezi-planet.is-current-block::before {
-  border-style: solid;
-  border-width: 2.5px;
-  border-color: #b48324;
-  box-shadow: 0 0 0 4px rgba(180, 131, 36, 0.18);
+.pzl-topic[data-theme="apertura"] {
+  background: radial-gradient(circle at 30% 26%, #3f5d91 0%, #1d3661 80%, #112242 100%);
+}
+.pzl-topic[data-theme="bloque1"] {
+  background: radial-gradient(circle at 30% 26%, #24579a 0%, #0f2d59 80%, #091d3b 100%);
+}
+.pzl-topic[data-theme="bloque2"] {
+  background: radial-gradient(circle at 30% 26%, #1b8a7f 0%, #0f625a 80%, #09413b 100%);
+}
+.pzl-topic[data-theme="bloque3"] {
+  background: radial-gradient(circle at 30% 26%, #c8932e 0%, #996515 80%, #6d450a 100%);
+}
+.pzl-topic[data-theme="cierre"] {
+  background: radial-gradient(circle at 30% 26%, #823f5b 0%, #562138 80%, #3a1324 100%);
 }
 
-.prezi-planet.is-focused {
-  transform: scale(1.04);
-  z-index: 12;
-}
-
-/* Paleta institucional diferenciada por bloque */
-.prezi-planet[data-theme="apertura"] {
-  background: radial-gradient(circle at 30% 26%, #334e7b 0%, #172e54 78%, #0f1f3d 100%);
-}
-
-.prezi-planet[data-theme="bloque1"] {
-  background: radial-gradient(circle at 30% 26%, #24579a 0%, #0f2d59 78%, #091d3b 100%);
-}
-
-.prezi-planet[data-theme="bloque2"] {
-  background: radial-gradient(circle at 30% 26%, #1b8a7f 0%, #0f625a 78%, #09413b 100%);
-}
-
-.prezi-planet[data-theme="bloque3"] {
-  background: radial-gradient(circle at 30% 26%, #c8932e 0%, #996515 78%, #6d450a 100%);
-}
-
-.prezi-planet[data-theme="cierre"] {
-  background: radial-gradient(circle at 30% 26%, #7d3c57 0%, #562138 78%, #3c1426 100%);
-}
-
-.prezi-planet-kicker {
+.pzl-topic-num {
   font-size: 0.56rem;
   font-weight: 700;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 2px 8px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1.5px 7px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.18);
-  color: #f8fafc;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 }
 
-.prezi-planet-title {
+.pzl-topic-title {
   font-family: var(--font-title, 'Cormorant Garamond', Georgia, serif);
-  font-size: 1.06rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  line-height: 1.08;
+  line-height: 1.06;
+  margin: 0 0 3px 0;
   color: #ffffff;
-  margin: 0 0 5px 0;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
-.prezi-planet-desc {
-  font-size: 0.62rem;
-  line-height: 1.25;
-  color: rgba(248, 250, 252, 0.88);
-  margin: 0 0 6px 0;
-  max-width: 136px;
-}
-
-.prezi-planet-meta {
-  font-size: 0.58rem;
+.pzl-topic-meta {
+  font-size: 0.54rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.94);
-  background: rgba(0, 0, 0, 0.22);
-  padding: 2px 8px;
-  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+/* Indicador de satélites anidados en el borde del planeta en Vista General */
+.pzl-topic-dots {
+  display: flex;
+  gap: 3px;
+  margin-top: 4px;
+}
+
+.pzl-topic-dots span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.72);
 }
 
 /* ==========================================================================
-   SATÉLITES / SUBTEMAS (NIVEL 2 DE JERARQUÍA — FILMINAS)
+   SATÉLITES / SUBTEMAS (SE DESPLIEGAN AL HACER ZOOM AL PLANETA — NIVEL 1)
    ========================================================================== */
-.prezi-subtopic {
+.pzl-subtopic {
   position: absolute;
-  width: 74px;
-  height: 74px;
-  margin-left: -37px;
-  margin-top: -37px;
+  width: 82px;
+  height: 82px;
+  margin-left: -41px;
+  margin-top: -41px;
   border-radius: 50%;
   background: #ffffff;
-  border: 2px solid #cbd5e1;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.1);
+  border: 2.5px solid #cbd5e1;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.13);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -522,195 +502,149 @@
   padding: 6px;
   cursor: pointer;
   z-index: 8;
-  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.24s ease, box-shadow 0.24s ease, opacity 0.3s ease, background 0.24s ease;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.45);
+  transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.28s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.prezi-subtopic:hover {
-  transform: scale(1.12);
+.pzl-subtopic.is-revealed {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.pzl-subtopic.is-revealed:hover {
+  transform: scale(1.1);
   border-color: #b48324;
-  box-shadow: 0 12px 26px rgba(180, 131, 36, 0.25);
-  z-index: 15;
+  box-shadow: 0 14px 28px rgba(180, 131, 36, 0.24);
+  z-index: 12;
 }
 
-.prezi-subtopic.is-current-slide {
-  background: linear-gradient(145deg, #fffdf7 0%, #fef4d7 100%);
-  border-color: #b48324;
-  border-width: 2.5px;
-  box-shadow: 0 0 0 5px rgba(180, 131, 36, 0.2), 0 10px 24px rgba(15, 23, 42, 0.14);
-}
+.pzl-subtopic[data-theme="apertura"] { border-color: rgba(29, 54, 97, 0.42); }
+.pzl-subtopic[data-theme="bloque1"] { border-color: rgba(15, 45, 89, 0.45); }
+.pzl-subtopic[data-theme="bloque2"] { border-color: rgba(15, 98, 90, 0.45); }
+.pzl-subtopic[data-theme="bloque3"] { border-color: rgba(153, 101, 21, 0.48); }
+.pzl-subtopic[data-theme="cierre"] { border-color: rgba(86, 33, 56, 0.45); }
 
-.prezi-subtopic[data-theme="bloque1"] { border-color: rgba(15, 45, 89, 0.34); }
-.prezi-subtopic[data-theme="bloque2"] { border-color: rgba(15, 98, 90, 0.36); }
-.prezi-subtopic[data-theme="bloque3"] { border-color: rgba(153, 101, 21, 0.42); }
-.prezi-subtopic[data-theme="cierre"] { border-color: rgba(86, 33, 56, 0.34); }
-
-.prezi-subtopic.is-current-slide {
-  border-color: #b48324 !important;
-}
-
-.prezi-sub-num {
-  font-size: 0.52rem;
+.pzl-sub-kicker {
+  font-size: 0.48rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
-  color: #b48324;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
-  line-height: 1;
+  color: #b48324;
   margin-bottom: 2px;
 }
 
-.prezi-sub-label {
-  font-size: 0.52rem;
+.pzl-sub-title {
+  font-size: 0.58rem;
   font-weight: 700;
-  line-height: 1.12;
+  line-height: 1.1;
   color: #0f2d59;
-  max-width: 62px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  max-width: 68px;
 }
 
-.prezi-sub-time {
-  font-size: 0.44rem;
+.pzl-sub-hint {
+  font-size: 0.45rem;
   font-weight: 600;
   color: #64748b;
   margin-top: 2px;
 }
 
-/* Cuando estamos con zoom en el planeta padre, resaltamos ligeramente sus satélites */
-.prezi-subtopic.is-focused-child {
-  transform: scale(1.06);
-  box-shadow: 0 12px 26px rgba(15, 45, 89, 0.14);
-}
-
-.prezi-subtopic.is-focused-child:hover {
-  transform: scale(1.16);
-}
-
 /* ==========================================================================
-   BARRA FLOTANTE INFERIOR (CONTROLES ESTILO PREZI)
+   LENTE DE DETALLE (NIVEL 2 — ZOOM PROFUNDO DENTRO DE LA MISMA FILMINA)
    ========================================================================== */
-.prezi-bottombar {
+.slide-prezi-detail-lens {
   position: absolute;
-  bottom: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 25;
+  inset: 0;
+  z-index: 15;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 7px 10px;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(15, 45, 89, 0.14);
-  border-radius: 14px;
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+  justify-content: center;
+  padding: 14px 18px;
+  background: rgba(247, 249, 252, 0.72);
+  backdrop-filter: blur(6px);
 }
 
-.prezi-ctrl-btn {
-  appearance: none;
-  border: 1px solid rgba(15, 45, 89, 0.1);
+.slide-prezi-detail-lens[hidden] {
+  display: none !important;
+}
+
+.slide-prezi-detail-card {
+  width: 100%;
+  max-width: 560px;
+  max-height: 100%;
+  overflow-y: auto;
   background: #ffffff;
-  color: #1e293b;
-  border-radius: 9px;
-  padding: 6px 11px;
-  font-family: inherit;
-  font-size: 0.74rem;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-  transition: all 0.18s ease;
-  white-space: nowrap;
+  border: 2px solid rgba(180, 131, 36, 0.5);
+  border-radius: 18px;
+  padding: 16px 20px;
+  box-shadow:
+    0 20px 44px rgba(15, 45, 89, 0.16),
+    0 0 0 6px rgba(180, 131, 36, 0.08);
+  text-align: left;
 }
 
-.prezi-ctrl-btn:hover:not(:disabled) {
-  background: #f8fafc;
-  border-color: rgba(180, 131, 36, 0.5);
-  color: #0f2d59;
-  transform: translateY(-1px);
-}
-
-.prezi-ctrl-btn:disabled {
-  opacity: 0.42;
-  cursor: default;
-}
-
-.prezi-ctrl-btn.is-primary {
-  background: #0f2d59;
-  border-color: #0f2d59;
-  color: #ffffff;
-}
-
-.prezi-ctrl-btn.is-primary:hover {
-  background: #163e7a;
-  color: #ffffff;
-}
-
-.prezi-ctrl-sep {
-  width: 1px;
-  height: 22px;
-  background: rgba(15, 45, 89, 0.12);
-  margin: 0 2px;
-}
-
-.prezi-zoom-readout {
-  min-width: 46px;
-  text-align: center;
-  font-size: 0.72rem;
+.slide-prezi-detail-badge {
+  display: inline-block;
+  font-size: 0.64rem;
   font-weight: 700;
-  color: #0f2d59;
-  font-variant-numeric: tabular-nums;
-}
-
-/* Indicador discreto cuando está ocurriendo un "vuelo" automático entre bloques */
-.prezi-flight-banner {
-  position: absolute;
-  top: 70px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 26;
-  display: none;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: #996515;
+  background: rgba(180, 131, 36, 0.12);
+  border: 1px solid rgba(180, 131, 36, 0.28);
+  padding: 3px 10px;
   border-radius: 999px;
-  background: rgba(15, 45, 89, 0.9);
-  color: #ffffff;
-  font-size: 0.74rem;
+  margin-bottom: 7px;
+}
+
+.slide-prezi-detail-title {
+  font-family: var(--font-title, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.38rem;
+  font-weight: 700;
+  line-height: 1.18;
+  color: #0f2d59;
+  margin: 0 0 4px 0;
+}
+
+.slide-prezi-detail-lead {
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  box-shadow: 0 8px 22px rgba(15, 45, 89, 0.22);
-  pointer-events: none;
+  color: #996515;
+  margin: 0 0 9px 0;
 }
 
-.prezi-overlay.is-flight-mode .prezi-flight-banner {
-  display: inline-flex;
+.slide-prezi-detail-body {
+  font-size: 0.86rem;
+  line-height: 1.48;
+  color: #1e293b;
+  margin: 0 0 11px 0;
 }
 
-.prezi-flight-pulse {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #f59e0b;
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
+.slide-prezi-detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
 }
 
-/* Responsividad para pantallas medianas */
-@media (max-width: 900px) {
-  .prezi-topbar {
-    padding: 10px 14px;
-  }
+.slide-prezi-detail-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #0f2d59;
+  background: rgba(15, 45, 89, 0.06);
+  border: 1px solid rgba(15, 45, 89, 0.12);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
 
-  .prezi-hint-pill {
-    display: none;
-  }
-
-  .prezi-bottombar {
-    max-width: calc(100vw - 20px);
-    flex-wrap: wrap;
-    justify-content: center;
-    bottom: 12px;
-  }
+.slide-prezi-detail-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 9px;
+  border-top: 1px solid rgba(15, 45, 89, 0.1);
 }

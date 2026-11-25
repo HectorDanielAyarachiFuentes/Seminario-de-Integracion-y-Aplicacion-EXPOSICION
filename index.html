@@ -52,7 +52,7 @@
     href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css?v=6.9">
-  <link rel="stylesheet" href="css/prezi.css?v=1.0">
+  <link rel="stylesheet" href="css/prezi.css?v=2.0">
 </head>
 
 <body>
@@ -140,10 +140,48 @@
       <article class="slide-card" id="slide-card">
         <div class="slide-header-tags">
           <span class="slide-badge" id="slide-badge">FILMINA 1</span>
-          <span class="slide-bloque-badge is-prezi-clickable" id="slide-bloque-badge" role="button" tabindex="0" title="Ver este Bloque en el Mapa Panorámico Prezi">BLOQUE I</span>
+          <span class="slide-bloque-badge" id="slide-bloque-badge">BLOQUE I</span>
         </div>
         <h2 class="slide-title" id="slide-title">Cargando presentación...</h2>
         <p class="slide-subtitle" id="slide-subtitle">Espere un instante mientras se inicializan los módulos.</p>
+        <div class="slide-prezi-stage" id="slide-prezi-stage" hidden>
+          <div class="slide-prezi-hud">
+            <div class="slide-prezi-crumbs" aria-label="Jerarquía Prezi de la carátula">
+              <button type="button" class="slide-prezi-crumb is-active" id="prezi-inline-crumb-root">Panorama 360°</button>
+              <span class="slide-prezi-sep is-hidden" id="prezi-inline-sep-1">›</span>
+              <button type="button" class="slide-prezi-crumb is-hidden" id="prezi-inline-crumb-topic">Bloque</button>
+              <span class="slide-prezi-sep is-hidden" id="prezi-inline-sep-2">›</span>
+              <button type="button" class="slide-prezi-crumb is-hidden" id="prezi-inline-crumb-sub">Detalle</button>
+            </div>
+            <div class="slide-prezi-controls">
+              <button type="button" class="slide-prezi-btn is-hidden" id="prezi-inline-btn-back" title="Volver al nivel anterior (Achique)">‹ Volver</button>
+              <button type="button" class="slide-prezi-btn" id="prezi-inline-btn-zoom-out" title="Alejar">−</button>
+              <span class="slide-prezi-zoom" id="prezi-inline-zoom-readout">100%</span>
+              <button type="button" class="slide-prezi-btn" id="prezi-inline-btn-zoom-in" title="Acercar">+</button>
+              <button type="button" class="slide-prezi-btn is-accent" id="prezi-inline-btn-overview" title="Encuadrar Vista Amplia">Vista Amplia</button>
+            </div>
+          </div>
+          <div class="slide-prezi-viewport" id="slide-prezi-viewport">
+            <div class="slide-prezi-world" id="slide-prezi-world">
+              <svg class="slide-prezi-svg" id="slide-prezi-svg" viewBox="0 0 1280 840" preserveAspectRatio="none"></svg>
+              <div id="slide-prezi-nodes"></div>
+            </div>
+            <span class="slide-prezi-tip" id="slide-prezi-tip">Clic en cualquier círculo para hacer zoom · Rueda: acercar/alejar · Arrastrar: mover</span>
+            <div class="slide-prezi-detail-lens" id="slide-prezi-detail-lens" hidden>
+              <div class="slide-prezi-detail-card" id="slide-prezi-detail-card">
+                <span class="slide-prezi-detail-badge" id="prezi-detail-badge">DETALLE</span>
+                <h4 class="slide-prezi-detail-title" id="prezi-detail-title"></h4>
+                <p class="slide-prezi-detail-lead" id="prezi-detail-lead"></p>
+                <p class="slide-prezi-detail-body" id="prezi-detail-body"></p>
+                <div class="slide-prezi-detail-tags" id="prezi-detail-tags"></div>
+                <div class="slide-prezi-detail-actions">
+                  <button type="button" class="slide-prezi-btn is-back" id="prezi-detail-btn-back">‹ Volver al Bloque</button>
+                  <button type="button" class="slide-prezi-btn is-jump is-hidden" id="prezi-detail-btn-jump">Ir a Filmina ↗</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <ul class="slide-bullets" id="slide-bullets"></ul>
         <footer class="slide-footer-meta" id="slide-footer-meta"></footer>
       </article>
@@ -215,21 +253,6 @@
             </svg>
             <span class="tool-text">Centrar</span>
             <span class="tool-key">R</span>
-          </button>
-          <button class="btn-tool" id="btn-prezi-overview" title="Vista Panorámica Prezi y Zoom Jerárquico (P)">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="3"></circle>
-              <circle cx="5" cy="6" r="2.2"></circle>
-              <circle cx="19" cy="7" r="2.2"></circle>
-              <circle cx="18" cy="18" r="2.2"></circle>
-              <circle cx="6" cy="18" r="2.2"></circle>
-              <line x1="9.7" y1="10.1" x2="6.8" y2="7.5"></line>
-              <line x1="14.5" y1="10.4" x2="17.2" y2="8.4"></line>
-              <line x1="14.2" y1="14" x2="16.5" y2="16.3"></line>
-              <line x1="9.8" y1="14" x2="7.5" y2="16.3"></line>
-            </svg>
-            <span class="tool-text">Mapa</span>
-            <span class="tool-key">P</span>
           </button>
         </div>
 
@@ -480,7 +503,6 @@
       <div class="shortcut-row"><kbd>D</kbd><span>Ver Texto (Maximizar contenido)</span></div>
       <div class="shortcut-row"><kbd>O</kbd><span>Ver Objeto (Centrar y agrandar 3D)</span></div>
       <div class="shortcut-row"><kbd>R</kbd><span>Centrar Escultura 3D</span></div>
-      <div class="shortcut-row"><kbd>P</kbd><span>Mapa Panorámico Prezi y Zoom Jerárquico</span></div>
       <div class="shortcut-row"><kbd>?</kbd><span>Ver esta ayuda de atajos</span></div>
       <div class="shortcut-row"><kbd>Esc</kbd><span>Cerrar paneles y modales</span></div>
     </div>
@@ -512,54 +534,6 @@
     </div>
   </aside>
 
-  <!-- Overlay Panorámico Prezi (Vista General y Zoom Jerárquico) -->
-  <div id="prezi-overlay" class="prezi-overlay" role="dialog" aria-label="Mapa panorámico Prezi de la defensa">
-    <div class="prezi-topbar prezi-hud-chrome">
-      <div class="prezi-breadcrumbs" aria-label="Jerarquía de navegación">
-        <button type="button" class="prezi-crumb is-active" id="prezi-crumb-overview">Vista General (5 Bloques)</button>
-        <span class="prezi-crumb-sep prezi-crumb-hidden" id="prezi-crumb-sep-1">›</span>
-        <button type="button" class="prezi-crumb prezi-crumb-hidden" id="prezi-crumb-planet">Bloque</button>
-        <span class="prezi-crumb-sep prezi-crumb-hidden" id="prezi-crumb-sep-2">›</span>
-        <button type="button" class="prezi-crumb prezi-crumb-hidden" id="prezi-crumb-slide">Filmina</button>
-      </div>
-      <div class="prezi-topbar-actions">
-        <span class="prezi-hint-pill">Clic en planeta o satélite · Rueda: zoom · Arrastrar: mover</span>
-        <button type="button" class="prezi-toggle-pill" id="prezi-toggle-autozoom" aria-pressed="true" title="Activar o desactivar vuelo automático estilo Prezi al cambiar entre bloques">
-          <span class="prezi-toggle-dot"></span>
-          <span>Auto-Zoom Bloques</span>
-        </button>
-        <button type="button" class="prezi-close-btn" id="prezi-close-btn" title="Volver a la filmina actual (P / Esc)">
-          <span>Volver a Filmina</span>
-          <kbd>P</kbd>
-        </button>
-      </div>
-    </div>
-
-    <div class="prezi-flight-banner" aria-live="polite">
-      <span class="prezi-flight-pulse"></span>
-      <span id="prezi-flight-text">Navegando al bloque…</span>
-    </div>
-
-    <div id="prezi-viewport" class="prezi-viewport">
-      <div id="prezi-world" class="prezi-world">
-        <svg id="prezi-svg-layer" class="prezi-svg-layer" viewBox="0 0 1600 960" preserveAspectRatio="none"></svg>
-        <div id="prezi-nodes-layer"></div>
-      </div>
-    </div>
-
-    <div class="prezi-bottombar prezi-hud-chrome">
-      <button type="button" class="prezi-ctrl-btn" id="prezi-btn-prev" title="Bloque o Filmina anterior">← Anterior</button>
-      <button type="button" class="prezi-ctrl-btn" id="prezi-btn-overview" title="Vista General completa (0)">Vista General</button>
-      <div class="prezi-ctrl-sep"></div>
-      <button type="button" class="prezi-ctrl-btn" id="prezi-btn-zoom-out" title="Alejar (-)">−</button>
-      <span class="prezi-zoom-readout" id="prezi-zoom-readout">100%</span>
-      <button type="button" class="prezi-ctrl-btn" id="prezi-btn-zoom-in" title="Acercar (+)">+</button>
-      <div class="prezi-ctrl-sep"></div>
-      <button type="button" class="prezi-ctrl-btn" id="prezi-btn-next" title="Siguiente Bloque o Filmina">Siguiente →</button>
-      <button type="button" class="prezi-ctrl-btn is-primary" id="prezi-btn-enter-slide" title="Hacer zoom y abrir la filmina seleccionada (Enter)">Abrir Filmina</button>
-    </div>
-  </div>
-
   <!-- Librerías Externas con Fallback Local Automático (100% resiliente offline) -->
   <!-- 1. Motor Gráfico Three.js (r128) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -569,7 +543,7 @@
   <script>window.gsap || document.write('<script src="js/vendor/gsap.min.js"><\/script>');</script>
   <!-- 3. Base de Datos Externa de Metadatos (12 Filminas Oficiales en 3 Ejes) -->
   <script src="data/catedra_data.js?v=6.7"></script>
-  <script src="data/presentacion_data.js?v=7.3"></script>
+  <script src="data/presentacion_data.js?v=7.4"></script>
   <!-- 4. Módulos de Esculturas 3D y Utilitarios -->
   <script src="js/objetos/materials.js?v=6.7"></script>
   <script src="js/objetos/helpers.js?v=6.7"></script>
@@ -581,10 +555,10 @@
   <script src="js/objetos/bloque5.js?v=7.3"></script>
   <!-- 5. Motor Orquestador 3D (Three.js + GSAP) -->
   <script src="js/scene3d.js?v=6.8"></script>
-  <!-- 5.5. Controlador Espacial Prezi -->
-  <script src="js/prezi_map.js?v=1.0"></script>
+  <!-- 5.5. Escenario Prezi Integrado en Carátula -->
+  <script src="js/prezi_map.js?v=2.0"></script>
   <!-- 6. Controlador de Navegación, Temporizador y Eventos -->
-  <script src="js/app.js?v=7.4"></script>
+  <script src="js/app.js?v=7.5"></script>
 
 </body>
 
