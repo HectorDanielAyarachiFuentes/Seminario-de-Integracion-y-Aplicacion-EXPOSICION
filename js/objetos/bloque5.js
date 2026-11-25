@@ -964,3 +964,298 @@ window.Presentation3D_Objects["anim_27"] = {
     }
   }
 };
+
+// ──────────────────────────────────────────────────────────────────────────
+// 28. DISEÑO DE INVESTIGACIÓN COMPLETO: Códice Arquitectónico de 5 Capítulos
+//     (Estructura Oficial UNCo-CURZAS: Carátula + 5 Secciones + Plan Anual)
+// ──────────────────────────────────────────────────────────────────────────
+window.Presentation3D_Objects["anim_28"] = {
+  build(engine, g) {
+    engine.createMuseumPlinth(g, 1.55, 0.22, -1.22);
+
+    const baseChassis = engine.createMachinedChassis(1.66, 0.10, 1.42, { color: 0x1e293b });
+    baseChassis.position.y = -0.92;
+    g.add(baseChassis);
+
+    const plaqueMaster = engine.createEngravedPlaque(
+      1.20,
+      0.22,
+      "DISEÑO DE INVESTIGACIÓN COMPLETO",
+      "Estructura Oficial del Informe Final • UNCo-CURZAS",
+      ["CARÁTULA • 1. PROBLEMA", "2. MARCO • 3. METODOLOGÍA", "4. APA • 5. CRONOGRAMA"],
+      { theme: "dark" }
+    );
+    plaqueMaster.position.set(0, -0.84, 0.74);
+    g.add(plaqueMaster);
+
+    const group = new THREE.Group();
+    group.position.set(0, -0.04, 0);
+
+    const ivoryMat = engine.marbleMat(0xf7f5ef, 0.44);
+    const goldMat = engine.goldMat(0xe0ba56);
+    const brassMat = engine.brassMat(0xcfa346);
+
+    // 1. Plancha de Carátula, Título y Área Temática (con sello UNCo frontal)
+    const folioCover = new THREE.Mesh(
+      engine.getRoundedBoxGeo(1.28, 0.10, 0.96, 0.016, 3),
+      ivoryMat
+    );
+    folioCover.position.set(0, -0.77, -0.04);
+    folioCover.castShadow = true;
+    folioCover.receiveShadow = true;
+    group.add(folioCover);
+
+    const spineTrim = new THREE.Mesh(
+      engine.getRoundedBoxGeo(0.06, 0.115, 0.98, 0.012, 3),
+      brassMat
+    );
+    spineTrim.position.set(-0.62, -0.77, -0.04);
+    group.add(spineTrim);
+
+    const coverSeal = engine.createAcademicSeal(0.085);
+    coverSeal.position.set(0, -0.71, 0.36);
+    group.add(coverSeal);
+
+    // Helper para placa frontal amplia con tipografía grande y legible en cada escalón
+    const createTierBanner = (w, h, title, subs, accentHex) => {
+      const cw = Math.round(w * 1500);
+      const ch = Math.round(h * 1500);
+      const canvas = document.createElement("canvas");
+      canvas.width = cw;
+      canvas.height = ch;
+      const ctx = canvas.getContext("2d");
+
+      ctx.fillStyle = "#faf8f3";
+      ctx.fillRect(0, 0, cw, ch);
+
+      // Acento cromático superior e inferior
+      ctx.fillStyle = accentHex;
+      ctx.fillRect(0, 0, cw, Math.max(8, ch * 0.075));
+      ctx.fillRect(0, ch - Math.max(6, ch * 0.05), cw, Math.max(6, ch * 0.05));
+
+      const fitAndDraw = (txt, maxSize, minSize, weight, fontFam, color, yFrac) => {
+        let px = maxSize;
+        ctx.font = `${weight} ${px}px ${fontFam}`;
+        while (px > minSize && ctx.measureText(txt).width > cw * 0.90) {
+          px -= 2;
+          ctx.font = `${weight} ${px}px ${fontFam}`;
+        }
+        ctx.fillStyle = color;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(txt, cw / 2, ch * yFrac);
+      };
+
+      fitAndDraw(title, Math.round(ch * 0.42), 28, "800", "'Cinzel', Georgia, serif", accentHex, 0.37);
+      fitAndDraw(subs, Math.round(ch * 0.23), 18, "600", "'Inter', sans-serif", "#1e293b", 0.72);
+
+      const tex = new THREE.CanvasTexture(canvas);
+      tex.anisotropy = 4;
+      tex.minFilter = THREE.LinearFilter;
+      tex.magFilter = THREE.LinearFilter;
+      tex.generateMipmaps = false;
+
+      return new THREE.Mesh(
+        new THREE.PlaneGeometry(w, h),
+        new THREE.MeshStandardMaterial({
+          map: tex,
+          roughness: 0.42,
+          metalness: 0.04
+        })
+      );
+    };
+
+    // 2. Tres cuerpos centrales escalonados de la pirámide con nombres grandes y claros
+    const chapters = [
+      {
+        w: 1.14, h: 0.20, d: 0.72, y: -0.57, col: 0x1e3a8a, accent: "#0f2d59",
+        title: "1. EL PROBLEMA",
+        subs: "1.1 Tema • 1.2 Formulación • 1.3 Objetivos • 1.4 Justificación",
+        tabs: 4, tabCol: 0x38bdf8
+      },
+      {
+        w: 0.92, h: 0.20, d: 0.58, y: -0.35, col: 0x0f766e, accent: "#065f46",
+        title: "2. MARCO DE REFERENCIA",
+        subs: "2.1 Teoría • 2.2 Estado del Arte • 2.3 Preguntas • 2.4 Supuestos",
+        tabs: 4, tabCol: 0x34d399
+      },
+      {
+        w: 0.70, h: 0.20, d: 0.46, y: -0.13, col: 0xb45309, accent: "#78350f",
+        title: "3. METODOLOGÍA",
+        subs: "3.1 Estudio • 3.2 Técnicas • 3.3 Muestra • 3.4 Fuentes • 3.5 Análisis",
+        tabs: 5, tabCol: 0xfbbf24
+      }
+    ];
+
+    engine.anim28_beacons = [];
+    chapters.forEach((ch) => {
+      const chapMat = new THREE.MeshStandardMaterial({
+        color: ch.col,
+        roughness: 0.52,
+        metalness: 0.12,
+        envMapIntensity: 0.78
+      });
+
+      const body = new THREE.Mesh(
+        engine.getRoundedBoxGeo(ch.w, ch.h, ch.d, 0.016, 3),
+        chapMat
+      );
+      body.position.set(0, ch.y, -0.06);
+      body.castShadow = true;
+      body.receiveShadow = true;
+      group.add(body);
+
+      const inlayH = ch.h * 0.68;
+      const inlayD = ch.d * 1.02;
+      const pageInlay = new THREE.Mesh(
+        engine.getRoundedBoxGeo(ch.w * 0.94, inlayH, inlayD, 0.008, 2),
+        ivoryMat
+      );
+      pageInlay.position.set(0, ch.y, -0.06);
+      group.add(pageInlay);
+
+      // Cartel frontal legible incrustado al ras sobre cada nivel de la pirámide
+      const bannerMesh = createTierBanner(ch.w * 0.89, inlayH * 0.88, ch.title, ch.subs, ch.accent);
+      bannerMesh.position.set(0, ch.y, -0.06 + inlayD / 2 + 0.004);
+      group.add(bannerMesh);
+
+      // Sub-apartados luminosos (1.1-1.4 / 2.1-2.4 / 3.1-3.5) sobre la cornisa derecha
+      for (let i = 0; i < ch.tabs; i++) {
+        const zOff = ch.tabs === 1 ? 0 : ((i / (ch.tabs - 1)) - 0.5) * (ch.d * 0.66);
+        const beacon = new THREE.Mesh(
+          new THREE.OctahedronGeometry(0.026, 1),
+          engine.glassMat(ch.tabCol, { opacity: 0.92, roughness: 0.08 })
+        );
+        beacon.position.set(ch.w / 2 - 0.05, ch.y + ch.h / 2 + 0.030, -0.06 + zOff);
+        group.add(beacon);
+        engine.anim28_beacons.push(beacon);
+      }
+    });
+
+    // Dos varillas doradas de encuadernación que atraviesan la arquitectura documental
+    [-0.51, 0.51].forEach((rx) => {
+      const rod = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.016, 0.018, 0.94, 24),
+        brassMat
+      );
+      rod.position.set(rx, -0.30, -0.06);
+      group.add(rod);
+
+      const finial = new THREE.Mesh(new THREE.SphereGeometry(0.032, 18, 18), goldMat);
+      finial.position.set(rx, 0.18, -0.06);
+      group.add(finial);
+    });
+
+    // 3. Corona superior: Atril del Informe Final (4. Bibliografía APA) y Anillo Anual (5. Cronograma)
+    const crownPedestalPts = [
+      new THREE.Vector2(0, -0.035),
+      new THREE.Vector2(0.18, -0.035),
+      new THREE.Vector2(0.11, 0.045),
+      new THREE.Vector2(0.09, 0.12),
+      new THREE.Vector2(0.16, 0.16),
+      new THREE.Vector2(0, 0.16)
+    ];
+    const crownPedestal = new THREE.Mesh(new THREE.LatheGeometry(crownPedestalPts, 40), goldMat);
+    crownPedestal.position.z = -0.06;
+    group.add(crownPedestal);
+
+    // Manuscrito abierto final inclinado sobre el pedestal corona
+    const codexGroup = new THREE.Group();
+    codexGroup.position.set(0, 0.19, -0.04);
+    codexGroup.rotation.x = 0.28;
+
+    const codexBoard = new THREE.Mesh(
+      engine.getRoundedBoxGeo(0.46, 0.024, 0.30, 0.008, 3),
+      new THREE.MeshStandardMaterial({ color: 0x0f2d59, roughness: 0.50, metalness: 0.14 })
+    );
+    codexGroup.add(codexBoard);
+
+    [-0.10, 0.10].forEach((px) => {
+      const pageCurve = new THREE.CatmullRomCurve3([
+        new THREE.Vector3(0, 0.018, -0.10),
+        new THREE.Vector3(px * 0.9, 0.044, -0.04),
+        new THREE.Vector3(px * 1.9, 0.026, 0.06)
+      ]);
+      const pageMesh = new THREE.Mesh(
+        new THREE.TubeGeometry(pageCurve, 14, 0.018, 12, false),
+        ivoryMat
+      );
+      pageMesh.scale.set(1.5, 0.5, 2.4);
+      codexGroup.add(pageMesh);
+    });
+
+    const bookmark = new THREE.Mesh(
+      engine.getRoundedBoxGeo(0.028, 0.008, 0.26, 0.002, 2),
+      new THREE.MeshStandardMaterial({ color: 0xb91c1c, roughness: 0.48 })
+    );
+    bookmark.position.set(0, 0.032, 0.04);
+    codexGroup.add(bookmark);
+    group.add(codexGroup);
+
+    // Anillo Armilar Anual (5. Cronograma: Plan de Trabajo a 1 Año = 12 hitos)
+    engine.anim28_chronoRing = new THREE.Group();
+    engine.anim28_chronoRing.position.set(0, 0.52, -0.04);
+    engine.anim28_chronoRing.rotation.x = 0.38;
+
+    const ringMesh = new THREE.Mesh(
+      new THREE.TorusGeometry(0.36, 0.013, 18, 64),
+      brassMat
+    );
+    ringMesh.rotation.x = Math.PI / 2;
+    engine.anim28_chronoRing.add(ringMesh);
+
+    for (let m = 0; m < 12; m++) {
+      const ang = (m * 2 * Math.PI) / 12;
+      const bead = new THREE.Mesh(
+        new THREE.SphereGeometry(m % 3 === 0 ? 0.026 : 0.018, 14, 14),
+        m % 3 === 0 ? goldMat : ivoryMat
+      );
+      bead.position.set(Math.cos(ang) * 0.36, 0, Math.sin(ang) * 0.36);
+      engine.anim28_chronoRing.add(bead);
+    }
+
+    const coreCrystal = new THREE.Mesh(
+      new THREE.OctahedronGeometry(0.11, 1),
+      engine.glassMat(0x38bdf8, { opacity: 0.88, roughness: 0.06 })
+    );
+    engine.anim28_chronoRing.add(coreCrystal);
+    engine.anim28_crystal = coreCrystal;
+
+    group.add(engine.anim28_chronoRing);
+
+    // Etiquetas laterales claras para Capítulos 4 y 5 en la cúspide
+    const bibCallout = engine.createLabelSprite("4. BIBLIOGRAFÍA", "Normas APA Completas", "#0f2d59", false, { x: 0.68, y: 0.20 });
+    bibCallout.position.set(0.72, 0.24, 0.06);
+    group.add(bibCallout);
+
+    const cronoCallout = engine.createLabelSprite("5. CRONOGRAMA", "Plan de Trabajo (1 Año)", "#b45309", false, { x: 0.68, y: 0.20 });
+    cronoCallout.position.set(-0.72, 0.54, 0.06);
+    group.add(cronoCallout);
+
+    const titleSprite = engine.createLabelSprite(
+      "DISEÑO DE INVESTIGACIÓN COMPLETO",
+      "Informe Final UNCo-CURZAS • Carátula + 5 Capítulos • Cronograma 1 Año",
+      "#0f2d59",
+      true
+    );
+    titleSprite.position.set(0, 1.12, 0);
+    group.add(titleSprite);
+
+    g.add(group);
+  },
+
+  animate(engine, t) {
+    if (engine.anim28_chronoRing) {
+      engine.anim28_chronoRing.rotation.y = t * 0.34;
+    }
+    if (engine.anim28_crystal) {
+      engine.anim28_crystal.rotation.y = -t * 0.65;
+      engine.anim28_crystal.position.y = Math.sin(t * 1.5) * 0.02;
+    }
+    if (engine.anim28_beacons) {
+      engine.anim28_beacons.forEach((b, i) => {
+        b.rotation.y = t * 0.8 + i * 0.4;
+      });
+    }
+  }
+};

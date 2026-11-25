@@ -611,11 +611,40 @@ const PRESENTACION_DATA = {
     },
 
     // ─────────────────────────────────────────────────────────────────────────
-    // FILMINA 13: AGRADECIMIENTOS INSTITUCIONALES Y HUMANOS
+    // FILMINA 13: DISEÑO DE INVESTIGACIÓN COMPLETO (INFORME FINAL PRESENTADO)
     // ─────────────────────────────────────────────────────────────────────────
     {
       id: "slide_13",
       numero: 13,
+      bloque: "CIERRE Y ENTREGA FINAL",
+      esquema: "Diseño de Investigación Completo (Estructura Informe Final)",
+      badge: "Guía Oficial UNCo-CURZAS • Informe Final",
+      titulo: "Diseño de Investigación Completo: Estructura del Informe Final",
+      subtitulo: "Modelo Canónico de Cátedra (UNCo-CURZAS) • Cómo Queda Articulado el Documento Definitivo",
+      puntosClave: [
+        "🏛️ <strong>Preliminares (Carátula, Título y Área Temática):</strong> Universidad (UNCo-CURZAS), Carrera (Lic. Gestión RRHH / Adm. Pública), Asignatura (SIA), Docentes, Título, Estudiantes, e-mail y Año.",
+        "🧭 <strong>1. Problema (1.1 a 1.4):</strong> Descripción del tema y contexto socioeconómico/histórico, formulación espacial-temporal con pregunta general, objetivos (general y específicos) y justificación.",
+        "📚 <strong>2. Marco de Referencia (2.1 a 2.4):</strong> Marco teórico y esquema conceptual, Estado del Arte, preguntas de investigación derivadas de los objetivos específicos e hipótesis / supuestos.",
+        "🔬 <strong>3. Metodología (3.1 a 3.5):</strong> Tipo de estudio, técnicas e instrumentos de recolección, población/muestra y muestreo, fuentes secundarias y técnicas de análisis de la información.",
+        "📅 <strong>4. Bibliografía (APA) y 5. Cronograma:</strong> Referencias completas bajo Normas APA y plan de trabajo tentativo estructurado considerando un año de plazo."
+      ],
+      metadatosFooter: "Documento Oficial: Diseño de Investigación Completo 2025 • UNCo-CURZAS • Entrega Final",
+      escena3D: "anim_28",
+      anexoInteractivo: {
+        archivo: "Material Catedra/Diseño de Investigación completo 2025.pdf",
+        titulo: "Planilla Oficial: Diseño de Investigación Completo 2025 (UNCo-CURZAS)",
+        etiqueta: "📄 Ver Planilla Oficial (PDF)",
+        atajo: "A"
+      },
+      guionOrador: "Antes de los agradecimientos finales, sintetizamos cómo queda ensamblado el Informe Final completo del Diseño de Investigación siguiendo estrictamente la guía oficial de UNCo-CURZAS.\n\nEn los Preliminares se consolidan la Carátula institucional (Universidad, Carrera, Asignatura, docentes, tesista, correo electrónico y año), el Título descriptivo y el Área Temática.\n\nEl cuerpo central articula los cinco capítulos canónicos:\n1. Problema (1.1 contexto socioeconómico e histórico; 1.2 formulación con delimitación espacio-temporal y pregunta general; 1.3 objetivos general y específicos; 1.4 justificación).\n2. Marco de Referencia (2.1 marco teórico y esquema conceptual; 2.2 estado del arte; 2.3 preguntas específicas; 2.4 supuestos e hipótesis).\n3. Metodología (3.1 tipo de estudio; 3.2 técnicas e instrumentos; 3.3 población, muestra y muestreo; 3.4 fuentes secundarias; 3.5 técnicas de análisis).\n\nFinalmente, se cierra con el apartado 4 de Bibliografía completa bajo Normas APA y el apartado 5 de Cronograma con el plan de trabajo proyectado a un año de plazo. Pueden abrir la planilla oficial PDF desde el botón adjunto o con la tecla A."
+    },
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // FILMINA 14: AGRADECIMIENTOS INSTITUCIONALES Y HUMANOS
+    // ─────────────────────────────────────────────────────────────────────────
+    {
+      id: "slide_14",
+      numero: 14,
       bloque: "CIERRE Y RECONOCIMIENTO",
       esquema: "Agradecimientos",
       badge: "CURZAS • UNCo • Gratitud",
@@ -633,11 +662,11 @@ const PRESENTACION_DATA = {
     },
 
     // ─────────────────────────────────────────────────────────────────────────
-    // FILMINA 14 (ÚLTIMA): SECCIÓN DE BIBLIOGRAFÍA Y MARCO NORMATIVO
+    // FILMINA 15 (ÚLTIMA): SECCIÓN DE BIBLIOGRAFÍA Y MARCO NORMATIVO
     // ─────────────────────────────────────────────────────────────────────────
     {
-      id: "slide_14",
-      numero: 14,
+      id: "slide_15",
+      numero: 15,
       bloque: "BIBLIOGRAFÍA",
       esquema: "Bibliografía y Marco Normativo (Sección Final)",
       badge: "Normas APA 7 • 32 Fuentes",

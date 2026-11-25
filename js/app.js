@@ -543,9 +543,9 @@ class PresentationApp {
       {
         id: "cierre",
         code: "CIERRE",
-        shortLabel: "Cierre, Gracias y Bibliografía",
-        title: "Cierre: Proyecciones, Agradecimientos y Bibliografía Final",
-        range: [11, 13], // Filminas 12 a 14
+        shortLabel: "Cierre, Diseño, Gracias y Bibliografía",
+        title: "Cierre: Proyecciones, Diseño Final, Agradecimientos y Bibliografía",
+        range: [11, 14], // Filminas 12 a 15
         isEje: false
       }
     ];
@@ -1642,16 +1642,17 @@ class PresentationApp {
     });
   }
 
-  // ─── MODAL VISOR DE ANEXO INTERACTIVO (HTML 3D / EMBED) ─────────────────
+  // ─── MODAL VISOR DE ANEXO INTERACTIVO (HTML 3D / PDF OFICIAL) ───────────
   openAnexoModal(anexo) {
     if (!anexo?.archivo) return;
     const fileName = anexo.archivo.split("/").pop() || "anexo.html";
+    const ext = fileName.includes(".") ? "." + fileName.split(".").pop().toLowerCase() : ".html";
     this.openDocModal({
       titulo: anexo.titulo || "Anexo Interactivo",
       nombre: fileName,
-      ext: ".html",
+      ext,
       ruta: anexo.archivo,
-      tamano: "Anexo Interactivo"
+      tamano: ext === ".pdf" ? "Documento PDF Oficial" : "Anexo Interactivo"
     });
   }
 
