@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Guía Sencilla de Exposición — Proyecto TFG (CURZAS-UNCo)</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 15mm 16mm 17mm 16mm;
+      @bottom-left {
+        content: "CURZAS–UNCo · Guía Sencilla de Exposición Oral (SIA 2026)";
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        font-size: 8.5pt;
+        color: #64748b;
+      }
+      @bottom-right {
+        content: "Página " counter(page) " de " counter(pages);
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        font-size: 8.5pt;
+        font-weight: 600;
+        color: #0f2d59;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      font-size: 10pt;
+      line-height: 1.48;
+      color: #1e293b;
+      background: #ffffff;
+    }
+
+    /* Portada compacta superior */
+    .hero {
+      border: 1.5px solid #cbd5e1;
+      border-top: 6px solid #0f2d59;
+      border-radius: 10px;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, #f8fafc 0%, #fefdf8 100%);
+      margin-bottom: 14px;
+    }
+
+    .eyebrow {
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: #996515;
+      margin: 0 0 6px 0;
+    }
+
+    h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 17.5pt;
+      line-height: 1.18;
+      color: #0f2d59;
+      margin: 0 0 8px 0;
+    }
+
+    .hero-sub {
+      font-size: 9.8pt;
+      font-weight: 600;
+      color: #334155;
+      margin: 0 0 12px 0;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 14px;
+      font-size: 8.8pt;
+      padding-top: 10px;
+      border-top: 1px solid #e2e8f0;
+      color: #334155;
+    }
+
+    .callout-simple {
+      border-left: 4px solid #b48324;
+      background: #fffbeb;
+      border-radius: 0 8px 8px 0;
+      padding: 11px 14px;
+      margin: 12px 0;
+    }
+
+    .callout-simple strong.label {
+      display: block;
+      font-size: 8.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #92400e;
+      margin-bottom: 3px;
+    }
+
+    .callout-say {
+      border-left: 4px solid #0f766e;
+      background: #f0fdfa;
+      border-radius: 0 8px 8px 0;
+      padding: 10px 14px;
+      margin: 10px 0 14px 0;
+      break-inside: avoid;
+    }
+
+    .callout-say strong.label {
+      display: block;
+      font-size: 8.4pt;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #0f766e;
+      margin-bottom: 3px;
+    }
+
+    .block-banner {
+      margin-top: 18px;
+      margin-bottom: 10px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      color: #ffffff;
+      break-after: avoid;
+    }
+
+    .block-1 { background: #0f2d59; border-left: 6px solid #b48324; }
+    .block-2 { background: #0f625a; border-left: 6px solid #f59e0b; }
+    .block-3 { background: #78350f; border-left: 6px solid #0f2d59; }
+    .block-4 { background: #4c1d3d; border-left: 6px solid #b48324; }
+
+    .block-banner .kicker {
+      font-size: 7.8pt;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .block-banner h2 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 13.5pt;
+      margin: 0;
+      color: #ffffff;
+    }
+
+    h3 {
+      font-size: 10.8pt;
+      color: #0f2d59;
+      margin: 12px 0 5px 0;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 2px;
+      break-after: avoid;
+    }
+
+    p { margin: 5px 0 8px 0; }
+
+    ul, ol {
+      margin: 4px 0 9px 0;
+      padding-left: 18px;
+    }
+
+    li { margin-bottom: 4px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 12px 0;
+      font-size: 8.7pt;
+      break-inside: auto;
+    }
+
+    tr { break-inside: avoid; }
+
+    th {
+      background: #f1f5f9;
+      color: #0f2d59;
+      text-align: left;
+      font-weight: 700;
+      padding: 6px 8px;
+      border: 1px solid #cbd5e1;
+    }
+
+    td {
+      padding: 6px 8px;
+      border: 1px solid #cbd5e1;
+      vertical-align: top;
+    }
+
+    .cards-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 8px 0 12px 0;
+    }
+
+    .mini-card {
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 9px 11px;
+      background: #f8fafc;
+      break-inside: avoid;
+    }
+
+    .mini-card h4 {
+      margin: 0 0 4px 0;
+      font-size: 9.5pt;
+      color: #0f2d59;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 6px 0 10px 0;
+    }
+
+    .pill {
+      display: inline-block;
+      font-size: 8.2pt;
+      font-weight: 600;
+      color: #0f2d59;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      padding: 2px 9px;
+    }
+
+    .faq-item {
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #0f2d59;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin-bottom: 8px;
+      background: #ffffff;
+      break-inside: avoid;
+    }
+
+    .faq-q {
+      font-weight: 700;
+      color: #0f2d59;
+      margin-bottom: 3px;
+    }
+
+    .page-break {
+      page-break-before: always;
+      break-before: page;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PORTADA Y RESUMEN EN 30 SEGUNDOS -->
+  <section class="hero">
+    <p class="eyebrow">Guía Práctica para la Defensa Oral · Seminario de Integración y Aplicación (SIA 2026)</p>
+    <h1>Evaluación del Desempeño Docente y Factibilidad de un Modelo 360° en el CURZAS–UNCo (2027)</h1>
+    <p class="hero-sub">Resumen claro y paso a paso del Proyecto TFG completo (Res. CD-CURZA N° 266/23) organizado en 3 Bloques de Exposición (15:00 min)</p>
+    <div class="meta-grid">
+      <div><strong>Tesista:</strong> Tec. Sup. Héctor D. Ayarachi Fuentes (Leg. 8252 · DNI 35.492.138)</div>
+      <div><strong>Carrera:</strong> Lic. en Gestión de Recursos Humanos (CCC)</div>
+      <div><strong>Ámbito:</strong> Dpto. de Administración Pública · Viedma y 10 Nodos (Río Negro)</div>
+      <div><strong>Cátedra SIA:</strong> Dra. Deborah Noguera · Esp. Federico Abeiro · Esp. María C. Aguirre</div>
+    </div>
+  </section>
+
+  <div class="callout-simple">
+    <strong class="label">¿De qué se trata TODO tu trabajo, explicado en una sola idea fácil?</strong>
+    Vas a defender un <strong>plan de investigación previa para ejecutar en 2027</strong> (todavía no tiene conclusiones cerradas ni impone nada). Su único objetivo es <strong>averiguar si es viable o no</strong> incorporar en el Departamento de Administración Pública del CURZAS una evaluación docente de <strong>retroalimentación 360°</strong> (donde opinan el propio docente, colegas, estudiantes y dirección) <strong>con fines 100 % formativos</strong> —para ayudar a mejorar las clases y planificar capacitaciones—, garantizando que <strong>jamás afecte la estabilidad laboral ni los concursos</strong>.
+  </div>
+
+  <h3>Hoja de Ruta de la Defensa (15:00 minutos exactos)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 24%;">Tramo</th>
+        <th style="width: 11%;">Filminas</th>
+        <th style="width: 10%;">Tiempo</th>
+        <th>Qué tenés que dejar bien claro</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Apertura</strong></td>
+        <td>F1</td>
+        <td>0:40</td>
+        <td>Saludo al tribunal, título del proyecto, dónde se sitúa y los 3 bloques del recorrido.</td>
+      </tr>
+      <tr>
+        <td><strong>1. Problematización</strong></td>
+        <td>F2 – F4</td>
+        <td>3:40</td>
+        <td>Sede Viedma + 10 Nodos; qué pasa hoy (Art. 74/75 vs. Art. 76); pregunta, 4 objetivos y 5 dimensiones.</td>
+      </tr>
+      <tr>
+        <td><strong>2. Marco, Antecedentes y Conceptos</strong></td>
+        <td>F5 – F7</td>
+        <td>4:00</td>
+        <td>Para qué sirven Longo, De la Garza, 360° (4 miradas), Cao y Blutman, Matus y Oszlak + antecedentes en 3 escalas y vacancia preliminar.</td>
+      </tr>
+      <tr>
+        <td><strong>3. Metodología</strong></td>
+        <td>F8 – F11</td>
+        <td>4:50</td>
+        <td>Cómo se investiga en 2027: CUAL → cuan, 9 entrevistas + 45 encuestas, matriz 5D, 7 meses, $160.000 propios, reflexividad y ética (Ley 25.326).</td>
+      </tr>
+      <tr>
+        <td><strong>Cierre y Respaldo</strong></td>
+        <td>F12 – F15</td>
+        <td>1:50</td>
+        <td>Para qué le sirve al CURZAS, límites honestos, agradecimientos y respaldo bibliográfico (35 fuentes APA 7).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- BLOQUE 1 -->
+  <div class="block-banner block-1">
+    <span class="kicker">Bloque 1 de la Exposición · Filminas 2 a 4 · Tiempo: 3:40 min</span>
+    <h2>1. Problematización (Qué pasa, dónde y qué queremos averiguar)</h2>
+  </div>
+
+  <h3>1.1 ¿Dónde se hace? (Recorte institucional y territorial)</h3>
+  <p>Se estudia el <strong>Departamento de Administración Pública del CURZAS–UNCo</strong> (que dicta la <em>Lic. en Administración Pública —LAP—</em> y el <em>CCC de la Lic. en Gestión de RR.HH.</em>). No es solo un edificio: combina la <strong>Sede Central en Viedma</strong> con la <strong>Red Territorial de 10 Nodos Universitarios</strong> bajo cursada híbrida (<strong>Res. CD-CURZA N° 196/2022</strong>):</p>
+  <div class="pill-row">
+    <span class="pill">Sede Viedma</span>
+    <span class="pill">1. Valcheta</span>
+    <span class="pill">2. Ramos Mexía</span>
+    <span class="pill">3. Sierra Colorada</span>
+    <span class="pill">4. Los Menucos</span>
+    <span class="pill">5. Maquinchao</span>
+    <span class="pill">6. Ing. Jacobacci</span>
+    <span class="pill">7. SAO / Las Grutas</span>
+    <span class="pill">8. Sierra Grande</span>
+    <span class="pill">9. Gral. Conesa</span>
+    <span class="pill">10. Río Colorado</span>
+  </div>
+
+  <h3>1.2 ¿Qué ocurre hoy y cuál es el problema? (Tensión Art. 75 vs. Art. 76)</h3>
+  <p>La tarea docente se rige por el <strong>Estatuto UNCo (Ord. CS N° 0988/2025)</strong>, el <strong>Reglamento de Carrera Docente (Ord. CS N° 0910/1997)</strong> y el <strong>Convenio Colectivo Docente (Dec. PEN N° 1246/2015)</strong>. Hoy funcionan dos controles: los informes anuales con encuesta estudiantil (<strong>Art. 74</strong>) y las evaluaciones cada 4 años ante tribunal con veeduría gremial y estudiante (<strong>Art. 75</strong>).</p>
+  <ul>
+    <li><strong>El nudo del problema:</strong> El Art. 75 inc. c establece que <em>dos evaluaciones cuatrienales negativas seguidas declaran vacante el cargo</em>. Por eso la evaluación se vive como control administrativo ("lógica sumativa") y genera prevención docente lógica si no hay garantías claras.</li>
+    <li><strong>La brecha formativa:</strong> El Art. 76 prevé un <em>Programa Anual de Capacitación Docente</em>, pero faltan devoluciones pedagógicas sistemáticas que orienten al docente en su práctica diaria y en las tutorías híbridas de los 10 Nodos.</li>
+  </ul>
+
+  <h3>1.3 Pregunta central, 5 Dimensiones de Factibilidad y Objetivos (2027)</h3>
+  <p><strong>Pregunta de investigación (en simple):</strong> <em>¿Qué condiciones reales de organización, tecnología, normas, cultura y acuerdo político/gremial existen en 2027 para implementar una retroalimentación 360° en el Departamento?</em></p>
+
+  <div class="cards-2">
+    <div class="mini-card">
+      <h4>Las 5 Dimensiones que vas a medir</h4>
+      <ol>
+        <li><strong>Normativa:</strong> Compatibilidad con Estatuto, Ord. 0910/97 y CCT 1246/15 (cero sanciones).</li>
+        <li><strong>Técnica:</strong> Moodle / SIU-Guaraní útiles en Viedma y Nodos, con anonimato técnico real.</li>
+        <li><strong>Organizacional:</strong> Conexión práctica con el Art. 76 sin agregar burocracia pesada.</li>
+        <li><strong>Cultural:</strong> Confianza de docentes y estudiantes para intercambiar devoluciones.</li>
+        <li><strong>Gobernanza multinivel:</strong> Consenso en cogobierno y acuerdo paritario con ADUNC.</li>
+      </ol>
+    </div>
+    <div class="mini-card">
+      <h4>El Objetivo General y los 4 Específicos</h4>
+      <ol>
+        <li><strong>OE1 (Norma vs. Práctica):</strong> Relevar reglamentos, informes, encuestas del SIU y capacitaciones ejecutadas.</li>
+        <li><strong>OE2 (Voces y Confianza):</strong> Conocer qué piensan docentes, estudiantes y autoridades sobre el 360°.</li>
+        <li><strong>OE3 (Trabas y Pares):</strong> Detectar condicionantes técnicos, gremiales y cómo hacer coevaluación en <em>cátedras unipersonales</em> (pares horizontales por año/área).</li>
+        <li><strong>OE4 (Lineamientos):</strong> Proponer orientaciones prudentes según lo que muestre el trabajo de campo.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="callout-say">
+    <strong class="label">Cómo explicarlo fácil frente al tribunal (Bloque 1)</strong>
+    "El problema no es que falten normas: ya existen el Art. 74 y el Art. 75, que controlan permanencia. El punto es que ese control sumativo genera prevención, mientras el Art. 76 de capacitación no tiene un insumo formativo que incluya la realidad híbrida de nuestros 10 Nodos. Por eso no venimos a imponer un 360°: venimos a investigar si es viable normativamente, técnicamente, organizacionalmente, culturalmente y por consenso paritario."
+  </div>
+
+  <!-- BLOQUE 2 -->
+  <div class="block-banner block-2 page-break">
+    <span class="kicker">Bloque 2 de la Exposición · Filminas 5 a 7 · Tiempo: 4:00 min</span>
+    <h2>2. Marco Teórico, Antecedentes y Conceptualizaciones</h2>
+  </div>
+
+  <h3>2.1 ¿Para qué sirve cada autor del Marco Teórico? (Explicado sencillo)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 24%;">Autor</th>
+        <th style="width: 34%;">Idea principal "en criollo"</th>
+        <th>Para qué lo usás en tu defensa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Enrique de la Garza Toledo (2001)</strong></td>
+        <td><em>Teoría como configuración abierta:</em> no es un dogma cerrado sino una red flexible de conceptos.</td>
+        <td>Justifica que no das resultados por sentados: reconstruís qué es institucionalmente viable en la realidad concreta.</td>
+      </tr>
+      <tr>
+        <td><strong>Wainerman y Sautu (2005, 2011)</strong></td>
+        <td>Problematizar rutinas cotidianas y ordenar el estudio en <em>pirámide invertida</em>.</td>
+        <td>Te permite pasar del problema general del empleo público a objetivos y variables medibles en el Dpto.</td>
+      </tr>
+      <tr>
+        <td><strong>Francisco Longo (2006)</strong></td>
+        <td><em>Columna vertebral:</em> gestionar personas en el Estado une 5 subsistemas: Rendimiento, Organización, Desarrollo, Empleo y Relaciones Humanas.</td>
+        <td>Demuestra que evaluar (<em>rendimiento</em>) falla si se aísla: hay que unirlo a capacitación Art. 76 (<em>desarrollo</em>), aulas híbridas (<em>organización</em>), estabilidad (<em>empleo</em>) y diálogo sindical (<em>relaciones</em>).</td>
+      </tr>
+      <tr>
+        <td><strong>Chiavenato (2020) · Lepsinger &amp; Lucia (2009)</strong></td>
+        <td>Eval. sumativa (control/castigo) vs. formativa (mejora). El <strong>360°</strong> suma 4 miradas sobre el aula.</td>
+        <td>Articula 4 fuentes: <strong>autoevaluación</strong> + <strong>pares</strong> (horizontales si la cátedra es de un solo docente) + <strong>estudiantes</strong> + <strong>dirección</strong>, sin consecuencias punitivas.</td>
+      </tr>
+      <tr>
+        <td><strong>Aguilar (2006) · Cao y Blutman (2021, 2023)</strong></td>
+        <td><strong>Poligobernanza</strong> y <strong>Estado plataforma:</strong> gobernar en red adaptándose a cada territorio sin recetas rígidas.</td>
+        <td>Ordena el análisis en <strong>4 planos</strong>: <em>Macro</em> (UNCo Neuquén), <em>Meso</em> (CURZAS Viedma), <em>Micro</em> (10 Nodos) y <em>Transversal</em> (ADUNC).</td>
+      </tr>
+      <tr>
+        <td><strong>Carlos Matus (1993)</strong></td>
+        <td>Planificación Situacional (PES): la universidad es una <em>arena de poder compartido</em>.</td>
+        <td>Explica que la viabilidad política exige negociar reglas claras (voluntariedad, confidencialidad) en cogobierno y paritarias.</td>
+      </tr>
+      <tr>
+        <td><strong>Oscar Oszlak (2020)</strong></td>
+        <td>Capacidades estatales digitales: tecnología inteligente sin vigilancia autoritaria ("tecno-autoritarismo").</td>
+        <td>Sustenta usar Moodle y SIU-Guaraní con anonimato técnico real para producir datos formativos, nunca para vigilar.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Aclaración conceptual fina:</strong> Se distingue entre <strong>Claustros</strong> (estamentos legales que votan en el cogobierno según Ley 24.521 y Estatuto) y <strong>Actores situados</strong> (las personas concretas dando clases, estudiando en Nodos, conduciendo o negociando paritarias).</p>
+
+  <h3>2.2 Antecedentes Empíricos / Estado del Arte (Revisión preliminar en 3 escalas)</h3>
+  <p><strong>Cómo se buscó:</strong> Relevamiento exploratorio previo combinando 5 palabras clave (<em>evaluación docente 360°, retroalimentación formativa universitaria, carrera académica, docencia híbrida y capacidades estatales</em>) en <strong>Dialnet, SciELO, Redalyc, EPAA y RDI UNCo</strong> más rastreo en bola de nieve. En 2027 se ampliará en SNRD, Google Académico, SEDICI y RevEle UNCo.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 17%;">Escala</th>
+        <th style="width: 28%;">Estudios / Fuentes</th>
+        <th>Hallazgo principal que respalda tu proyecto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Internacional</strong></td>
+        <td>Sifuentes Ocegueda et al. (2016) · Obando Freire et al. (2014) · Hernández-Villafaña y Luna Serrano (2023) · Vázquez Cid de León et al. (2021)</td>
+        <td>En Nayarit (49 doc.), Ecuador/Cuba y México: 360° mitiga sesgos de la encuesta estudiantil aislada y capta tutorías híbridas/virtuales (Vázquez Cid). En UABC (<strong>1.431 docentes</strong>), el <strong>71,7 %</strong> usa resultados para mejorar su enseñanza pero rechaza usos punitivos o salariales.</td>
+      </tr>
+      <tr>
+        <td><strong>Nacional (Argentina)</strong></td>
+        <td>Chiroleu (2002) · Marquina (2013)</td>
+        <td>Muestran fragmentación en la profesión académica argentina y predominio de evaluaciones burocráticas/concursos sumativos por sobre circuitos formativos colegiados.</td>
+      </tr>
+      <tr>
+        <td><strong>Local (CURZA–UNCo)</strong></td>
+        <td><strong>Cariaga (2019)</strong> (<em>Revista Pilquen</em>, 10 entrevistas etnográficas en el CURZA) + <em>Marco normativo</em> (Ord. 0988/25, 0910/97, CCT 1246/15, Res. 196/22)</td>
+        <td>Cariaga evidencia tensiones culturales ante aulas virtuales en el CURZA y reclama políticas de desarrollo profesional docente. En las normas vigentes aún no se identifican circuitos confidenciales 360° (a confirmar en 2027).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout-simple">
+    <strong class="label">Posible vacancia preliminar (siempre con prudencia)</strong>
+    Hay antecedentes internacionales sobre 360° y trabajos nacionales/locales sobre carrera docente o virtualidad en el CURZA, pero hasta esta revisión preliminar <strong>no se hallaron estudios que crucen factibilidad integral 360° en un departamento cogobernado de universidad nacional con red territorial híbrida de 10 Nodos</strong>. Esto no se afirma como absoluto: se verificará y ajustará en la revisión ampliada y el campo 2027.
+  </div>
+
+  <div class="callout-say">
+    <strong class="label">Cómo explicarlo fácil frente al tribunal (Bloque 2)</strong>
+    "No venimos a recitar autores: usamos un mapa conceptual concreto. <strong>Longo</strong> nos da las 5 piezas que conectan evaluación con capacitación (Art. 76) y estabilidad; <strong>De la Garza</strong> nos recuerda usar la teoría de forma abierta sin forzar conclusiones; el modelo <strong>360°</strong> suma 4 miradas; y <strong>Cao-Blutman, Matus y Oszlak</strong> explican por qué en una universidad cogobernada con 10 Nodos toda innovación necesita consenso gremial y plataformas con anonimato real. Además, la búsqueda preliminar internacional (donde 71,7 % en México valora fines formativos), nacional y local (Cariaga 2019 en el CURZA) muestra que este cruce exacto todavía no fue estudiado en nuestro ámbito."
+  </div>
+
+  <h3>2.3 Lo que ya dejás listo en los Anexos del proyecto (Anexos I a IV)</h3>
+  <div class="cards-2">
+    <div class="mini-card">
+      <h4>Anexo I y II: Guías y Cuestionarios</h4>
+      <p style="margin:0; font-size:8.7pt;"><strong>Anexo I:</strong> 3 guías de entrevista (A: docentes/autoridades, B: ADUNC, C: estudiantes).<br><strong>Anexo II:</strong> Formulario A docentes (15 ítems) y Formulario B estudiantes (12 ítems), con escala Likert e ítems invertidos.</p>
+    </div>
+    <div class="mini-card">
+      <h4>Anexo III y IV: Aval y Consentimiento</h4>
+      <p style="margin:0; font-size:8.7pt;"><strong>Anexo III:</strong> Modelo oficial de nota dirigida al Departamento para pedir autorización de campo.<br><strong>Anexo IV:</strong> Consentimiento informado voluntario (opción de grabar audio o no) bajo Ley 25.326.</p>
+    </div>
+  </div>
+
+  <!-- BLOQUE 3 -->
+  <div class="block-banner block-3 page-break">
+    <span class="kicker">Bloque 3 de la Exposición · Filminas 8 a 11 · Tiempo: 4:50 min</span>
+    <h2>3. Metodología, Plan de Trabajo y Blindaje Ético</h2>
+  </div>
+
+  <h3>3.1 Cómo se investiga: Diseño, Población y Muestras</h3>
+  <ul>
+    <li><strong>Enfoque y Diseño:</strong> Mixto con predominio cualitativo (<strong>CUAL → cuan</strong>, Hernández Sampieri, 2014). Alcance descriptivo, exploratorio y propositivo. Estudio de caso único situado (Flyvbjerg, 2005; Giménez, 2012), no experimental y transversal (mayo–noviembre 2027).</li>
+    <li><strong>Población estimada (<em>N</em>, a confirmar nominalmente en mayo 2027):</strong> ~<strong>38 docentes</strong> (regulares e interinos en Viedma y Nodos), ~<strong>130 estudiantes</strong> regulares avanzados (3°–4° año LAP y cohorte CCC-LGRH) y <strong>5 actores de gestión y gremio</strong> (Dirección, 2 Coordinaciones y 2 paritarios ADUNC).</li>
+    <li><strong>Muestra cualitativa (<em>n</em> = 9 entrevistas — muestreo intencional):</strong> <strong>4 docentes</strong> (buscando saturación teórica, Glaser y Strauss, 1967; variando cátedra unipersonal/colegiada, dedicación y sede/nodos), <strong>2 autoridades</strong>, <strong>1 representante de ADUNC</strong> y <strong>2 estudiantes</strong> (1 presencial Viedma + 1 híbrido en Nodos).</li>
+    <li><strong>Muestra cuantitativa exploratoria (<em>n</em> = 45 cuestionarios voluntarios):</strong> <strong>15 docentes</strong> (~40 %) + <strong>30 estudiantes avanzados</strong> (~23 %). <em>Los 2 docentes y 5 estudiantes del piloto previo no entran en esta muestra final.</em></li>
+    <li><strong>Quién entra y quién no:</strong> Incluidos docentes con ≥ 1 año en el Dpto. y estudiantes con ≥ 50 % LAP o en 2° cuatrimestre CCC. Excluidos alumnos de 1° año y docentes con licencia prolongada.</li>
+  </ul>
+
+  <h3>3.2 Herramientas de recolección y cómo se analizan los datos</h3>
+  <ol>
+    <li><strong>Análisis documental:</strong> Comparar prescripciones legales (Estatuto, Ord. 0910/97, CCT, Res. 196/22) con formularios reales de informes de cátedra, encuestas en SIU-Guaraní y capacitaciones Art. 76.</li>
+    <li><strong>Entrevistas semiestructuradas (Anexo I):</strong> 3 bloques de preguntas según actor (A: docentes/autoridades, B: ADUNC, C: estudiantes). Se analizan por categorías temáticas (<strong>Bardin, 2002</strong>) siguiendo las <strong>5 dimensiones de la Matriz de Operacionalización (Tabla 2)</strong>.</li>
+    <li><strong>Cuestionarios digitales breves Likert 1–5 + NS/NC + 2 abiertas (Anexo II):</strong> Formulario A docentes (13 Likert [8 directos + 5 invertidos] + 2 abiertas = <strong>15 ítems</strong>) y Formulario B estudiantes (10 Likert [6 directos + 4 invertidos] + 2 abiertas = <strong>12 ítems</strong>). En análisis con R/PSPP se invierten los ítems negativos (<code>6 − puntaje</code>) y NS/NC no se promedia. Luego todo se cruza por <strong>triangulación (Denzin, 1978)</strong>.</li>
+  </ol>
+
+  <h3>3.3 Reflexividad (Bourdieu y Guber) y Resguardo Ético (Ley 25.326 + CCT 1246/15)</h3>
+  <div class="cards-2">
+    <div class="mini-card">
+      <h4>Vigilancia por ser alumno/egresado del lugar</h4>
+      <p style="margin:0; font-size:8.7pt;">Estar adentro ayuda a entender la cultura local, pero genera riesgos de <em>deseabilidad social</em> y <em>asimetría de poder</em>. Control: pautas centradas en normas y dispositivos (no personas), consentimiento escrito (Anexo IV), <em>extrañamiento reflexivo</em> y triangulación con documentos.</p>
+    </div>
+    <div class="mini-card">
+      <h4>Anonimato vs. Confidencialidad + Futuro 360°</h4>
+      <p style="margin:0; font-size:8.7pt;"><strong>Sondeo:</strong> anonimato técnico (tokens aleatorios <em>sin IP, correo ni hora</em>). <strong>Entrevistas:</strong> confidencialidad con seudónimos (<code>DOC-01</code>) y atribución genérica para cargos únicos. <strong>Futuro 360°:</strong> custodia fuera de la Dirección y umbral mínimo <em>n ≥ 5</em>. Jamás afecta legajos ni concursos.</p>
+    </div>
+  </div>
+
+  <h3>3.4 Plan de 7 Meses (2027) y Viabilidad ($160.000 ARS 100 % propios)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 24%;">Fase y Mes (2027)</th>
+        <th>Actividad principal y entregable</th>
+        <th style="width: 30%;">Presupuesto estimado (Nov. 2026)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>F1 · Mayo</strong></td>
+        <td>Aval departamental (Anexo III), censo real, contacto ADUNC/CE y piloto (2 doc + 5 est).</td>
+        <td>Oficina y copias: $35.000</td>
+      </tr>
+      <tr>
+        <td><strong>F2 · Junio</strong></td>
+        <td>Análisis documental + realización de las 9 entrevistas y codificación.</td>
+        <td>Conectividad digital: $50.000</td>
+      </tr>
+      <tr>
+        <td><strong>F3 · Junio–Julio</strong></td>
+        <td>Sondeo digital en Viedma y 10 Nodos (seguimiento tras receso invernal).</td>
+        <td>Software libre (Quarto/R/Zotero): $0</td>
+      </tr>
+      <tr>
+        <td><strong>F4 · Agosto</strong></td>
+        <td>Procesamiento cuantitativo/cualitativo y triangulación de las 5 dimensiones.</td>
+        <td>Traslados urbanos en Viedma: $40.000</td>
+      </tr>
+      <tr>
+        <td><strong>F5 · Sept.–Oct.</strong></td>
+        <td>Lineamientos orientativos, devolución docente y redacción del borrador de TFG.</td>
+        <td>Impresión y encuadernación: $35.000</td>
+      </tr>
+      <tr>
+        <td><strong>F6 · Noviembre</strong></td>
+        <td>Visto bueno de Dirección de TFG y entrega por mesa de entradas (Res. 266/23).</td>
+        <td><strong>TOTAL AUTOFINANCIADO: $160.000</strong><br><em>(Actualizable IPC 2027 · 15–20 h/sem)</em></td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:8.6pt; color:#475569; margin-top:-6px;"><em>Nota:</em> El trabajo en los 10 Nodos se realiza mediante formularios digitales y videoconferencias, sin costos de viaje de larga distancia.</p>
+
+  <div class="callout-say">
+    <strong class="label">Cómo explicarlo fácil frente al tribunal (Bloque 3)</strong>
+    "El trabajo de campo de 2027 combina entrevistas en profundidad (n = 9) con una encuesta breve digital (n = 45) durante 7 meses y 100 % autofinanciado ($160.000 propios y software libre). Para cuidar el doble rol de alumno y egresado del CURZAS aplicamos vigilancia epistemológica y triangulación, y separamos estrictamente el anonimato técnico de la encuesta (tokens sin IP) de la confidencialidad con seudónimos en entrevistas, garantizando bajo Ley 25.326 y CCT 1246/15 cero impacto laboral."
+  </div>
+
+  <!-- BLOQUE 4: CIERRE Y PREGUNTAS DEL TRIBUNAL -->
+  <div class="block-banner block-4 page-break">
+    <span class="kicker">Cierre, Respaldo (F12–F15 · 1:50 min) y Preparación para el Tribunal</span>
+    <h2>4. Cómo cerrar sólido y qué responder ante preguntas difíciles</h2>
+  </div>
+
+  <ul>
+    <li><strong>Sentido y límite del proyecto (F12–F13):</strong> Aportar evidencia empírica útil para que el Departamento decida sobre formación docente (Art. 76), reconociendo con prudencia que <strong>el anteproyecto todavía no ejecuta el 360° ni generaliza resultados fuera del CURZAS</strong>.</li>
+    <li><strong>Bibliografía (F15):</strong> El respaldo reúne 35 fuentes ordenadas por bloque y jerarquía (leyes, Estatuto UNCo, CCT, autores de gestión y gobernanza, estudios previos en 3 escalas y canon metodológico).</li>
+  </ul>
+
+  <h3>Posibles preguntas del tribunal y respuestas directas ("sin guitarrear")</h3>
+  <div class="faq-item">
+    <div class="faq-q">1. "¿Por qué proponés indagar un modelo 360° y no mejorar solo la encuesta estudiantil?"</div>
+    <div>La evidencia previa (Obando Freire, 2014; Hernández-Villafaña, 2023) muestra que la encuesta estudiantil aislada sufre sesgos de complacencia o castigo y no refleja bien tutorías híbridas (Vázquez Cid, 2021). Triangular 4 miradas ofrece un diagnóstico más equilibrado, pero este estudio justamente va a evaluar si el Departamento lo ve viable.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">2. "¿Cómo evaluás entre pares si en el CURZAS hay materias con un solo docente?"</div>
+    <div>Ese problema concreto está contemplado en el Objetivo Específico 3: se indagará si es viable una <strong>coevaluación horizontal entre docentes de materias afines del mismo año o tramo curricular</strong>, verificando primero si genera apertura o tensiones.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">3. "¿Cómo evitás que los docentes tengan miedo por su estabilidad (Art. 75)?"</div>
+    <div>En el estudio rige la Ley 25.326 (tokens sin IP ni correo, seudónimos y atribución agregada) y el CCT 1246/15 (cero efectos en legajos o concursos). Y para un eventual modelo futuro se plantea como condición de viabilidad desvincularlo del Art. 75, ligarlo solo al Art. 76, poner custodia neutral fuera de Dirección y aplicar umbral mínimo <em>n ≥ 5</em>.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">4. "¿Tu propia pertenencia como alumno del CCC no sesga las respuestas?"</div>
+    <div>Se reconoce abiertamente con vigilancia epistemológica (Bourdieu) y extrañamiento (Guber): preguntas enfocadas en reglas y procesos (no en nombres propios), consentimiento escrito, anonimato real en encuestas y contraste obligado contra documentos oficiales del Departamento.</div>
+  </div>
+
+  <h3>Checklist rápida para tu mesa virtual (BigBlueButton · 15:00 min)</h3>
+  <div class="cards-2">
+    <div class="mini-card">
+      <h4>Antes de la mesa</h4>
+      <ul style="margin:0; padding-left:16px; font-size:8.6pt;">
+        <li>Matricularte en el aula de examen y subir el proyecto escrito (TFG) y la presentación.</li>
+        <li>Practicar una vez en voz alta mirando el cronómetro de 15:00 min (tecla <code>T</code> en la presentación).</li>
+        <li>Tener abierta esta guía impresa o en otra ventana para responder con seguridad.</li>
+      </ul>
+    </div>
+    <div class="mini-card">
+      <h4>Durante la exposición</h4>
+      <ul style="margin:0; padding-left:16px; font-size:8.6pt;">
+        <li>Compartir pantalla en BigBlueButton y usar <strong>Notas (N)</strong> como atril de lectura limpia.</li>
+        <li>No leer de corrido la pantalla: explicá qué investigás, por qué y cómo, sin afirmar conclusiones aún no probadas.</li>
+        <li>Si te preguntan citas o anexos, abrí <strong>Respaldo (M)</strong> con las 35 fuentes jerarquizadas.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
