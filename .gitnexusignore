@@ -1,0 +1,12 @@
+# Excluir del indexado GitNexus kits externos, respaldos, documentación y archivos generados
+anatomy-kit/
+.agents/
+.claude/
+backup_objetos_3d/
+_GUARDADO_SVG_ISOMETRICOS/
+ideas/
+Material Catedra/
+trabajo_final/
+assets/
+scripts/
+js/vendor/
