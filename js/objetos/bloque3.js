@@ -13,89 +13,152 @@
 window.Presentation3D_Objects = window.Presentation3D_Objects || {};
 
 // ──────────────────────────────────────────────────────────────────────────
-// 11. MATRIZ DE OBJETIVOS: Diana de Coherencia de Objetivos del TFG
+// 11. OBJETIVO GENERAL Y ESPECÍFICOS: 4 Figuras Clásicas con Props y Etiquetas -> Meta General
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_11"] = {
   build(engine, g) {
-    engine.createMuseumPlinth(g, 1.45, 0.22, -1.22);
+    engine.createMuseumPlinth(g, 1.66, 0.22, -1.22);
 
     const targetGroup = new THREE.Group();
-    targetGroup.position.set(0, -0.05, 0);
+    targetGroup.position.set(0, -0.06, 0);
 
-    // Chasis inferior de caoba noble y cantoneras
-    const baseChassis = engine.createMachinedChassis(1.40, 0.10, 1.40, { color: 0x2e1204 });
-    baseChassis.position.y = -0.92;
-    g.add(baseChassis);
+    // Columna central elevada sosteniendo el Gran Prisma del Objetivo General
+    const centerPillar = engine.createClassicalColumn(0.96, 0.09, 0xd4af37, true);
+    centerPillar.position.set(0, -0.44, -0.14);
+    targetGroup.add(centerPillar);
 
-    // Núcleo Central: Dial de Precisión del Objetivo General
-    const coreDial = engine.createGraduatedDial(0.24, {
-      divisions: 40,
-      title: "OBJETIVO",
-      sub: "GENERAL",
-      theme: "dark"
-    });
-    coreDial.rotation.x = Math.PI / 2;
-    coreDial.position.set(0, 0.05, 0);
-    targetGroup.add(coreDial);
+    const generalCore = new THREE.Mesh(
+      new THREE.OctahedronGeometry(0.18, 0),
+      engine.glassMat(0x0ea5e9, { roughness: 0.04, opacity: 0.92 })
+    );
+    generalCore.position.set(0, 0.28, -0.14);
+    targetGroup.add(generalCore);
+    engine.anim11_core = generalCore;
 
-    // Escudo Académico UNCo en el centro del dial
-    const seal = engine.createAcademicSeal(0.08);
-    seal.position.set(0, 0.08, 0);
-    seal.rotation.x = Math.PI / 2;
-    targetGroup.add(seal);
+    const generalHalo = engine.createBrassArmillaryRing(0.28, 0.011);
+    generalHalo.position.set(0, 0.28, -0.14);
+    targetGroup.add(generalHalo);
+    engine.anim11_halo = generalHalo;
 
-    const coreLight = new THREE.PointLight(0xffd700, 1.4, 1.8);
-    coreLight.position.set(0, 0.14, 0);
+    const coreLight = new THREE.PointLight(0xffd700, 1.45, 2.2);
+    coreLight.position.set(0, 0.34, -0.14);
     targetGroup.add(coreLight);
 
-    // Anillos concéntricos esbeltos de precisión graduados en latón (sin colisiones)
-    engine.anim11_rings = [];
-    for (let i = 1; i <= 3; i++) {
-      const ring = engine.createBrassArmillaryRing(0.32 + i * 0.16, 0.008);
-      ring.rotation.x = Math.PI / 2;
-      targetGroup.add(ring);
-      engine.anim11_rings.push(ring);
-    }
+    // Etiqueta clara para el Objetivo General
+    const lblGeneral = engine.createLabelSprite(
+      "OBJETIVO GENERAL",
+      "Analizar factibilidad 360° en 5 dimensiones (2027)",
+      "#0f2d59",
+      true,
+      { x: 1.42 }
+    );
+    lblGeneral.position.set(0, 1.18, -0.14);
+    targetGroup.add(lblGeneral);
 
-    // 4 Ejes cardinales minimalistas con marcadores prismáticos (limpios, sin carteles flotantes)
+    // Anillos concéntricos en el piso del foro (Tabla 1 de Consistencia)
+    [0.52, 0.98].forEach((rad) => {
+      const floorRing = engine.createBrassArmillaryRing(rad, 0.008);
+      floorRing.rotation.x = Math.PI / 2;
+      floorRing.position.set(0, -0.92, 0);
+      targetGroup.add(floorRing);
+    });
+
+    // 4 Figuras Clásicas estilo David en arco escalonado con objeto simbólico y etiqueta por cada Objetivo Específico
     const axes = [
-      { angle: 0, col: 0x38bdf8 },
-      { angle: Math.PI / 2, col: 0x10b981 },
-      { angle: Math.PI, col: 0xf59e0b },
-      { angle: (3 * Math.PI) / 2, col: 0x8b5cf6 }
+      {
+        title: "OE1 · NORMA vs. PRÁCTICA", sub: "Reglamentos y SIU",
+        x: -1.10, z: 0.34, col: 0x0f2d59, lblY: 0.16, prop: "scroll"
+      },
+      {
+        title: "OE2 · VOCES Y CONFIANZA", sub: "Docentes y Alumnos",
+        x: 1.10, z: 0.34, col: 0x0f625a, lblY: 0.16, prop: "orb"
+      },
+      {
+        title: "OE3 · TRABAS Y PARES", sub: "ADUNC y Pares Horiz.",
+        x: -0.72, z: -0.52, col: 0xb45309, lblY: 0.62, prop: "gears"
+      },
+      {
+        title: "OE4 · LINEAMIENTOS", sub: "Pautas Prudentes Dpto.",
+        x: 0.72, z: -0.52, col: 0x4c1d3d, lblY: 0.62, prop: "compass"
+      }
     ];
 
     axes.forEach((ax) => {
-      const x = Math.cos(ax.angle) * 0.88;
-      const z = Math.sin(ax.angle) * 0.88;
-
-      const spoke = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.006, 0.006, 0.60, 12),
-        engine.brassMat(0xcfa346)
+      const ped = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.18, 0.21, 0.08, 28),
+        engine.marbleMat(0xf8f6f0, 0.35)
       );
-      spoke.position.set(x * 0.62, 0.06, z * 0.62);
-      spoke.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), new THREE.Vector3(x, 0, z).normalize());
-      targetGroup.add(spoke);
+      ped.position.set(ax.x, -0.90, ax.z);
+      targetGroup.add(ped);
 
-      const pin = new THREE.Mesh(
-        new THREE.OctahedronGeometry(0.11, 0),
-        engine.glassMat(ax.col, { opacity: 0.90, roughness: 0.06 })
+      const figOE = engine.createClassicalFigure({
+        scale: 0.56,
+        pose: "reaching",
+        togaColor: ax.col
+      });
+      figOE.position.set(ax.x, -0.86, ax.z);
+      figOE.rotation.y = Math.atan2(-ax.x, -0.14 - ax.z);
+      targetGroup.add(figOE);
+
+      // Atributo simbólico junto a cada figura
+      if (ax.prop === "scroll") {
+        const scroll = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.032, 0.032, 0.22, 16),
+          engine.marbleMat(0xfef9e7)
+        );
+        scroll.rotation.z = Math.PI / 3;
+        scroll.position.set(ax.x + 0.14, -0.32, ax.z - 0.10);
+        targetGroup.add(scroll);
+      } else if (ax.prop === "orb") {
+        const heartOrb = new THREE.Mesh(
+          new THREE.SphereGeometry(0.065, 16, 16),
+          engine.glassMat(0x10b981, { opacity: 0.90 })
+        );
+        heartOrb.position.set(ax.x - 0.14, -0.28, ax.z - 0.10);
+        targetGroup.add(heartOrb);
+      } else if (ax.prop === "gears") {
+        const twinRing = engine.createBrassArmillaryRing(0.085, 0.012);
+        twinRing.position.set(ax.x + 0.14, -0.26, ax.z + 0.10);
+        targetGroup.add(twinRing);
+      } else if (ax.prop === "compass") {
+        const prism = new THREE.Mesh(
+          new THREE.OctahedronGeometry(0.075, 0),
+          engine.glassMat(0xa855f7, { opacity: 0.92 })
+        );
+        prism.position.set(ax.x - 0.14, -0.26, ax.z + 0.10);
+        targetGroup.add(prism);
+      }
+
+      // Etiqueta nítida por cada Objetivo Específico
+      const lblAx = engine.createLabelSprite(ax.title, ax.sub, "#0f2d59", false, { x: 0.72 });
+      lblAx.position.set(ax.x, ax.lblY, ax.z);
+      targetGroup.add(lblAx);
+
+      // Haz dorado convergente desde cada Objetivo Específico hacia el Objetivo General
+      const beamCurve = new THREE.QuadraticBezierCurve3(
+        new THREE.Vector3(ax.x * 0.80, -0.30, ax.z * 0.80),
+        new THREE.Vector3(ax.x * 0.35, 0.18, ax.z * 0.35),
+        new THREE.Vector3(0, 0.28, -0.14)
       );
-      pin.position.set(x, 0.08, z);
-      targetGroup.add(pin);
+      const beamMesh = new THREE.Mesh(
+        new THREE.TubeGeometry(beamCurve, 18, 0.005, 8, false),
+        engine.goldMat(0xffd700)
+      );
+      targetGroup.add(beamMesh);
     });
 
-    // Chapa maestra de consistencia metodológica
-    const plaqueMaster = engine.createEngravedPlaque(
-      0.84,
-      0.24,
-      "DIANA DE COHERENCIA DE OBJETIVOS",
-      "Objetivo General + 4 Ejes Cardinales del TFG",
-      ["CONSISTENCIA METODOLÓGICA"],
+    // Placa museográfica frontal
+    const frontPlaque = engine.createEngravedPlaque(
+      1.10,
+      0.23,
+      "TABLA 1 • CONSISTENCIA DE OBJETIVOS",
+      "1 Objetivo General + 4 Objetivos Específicos",
+      ["NORMATIVO • CULTURAL • GOBERNANZA • PROPOSITIVO"],
       { theme: "dark" }
     );
-    plaqueMaster.position.set(0, -0.84, 0.72);
-    g.add(plaqueMaster);
+    frontPlaque.position.set(0, -0.90, 0.96);
+    frontPlaque.rotation.x = -0.28;
+    targetGroup.add(frontPlaque);
 
     g.add(targetGroup);
     engine.anim11_group = targetGroup;
@@ -103,7 +166,14 @@ window.Presentation3D_Objects["anim_11"] = {
 
   animate(engine, t) {
     if (engine.anim11_group) {
-      engine.anim11_group.rotation.y = Math.sin(t * 0.5) * 0.12;
+      engine.anim11_group.rotation.y = Math.sin(t * 0.35) * 0.10;
+    }
+    if (engine.anim11_core) {
+      engine.anim11_core.rotation.y = t * 0.8;
+    }
+    if (engine.anim11_halo) {
+      engine.anim11_halo.rotation.x = t * 0.5;
+      engine.anim11_halo.rotation.y = t * 0.35;
     }
   }
 };

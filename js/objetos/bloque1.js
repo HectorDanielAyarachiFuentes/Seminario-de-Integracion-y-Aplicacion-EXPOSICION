@@ -567,6 +567,29 @@ window.Presentation3D_Objects["anim_01"] = {
     deskGroup.add(bookGroup);
     g.add(deskGroup);
 
+    // Cartela superior institucional y placa frontal de museo
+    const titleLabel = engine.createLabelSprite(
+      "PROYECTO DE TFG (2027)",
+      "Evaluación Docente y Modelo 360° • CURZAS–UNCo",
+      "#0f2d59",
+      true,
+      { x: 1.48 }
+    );
+    titleLabel.position.set(0, 1.06, 0);
+    g.add(titleLabel);
+
+    const frontPlaque = engine.createEngravedPlaque(
+      0.96,
+      0.22,
+      "CARÁTULA OFICIAL TFG",
+      "Res. CD-CURZA N° 266/23 • SIA 2026",
+      ["SEDE VIEDMA Y 10 NODOS"],
+      { theme: "dark" }
+    );
+    frontPlaque.position.set(0, -0.92, 0.78);
+    frontPlaque.rotation.x = -0.25;
+    g.add(frontPlaque);
+
     engine.anim01_desk = deskGroup;
     engine.anim01_ribbonTail = ribbonTail;
   },
@@ -727,9 +750,9 @@ window.Presentation3D_Objects["anim_03"] = {
     foundationGroup.add(baseBridge);
 
     const items = [
-      { x: -0.68, z: 0.06, h: 0.70, title: "I. EL PROBLEMA", sub: "Contexto y Objetivos", meta: "SECCIÓN 1" },
-      { x: 0.00, z: -0.04, h: 0.92, title: "II. ESTADO Y TEORÍA", sub: "Antecedentes y 360°", meta: "SECCIÓN 2" },
-      { x: 0.68, z: 0.06, h: 1.12, title: "III. METODOLOGÍA", sub: "CUAL→cuan y Ética", meta: "SECCIÓN 3" }
+      { x: -0.74, z: 0.06, h: 0.70, title: "1. EL PROBLEMA", sub: "Ámbito y Objetivos", meta: "EJE 1 • F3–F7", labelY: 0.56 },
+      { x: 0.00, z: -0.04, h: 0.92, title: "2. ESTADO Y TEORÍA", sub: "Marco y Antecedentes", meta: "EJE 2 • F8–F10", labelY: 0.94 },
+      { x: 0.74, z: 0.06, h: 1.12, title: "3. METODOLOGÍA", sub: "CUAL→cuan y Ética", meta: "EJE 3 • F11–F14", labelY: 1.06 }
     ];
 
     engine.anim03_blocks = [];
@@ -815,9 +838,23 @@ window.Presentation3D_Objects["anim_03"] = {
         engine.anim03_prism = prism;
       }
 
+      const secLabel = engine.createLabelSprite(item.title, item.sub, "#0f2d59", false, { x: 0.78 });
+      secLabel.position.set(0, item.h / 2 + 0.34, 0);
+      blockGroup.add(secLabel);
+
       foundationGroup.add(blockGroup);
       engine.anim03_blocks.push(blockGroup);
     });
+
+    const masterLabel = engine.createLabelSprite(
+      "ÍNDICE GENERAL DE LA DEFENSA",
+      "1. El Problema • 2. Estado y Teoría • 3. Metodología",
+      "#0f2d59",
+      true,
+      { x: 1.48 }
+    );
+    masterLabel.position.set(0, 1.36, 0);
+    g.add(masterLabel);
 
     g.add(foundationGroup);
   },

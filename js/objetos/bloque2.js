@@ -70,11 +70,11 @@ window.Presentation3D_Objects["anim_06"] = {
     cartoucheGroup.rotation.y = Math.PI * 0.12;
 
     const cartouche = engine.createEngravedPlaque(
-      0.92,
+      0.98,
       0.38,
-      "PROVINCIA DE RÍO NEGRO",
-      "Sede Viedma • 10 Nodos (Res. CD 135/22)",
-      ["CURZAS • UNCo", "Docencia Híbrida • Res. 196/22"],
+      "CURZAS — UNCo (2027)",
+      "Sede Viedma + Red de 10 Nodos (Res. 135/22)",
+      ["HORIZONTE: MAYO–NOVIEMBRE 2027", "RÍO NEGRO"],
       { theme: "dark" }
     );
     cartouche.rotation.x = -Math.PI * 0.16;
@@ -346,24 +346,34 @@ window.Presentation3D_Objects["anim_06"] = {
     engine.sedes06.forEach((sede) => {
       const pinGroup = new THREE.Group();
       if (sede.isCentral) {
-        // Obelisco Viedma apoyado sobre Río Negro (tope y = -0.880)
-        const col = new THREE.Mesh(new THREE.CylinderGeometry(0.028, 0.044, 0.34, 24), engine.marbleMat(0xffffff));
-        col.position.y = -0.71;
+        // Sede Central Viedma: Pedestal y Figura Clásica Docente ("Alma Mater CURZAS") irradiando hacia los 10 Nodos
+        const col = new THREE.Mesh(new THREE.CylinderGeometry(0.042, 0.058, 0.16, 24), engine.marbleMat(0xffffff));
+        col.position.y = -0.80;
         pinGroup.add(col);
 
+        const almaFig = engine.createClassicalFigure({
+          scale: 0.25,
+          pose: "teaching",
+          togaColor: 0x0f2d59,
+          laurel: true
+        });
+        almaFig.position.y = -0.72;
+        almaFig.rotation.y = -0.55;
+        pinGroup.add(almaFig);
+
         const orb = new THREE.Mesh(
-          new THREE.SphereGeometry(0.044, 20, 20),
+          new THREE.SphereGeometry(0.032, 20, 20),
           new THREE.MeshStandardMaterial({
             color: 0xffd700,
             roughness: 0.08,
             metalness: 0.35,
             emissive: 0xb45309,
-            emissiveIntensity: 0.35,
+            emissiveIntensity: 0.45,
             transparent: true,
-            opacity: 0.92
+            opacity: 0.94
           })
         );
-        orb.position.y = -0.52;
+        orb.position.y = -0.34;
         pinGroup.add(orb);
         engine.nodeGems06.push({ mesh: orb, sede });
       } else {
@@ -418,6 +428,37 @@ window.Presentation3D_Objects["anim_06"] = {
     activeHalo.position.set(viedmaSede.x, -0.874, viedmaSede.z);
     g.add(activeHalo);
     engine.nodeActiveHalo06 = activeHalo;
+
+    // Etiquetas explicativas territoriales sobre el mapa geodésico
+    const lblTerritorio = engine.createLabelSprite(
+      "UBICACIÓN ESPACIO–TEMPORAL",
+      "CURZAS–UNCo • Ejecución Mayo–Noviembre 2027",
+      "#0f2d59",
+      true,
+      { x: 1.44 }
+    );
+    lblTerritorio.position.set(0.0, 0.56, -0.25);
+    g.add(lblTerritorio);
+
+    const lblViedma = engine.createLabelSprite(
+      "SEDE CENTRAL VIEDMA",
+      "Conducción Académica y Cogobierno",
+      "#996515",
+      false,
+      { x: 0.86 }
+    );
+    lblViedma.position.set(viedmaSede.x + 0.14, -0.02, viedmaSede.z - 0.06);
+    g.add(lblViedma);
+
+    const lblNodos = engine.createLabelSprite(
+      "RED DE 10 NODOS EN RÍO NEGRO",
+      "Línea Sur • Costa Atlántica • Valles",
+      "#0369a1",
+      false,
+      { x: 0.92 }
+    );
+    lblNodos.position.set(-0.22, -0.28, 0.34);
+    g.add(lblNodos);
   },
 
   animate(engine, t) {
@@ -469,227 +510,354 @@ window.Presentation3D_Objects["anim_06"] = {
 };
 
 // ──────────────────────────────────────────────────────────────────────────
-// 7. DOCENCIA HÍBRIDA: Red Territorial de los 10 Nodos Regionales
-//    (Res. CD N° 135/2022 y Res. CD-CURZA N° 196/2022 • Cogestión Municipal)
+// 7. DPTO. ADMINISTRACIÓN PÚBLICA: Escena de Aula Universitaria + 10 Nodos Híbridos
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_07"] = {
   build(engine, g) {
-    engine.createMuseumPlinth(g, 1.40);
+    engine.createMuseumPlinth(g, 1.56, 0.22, -1.22);
 
     const netGroup = new THREE.Group();
-    netGroup.position.set(0, -0.15, 0);
+    netGroup.position.set(0, -0.10, 0);
 
-    // Servidor / Terminal Central Sede Viedma (Esbelta columna clásica y esfera Moodle)
-    const centralCol = engine.createClassicalColumn(0.88, 0.085, 0xd4af37, true);
-    centralCol.position.set(0, -0.44, 0);
-    netGroup.add(centralCol);
-
-    // Chapa técnica grabada en la base del servidor central
-    const plaqueNet = engine.createEngravedPlaque(
-      0.78,
-      0.26,
-      "RED DE AULAS HÍBRIDAS",
-      "Sede Central Viedma • 10 Nodos Conectados (Res. CD 196/22)",
-      ["TELECOMUNICACIONES CURZAS"],
-      { theme: "dark" }
-    );
-    plaqueNet.position.set(0, -0.88, 0.42);
-    g.add(plaqueNet);
-
-    // Fino aro armilar orbital en el remate
-    const centralRing = engine.createBrassArmillaryRing(0.24, 0.008);
-    centralRing.position.set(0, 0.18, 0);
-    netGroup.add(centralRing);
-    engine.anim07_centralRing = centralRing;
-
-    // Dial de sincronismo y latencia de telecomunicaciones en el servidor
-    const syncDial = engine.createGraduatedDial(0.12, {
-      title: "SYNC",
-      sub: "100%",
-      divisions: 24,
-      isPercentage: true,
-      theme: "dark"
+    const mahoganyMat = new THREE.MeshStandardMaterial({
+      color: 0x3b1806,
+      roughness: 0.30,
+      metalness: 0.08
     });
-    syncDial.position.set(0, 0.38, 0);
-    syncDial.rotation.x = Math.PI / 2;
-    netGroup.add(syncDial);
 
-    // Núcleo holográfico luminoso del servidor Moodle / Videoconferencias
-    const serverGlobe = new THREE.Mesh(
-      new THREE.SphereGeometry(0.09, 20, 20),
-      new THREE.MeshStandardMaterial({
-        color: 0xffd700,
-        emissive: 0xd97706,
-        emissiveIntensity: 0.45,
-        roughness: 0.10,
-        metalness: 0.25,
-        transparent: true,
-        opacity: 0.92
-      })
+    // Estrado circular central (Sede Viedma — Aula del Departamento)
+    const dais = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.50, 0.56, 0.14, 48),
+      engine.marbleMat(0xf8f6f0, 0.35)
     );
-    serverGlobe.position.set(0, 0.18, 0);
-    netGroup.add(serverGlobe);
+    dais.position.y = -0.86;
+    dais.receiveShadow = true;
+    dais.castShadow = true;
+    netGroup.add(dais);
 
-    const centralLight = new THREE.PointLight(0xffd700, 1.4, 2.0);
-    centralLight.position.set(0, 0.18, 0);
+    const daisRim = new THREE.Mesh(
+      new THREE.TorusGeometry(0.51, 0.012, 16, 64),
+      engine.brassMat(0xd4af37)
+    );
+    daisRim.rotation.x = Math.PI / 2;
+    daisRim.position.y = -0.79;
+    netGroup.add(daisRim);
+
+    // Pizarra Académica Institucional detrás del Docente (contexto áulico inequívoco)
+    const boardGroup = new THREE.Group();
+    boardGroup.position.set(0, -0.14, -0.34);
+
+    [-0.36, 0.36].forEach((bx) => {
+      const post = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.014, 0.018, 0.72, 16),
+        engine.brassMat(0xd4af37)
+      );
+      post.position.set(bx, -0.34, 0);
+      boardGroup.add(post);
+    });
+
+    const boardFrame = new THREE.Mesh(
+      new THREE.BoxGeometry(0.92, 0.48, 0.032),
+      engine.brassMat(0xcfa346)
+    );
+    boardFrame.castShadow = true;
+    boardGroup.add(boardFrame);
+
+    const makeBoardTex = () => {
+      const cw = 640, ch = 340;
+      const c = document.createElement("canvas");
+      c.width = cw;
+      c.height = ch;
+      const ctx = c.getContext("2d");
+      ctx.fillStyle = "#0f2d59";
+      ctx.fillRect(0, 0, cw, ch);
+      ctx.strokeStyle = "#d4af37";
+      ctx.lineWidth = 6;
+      ctx.strokeRect(12, 12, cw - 24, ch - 24);
+      ctx.textAlign = "center";
+      ctx.fillStyle = "#fde68a";
+      ctx.font = "800 26px 'Cinzel', Georgia, serif";
+      ctx.fillText("DPTO. ADMINISTRACIÓN PÚBLICA", cw / 2, 72);
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "600 22px 'Inter', sans-serif";
+      ctx.fillText("LAP  •  CCC Gestión de RR. HH.", cw / 2, 138);
+      ctx.fillStyle = "#7dd3fc";
+      ctx.font = "600 20px 'Inter', sans-serif";
+      ctx.fillText("Aula Viedma + 10 Nodos Híbridos", cw / 2, 200);
+      ctx.fillStyle = "#cbd5e1";
+      ctx.font = "500 17px 'Inter', sans-serif";
+      ctx.fillText("Estatuto UNCo • Ord. 0910/97 • CCT 1246/15", cw / 2, 268);
+      const tex = new THREE.CanvasTexture(c);
+      tex.minFilter = THREE.LinearFilter;
+      return tex;
+    };
+
+    const boardFace = new THREE.Mesh(
+      new THREE.PlaneGeometry(0.86, 0.42),
+      new THREE.MeshStandardMaterial({ map: makeBoardTex(), roughness: 0.45 })
+    );
+    boardFace.position.z = 0.018;
+    boardGroup.add(boardFace);
+    netGroup.add(boardGroup);
+
+    // Figura Clásica Central estilo David: El Docente Universitario en su cátedra
+    const profFig = engine.createClassicalFigure({
+      scale: 0.72,
+      pose: "teaching",
+      togaColor: 0x0f2d59,
+      laurel: true
+    });
+    profFig.position.set(0, -0.79, -0.08);
+    netGroup.add(profFig);
+    engine.anim07_prof = profFig;
+
+    // Escritorio / Atril de Cátedra delante del Profesor (lo identifica como Docente)
+    const deskGroup = new THREE.Group();
+    deskGroup.position.set(0, -0.62, 0.14);
+    const deskTop = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.03, 0.22), mahoganyMat);
+    deskTop.position.y = 0.14;
+    deskGroup.add(deskTop);
+    const deskFront = new THREE.Mesh(new THREE.BoxGeometry(0.38, 0.30, 0.025), mahoganyMat);
+    deskFront.position.set(0, -0.02, 0.09);
+    deskGroup.add(deskFront);
+    const deskBook = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.02, 0.12), engine.marbleMat(0xfaf7ee));
+    deskBook.position.set(-0.06, 0.165, 0);
+    deskGroup.add(deskBook);
+    netGroup.add(deskGroup);
+
+    // Portal Holográfico de Clase Híbrida frente al escritorio (Res. 196/22)
+    const holoFrame = new THREE.Mesh(
+      new THREE.TorusGeometry(0.22, 0.008, 16, 64),
+      engine.goldMat(0xffd700)
+    );
+    holoFrame.position.set(0, -0.18, 0.34);
+    netGroup.add(holoFrame);
+    engine.anim07_centralRing = holoFrame;
+
+    const holoGlass = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.21, 0.21, 0.010, 48),
+      engine.glassMat(0x38bdf8, { opacity: 0.30, roughness: 0.06 })
+    );
+    holoGlass.rotation.x = Math.PI / 2;
+    holoGlass.position.set(0, -0.18, 0.34);
+    netGroup.add(holoGlass);
+
+    // Dos Estudiantes Presenciales en Viedma con pupitres universitarios mirando al docente
+    [
+      { x: -0.58, z: 0.44, rotY: 0.78, col: 0x0f625a },
+      { x: 0.58, z: 0.44, rotY: -0.78, col: 0x1e3a8a }
+    ].forEach((st) => {
+      const stPed = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.16, 0.19, 0.07, 28),
+        engine.graniteMat(0x1e293b)
+      );
+      stPed.position.set(st.x, -0.90, st.z);
+      netGroup.add(stPed);
+
+      const stFig = engine.createClassicalFigure({
+        scale: 0.44,
+        pose: "dialogue",
+        togaColor: st.col
+      });
+      stFig.position.set(st.x, -0.865, st.z);
+      stFig.rotation.y = st.rotY;
+      netGroup.add(stFig);
+
+      // Pupitre estudiantil delante de cada estudiante presencial
+      const pupitre = new THREE.Group();
+      pupitre.position.set(st.x * 0.74, -0.76, st.z - 0.12);
+      pupitre.rotation.y = st.rotY;
+      const pLeg = new THREE.Mesh(new THREE.CylinderGeometry(0.012, 0.016, 0.24, 12), engine.brassMat());
+      pupitre.add(pLeg);
+      const pTop = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.018, 0.12), mahoganyMat);
+      pTop.position.y = 0.12;
+      pTop.rotation.x = 0.15;
+      pupitre.add(pTop);
+      netGroup.add(pupitre);
+    });
+
+    const centralLight = new THREE.PointLight(0xffd700, 1.35, 2.2);
+    centralLight.position.set(0, 0.22, 0.20);
     netGroup.add(centralLight);
 
-    // 1 sola luz dinámica de barrido de radar (elimina el overhead de 10 luces fijas)
-    const radarSweepLight = new THREE.PointLight(0x38bdf8, 1.1, 1.5);
-    radarSweepLight.position.set(1.15, -0.27, 0);
+    const radarSweepLight = new THREE.PointLight(0x38bdf8, 1.1, 1.6);
+    radarSweepLight.position.set(1.16, -0.35, 0);
     netGroup.add(radarSweepLight);
     engine.anim07_sweepLight = radarSweepLight;
 
-    // Los 10 Nodos Territoriales oficiales (Res. CD N° 135/2022)
+    // Anillo exterior de los 10 Nodos Territoriales con figuras estudiantiles remotas conectadas
     engine.nodos07 = [
-      { id: "los_menucos", nombre: "LOS MENUCOS", subtitulo: "Región Sur Central", tipo: "Nodo Territorial", col: 0x38bdf8 },
-      { id: "sierra_colorada", nombre: "SIERRA COLORADA", subtitulo: "Centro Geográfico", tipo: "Nodo Territorial", col: 0x38bdf8 },
-      { id: "valcheta", nombre: "VALCHETA", subtitulo: "Portal Línea Sur", tipo: "Nodo Territorial", col: 0x38bdf8 },
-      { id: "ramos_mexia", nombre: "RAMOS MEXÍA", subtitulo: "Meseta de Somuncura", tipo: "Nodo Territorial", col: 0x38bdf8 },
-      { id: "san_antonio", nombre: "SAO / LAS GRUTAS", subtitulo: "Costa Atlántica", tipo: "Nodo Territorial", col: 0x38bdf8 },
-      { id: "conesa", nombre: "GENERAL CONESA", subtitulo: "Valle Conesa / Nexo Vial", tipo: "Nodo Territorial", col: 0x38bdf8 },
-      { id: "rio_colorado", nombre: "RÍO COLORADO", subtitulo: "Valle del Río Colorado", tipo: "Nodo Territorial", col: 0x38bdf8 },
-      { id: "maquinchao", nombre: "MAQUINCHAO", subtitulo: "Línea Sur Centro-Oeste", tipo: "Nodo Territorial", col: 0x38bdf8 },
-      { id: "ing_jacobacci", nombre: "ING. JACOBACCI", subtitulo: "Línea Sur Oeste", tipo: "Nodo Territorial", col: 0x38bdf8 },
-      { id: "sierra_grande", nombre: "SIERRA GRANDE", subtitulo: "Costa Atlántica Sur", tipo: "Nodo Territorial", col: 0x38bdf8 }
+      { id: "los_menucos", nombre: "LOS MENUCOS", subtitulo: "Región Sur Central", tipo: "Nodo Territorial" },
+      { id: "sierra_colorada", nombre: "SIERRA COLORADA", subtitulo: "Centro Geográfico", tipo: "Nodo Territorial" },
+      { id: "valcheta", nombre: "VALCHETA", subtitulo: "Portal Línea Sur", tipo: "Nodo Territorial" },
+      { id: "ramos_mexia", nombre: "RAMOS MEXÍA", subtitulo: "Meseta de Somuncura", tipo: "Nodo Territorial" },
+      { id: "san_antonio", nombre: "SAO / LAS GRUTAS", subtitulo: "Costa Atlántica", tipo: "Nodo Territorial" },
+      { id: "conesa", nombre: "GENERAL CONESA", subtitulo: "Valle Conesa", tipo: "Nodo Territorial" },
+      { id: "rio_colorado", nombre: "RÍO COLORADO", subtitulo: "Valle Río Colorado", tipo: "Nodo Territorial" },
+      { id: "maquinchao", nombre: "MAQUINCHAO", subtitulo: "Línea Sur", tipo: "Nodo Territorial" },
+      { id: "ing_jacobacci", nombre: "ING. JACOBACCI", subtitulo: "Línea Sur Oeste", tipo: "Nodo Territorial" },
+      { id: "sierra_grande", nombre: "SIERRA GRANDE", subtitulo: "Costa Atlántica Sur", tipo: "Nodo Territorial" }
     ];
 
     engine.anim07_lasers = [];
     engine.anim07_termBeacons = [];
-    const rRing = 1.15;
+    const rRing = 1.16;
 
     engine.nodos07.forEach((nodo, idx) => {
       const angle = (idx / engine.nodos07.length) * Math.PI * 2;
       const x = Math.cos(angle) * rRing;
       const z = Math.sin(angle) * rRing;
 
-      // Baliza esbelta de aula híbrida: mástil de latón pulido con gema de cristal
       const nodeGroup = new THREE.Group();
-      nodeGroup.position.set(x, -0.65, z);
+      nodeGroup.position.set(x, -0.91, z);
 
-      // Micro-base de latón
       const pinBase = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.035, 0.045, 0.08, 16),
+        new THREE.CylinderGeometry(0.08, 0.095, 0.05, 20),
         engine.brassMat(0xd4af37)
       );
-      pinBase.position.y = 0.04;
+      pinBase.position.y = 0.025;
       nodeGroup.add(pinBase);
 
-      // Mástil delgado
-      const pinMast = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.007, 0.007, 0.28, 12),
-        engine.brassMat(0xffd700)
-      );
-      pinMast.position.y = 0.22;
-      nodeGroup.add(pinMast);
+      // Mini-escultura humana en cada Nodo Territorial mirando hacia el aula central
+      const remoteStudent = engine.createClassicalFigure({
+        scale: 0.24,
+        pose: "open",
+        togaColor: 0x0284c7
+      });
+      remoteStudent.position.y = 0.05;
+      remoteStudent.rotation.y = Math.atan2(-x, -z);
+      nodeGroup.add(remoteStudent);
 
-      // Gema cristalina luminosa de la terminal con emisión intrínseca
       const beaconOrb = new THREE.Mesh(
-        new THREE.SphereGeometry(0.032, 16, 16),
+        new THREE.SphereGeometry(0.024, 14, 14),
         new THREE.MeshStandardMaterial({
           color: 0x38bdf8,
           emissive: 0x0284c7,
-          emissiveIntensity: 0.5,
-          roughness: 0.15,
-          metalness: 0.1
+          emissiveIntensity: 0.6,
+          roughness: 0.15
         })
       );
-      beaconOrb.position.set(0, 0.38, 0);
+      beaconOrb.position.set(0, 0.40, 0);
       nodeGroup.add(beaconOrb);
 
-      const targetWorldY = -0.65 + 0.38; // -0.27
+      const targetWorldY = -0.91 + 0.40;
       engine.anim07_termBeacons.push({ mesh: beaconOrb, node: nodo, x, z });
-
       netGroup.add(nodeGroup);
 
-      // Fino rayo de fibra óptica de transmisión sincrónica
-      const lineCurve = new THREE.LineCurve3(
-        new THREE.Vector3(0, 0.18, 0),
+      // Arco luminoso curvo desde el portal híbrido hacia cada estudiante en su Nodo
+      const midPt = new THREE.Vector3(x * 0.5, 0.08, z * 0.5 + 0.10);
+      const arcCurve = new THREE.QuadraticBezierCurve3(
+        new THREE.Vector3(0, -0.18, 0.34),
+        midPt,
         new THREE.Vector3(x, targetWorldY, z)
       );
       const tube = new THREE.Mesh(
-        new THREE.TubeGeometry(lineCurve, 20, 0.0028, 6, false),
-        new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.65 })
+        new THREE.TubeGeometry(arcCurve, 20, 0.0028, 6, false),
+        new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.50 })
       );
       netGroup.add(tube);
 
       const pulseBall = new THREE.Mesh(
         new THREE.SphereGeometry(0.010, 10, 10),
-        new THREE.MeshBasicMaterial({ color: 0xe0f2fe })
+        new THREE.MeshBasicMaterial({ color: 0xfef08a })
       );
-      pulseBall.position.copy(lineCurve.v1);
       netGroup.add(pulseBall);
-
-      engine.anim07_lasers.push({ tube, curve: lineCurve, pulse: pulseBall });
+      engine.anim07_lasers.push({ tube, curve: arcCurve, pulse: pulseBall });
     });
 
-    // Halo fino de radar de escaneo activo
     const radarRing = new THREE.Mesh(
-      new THREE.RingGeometry(0.035, 0.055, 24),
+      new THREE.RingGeometry(0.09, 0.115, 28),
       new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.85, side: THREE.DoubleSide })
     );
     radarRing.rotation.x = -Math.PI / 2;
-    radarRing.position.set(rRing, -0.27, 0);
+    radarRing.position.set(rRing, -0.88, 0);
     netGroup.add(radarRing);
     engine.anim07_radarRing = radarRing;
+
+    // Etiquetas explicativas claras (sin superposición)
+    const lblMaster = engine.createLabelSprite(
+      "DPTO. DE ADMINISTRACIÓN PÚBLICA",
+      "Aula Presencial (Viedma) + Red de 10 Nodos Híbridos",
+      "#0f2d59",
+      true,
+      { x: 1.48 }
+    );
+    lblMaster.position.set(0, 1.18, -0.12);
+    netGroup.add(lblMaster);
+
+    const lblDocente = engine.createLabelSprite(
+      "DOCENTE DE CÁTEDRA",
+      "Sede Viedma + Tutoría Virtual",
+      "#996515",
+      false,
+      { x: 0.78 }
+    );
+    lblDocente.position.set(0, 0.54, -0.06);
+    netGroup.add(lblDocente);
+
+    const lblPresencial = engine.createLabelSprite(
+      "AULA PRESENCIAL",
+      "Estudiantes LAP / RR.HH.",
+      "#0f625a",
+      false,
+      { x: 0.68 }
+    );
+    lblPresencial.position.set(-0.76, -0.04, 0.52);
+    netGroup.add(lblPresencial);
+
+    const lblHibrido = engine.createLabelSprite(
+      "10 NODOS HÍBRIDOS",
+      "Cursada Sincrónica (Res. 196/22)",
+      "#0369a1",
+      false,
+      { x: 0.72 }
+    );
+    lblHibrido.position.set(0.84, -0.04, 0.52);
+    netGroup.add(lblHibrido);
+
+    // Placa frontal de museo
+    const frontPlaque = engine.createEngravedPlaque(
+      1.08,
+      0.22,
+      "PRÁCTICA DOCENTE SITUADA",
+      "Sede Viedma y 10 Nodos • Res. CD-CURZA N° 196/22",
+      ["ESTATUTO UNCo", "ORD. 0910/97", "CCT 1246/15"],
+      { theme: "dark" }
+    );
+    frontPlaque.position.set(0, -0.84, 1.24);
+    frontPlaque.rotation.x = -0.28;
+    netGroup.add(frontPlaque);
 
     g.add(netGroup);
   },
 
   animate(engine, t) {
     if (engine.anim07_centralRing) {
-      engine.anim07_centralRing.rotation.y = t * 0.6;
-      engine.anim07_centralRing.rotation.x = Math.sin(t * 0.3) * 0.25;
+      engine.anim07_centralRing.rotation.z = t * 0.35;
     }
-
+    if (engine.anim07_prof) {
+      engine.anim07_prof.rotation.y = Math.sin(t * 0.6) * 0.14;
+    }
     if (engine.anim07_lasers) {
       engine.anim07_lasers.forEach((item, i) => {
-        const prog = (t * 0.7 + i * 0.1) % 1.0;
+        const prog = (t * 0.55 + i * 0.1) % 1.0;
         if (item.curve && item.pulse) {
           item.pulse.position.copy(item.curve.getPoint(prog));
         }
-        if (item.tube) {
-          item.tube.material.opacity = 0.35 + Math.sin(t * 3 + i) * 0.25;
-        }
       });
     }
-
     if (engine.nodos07 && engine.nodos07.length > 0) {
-      const cycleDuration = 2.6;
-      const activeIdx = Math.floor(t / cycleDuration) % engine.nodos07.length;
-
+      const activeIdx = Math.floor(t / 2.6) % engine.nodos07.length;
       if (activeIdx !== engine.activeNodeIndex07) {
         engine.activeNodeIndex07 = activeIdx;
-        const activeNode = engine.nodos07[activeIdx];
         if (window.updateNodeHUD) {
-          window.updateNodeHUD(activeNode);
+          window.updateNodeHUD(engine.nodos07[activeIdx]);
         }
       }
-
-      if (engine.anim07_sweepLight && engine.anim07_radarRing) {
-        const beacon = engine.anim07_termBeacons[activeIdx];
-        if (beacon) {
-          engine.anim07_radarRing.position.set(beacon.x, -0.27, beacon.z);
-          const s = 1.0 + Math.sin(t * 6) * 0.20;
-          engine.anim07_radarRing.scale.set(s, s, s);
-
-          engine.anim07_sweepLight.position.set(beacon.x, -0.27, beacon.z);
-          engine.anim07_sweepLight.intensity = 1.0 + Math.sin(t * 6) * 0.35;
-
-          engine.anim07_termBeacons.forEach((b, idx) => {
-            if (idx === activeIdx) {
-              b.mesh.scale.set(1.4, 1.4, 1.4);
-              if (b.mesh.material.emissiveIntensity !== undefined) {
-                b.mesh.material.emissiveIntensity = 1.0;
-              }
-            } else {
-              b.mesh.scale.set(1.0, 1.0, 1.0);
-              if (b.mesh.material.emissiveIntensity !== undefined) {
-                b.mesh.material.emissiveIntensity = 0.40;
-              }
-            }
-          });
-        }
+      const beacon = engine.anim07_termBeacons?.[activeIdx];
+      if (beacon && engine.anim07_radarRing && engine.anim07_sweepLight) {
+        engine.anim07_radarRing.position.set(beacon.x, -0.88, beacon.z);
+        engine.anim07_sweepLight.position.set(beacon.x, -0.45, beacon.z);
       }
     }
   }
@@ -852,226 +1020,429 @@ window.Presentation3D_Objects["anim_08"] = {
 };
 
 // ──────────────────────────────────────────────────────────────────────────
-// 9. EL PROBLEMA: Escultura Cinética Abstracta de Tensión (Rigidez vs. Apertura 360°)
+// 9. EL PROBLEMA: Alegoría Escultórica Humana ("Del Peso Sumativo al Diálogo 360°")
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_09"] = {
   build(engine, g) {
-    engine.createMuseumPlinth(g, 1.52, 0.22, -1.22);
+    engine.createMuseumPlinth(g, 1.68, 0.22, -1.22);
 
-    const tensionGroup = new THREE.Group();
-    tensionGroup.position.set(0, -0.10, 0);
+    const sceneGroup = new THREE.Group();
+    sceneGroup.position.set(0, -0.08, 0);
 
-    // Basamento escultórico de pizarra oscura
-    const plinthBar = engine.createMachinedChassis(1.62, 0.08, 0.62, { color: 0x0f172a });
-    plinthBar.position.y = -0.90;
-    tensionGroup.add(plinthBar);
-
-    // Fulcro central: Pirámide truncada de mármol marfil y articulación esférica dorada
-    const fulcrumPillar = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.065, 0.19, 1.10, 4),
-      engine.marbleMat(0xf8f6f0, 0.26)
+    // ── ESCENA IZQUIERDA (LO QUE OCURRE HOY: CONTROL SUMATIVO ART. 75) ──
+    const leftStage = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.56, 0.62, 0.12, 36),
+      engine.graniteMat(0x1e293b, 0.50, 0.22)
     );
-    fulcrumPillar.rotation.y = Math.PI / 4;
-    fulcrumPillar.position.y = -0.32;
-    fulcrumPillar.castShadow = true;
-    fulcrumPillar.receiveShadow = true;
-    tensionGroup.add(fulcrumPillar);
+    leftStage.position.set(-0.78, -0.90, 0);
+    leftStage.receiveShadow = true;
+    sceneGroup.add(leftStage);
 
-    const pivotRing = engine.createBrassArmillaryRing(0.14, 0.014);
-    pivotRing.position.set(0, 0.28, 0);
-    tensionGroup.add(pivotRing);
+    const leftScene = new THREE.Group();
+    leftScene.position.set(-0.78, -0.84, 0);
 
-    const pivotCore = new THREE.Mesh(
-      new THREE.SphereGeometry(0.065, 32, 32),
-      engine.goldMat(0xffd700)
+    // Docente solitario inclinado bajo la carga normativa y el candado sumativo
+    const burdenedTeacher = engine.createClassicalFigure({
+      scale: 0.72,
+      pose: "burdened",
+      togaColor: 0x334155
+    });
+    leftScene.add(burdenedTeacher);
+    engine.anim09_burdenFig = burdenedTeacher;
+
+    // Losa de Control Sumativo grabada con "ART. 75 · 2 NEGATIVAS = VACANCIA"
+    const heavyBlockGroup = new THREE.Group();
+    heavyBlockGroup.position.set(0, 1.03, 0.12);
+
+    const heavySlab = new THREE.Mesh(
+      new THREE.BoxGeometry(0.64, 0.30, 0.38),
+      engine.graniteMat(0x0f172a, 0.45, 0.30)
     );
-    pivotCore.position.set(0, 0.28, 0);
-    tensionGroup.add(pivotCore);
+    heavySlab.rotation.z = -0.05;
+    heavySlab.castShadow = true;
+    heavyBlockGroup.add(heavySlab);
 
-    // Brazo cinético asimétrico en latón champán
-    const kineticArm = new THREE.Group();
-    kineticArm.position.set(0, 0.28, 0);
+    const makeSlabTex = () => {
+      const cw = 512, ch = 240;
+      const c = document.createElement("canvas");
+      c.width = cw;
+      c.height = ch;
+      const ctx = c.getContext("2d");
+      ctx.fillStyle = "#0f172a";
+      ctx.fillRect(0, 0, cw, ch);
+      ctx.strokeStyle = "#dc2626";
+      ctx.lineWidth = 6;
+      ctx.strokeRect(10, 10, cw - 20, ch - 20);
+      ctx.textAlign = "center";
+      ctx.fillStyle = "#fca5a5";
+      ctx.font = "800 32px 'Cinzel', Georgia, serif";
+      ctx.fillText("ART. 75 INC. C", cw / 2, 74);
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "700 24px 'Inter', sans-serif";
+      ctx.fillText("2 NEGATIVAS = VACANCIA", cw / 2, 134);
+      ctx.fillStyle = "#94a3b8";
+      ctx.font = "600 18px 'Inter', sans-serif";
+      ctx.fillText("Lógica Sumativa • Prevención", cw / 2, 190);
+      const tex = new THREE.CanvasTexture(c);
+      tex.minFilter = THREE.LinearFilter;
+      return tex;
+    };
 
-    const beam = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.016, 0.016, 1.66, 24),
+    const slabFace = new THREE.Mesh(
+      new THREE.PlaneGeometry(0.58, 0.25),
+      new THREE.MeshStandardMaterial({ map: makeSlabTex(), roughness: 0.4 })
+    );
+    slabFace.position.set(0, 0, 0.195);
+    slabFace.rotation.z = -0.05;
+    heavyBlockGroup.add(slabFace);
+
+    const cageLines = new THREE.LineSegments(
+      new THREE.EdgesGeometry(new THREE.BoxGeometry(0.68, 0.34, 0.42)),
+      new THREE.LineBasicMaterial({ color: 0xdc2626, transparent: true, opacity: 0.85 })
+    );
+    cageLines.rotation.z = -0.05;
+    heavyBlockGroup.add(cageLines);
+
+    // Candado carmesí superior simbolizando riesgo laboral
+    const lockShackle = new THREE.Mesh(
+      new THREE.TorusGeometry(0.065, 0.014, 12, 24, Math.PI),
       engine.brassMat(0xd4af37)
     );
-    beam.rotation.z = Math.PI / 2;
-    kineticArm.add(beam);
+    lockShackle.position.set(0, 0.22, 0.02);
+    heavyBlockGroup.add(lockShackle);
 
-    // Tensores finos de suspensión a ambos extremos
-    [-0.78, 0.78].forEach((bx) => {
-      const cap = new THREE.Mesh(
-        new THREE.SphereGeometry(0.032, 20, 20),
-        engine.goldMat(0xffd700)
-      );
-      cap.position.set(bx, 0, 0);
-      kineticArm.add(cap);
+    leftScene.add(heavyBlockGroup);
+    engine.anim09_heavy = heavyBlockGroup;
+    sceneGroup.add(leftScene);
 
-      const wire = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.005, 0.005, 0.34, 12),
-        engine.brassMat(0xcfa346)
-      );
-      wire.position.set(bx, -0.17, 0);
-      kineticArm.add(wire);
+    // Etiqueta clara encima de la escena izquierda
+    const lblLeftProblem = engine.createLabelSprite(
+      "HOY: CONTROL SUMATIVO (ART. 75)",
+      "Peso punitivo aislado • Prevención docente",
+      "#991b1b",
+      false,
+      { x: 0.94 }
+    );
+    lblLeftProblem.position.set(-0.78, 0.68, 0.12);
+    sceneGroup.add(lblLeftProblem);
+
+    // ── CENTRO: LA BRECHA FORMATIVA (ART. 76 SIN INSUMO PEDAGÓGICO) ──
+    const bridgeArcCurve = new THREE.QuadraticBezierCurve3(
+      new THREE.Vector3(-0.30, -0.24, 0),
+      new THREE.Vector3(-0.04, 0.36, 0.14),
+      new THREE.Vector3(0.22, -0.08, 0)
+    );
+    const bridgeArc = new THREE.Mesh(
+      new THREE.TubeGeometry(bridgeArcCurve, 28, 0.011, 12, false),
+      engine.goldMat(0xffd700)
+    );
+    sceneGroup.add(bridgeArc);
+
+    const lblBreach = engine.createLabelSprite(
+      "BRECHA ART. 75 vs. ART. 76",
+      "¿Es viable pasar del control a la formación?",
+      "#0f2d59",
+      true,
+      { x: 1.38 }
+    );
+    lblBreach.position.set(0.0, 1.24, 0.10);
+    sceneGroup.add(lblBreach);
+
+    // ── ESCENA DERECHA (OBJETO DE ESTUDIO: MODELO 360° FORMATIVO + ART. 76) ──
+    const rightStage = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.68, 0.74, 0.14, 48),
+      engine.marbleMat(0xf8f6f0, 0.32)
+    );
+    rightStage.position.set(0.76, -0.89, 0);
+    rightStage.receiveShadow = true;
+    sceneGroup.add(rightStage);
+
+    const rightRim = new THREE.Mesh(
+      new THREE.TorusGeometry(0.69, 0.012, 16, 64),
+      engine.goldMat(0xffd700)
+    );
+    rightRim.rotation.x = Math.PI / 2;
+    rightRim.position.set(0.76, -0.82, 0);
+    sceneGroup.add(rightRim);
+
+    const rightScene = new THREE.Group();
+    rightScene.position.set(0.76, -0.82, 0);
+
+    // Docente erguido y libre en el centro del 360° (Autoevaluación + Antorcha Art. 76)
+    const openTeacher = engine.createClassicalFigure({
+      scale: 0.74,
+      pose: "open",
+      togaColor: 0x0f2d59,
+      laurel: true
+    });
+    rightScene.add(openTeacher);
+
+    // Antorcha dorada de Capacitación Continua (Art. 76) junto al docente
+    const torchPed = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.035, 0.62, 16), engine.brassMat(0xd4af37));
+    torchPed.position.set(0.24, 0.31, 0.10);
+    rightScene.add(torchPed);
+    const torchFlame = new THREE.Mesh(
+      new THREE.ConeGeometry(0.055, 0.14, 16),
+      engine.glassMat(0xf59e0b, { roughness: 0.06, opacity: 0.92 })
+    );
+    torchFlame.position.set(0.24, 0.68, 0.10);
+    rightScene.add(torchFlame);
+
+    // 3 Figuras clásicas acompañantes alrededor (Pares, Estudiantes y Dirección) con etiquetas explícitas
+    const companions = [
+      { angle: Math.PI * 0.85, col: 0x0f625a, title: "PARES", sub: "Coevaluación", lblOffset: [-0.14, 0.66, 0.08] },
+      { angle: Math.PI * 0.15, col: 0x0284c7, title: "ESTUDIANTES", sub: "Viedma y Nodos", lblOffset: [0.16, 0.66, 0.08] },
+      { angle: -Math.PI * 0.50, col: 0xb45309, title: "DIRECCIÓN", sub: "Art. 76", lblOffset: [0.0, 0.84, -0.10] }
+    ];
+    companions.forEach((c) => {
+      const r = 0.48;
+      const cx = Math.cos(c.angle) * r;
+      const cz = Math.sin(c.angle) * r;
+      const peer = engine.createClassicalFigure({
+        scale: 0.44,
+        pose: "dialogue",
+        togaColor: c.col
+      });
+      peer.position.set(cx, 0, cz);
+      peer.rotation.y = Math.atan2(-cx, -cz);
+      rightScene.add(peer);
+
+      const roleLbl = engine.createLabelSprite(c.title, c.sub, "#0f2d59", false, { x: 0.50 });
+      roleLbl.position.set(cx + c.lblOffset[0], c.lblOffset[1], cz + c.lblOffset[2]);
+      rightScene.add(roleLbl);
     });
 
-    tensionGroup.add(kineticArm);
-    engine.anim09_beam = kineticArm;
+    // Anillos armilares dorados 360° envolviendo el diálogo colegiado
+    const ring360Group = new THREE.Group();
+    ring360Group.position.set(0, 0.56, 0);
 
-    // POLO IZQUIERDO (EL NUDO / CONTROL SUMATIVO ART. 75):
-    // Monolito pesado de basalto encerrado en jaula geométrica rígida
-    const rigidNode = new THREE.Group();
-    rigidNode.position.set(-0.78, -0.16, 0);
+    const rOuter = engine.createBrassArmillaryRing(0.54, 0.010);
+    rOuter.rotation.x = Math.PI / 2.2;
+    ring360Group.add(rOuter);
 
-    const heavyCube = new THREE.Mesh(
-      new THREE.BoxGeometry(0.30, 0.30, 0.30),
-      engine.graniteMat(0x1e293b, 0.42, 0.28)
+    const rInner = engine.createBrassArmillaryRing(0.44, 0.008);
+    rInner.rotation.x = -Math.PI / 3;
+    ring360Group.add(rInner);
+
+    const warmLight = new THREE.PointLight(0x38bdf8, 1.35, 1.9);
+    warmLight.position.y = 0.45;
+    rightScene.add(warmLight);
+
+    rightScene.add(ring360Group);
+    engine.anim09_rings = ring360Group;
+    sceneGroup.add(rightScene);
+
+    // Etiqueta clara encima de la escena derecha
+    const lblRightObject = engine.createLabelSprite(
+      "OBJETO: MODELO 360° FORMATIVO",
+      "4 Miradas • Cero Sanciones • Nutre al Art. 76",
+      "#0f625a",
+      false,
+      { x: 0.96 }
     );
-    heavyCube.rotation.set(0.22, Math.PI / 4, 0.15);
-    heavyCube.castShadow = true;
-    rigidNode.add(heavyCube);
+    lblRightObject.position.set(0.76, 0.54, 0.16);
+    sceneGroup.add(lblRightObject);
 
-    // Marco cúbico constrictivo exterior (jaula burocrática)
-    const cageGeo = new THREE.BoxGeometry(0.44, 0.44, 0.44);
-    const cageEdges = new THREE.EdgesGeometry(cageGeo);
-    const cageLines = new THREE.LineSegments(
-      cageEdges,
-      new THREE.LineBasicMaterial({ color: 0x991b1b, transparent: true, opacity: 0.75 })
+    // Placa museográfica frontal explicativa
+    const frontPlaque = engine.createEngravedPlaque(
+      1.18,
+      0.24,
+      "EL PROBLEMA Y OBJETO DE ESTUDIO",
+      "Tensión Art. 75 (Vacancia) vs. Art. 76 (Capacitación)",
+      ["CONTROL SUMATIVO", "BRECHA FORMATIVA", "FACTIBILIDAD 360°"],
+      { theme: "dark" }
     );
-    rigidNode.add(cageLines);
+    frontPlaque.position.set(0, -0.90, 0.96);
+    frontPlaque.rotation.x = -0.28;
+    sceneGroup.add(frontPlaque);
 
-    const cageFrame1 = new THREE.Mesh(
-      new THREE.TorusGeometry(0.27, 0.009, 12, 4),
-      engine.graniteMat(0x7f1d1d, 0.35, 0.4)
-    );
-    cageFrame1.rotation.z = Math.PI / 4;
-    rigidNode.add(cageFrame1);
-
-    const cageFrame2 = cageFrame1.clone();
-    cageFrame2.rotation.y = Math.PI / 2;
-    rigidNode.add(cageFrame2);
-
-    tensionGroup.add(rigidNode);
-    engine.anim09_left = rigidNode;
-
-    // POLO DERECHO (LA APERTURA / RETROALIMENTACIÓN FORMATIVA 360° ART. 76):
-    // Esfera abierta de 4 anillos armilares luminosos y núcleo de cristal celeste
-    const openNode = new THREE.Group();
-    openNode.position.set(0.78, 0.04, 0);
-
-    const openRings = new THREE.Group();
-    for (let i = 0; i < 4; i++) {
-      const r = engine.createBrassArmillaryRing(0.18 + i * 0.032, 0.0075);
-      r.rotation.x = (i * Math.PI) / 4;
-      r.rotation.y = (i * Math.PI) / 3;
-      openRings.add(r);
-    }
-    openNode.add(openRings);
-    engine.anim09_rings = openRings;
-
-    const crystalCore = new THREE.Mesh(
-      new THREE.OctahedronGeometry(0.11, 0),
-      engine.glassMat(0x38bdf8, { roughness: 0.05, opacity: 0.92 })
-    );
-    openNode.add(crystalCore);
-
-    const warmGlow = new THREE.PointLight(0x38bdf8, 1.2, 1.6);
-    openNode.add(warmGlow);
-
-    tensionGroup.add(openNode);
-    engine.anim09_right = openNode;
-
-    g.add(tensionGroup);
+    g.add(sceneGroup);
   },
 
   animate(engine, t) {
-    // Inclinación asimétrica suave (el peso punitivo tira hacia abajo mientras el 360° busca elevarse)
-    const tilt = -0.11 + Math.sin(t * 1.25) * 0.045;
-    if (engine.anim09_beam) {
-      engine.anim09_beam.rotation.z = -tilt;
+    if (engine.anim09_heavy) {
+      engine.anim09_heavy.position.y = 1.03 + Math.sin(t * 1.4) * 0.014;
     }
-    if (engine.anim09_left) {
-      engine.anim09_left.position.y = 0.28 - 0.36 + Math.sin(-tilt) * -0.78;
-      engine.anim09_left.rotation.y = Math.sin(t * 0.6) * 0.12;
-    }
-    if (engine.anim09_right) {
-      engine.anim09_right.position.y = 0.28 - 0.34 + Math.sin(-tilt) * 0.78;
+    if (engine.anim09_burdenFig?.upperBody) {
+      engine.anim09_burdenFig.upperBody.rotation.x = 0.32 + Math.sin(t * 1.4) * 0.025;
     }
     if (engine.anim09_rings) {
-      engine.anim09_rings.rotation.y = t * 0.65;
-      engine.anim09_rings.rotation.z = Math.sin(t * 0.8) * 0.2;
+      engine.anim09_rings.rotation.y = t * 0.48;
     }
   }
 };
 
 // ──────────────────────────────────────────────────────────────────────────
-// 10. PREGUNTA Y 5 DIMENSIONES: Constelación Pentagonal Limpia de Factibilidad
+// 10. PREGUNTA CENTRAL Y 5 DIMENSIONES: Foro Pentagonal con Figura Estilo David y Etiquetas
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_10"] = {
   build(engine, g) {
-    engine.createMuseumPlinth(g, 1.50, 0.22, -1.22);
+    engine.createMuseumPlinth(g, 1.68, 0.22, -1.22);
 
     const pentGroup = new THREE.Group();
-    pentGroup.position.set(0, 0.02, 0);
+    pentGroup.position.set(0, -0.06, 0);
 
-    // Pedestal central esbelto
-    const stem = engine.createClassicalColumn(0.92, 0.09, 0xd4af37, true);
-    stem.position.set(0, -0.52, 0);
-    g.add(stem);
-
-    // Núcleo central: Esfera de alabastro y doble aro ecuatorial dorado (La Pregunta Central)
-    const coreMesh = new THREE.Mesh(
-      new THREE.SphereGeometry(0.24, 36, 36),
-      engine.marbleMat(0xfdfbf7, 0.22)
+    // Pedestal central adelantado para el Investigador (Figura estilo David)
+    const centerDais = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.34, 0.40, 0.12, 40),
+      engine.marbleMat(0xf8f6f0, 0.30)
     );
-    pentGroup.add(coreMesh);
+    centerDais.position.set(0, -0.90, 0.16);
+    centerDais.receiveShadow = true;
+    pentGroup.add(centerDais);
 
-    const coreRing1 = engine.createBrassArmillaryRing(0.34, 0.011);
-    coreRing1.rotation.x = Math.PI / 2.4;
-    pentGroup.add(coreRing1);
+    const thinkerFig = engine.createClassicalFigure({
+      scale: 0.80,
+      pose: "raisingOrb",
+      togaColor: 0x0f2d59,
+      laurel: true
+    });
+    thinkerFig.position.set(0, -0.84, 0.16);
+    pentGroup.add(thinkerFig);
 
-    const coreRing2 = engine.createBrassArmillaryRing(0.86, 0.008);
-    coreRing2.rotation.x = Math.PI / 2;
-    pentGroup.add(coreRing2);
+    // Esfera luminosa de la Pregunta Central flotando sobre la palma alzada
+    const orbGroup = new THREE.Group();
+    orbGroup.position.set(0.19, 0.44, 0.24);
 
-    const coreLight = new THREE.PointLight(0xffd700, 1.35, 2.0);
-    pentGroup.add(coreLight);
+    const questionOrb = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(0.105, 1),
+      engine.glassMat(0x38bdf8, { roughness: 0.04, opacity: 0.92 })
+    );
+    orbGroup.add(questionOrb);
 
-    // 5 Gemas Prismáticas Orbitales (Las 5 Dimensiones de Factibilidad, sin carteles ruidosos)
-    const colors = [0x0f2d59, 0x0ea5e9, 0xf59e0b, 0x10b981, 0x8b5cf6];
+    const orbRing = engine.createBrassArmillaryRing(0.155, 0.008);
+    orbGroup.add(orbRing);
+    orbGroup.add(new THREE.PointLight(0xffd700, 1.4, 2.2));
+    pentGroup.add(orbGroup);
+    engine.anim10_orb = orbGroup;
+
+    // Etiqueta maestra de la Pregunta Central
+    const lblPregunta = engine.createLabelSprite(
+      "PREGUNTA CENTRAL (2027)",
+      "¿Qué condiciones hacen factible un 360° en el Dpto.?",
+      "#0f2d59",
+      true,
+      { x: 1.44 }
+    );
+    lblPregunta.position.set(0, 1.24, 0.12);
+    pentGroup.add(lblPregunta);
+
+    // Anfiteatro Semicircular de las 5 Dimensiones (sin giros que tapen textos ni colisiones)
+    const dims = [
+      {
+        name: "1. NORMATIVA", sub: "Cero sanciones • CCT",
+        x: -1.16, z: 0.24, h: 0.44, col: 0x0f2d59, lblY: 0.22, kind: "scales"
+      },
+      {
+        name: "2. TÉCNICA", sub: "Moodle/SIU • Anonimato",
+        x: -0.70, z: -0.46, h: 0.68, col: 0x0ea5e9, lblY: 0.56, kind: "lens"
+      },
+      {
+        name: "3. ORGANIZACIONAL", sub: "Enlace Plan Art. 76",
+        x: 0.00, z: -0.76, h: 0.88, col: 0xf59e0b, lblY: 0.86, kind: "gear"
+      },
+      {
+        name: "4. CULTURAL", sub: "Confianza Actoral",
+        x: 0.70, z: -0.46, h: 0.68, col: 0x10b981, lblY: 0.56, kind: "rings"
+      },
+      {
+        name: "5. GOBERNANZA", sub: "Cogobierno y ADUNC",
+        x: 1.16, z: 0.24, h: 0.44, col: 0x8b5cf6, lblY: 0.22, kind: "council"
+      }
+    ];
+
     engine.anim10_arms = [];
+    const orbOrigin = new THREE.Vector3(0.19, 0.44, 0.24);
 
-    colors.forEach((col, i) => {
-      const angle = (i * 2 * Math.PI) / 5 - Math.PI / 2;
-      const r = 0.86;
-      const x = Math.cos(angle) * r;
-      const z = Math.sin(angle) * r;
+    dims.forEach((d) => {
+      const colMesh = engine.createClassicalColumn(d.h, 0.052, 0xcfa346, true);
+      colMesh.position.set(d.x, -0.94 + d.h / 2, d.z);
+      pentGroup.add(colMesh);
 
-      const armMesh = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.007, 0.007, r - 0.24, 12),
-        engine.brassMat(0xcfa346)
-      );
-      armMesh.position.set(x * 0.54, 0, z * 0.54);
-      armMesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), new THREE.Vector3(x, 0, z).normalize());
-      pentGroup.add(armMesh);
+      const topY = -0.94 + d.h + 0.14;
 
-      const collar = new THREE.Mesh(
-        new THREE.TorusGeometry(0.14, 0.008, 16, 32),
+      // Símbolo 3D representativo sobre cada columna según su dimensión
+      let emblem;
+      if (d.kind === "scales") {
+        // Balanza normativa equilibrada
+        const gScales = new THREE.Group();
+        const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.008, 0.008, 0.24, 12), engine.goldMat(0xffd700));
+        bar.rotation.z = Math.PI / 2;
+        gScales.add(bar);
+        [-0.11, 0.11].forEach((px) => {
+          const pan = new THREE.Mesh(new THREE.CylinderGeometry(0.045, 0.035, 0.015, 16), engine.brassMat(0xd4af37));
+          pan.position.set(px, -0.05, 0);
+          gScales.add(pan);
+        });
+        emblem = gScales;
+      } else if (d.kind === "lens") {
+        // Lente/Escudo técnico de anonimato digital
+        const gLens = new THREE.Group();
+        gLens.add(engine.createBrassArmillaryRing(0.11, 0.010));
+        const glass = new THREE.Mesh(new THREE.CylinderGeometry(0.095, 0.095, 0.018, 24), engine.glassMat(d.col, { opacity: 0.88 }));
+        glass.rotation.x = Math.PI / 2;
+        gLens.add(glass);
+        emblem = gLens;
+      } else if (d.kind === "gear") {
+        // Engranaje organizacional (conexión con Art. 76)
+        const gGear = new THREE.Group();
+        const ring = new THREE.Mesh(new THREE.TorusGeometry(0.10, 0.022, 12, 8), engine.brassMat(0xffd700));
+        const gem = new THREE.Mesh(new THREE.OctahedronGeometry(0.065, 0), engine.glassMat(d.col, { opacity: 0.92 }));
+        gGear.add(ring, gem);
+        emblem = gGear;
+      } else if (d.kind === "rings") {
+        // Dos aros entrelazados de confianza cultural
+        const gRings = new THREE.Group();
+        const rA = engine.createBrassArmillaryRing(0.09, 0.009);
+        rA.position.x = -0.04;
+        const rB = engine.createBrassArmillaryRing(0.09, 0.009);
+        rB.position.x = 0.04;
+        rB.rotation.y = Math.PI / 3;
+        gRings.add(rA, rB);
+        emblem = gRings;
+      } else {
+        // Mesa redonda colegiada de gobernanza y ADUNC
+        const gCouncil = new THREE.Group();
+        const tbl = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.022, 24), engine.brassMat(0xd4af37));
+        const dome = new THREE.Mesh(new THREE.OctahedronGeometry(0.065, 0), engine.glassMat(d.col, { opacity: 0.90 }));
+        dome.position.y = 0.06;
+        gCouncil.add(tbl, dome);
+        emblem = gCouncil;
+      }
+
+      emblem.position.set(d.x, topY, d.z);
+      pentGroup.add(emblem);
+      engine.anim10_arms.push(emblem);
+
+      // Haz dorado desde la Pregunta Central hacia cada Dimensión
+      const targetPt = new THREE.Vector3(d.x, topY, d.z);
+      const midPt = new THREE.Vector3().addVectors(orbOrigin, targetPt).multiplyScalar(0.5);
+      midPt.y += 0.12;
+      const beamCurve = new THREE.QuadraticBezierCurve3(orbOrigin, midPt, targetPt);
+      const beam = new THREE.Mesh(
+        new THREE.TubeGeometry(beamCurve, 16, 0.004, 6, false),
         engine.goldMat(0xffd700)
       );
-      collar.rotation.x = Math.PI / 2;
-      collar.position.set(x, 0, z);
-      pentGroup.add(collar);
+      pentGroup.add(beam);
 
-      const sealMesh = new THREE.Mesh(
-        new THREE.OctahedronGeometry(0.115, 0),
-        engine.glassMat(col, { opacity: 0.90, roughness: 0.06 })
-      );
-      sealMesh.position.set(x, 0, z);
-      pentGroup.add(sealMesh);
-      engine.anim10_arms.push(sealMesh);
+      // Etiqueta explícita sobre cada columna
+      const dimLbl = engine.createLabelSprite(d.name, d.sub, "#0f2d59", false, { x: 0.66 });
+      dimLbl.position.set(d.x, d.lblY, d.z);
+      pentGroup.add(dimLbl);
     });
+
+    // Placa museográfica frontal
+    const frontPlaque = engine.createEngravedPlaque(
+      1.14,
+      0.23,
+      "5 DIMENSIONES DE FACTIBILIDAD",
+      "Pregunta Rectora del Estudio en el CURZAS (2027)",
+      ["NORMATIVA • TÉCNICA • ORGANIZACIONAL • CULTURAL • GOBERNANZA"],
+      { theme: "dark" }
+    );
+    frontPlaque.position.set(0, -0.90, 0.94);
+    frontPlaque.rotation.x = -0.28;
+    pentGroup.add(frontPlaque);
 
     g.add(pentGroup);
     engine.anim10_group = pentGroup;
@@ -1079,12 +1450,15 @@ window.Presentation3D_Objects["anim_10"] = {
 
   animate(engine, t) {
     if (engine.anim10_group) {
-      engine.anim10_group.rotation.y = t * 0.22;
-      engine.anim10_group.rotation.x = Math.sin(t * 0.5) * 0.08;
+      engine.anim10_group.rotation.y = Math.sin(t * 0.35) * 0.12;
+    }
+    if (engine.anim10_orb) {
+      engine.anim10_orb.rotation.y = -t * 0.8;
+      engine.anim10_orb.position.y = 0.44 + Math.sin(t * 1.6) * 0.016;
     }
     if (engine.anim10_arms) {
-      engine.anim10_arms.forEach((seal, idx) => {
-        seal.rotation.y = t * 1.3 + idx;
+      engine.anim10_arms.forEach((emblem, idx) => {
+        emblem.rotation.y = t * 0.9 + idx * 0.8;
       });
     }
   }

@@ -743,6 +743,243 @@
       sealGroup.add(sunCore);
 
       return sealGroup;
+    },
+
+    /**
+     * Figura Humana Clásica Esculpida en Mármol ("Estilo David" / Escultura Académica)
+     * Enraizada en y = 0, altura total ~1.34 * scale.
+     * Soporta poses expresivas: 'teaching' | 'burdened' | 'open' | 'raisingOrb' | 'dialogue' | 'reaching'
+     */
+    createClassicalFigure(opts = {}) {
+      const fig = new THREE.Group();
+      const scale = opts.scale !== undefined ? opts.scale : 1.0;
+      const pose = opts.pose || "open";
+      const ivoryMat = this.marbleMat(opts.marbleColor || 0xf8f6f0, 0.42);
+      const warmMarbleMat = this.marbleMat(0xf0ece1, 0.48);
+      const goldMat = this.goldMat(0xe0ba56);
+      const togaMat = new THREE.MeshStandardMaterial({
+        color: opts.togaColor !== undefined ? opts.togaColor : 0x163868,
+        roughness: 0.58,
+        metalness: 0.08
+      });
+
+      const makeLimb = (rBot, rMid, rTop, len, mat) => {
+        const pts = [
+          new THREE.Vector2(0, 0),
+          new THREE.Vector2(rBot, 0),
+          new THREE.Vector2(rBot * 1.15, len * 0.18),
+          new THREE.Vector2(rMid, len * 0.56),
+          new THREE.Vector2(rTop * 0.96, len * 0.86),
+          new THREE.Vector2(rTop, len),
+          new THREE.Vector2(0, len)
+        ];
+        const m = new THREE.Mesh(new THREE.LatheGeometry(pts, 24), mat);
+        m.castShadow = true;
+        m.receiveShadow = true;
+        return m;
+      };
+
+      const buildFoot = (px, pz, yaw) => {
+        const f = new THREE.Group();
+        const sole = new THREE.Mesh(new THREE.SphereGeometry(0.050, 18, 12), ivoryMat);
+        sole.scale.set(0.76, 0.36, 1.62);
+        sole.position.y = 0.018;
+        f.add(sole);
+        const strap = new THREE.Mesh(new THREE.TorusGeometry(0.036, 0.006, 10, 20), goldMat);
+        strap.rotation.x = Math.PI / 2.4;
+        strap.position.set(0, 0.032, 0.014);
+        f.add(strap);
+        f.position.set(px, 0, pz);
+        f.rotation.y = yaw;
+        return f;
+      };
+
+      fig.add(buildFoot(0.10, 0.03, 0.10));
+      fig.add(buildFoot(-0.13, -0.02, -0.20));
+
+      const rightLeg = makeLimb(0.035, 0.054, 0.052, 0.34, ivoryMat);
+      rightLeg.position.set(0.10, 0.02, 0.02);
+      fig.add(rightLeg);
+
+      const leftLeg = makeLimb(0.034, 0.052, 0.050, 0.34, ivoryMat);
+      leftLeg.position.set(-0.13, 0.02, -0.01);
+      leftLeg.rotation.z = -0.06;
+      leftLeg.rotation.x = 0.07;
+      fig.add(leftLeg);
+
+      // Túnica inferior drapeada
+      const skirtProfile = [
+        new THREE.Vector2(0, 0.30),
+        new THREE.Vector2(0.23, 0.30),
+        new THREE.Vector2(0.21, 0.39),
+        new THREE.Vector2(0.185, 0.51),
+        new THREE.Vector2(0.16, 0.62),
+        new THREE.Vector2(0.145, 0.66),
+        new THREE.Vector2(0, 0.66)
+      ];
+      const tunicSkirt = new THREE.Mesh(new THREE.LatheGeometry(skirtProfile, 36), togaMat);
+      tunicSkirt.scale.set(1.10, 1, 0.85);
+      tunicSkirt.castShadow = true;
+      fig.add(tunicSkirt);
+
+      for (let i = 0; i < 5; i++) {
+        const a = -0.8 + i * 0.40;
+        const foldCurve = new THREE.CatmullRomCurve3([
+          new THREE.Vector3(Math.sin(a) * 0.165, 0.64, Math.cos(a) * 0.135),
+          new THREE.Vector3(Math.sin(a) * 0.20, 0.48, Math.cos(a) * 0.155),
+          new THREE.Vector3(Math.sin(a) * 0.23, 0.31, Math.cos(a) * 0.175)
+        ]);
+        fig.add(new THREE.Mesh(new THREE.TubeGeometry(foldCurve, 12, 0.016, 10, false), togaMat));
+      }
+
+      const waistBelt = new THREE.Mesh(new THREE.TorusGeometry(0.162, 0.012, 14, 40), goldMat);
+      waistBelt.rotation.x = Math.PI / 2;
+      waistBelt.scale.set(1.10, 0.84, 1);
+      waistBelt.position.y = 0.65;
+      fig.add(waistBelt);
+
+      // Grupo superior articulado desde la cintura (permite inclinación expresiva en 'burdened')
+      const upperBody = new THREE.Group();
+      upperBody.position.set(0, 0.63, 0);
+      if (pose === "burdened") {
+        upperBody.rotation.x = 0.32;
+      } else if (opts.torsoLeanX) {
+        upperBody.rotation.x = opts.torsoLeanX;
+      }
+
+      const torsoProfile = [
+        new THREE.Vector2(0, 0.0),
+        new THREE.Vector2(0.15, 0.0),
+        new THREE.Vector2(0.142, 0.09),
+        new THREE.Vector2(0.165, 0.21),
+        new THREE.Vector2(0.185, 0.33),
+        new THREE.Vector2(0.17, 0.40),
+        new THREE.Vector2(0.10, 0.43),
+        new THREE.Vector2(0.06, 0.45),
+        new THREE.Vector2(0, 0.45)
+      ];
+      const torsoMesh = new THREE.Mesh(new THREE.LatheGeometry(torsoProfile, 36), ivoryMat);
+      torsoMesh.scale.set(1.20, 1.0, 0.72);
+      torsoMesh.castShadow = true;
+      upperBody.add(torsoMesh);
+
+      const shoulderL = new THREE.Mesh(new THREE.SphereGeometry(0.068, 20, 20), ivoryMat);
+      shoulderL.position.set(-0.21, 0.36, 0);
+      upperBody.add(shoulderL);
+
+      const shoulderR = new THREE.Mesh(new THREE.SphereGeometry(0.068, 20, 20), ivoryMat);
+      shoulderR.position.set(0.21, 0.36, 0);
+      upperBody.add(shoulderR);
+
+      // Banda académica cruzada con fíbula dorada
+      const sashCurve = new THREE.CatmullRomCurve3([
+        new THREE.Vector3(0.19, 0.39, -0.04),
+        new THREE.Vector3(0.17, 0.33, 0.11),
+        new THREE.Vector3(0.02, 0.17, 0.145),
+        new THREE.Vector3(-0.17, 0.03, 0.09)
+      ]);
+      upperBody.add(new THREE.Mesh(new THREE.TubeGeometry(sashCurve, 24, 0.033, 14, false), togaMat));
+
+      const fibula = new THREE.Mesh(new THREE.CylinderGeometry(0.028, 0.028, 0.015, 20), goldMat);
+      fibula.rotation.x = Math.PI / 2.2;
+      fibula.position.set(0.16, 0.35, 0.11);
+      upperBody.add(fibula);
+
+      // Cuello y Cabeza Clásica estilo David
+      const neck = makeLimb(0.064, 0.054, 0.052, 0.11, ivoryMat);
+      neck.position.set(0, 0.43, 0.01);
+      upperBody.add(neck);
+
+      const headGroup = new THREE.Group();
+      headGroup.position.set(0, 0.58, 0.02);
+      if (pose === "burdened") {
+        headGroup.rotation.x = 0.24;
+      } else if (pose === "raisingOrb") {
+        headGroup.rotation.x = -0.16;
+      } else if (opts.headRotY) {
+        headGroup.rotation.y = opts.headRotY;
+      }
+
+      const cranium = new THREE.Mesh(new THREE.SphereGeometry(0.088, 28, 24), ivoryMat);
+      cranium.scale.set(0.90, 1.12, 1.0);
+      cranium.castShadow = true;
+      headGroup.add(cranium);
+
+      const noseCurve = new THREE.CatmullRomCurve3([
+        new THREE.Vector3(0, 0.022, 0.084),
+        new THREE.Vector3(0, -0.014, 0.102)
+      ]);
+      headGroup.add(new THREE.Mesh(new THREE.TubeGeometry(noseCurve, 8, 0.010, 8, false), ivoryMat));
+
+      const chin = new THREE.Mesh(new THREE.SphereGeometry(0.032, 14, 14), ivoryMat);
+      chin.scale.set(0.88, 0.95, 0.92);
+      chin.position.set(0, -0.068, 0.052);
+      headGroup.add(chin);
+
+      // Rulos clásicos de mármol estilo David
+      [
+        [-0.065, 0.058, -0.025], [0.065, 0.058, -0.025], [-0.075, 0.018, -0.045],
+        [0.075, 0.018, -0.045], [0, 0.068, -0.055], [-0.048, -0.02, -0.065],
+        [0.048, -0.02, -0.065], [0, 0.086, -0.008], [-0.038, 0.076, 0.025], [0.038, 0.076, 0.025]
+      ].forEach(([hx, hy, hz]) => {
+        const curl = new THREE.Mesh(new THREE.SphereGeometry(0.032, 12, 12), warmMarbleMat);
+        curl.position.set(hx, hy, hz);
+        headGroup.add(curl);
+      });
+
+      if (opts.laurel) {
+        const crown = new THREE.Mesh(new THREE.TorusGeometry(0.091, 0.011, 12, 32), goldMat);
+        crown.rotation.x = Math.PI / 2.35;
+        crown.position.set(0, 0.045, -0.005);
+        headGroup.add(crown);
+      }
+
+      upperBody.add(headGroup);
+
+      // Poses expresivas de brazos (coordenadas relativas a upperBody en y=0.63)
+      let lPts, rPts;
+      if (pose === "burdened") {
+        // Ambos brazos alzados sosteniendo peso opresivo sobre los hombros
+        lPts = [[-0.21, 0.36, 0], [-0.30, 0.44, 0.10], [-0.26, 0.62, 0.08]];
+        rPts = [[0.21, 0.36, 0], [0.30, 0.44, 0.10], [0.26, 0.62, 0.08]];
+      } else if (pose === "raisingOrb") {
+        // Brazo derecho alzado sosteniendo esfera de luz; izquierdo reflexivo al pecho
+        lPts = [[-0.21, 0.36, 0], [-0.28, 0.22, 0.12], [-0.10, 0.24, 0.19]];
+        rPts = [[0.21, 0.36, 0], [0.32, 0.52, 0.08], [0.24, 0.76, 0.10]];
+      } else if (pose === "teaching") {
+        // Gesto oratorio / docente abriendo la mano hacia la comunidad e híbrido
+        lPts = [[-0.21, 0.36, 0], [-0.32, 0.28, 0.12], [-0.40, 0.34, 0.24]];
+        rPts = [[0.21, 0.36, 0], [0.34, 0.40, 0.12], [0.44, 0.48, 0.22]];
+      } else if (pose === "reaching") {
+        // Brazo extendido hacia adelante convergiendo a un objetivo común
+        lPts = [[-0.21, 0.36, 0], [-0.26, 0.20, 0.06], [-0.22, 0.08, 0.10]];
+        rPts = [[0.21, 0.36, 0], [0.22, 0.34, 0.20], [0.12, 0.38, 0.38]];
+      } else if (pose === "dialogue") {
+        // Brazos cordiales en intercambio colegiado horizontal
+        lPts = [[-0.21, 0.36, 0], [-0.29, 0.24, 0.10], [-0.22, 0.22, 0.22]];
+        rPts = [[0.21, 0.36, 0], [0.29, 0.26, 0.12], [0.24, 0.30, 0.26]];
+      } else {
+        // 'open': Brazos abiertos en serenidad y apertura formativa
+        lPts = [[-0.21, 0.36, 0], [-0.34, 0.32, 0.10], [-0.42, 0.38, 0.18]];
+        rPts = [[0.21, 0.36, 0], [0.34, 0.32, 0.10], [0.42, 0.38, 0.18]];
+      }
+
+      [lPts, rPts].forEach((pts) => {
+        const curve = new THREE.CatmullRomCurve3(pts.map((p) => new THREE.Vector3(p[0], p[1], p[2])));
+        const arm = new THREE.Mesh(new THREE.TubeGeometry(curve, 20, 0.036, 14, false), ivoryMat);
+        arm.castShadow = true;
+        upperBody.add(arm);
+        const end = pts[pts.length - 1];
+        const hand = new THREE.Mesh(new THREE.SphereGeometry(0.038, 14, 14), ivoryMat);
+        hand.position.set(end[0], end[1], end[2]);
+        upperBody.add(hand);
+      });
+
+      fig.add(upperBody);
+      fig.upperBody = upperBody;
+      fig.headGroup = headGroup;
+      fig.scale.setScalar(scale);
+      return fig;
     }
   };
 })();

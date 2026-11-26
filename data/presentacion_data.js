@@ -533,15 +533,15 @@ const PRESENTACION_DATA = {
       tiempoSugerido: "0:40 min",
       bloque: "EJE 1 · EL PROBLEMA",
       esquema: "1.1 Ubicación Espacio-Temporal: El CURZAS (0:40)",
-      badge: "Recorte Espacio-Temporal",
-      titulo: "¿Dónde nos ubicamos? El CURZAS",
-      subtitulo: "Complejo Universitario Regional Zona Atlántica y Sur (UNCo)",
+      badge: "Paso 1 • Espacio y Tiempo",
+      titulo: "El CURZAS en el Territorio (2027)",
+      subtitulo: "Ubicación espacio-temporal de nuestra organización universitaria",
       puntosClave: [
-        "<strong>Sede Central:</strong> Viedma — cabecera académica y administrativa",
-        "<strong>Despliegue territorial:</strong> Red de 10 Nodos Universitarios en Río Negro",
-        "<strong>Horizonte temporal:</strong> Ciclo lectivo mayo–noviembre de 2027"
+        "<strong>¿Qué es el CURZAS?</strong> Complejo Universitario Regional de la UNCo (Art. 17)",
+        "<strong>¿Dónde está presente?</strong> Sede Central en Viedma + 10 Nodos en Río Negro",
+        "<strong>Recorte temporal:</strong> Trabajo de campo previsto de mayo a noviembre de 2027"
       ],
-      metadatosFooter: "Eje 1 • Art. 17 Estatuto UNCo • Res. CD 135/22",
+      metadatosFooter: "Eje 1 • Ordenanza CS N° 0988/25 • Res. CD N° 135/22",
       escena3D: "anim_06",
       diagramaSVG: "assets/red_territorial.svg",
       anexoInteractivo: {
@@ -550,7 +550,7 @@ const PRESENTACION_DATA = {
         etiqueta: "🗺️ Maqueta 3D Nodos",
         atajo: "A"
       },
-      guionOrador: "[Ubicación espacio-temporal • 0:40 min]\nPrimero nos ubicamos en tiempo y espacio: el estudio se sitúa en el CURZAS de la Universidad Nacional del Comahue, con horizonte de ejecución entre mayo y noviembre de 2027.\n\nEl CURZAS no es un único edificio aislado: articula su Sede Central en Viedma con una Red Territorial de diez Nodos distribuidos en la Línea Sur, la Costa Atlántica y los Valles de Río Negro (Valcheta, Ramos Mexía, Sierra Colorada, Los Menucos, Maquinchao, Jacobacci, SAO, Sierra Grande, Conesa y Río Colorado)."
+      guionOrador: "[Ubicación espacio-temporal • 0:40 min]\nPrimero nos ubicamos en tiempo y espacio: investigaremos entre mayo y noviembre de 2027 en el CURZAS de la Universidad Nacional del Comahue.\n\nEl CURZAS no se limita a un edificio: articula su Sede Central en Viedma con diez Nodos territoriales distribuidos en la Línea Sur, la Costa Atlántica y los Valles de Río Negro."
     },
 
     {
@@ -558,18 +558,18 @@ const PRESENTACION_DATA = {
       numero: 4,
       tiempoSugerido: "0:45 min",
       bloque: "EJE 1 · EL PROBLEMA",
-      esquema: "1.1 Unidad Académica y Modalidad Híbrida (0:45)",
-      badge: "Recorte Institucional",
+      esquema: "1.1 Unidad Académica y Práctica Híbrida (0:45)",
+      badge: "Paso 2 • Dónde se Establece",
       titulo: "Departamento de Administración Pública",
-      subtitulo: "Cómo funciona hoy la enseñanza donde investigamos",
+      subtitulo: "Cómo funciona hoy la docencia en la unidad académica estudiada",
       puntosClave: [
-        "<strong>Carreras:</strong> Lic. en Administración Pública y CCC de Gestión de RR. HH.",
-        "<strong>Modalidad real:</strong> Aulas presenciales + cursada híbrida en Nodos (Res. 196/22)",
-        "<strong>Regulación actual:</strong> Estatuto UNCo (Ord. 0988/25), Ord. 0910/97 y CCT 1246/15"
+        "<strong>Unidad de estudio:</strong> Carreras de Administración Pública y CCC en RR. HH.",
+        "<strong>Práctica docente real:</strong> Aula presencial en Viedma + red híbrida en 10 Nodos",
+        "<strong>Normas vigentes:</strong> Estatuto UNCo, Ord. 0910/97 y Convenio Colectivo 1246/15"
       ],
-      metadatosFooter: "Eje 1 • Res. CD-CURZA N° 196/2022",
+      metadatosFooter: "Eje 1 • Docencia Híbrida (Res. CD-CURZA N° 196/22)",
       escena3D: "anim_07",
-      guionOrador: "[Dónde se establece exactamente • 0:45 min]\nDentro del CURZAS recortamos el estudio en el Departamento de Administración Pública, donde se dictan la Licenciatura en Administración Pública y nuestro Ciclo de Complementación en Recursos Humanos.\n\nAquí el trabajo docente combina clases presenciales en Viedma con enseñanza híbrida y tutorías virtuales hacia los diez Nodos (Resolución 196/2022), regido por el Estatuto de la UNCo, la Ordenanza de Carrera Docente 0910/97 y el Convenio Colectivo 1246/15."
+      guionOrador: "[Dónde se establece adentro del CURZAS • 0:45 min]\nBajando un escalón hacia nuestro ámbito concreto, nos situamos en el Departamento de Administración Pública (donde se dictan la Licenciatura en Administración Pública y el CCC de Recursos Humanos).\n\nComo muestra la escena, aquí el docente enseña al mismo tiempo en el aula presencial de Viedma y de forma híbrida hacia estudiantes en los diez Nodos (Res. 196/2022), bajo el Estatuto, la Ord. 0910/97 y el CCT 1246/15."
     },
 
     {
@@ -577,38 +577,38 @@ const PRESENTACION_DATA = {
       numero: 5,
       tiempoSugerido: "0:55 min",
       bloque: "EJE 1 · EL PROBLEMA",
-      esquema: "1.2 Qué Ocurre Hoy y Objeto de Estudio (0:55)",
-      badge: "Nudo Problemático",
-      titulo: "El Problema",
-      subtitulo: "Tensión entre control sumativo y formación + Objeto de estudio",
+      esquema: "1.2 El Problema y Objeto de Estudio (0:55)",
+      badge: "Paso 3 • Nudo y Objeto",
+      titulo: "El Problema y Objeto de Estudio",
+      subtitulo: "Del peso del control sumativo a una retroalimentación formativa",
       puntosClave: [
-        "<strong>Qué pasa hoy:</strong> Controles de permanencia (Art. 74 y Art. 75: 2 negativas = vacancia)",
-        "<strong>La brecha:</strong> Prevención docente y falta de insumo formativo para el Art. 76",
-        "<strong>Objeto de estudio:</strong> Factibilidad de un modelo 360° 100 % formativo y no punitivo"
+        "<strong>¿Qué ocurre hoy?</strong> Controles formales (Art. 74 y Art. 75: 2 negativas = vacancia)",
+        "<strong>El problema:</strong> Genera prevención docente y deja sin insumo formativo al Art. 76",
+        "<strong>Objeto de estudio:</strong> Factibilidad de un modelo 360° 100 % formativo y sin sanciones"
       ],
-      metadatosFooter: "Eje 1 • Art. 75 vs. Art. 76 (Estatuto UNCo)",
+      metadatosFooter: "Eje 1 • Tensión Art. 75 vs. Art. 76 (Estatuto UNCo)",
       escena3D: "anim_09",
-      guionOrador: "[Qué ocurre hoy y cuál es el problema • 0:55 min]\nEl problema no es que falten normas: hoy funcionan los informes anuales con encuesta estudiantil (Art. 74) y la evaluación cada cuatro años (Art. 75).\n\nEl nudo está en que el Art. 75 inc. c declara vacante el cargo tras dos evaluaciones negativas seguidas. Eso instala una lógica de control sumativo que genera prevención lógica; mientras tanto, el Art. 76 prevé capacitación anual pero no recibe diagnósticos pedagógicos ricos que contemplen las aulas híbridas.\n\n[Objeto de estudio]\nPor eso nuestro objeto de estudio no es evaluar personas ni imponer una receta, sino analizar la factibilidad de implementar una retroalimentación 360° puramente formativa, desconectada por completo de sanciones o concursos."
+      guionOrador: "[Qué ocurre hoy y cuál es el problema • 0:55 min]\n¿Qué ocurre hoy? Funcionan el informe anual con encuesta (Art. 74) y la evaluación cuatrienal (Art. 75), donde dos dictámenes negativos seguidos declaran vacante el cargo.\n\nComo representa la figura de la izquierda, ese peso sumativo genera una prevención lógica en el docente; mientras tanto, el programa anual de capacitación (Art. 76) carece de devoluciones pedagógicas ricas para aulas presenciales e híbridas.\n\n[Objeto de estudio]\nPor eso nuestro objeto de estudio —representado en el círculo colegiado de la derecha— es analizar si es factible implementar una retroalimentación 360° puramente formativa, desconectada de toda sanción."
     },
 
     {
       id: "slide_eje1_dimensiones",
       numero: 6,
-      tiempoSugerido: "0:45 min",
+      tiempoSugerido: "0:40 min",
       bloque: "EJE 1 · EL PROBLEMA",
-      esquema: "1.3 Pregunta Central y 5 Dimensiones (0:45)",
-      badge: "Factibilidad Integral",
+      esquema: "1.3 Pregunta Central y 5 Dimensiones (0:40)",
+      badge: "Paso 4 • Factibilidad",
       titulo: "Pregunta Central y 5 Dimensiones",
-      subtitulo: "¿Qué condiciones reales hacen factible un modelo 360° en 2027?",
+      subtitulo: "¿Qué condiciones reales vuelven factible un modelo 360° en 2027?",
       puntosClave: [
-        "<strong>1. Normativa:</strong> Compatibilidad con Estatuto y CCT (cero sanciones)",
-        "<strong>2. Técnica:</strong> Moodle / SIU ágiles y con anonimato técnico real",
-        "<strong>3. Organizacional:</strong> Enlace al Plan Art. 76 sin sobrecarga burocrática",
-        "<strong>4 y 5. Cultural y Gobernanza:</strong> Confianza actoral + acuerdo con ADUNC"
+        "<strong>1. Normativa:</strong> Compatibilidad con Estatuto y CCT (cero efecto punitivo)",
+        "<strong>2. Técnica:</strong> Moodle / SIU breves, usables en Nodos y con anonimato real",
+        "<strong>3. Organizacional:</strong> Enlace directo al Plan Art. 76 sin sobrecarga burocrática",
+        "<strong>4 y 5. Cultural y Gobernanza:</strong> Confianza actoral + acuerdo paritario con ADUNC"
       ],
-      metadatosFooter: "Eje 1 • 5 Condiciones de Viabilidad",
+      metadatosFooter: "Eje 1 • Las 5 Condiciones de Factibilidad",
       escena3D: "anim_10",
-      guionOrador: "[Pregunta central y las 5 dimensiones • 0:45 min]\nDe allí nace nuestra pregunta central: ¿qué condiciones reales existen en 2027 en el Departamento para que un modelo 360° sea factible?\n\nEsa factibilidad la desagregamos en cinco dimensiones concretas:\n1. Normativa: que respete el Estatuto y el CCT garantizando cero sanciones.\n2. Técnica: que Moodle y SIU aseguren agilidad y anonimato real en Viedma y Nodos.\n3. Organizacional: que conecte resultados con la capacitación del Art. 76 sin burocracia pesada.\n4. Cultural: que exista confianza entre docentes y estudiantes.\n5. Gobernanza multinivel: que cuente con consenso en cogobierno y acuerdo paritario con ADUNC."
+      guionOrador: "[Pregunta central y 5 dimensiones • 0:40 min]\nDe ese problema surge nuestra pregunta central: ¿qué condiciones reales existen en 2027 en el Departamento para que un modelo 360° sea factible?\n\nLa analizamos en cinco dimensiones interconectadas: 1) normativa (cero sanciones); 2) técnica (Moodle/SIU ágiles y anónimos); 3) organizacional (nutrir al Art. 76 sin burocracia); 4) cultural (confianza entre actores); y 5) gobernanza multinivel (cogobierno y paritaria con ADUNC)."
     },
 
     {
