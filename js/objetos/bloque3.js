@@ -48,10 +48,6 @@ window.Presentation3D_Objects["anim_11"] = {
     coreLight.position.set(0, 0.14, 0);
     targetGroup.add(coreLight);
 
-    const labelGeneral = engine.createLabelSprite("OBJETIVO GENERAL", "Factibilidad Integral del Modelo 360°", "#0f2d59", true);
-    labelGeneral.position.set(0, 0.82, 0);
-    targetGroup.add(labelGeneral);
-
     // Anillos concéntricos esbeltos de precisión graduados en latón (sin colisiones)
     engine.anim11_rings = [];
     for (let i = 1; i <= 3; i++) {
@@ -61,29 +57,32 @@ window.Presentation3D_Objects["anim_11"] = {
       engine.anim11_rings.push(ring);
     }
 
-    // 4 Ejes cardinales minimalistas con marcadores prismáticos
+    // 4 Ejes cardinales minimalistas con marcadores prismáticos (limpios, sin carteles flotantes)
     const axes = [
-      { name: "OBJ. 1 (NORMATIVO)", sub: "Estatuto y CCT", angle: 0, col: 0x38bdf8 },
-      { name: "OBJ. 2 (PERCEPCIONES)", sub: "Docentes y Alumnos", angle: Math.PI / 2, col: 0x10b981 },
-      { name: "OBJ. 3 (CONDICIONANTES)", sub: "Gobernanza y TIC", angle: Math.PI, col: 0xf59e0b },
-      { name: "OBJ. 4 (LINEAMIENTOS)", sub: "Propuesta Situada", angle: (3 * Math.PI) / 2, col: 0x8b5cf6 }
+      { angle: 0, col: 0x38bdf8 },
+      { angle: Math.PI / 2, col: 0x10b981 },
+      { angle: Math.PI, col: 0xf59e0b },
+      { angle: (3 * Math.PI) / 2, col: 0x8b5cf6 }
     ];
 
     axes.forEach((ax) => {
-      const x = Math.cos(ax.angle) * 0.96;
-      const z = Math.sin(ax.angle) * 0.96;
+      const x = Math.cos(ax.angle) * 0.88;
+      const z = Math.sin(ax.angle) * 0.88;
 
-      // Marcador prismático cardinal de cristal facetado
-      const pin = new THREE.Mesh(
-        new THREE.OctahedronGeometry(0.10, 0),
-        engine.glassMat(ax.col, { opacity: 0.90, roughness: 0.08 })
+      const spoke = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.006, 0.006, 0.60, 12),
+        engine.brassMat(0xcfa346)
       );
-      pin.position.set(x, 0.06, z);
-      targetGroup.add(pin);
+      spoke.position.set(x * 0.62, 0.06, z * 0.62);
+      spoke.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), new THREE.Vector3(x, 0, z).normalize());
+      targetGroup.add(spoke);
 
-      const labelAx = engine.createLabelSprite(ax.name, ax.sub, "#0f2d59", false);
-      labelAx.position.set(x, 0.38, z);
-      targetGroup.add(labelAx);
+      const pin = new THREE.Mesh(
+        new THREE.OctahedronGeometry(0.11, 0),
+        engine.glassMat(ax.col, { opacity: 0.90, roughness: 0.06 })
+      );
+      pin.position.set(x, 0.08, z);
+      targetGroup.add(pin);
     });
 
     // Chapa maestra de consistencia metodológica

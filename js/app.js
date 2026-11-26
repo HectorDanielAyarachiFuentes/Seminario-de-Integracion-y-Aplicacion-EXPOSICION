@@ -77,7 +77,7 @@ class PresentationApp {
           initialSlide = parsed;
         }
       }
-    } catch (_) {}
+    } catch (_) { }
 
     this.renderSlide(initialSlide);
     this.populateDrawerContent();
@@ -374,7 +374,7 @@ class PresentationApp {
           this.svgViewport.classList.remove("dragging");
           try {
             this.svgViewport.releasePointerCapture(e.pointerId);
-          } catch (_) {}
+          } catch (_) { }
         }
       };
 
@@ -508,35 +508,35 @@ class PresentationApp {
       {
         id: "apertura",
         code: "APERTURA",
-        shortLabel: "Carátula",
-        title: "Apertura Protocolar: Carátula Oficial (Apartado 1 del TP)",
-        range: [0, 0], // Filmina 1
+        shortLabel: "Carátula e Índice",
+        title: "Apertura: Carátula Oficial e Índice General",
+        range: [0, 1], // Filminas 1 y 2
         isEje: false
       },
       {
         id: "eje1",
-        code: "BLOQUE 1",
-        shortLabel: "1-Problematización",
-        title: "BLOQUE 1: Problematización (Qué, Por Qué y Objetivos en CURZAS 2027)",
-        range: [1, 3], // Filminas 2 a 4
+        code: "EJE 1",
+        shortLabel: "1-El Problema",
+        title: "EJE 1: El Problema (Ubicación CURZAS, Situación Actual, 5 Dimensiones y Objetivos)",
+        range: [2, 6], // Filminas 3 a 7
         isEje: true,
         ejeNumber: 1
       },
       {
         id: "eje2",
-        code: "BLOQUE 2",
-        shortLabel: "2-Marco, Antec. y Conceptos",
-        title: "BLOQUE 2: Marco Teórico, Antecedentes y Conceptualizaciones Aplicadas",
-        range: [4, 6], // Filminas 5 a 7
+        code: "EJE 2",
+        shortLabel: "2-Estado y Marco Teórico",
+        title: "EJE 2: Estado de la Cuestión y Marco Teórico (Longo, 360°, Gobernanza y Antecedentes)",
+        range: [7, 9], // Filminas 8 a 10
         isEje: true,
         ejeNumber: 2
       },
       {
         id: "eje3",
-        code: "BLOQUE 3",
+        code: "EJE 3",
         shortLabel: "3-Metodología",
-        title: "BLOQUE 3: Metodología, Operacionalización, Cronograma y Ética (2027)",
-        range: [7, 10], // Filminas 8 a 11
+        title: "EJE 3: Metodología (Enfoque Mixto, Muestras, Cronograma 2027 y Ética)",
+        range: [10, 13], // Filminas 11 a 14
         isEje: true,
         ejeNumber: 3
       },
@@ -544,8 +544,8 @@ class PresentationApp {
         id: "cierre",
         code: "CIERRE",
         shortLabel: "Cierre y Respaldo",
-        title: "Cierre: Sentido del Proyecto, Diseño Final, Gratitud y Fuentes APA",
-        range: [11, 14], // Filminas 12 a 15
+        title: "Cierre: Sentido del Proyecto, Planilla Oficial, Gratitud y Bibliografía APA 7",
+        range: [14, 17], // Filminas 15 a 18
         isEje: false
       }
     ];
@@ -667,7 +667,37 @@ class PresentationApp {
   }
 
   applySlideDOM(slide, index) {
-    this.badgeElement.textContent = `FILMINA ${index + 1} / ${this.totalSlides} • ${slide.badge}`;
+    // Identificar sección activa para acento cromático institucional (Guía de Exposición)
+    const sections = this.getDefenseSections();
+    const activeSec = sections.find((s) => index >= s.range[0] && index <= s.range[1]);
+    const secId = activeSec ? activeSec.id : "apertura";
+
+    if (this.cardElement) {
+      this.cardElement.setAttribute("data-section", secId);
+      this.cardElement.classList.toggle("is-cover-slide", Boolean(slide.esPortada));
+      this.cardElement.classList.toggle("is-index-slide", Boolean(slide.esIndice));
+
+      // Cabecera limpia sin caja pesada exclusiva para Filmina 1 (Portada)
+      let coverHeader = this.cardElement.querySelector(".cover-crest-banner");
+      if (slide.esPortada) {
+        if (!coverHeader) {
+          coverHeader = document.createElement("div");
+          coverHeader.className = "cover-crest-banner";
+          this.cardElement.insertBefore(coverHeader, this.cardElement.firstChild);
+        }
+        coverHeader.innerHTML = `
+          <div class="cover-crest-left">
+            <img src="assets/CURZAS.png" alt="Escudo CURZAS UNCo" class="cover-crest-logo">
+            <span class="cover-crest-uni">UNIVERSIDAD NACIONAL DEL COMAHUE · CURZAS</span>
+          </div>
+          <span class="cover-crest-pill">SIA 2026</span>
+        `;
+      } else if (coverHeader) {
+        coverHeader.remove();
+      }
+    }
+
+    this.badgeElement.textContent = slide.badge || "";
     if (this.bloqueBadgeElement) {
       this.bloqueBadgeElement.textContent = slide.bloque || "SIA 2026";
     }
@@ -682,15 +712,63 @@ class PresentationApp {
     }
 
     this.bulletsElement.innerHTML = "";
-    slide.puntosClave.forEach((punto) => {
-      const li = document.createElement("li");
-      if (punto.indexOf("<") !== -1) {
-        li.innerHTML = punto;
-      } else {
-        li.textContent = punto;
-      }
-      this.bulletsElement.appendChild(li);
-    });
+
+    if (slide.esPortada && Array.isArray(slide.fichaPortada)) {
+      // Portada limpia y despejada (sin cajas anidadas)
+      const metaList = document.createElement("div");
+      metaList.className = "cover-clean-meta";
+
+      slide.fichaPortada.forEach((item) => {
+        const row = document.createElement("div");
+        row.className = "cover-clean-row cover-anim-item";
+        row.innerHTML = `
+          <span class="cover-clean-label">${item.etiqueta}</span>
+          <span class="cover-clean-value">${item.valor}</span>
+        `;
+        metaList.appendChild(row);
+      });
+      this.bulletsElement.appendChild(metaList);
+    } else if (slide.esIndice && Array.isArray(slide.seccionesIndice)) {
+      // Índice General minimalista en 3 filas limpias
+      const indexList = document.createElement("div");
+      indexList.className = "general-index-list";
+
+      slide.seccionesIndice.forEach((sec) => {
+        const secCard = document.createElement("button");
+        secCard.type = "button";
+        secCard.className = `general-index-row tone-${sec.tono || "b1"} cover-anim-item`;
+        secCard.title = `Ir a ${sec.titulo}`;
+        secCard.innerHTML = `
+          <span class="gi-num">${sec.romano}</span>
+          <span class="gi-body">
+            <strong class="gi-title">${sec.titulo}</strong>
+            <span class="gi-desc">${sec.resumen}</span>
+          </span>
+          <span class="gi-arrow">→</span>
+        `;
+        secCard.addEventListener("click", () => {
+          if (typeof sec.targetSlide === "number") {
+            this.goToSlide(sec.targetSlide);
+          }
+        });
+        indexList.appendChild(secCard);
+      });
+
+      this.bulletsElement.appendChild(indexList);
+    } else {
+      // Puntos clave limpios y aireados (sin cajas pesadas ni emojis redundantes)
+      const leadingEmojiRegex = /^(\p{Extended_Pictographic}(?:\uFE0F|\u200D\p{Extended_Pictographic})*)\s+/u;
+      slide.puntosClave.forEach((punto) => {
+        const li = document.createElement("li");
+        const cleanHtml = typeof punto === "string" ? punto.replace(leadingEmojiRegex, "") : punto;
+        if (cleanHtml.indexOf("<") !== -1) {
+          li.innerHTML = cleanHtml;
+        } else {
+          li.textContent = cleanHtml;
+        }
+        this.bulletsElement.appendChild(li);
+      });
+    }
 
     if (slide.diagramaSVG || slide.anexoInteractivo || slide.abrirTabDrawer) {
       const actionBox = document.createElement("div");
@@ -751,8 +829,8 @@ class PresentationApp {
     }
 
     this.footerMetaElement.innerHTML = `
-      <span>📌 ${slide.metadatosFooter}</span>
-      <span>⏱️ Tiempo sugerido: ${slide.tiempoSugerido || "~1.0 min"}</span>
+      <span>${slide.metadatosFooter}</span>
+      <span>${slide.tiempoSugerido || "1:00 min"}</span>
     `;
 
     if (this.slideCounter) {
@@ -789,7 +867,7 @@ class PresentationApp {
     // Guardar filmina activa en localStorage para recordarla al recargar
     try {
       localStorage.setItem("sia_current_slide_index", index.toString());
-    } catch (_) {}
+    } catch (_) { }
 
     // Actualizar visibilidad de HUD de red territorial (visible en mapa de territorio y red híbrida anim_06 / anim_07)
     const nodePill = document.getElementById("node-radar-pill");
@@ -850,7 +928,7 @@ class PresentationApp {
       this.applySlideDOM(slide, index);
       gsap.set(this.bulletsElement, { x: 0, opacity: 1, clearProps: "transform,opacity" });
       gsap.fromTo(this.cardElement, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" });
-      const bullets = this.bulletsElement.querySelectorAll("li");
+      const bullets = this.bulletsElement.querySelectorAll("li, .cover-anim-item");
       gsap.fromTo(bullets, { x: -16, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, stagger: 0.05, ease: "power2.out" });
       return;
     }
@@ -866,8 +944,10 @@ class PresentationApp {
       this.currentSlideTimeline = null;
     }
 
-    const bulletsBefore = this.bulletsElement.querySelectorAll("li, .slide-svg-action");
+    const bulletsBefore = this.bulletsElement.querySelectorAll("li, .cover-anim-item, .slide-svg-action");
+    const coverCrestBefore = this.cardElement?.querySelector(".cover-crest-banner");
     const exitTargets = [
+      ...(coverCrestBefore ? [coverCrestBefore] : []),
       this.badgeElement,
       this.bloqueBadgeElement,
       this.titleElement,
@@ -878,14 +958,16 @@ class PresentationApp {
     gsap.killTweensOf(exitTargets);
 
     const outX = direction >= 0 ? -22 : 22;
-    const inX  = direction >= 0 ? 26 : -26;
+    const inX = direction >= 0 ? 26 : -26;
 
     if (isRapidNav) {
       // MODO NAVEGACIÓN RÁPIDA: Inyección inmediata sin esperar la fase de salida
       this.applySlideDOM(slide, index);
       gsap.set(this.bulletsElement, { x: 0, opacity: 1, clearProps: "transform,opacity" });
 
+      const coverCrestNow = this.cardElement?.querySelector(".cover-crest-banner");
       const headerTargets = [
+        ...(coverCrestNow ? [coverCrestNow] : []),
         this.badgeElement,
         this.bloqueBadgeElement,
         this.titleElement,
@@ -904,7 +986,7 @@ class PresentationApp {
         stagger: 0.015
       });
 
-      const bullets = this.bulletsElement.querySelectorAll("li");
+      const bullets = this.bulletsElement.querySelectorAll("li, .cover-anim-item");
       if (bullets.length > 0) {
         gsap.set(bullets, { x: inX * 0.4, opacity: 0 });
         rapidTl.to(bullets, {
@@ -931,7 +1013,9 @@ class PresentationApp {
         this.applySlideDOM(slide, index);
         gsap.set(this.bulletsElement, { x: 0, opacity: 1, clearProps: "transform,opacity" });
 
+        const coverCrestNow = this.cardElement?.querySelector(".cover-crest-banner");
         const headerTargets = [
+          ...(coverCrestNow ? [coverCrestNow] : []),
           this.badgeElement,
           this.bloqueBadgeElement,
           this.titleElement,
@@ -943,24 +1027,24 @@ class PresentationApp {
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
         this.currentSlideTimeline = tl;
 
-        tl.to([this.badgeElement, this.bloqueBadgeElement], {
+        tl.to([...(coverCrestNow ? [coverCrestNow] : []), this.badgeElement, this.bloqueBadgeElement], {
           x: 0,
           opacity: 1,
           duration: 0.25,
           stagger: 0.03
         })
-        .to(this.titleElement, {
-          x: 0,
-          opacity: 1,
-          duration: 0.28
-        }, "-=0.18")
-        .to(this.subtitleElement, {
-          x: 0,
-          opacity: 0.85,
-          duration: 0.25
-        }, "-=0.20");
+          .to(this.titleElement, {
+            x: 0,
+            opacity: 1,
+            duration: 0.28
+          }, "-=0.18")
+          .to(this.subtitleElement, {
+            x: 0,
+            opacity: 1,
+            duration: 0.25
+          }, "-=0.20");
 
-        const bullets = this.bulletsElement.querySelectorAll("li");
+        const bullets = this.bulletsElement.querySelectorAll("li, .cover-anim-item");
         if (bullets.length > 0) {
           gsap.set(bullets, { x: inX * 0.85, opacity: 0 });
           tl.to(bullets, {
@@ -1132,7 +1216,7 @@ class PresentationApp {
     this.btnToggleDrawer.classList.toggle("active", newState);
   }
 
-  
+
   /**
    * Controlador Maestro de Enfoque y Prioridad Visual:
    * - 'default': vista balanceada (texto a la izquierda 45vw, escultura a la derecha x:1.6)
@@ -1442,10 +1526,10 @@ class PresentationApp {
 
   toggleFullscreen() {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(() => {});
+      document.documentElement.requestFullscreen().catch(() => { });
     } else {
       if (document.exitFullscreen) {
-        document.exitFullscreen().catch(() => {});
+        document.exitFullscreen().catch(() => { });
       }
     }
   }
@@ -1792,7 +1876,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // Actualizador de HUD sobrio para el radar de la Red Territorial (escenas anim_06 y anim_07)
-window.updateNodeHUD = function(node) {
+window.updateNodeHUD = function (node) {
   const pill = document.getElementById("node-radar-pill");
   const title = document.getElementById("node-radar-title");
   const desc = document.getElementById("node-radar-desc");

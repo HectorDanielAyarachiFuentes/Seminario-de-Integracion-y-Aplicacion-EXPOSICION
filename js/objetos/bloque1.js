@@ -82,9 +82,9 @@ function getTFGLeftPageTexture() {
 
   // Encabezado institucional
   ctx.fillStyle = "#0f2d59";
-  ctx.font = "bold 17px 'Cinzel', serif, Georgia";
+  ctx.font = "bold 16px 'Cinzel', serif, Georgia";
   ctx.textAlign = "left";
-  ctx.fillText("PREFACIO & ESTRUCTURA METODOLÓGICA", 48, 64);
+  ctx.fillText("ESTRUCTURA DEL PROYECTO TFG (RES. 266/23)", 48, 64);
 
   ctx.strokeStyle = "#d4af37";
   ctx.lineWidth = 1.5;
@@ -93,13 +93,13 @@ function getTFGLeftPageTexture() {
   ctx.lineTo(470, 74);
   ctx.stroke();
 
-  // Bloques de texto justificado de tesina
+  // Bloques de texto justificado de tesina alineados a los 3 Bloques
   let y = 104;
   const sections = [
-    { title: "SECCIÓN 1.1 — INTRODUCCIÓN GENERAL", lines: [400, 385, 395, 340, 260] },
-    { title: "SECCIÓN 1.2 — MARCO EPISTEMOLÓGICO", lines: [410, 395, 370, 310] },
-    { title: "SECCIÓN 1.3 — ANÁLISIS DE ANTECEDENTES", lines: [390, 405, 360, 380, 290] },
-    { title: "SECCIÓN 1.4 — OBJETIVOS & ALCANCES", lines: [415, 385, 390, 350, 320, 230] }
+    { title: "1. PROBLEMATIZACIÓN (VIEDMA Y 10 NODOS)", lines: [400, 385, 395, 340, 260] },
+    { title: "2. MARCO TEÓRICO, 360° Y ANTECEDENTES", lines: [410, 395, 370, 310] },
+    { title: "3. DISEÑO MIXTO (CUAL→cuan) Y ÉTICA", lines: [390, 405, 360, 380, 290] },
+    { title: "4. ANEXOS I–IV Y CRONOGRAMA 2027", lines: [415, 385, 390, 350, 320, 230] }
   ];
 
   sections.forEach(sec => {
@@ -152,12 +152,12 @@ function getTFGRightPageTexture() {
   ctx.fillText("UNIVERSIDAD NACIONAL DEL COMAHUE", 256, 75);
 
   ctx.fillStyle = "#475569";
-  ctx.font = "12px 'Cinzel', serif, Georgia";
-  ctx.fillText("CENTRO UNIVERSITARIO REGIONAL ZONA ATLÁNTICA", 256, 95);
+  ctx.font = "11.5px 'Cinzel', serif, Georgia";
+  ctx.fillText("COMPLEJO UNIVERSITARIO REGIONAL ZONA ATLÁNTICA Y SUR", 256, 95);
 
-  ctx.fillStyle = "#94a3b8";
-  ctx.font = "10px sans-serif";
-  ctx.fillText("DEPARTAMENTO DE INFORMÁTICA Y CIENCIAS EXACTAS", 256, 112);
+  ctx.fillStyle = "#64748b";
+  ctx.font = "bold 10.5px sans-serif";
+  ctx.fillText("DEPARTAMENTO DE ADMINISTRACIÓN PÚBLICA", 256, 113);
 
   // Filete divisorio dorado
   ctx.strokeStyle = "#d4af37";
@@ -170,56 +170,56 @@ function getTFGRightPageTexture() {
   // Escudo / Sol central académico
   ctx.fillStyle = "#d4af37";
   ctx.beginPath();
-  ctx.arc(256, 180, 28, 0, Math.PI * 2);
+  ctx.arc(256, 178, 26, 0, Math.PI * 2);
   ctx.fill();
   ctx.fillStyle = "#faf7ee";
   ctx.beginPath();
-  ctx.arc(256, 180, 22, 0, Math.PI * 2);
+  ctx.arc(256, 178, 20, 0, Math.PI * 2);
   ctx.fill();
   ctx.fillStyle = "#0f2d59";
-  ctx.font = "bold 17px serif";
-  ctx.fillText("UNCo", 256, 186);
+  ctx.font = "bold 14px serif";
+  ctx.fillText("CURZAS", 256, 183);
 
   // Título oficial de tesina
   ctx.fillStyle = "#0f2d59";
-  ctx.font = "bold 20px 'Cinzel', serif, Georgia";
-  ctx.fillText("TRABAJO FINAL DE GRADO", 256, 260);
+  ctx.font = "bold 18px 'Cinzel', serif, Georgia";
+  ctx.fillText("PROYECTO DE TFG • RES. 266/23", 256, 255);
 
   ctx.fillStyle = "#b45309";
-  ctx.font = "bold 13px 'Cinzel', serif, Georgia";
-  ctx.fillText("SEMINARIO DE INTEGRACIÓN Y APLICACIÓN", 256, 285);
+  ctx.font = "bold 12.5px 'Cinzel', serif, Georgia";
+  ctx.fillText("SEMINARIO DE INTEGRACIÓN Y APLICACIÓN", 256, 280);
 
   ctx.strokeStyle = "#b45309";
   ctx.lineWidth = 1;
   ctx.beginPath();
-  ctx.moveTo(140, 305);
-  ctx.lineTo(372, 305);
+  ctx.moveTo(140, 300);
+  ctx.lineTo(372, 300);
   ctx.stroke();
 
-  ctx.fillStyle = "#334155";
-  ctx.font = "italic 12px serif";
-  ctx.fillText("«Desarrollo, Gobernanza y Arquitectura", 256, 345);
-  ctx.fillText("de Sistemas para el Ámbito Académico Regional»", 256, 365);
+  ctx.fillStyle = "#1e293b";
+  ctx.font = "italic 12.5px Georgia, serif";
+  ctx.fillText("«Evaluación del Desempeño Docente y Factibilidad", 256, 338);
+  ctx.fillText("de un Modelo de Retroalimentación 360° (2027)»", 256, 358);
 
   // Recuadro institucional del postulante
   ctx.fillStyle = "#f1f5f9";
-  ctx.fillRect(75, 415, 362, 115);
+  ctx.fillRect(70, 408, 372, 120);
   ctx.strokeStyle = "#cbd5e1";
   ctx.lineWidth = 1;
-  ctx.strokeRect(75, 415, 362, 115);
+  ctx.strokeRect(70, 408, 372, 120);
 
   ctx.fillStyle = "#0a1d37";
-  ctx.font = "bold 11px sans-serif";
-  ctx.fillText("AUTOR / POSTULANTE:", 256, 440);
+  ctx.font = "bold 10.5px sans-serif";
+  ctx.fillText("TESISTA / AUTOR:", 256, 433);
 
   ctx.fillStyle = "#0f2d59";
-  ctx.font = "bold 14px 'Cinzel', serif, Georgia";
-  ctx.fillText("HÉCTOR DANIEL AYARACHI FUENTES", 256, 465);
+  ctx.font = "bold 13.5px 'Cinzel', serif, Georgia";
+  ctx.fillText("HÉCTOR DANIEL AYARACHI FUENTES", 256, 458);
 
-  ctx.fillStyle = "#64748b";
-  ctx.font = "11px sans-serif";
-  ctx.fillText("Licenciatura en Sistemas de Información", 256, 488);
-  ctx.fillText("Defensa Pública Oral ante Tribunal Académico", 256, 508);
+  ctx.fillStyle = "#475569";
+  ctx.font = "600 11px sans-serif";
+  ctx.fillText("Lic. en Gestión de Recursos Humanos (CCC) • Leg. 8252", 256, 482);
+  ctx.fillText("Sede Viedma y Red de 10 Nodos Territoriales", 256, 503);
 
   // Pie y radicación geográfica
   ctx.fillStyle = "#475569";
@@ -227,7 +227,7 @@ function getTFGRightPageTexture() {
   ctx.fillText("VIEDMA • RÍO NEGRO • REPÚBLICA ARGENTINA", 256, 685);
   ctx.fillStyle = "#94a3b8";
   ctx.font = "10px sans-serif";
-  ctx.fillText("Sede Central CURZAS • 2026", 256, 705);
+  ctx.fillText("CURZAS–UNCo • SIA 2026 / Ejecución 2027", 256, 705);
 
   _tfgRightPageTex = new THREE.CanvasTexture(canvas);
   return _tfgRightPageTex;
@@ -513,70 +513,59 @@ window.Presentation3D_Objects["anim_01"] = {
     rightPage.rotation.z = 0.045;
     bookGroup.add(rightPage);
 
-    // 10. Medallón central en alto relieve con el escudo de la UNCo
+    // 10. Medallón ceremonial en bajo relieve apoyado plano sobre el cabezal superior
     const sealGroup = new THREE.Group();
-    sealGroup.position.set(0, 0.10, -0.22);
-    sealGroup.rotation.x = Math.PI / 2;
+    sealGroup.position.set(0, 0.068, -0.34);
 
     const sealBase = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.12, 0.12, 0.022, 32),
-      engine.brassMat(0xffd700)
+      new THREE.CylinderGeometry(0.055, 0.058, 0.012, 36),
+      engine.brassMat(0xd4af37)
     );
     sealGroup.add(sealBase);
 
     const sealRim = new THREE.Mesh(
-      new THREE.TorusGeometry(0.12, 0.015, 16, 32),
+      new THREE.TorusGeometry(0.056, 0.006, 16, 36),
       engine.goldMat()
     );
-    sealRim.position.y = 0.012;
+    sealRim.rotation.x = Math.PI / 2;
+    sealRim.position.y = 0.006;
     sealGroup.add(sealRim);
 
     const sealSun = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.045, 0.045, 0.025, 8),
+      new THREE.CylinderGeometry(0.024, 0.024, 0.015, 16),
       engine.goldMat()
     );
-    sealSun.position.y = 0.014;
+    sealSun.position.y = 0.004;
     sealGroup.add(sealSun);
 
     bookGroup.add(sealGroup);
 
-    // 11. Cinta ceremonial de seda dorada y azul señaladora (Bookmark Ribbon)
+    // 11. Cinta señaladora fina de seda borgoña/dorado alojada sutilmente en el pliegue central
     const ribbonMat = new THREE.MeshStandardMaterial({
-      color: 0xd97706, // Seda azafrán dorada
-      roughness: 0.32,
-      metalness: 0.22
+      color: 0x991b1b, // Seda carmesí ceremonial universitaria
+      roughness: 0.38,
+      metalness: 0.14
     });
 
-    // Tramo superior sobre la página derecha
     const ribbonTop = new THREE.Mesh(
-      new THREE.BoxGeometry(0.045, 0.008, 0.82),
+      new THREE.BoxGeometry(0.022, 0.005, 0.78),
       ribbonMat
     );
-    ribbonTop.position.set(0.035, 0.082, 0.12);
-    ribbonTop.rotation.y = -0.05;
+    ribbonTop.position.set(0.012, 0.060, 0.04);
+    ribbonTop.rotation.y = -0.02;
     bookGroup.add(ribbonTop);
 
-    // Cola colgante de la cinta que cae por delante del reborde
+    // Cola colgante de la cinta que cae con gracia por delante del reborde de caoba
     const ribbonTail = new THREE.Mesh(
-      new THREE.BoxGeometry(0.045, 0.28, 0.008),
+      new THREE.BoxGeometry(0.024, 0.24, 0.006),
       ribbonMat
     );
-    ribbonTail.position.set(0.055, -0.06, 0.54);
-    ribbonTail.rotation.x = 0.18;
+    ribbonTail.position.set(0.022, -0.05, 0.54);
+    ribbonTail.rotation.x = 0.16;
     deskGroup.add(ribbonTail);
 
     deskGroup.add(bookGroup);
     g.add(deskGroup);
-
-    // 12. Cartela flotante del título oficial en 3D
-    const label = engine.createLabelSprite(
-      "PROYECTO INTEGRAL DE TFG",
-      "CURZAS — Universidad Nacional del Comahue",
-      "#0f2d59",
-      true
-    );
-    label.position.set(0, 1.08, 0);
-    g.add(label);
 
     engine.anim01_desk = deskGroup;
     engine.anim01_ribbonTail = ribbonTail;
@@ -723,106 +712,108 @@ window.Presentation3D_Objects["anim_02"] = {
 };
 
 // ──────────────────────────────────────────────────────────────────────────
-// 3. ESQUEMA SIA TP N° 2: Podio Cúbico de los 4 Cimientos del TFG
+// 3. ÍNDICE GENERAL DE LA EXPOSICIÓN: Podio Monumental de las 3 Secciones
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_03"] = {
   build(engine, g) {
-    engine.createMuseumPlinth(g, 1.45, 0.22, -1.22);
+    engine.createMuseumPlinth(g, 1.50, 0.22, -1.22);
 
     const foundationGroup = new THREE.Group();
-    foundationGroup.position.set(0, -0.15, 0);
+    foundationGroup.position.set(0, -0.14, 0);
+
+    // Zócalo transversal unificador de caoba oscura
+    const baseBridge = engine.createMachinedChassis(2.02, 0.08, 0.72, { color: 0x2e1204 });
+    baseBridge.position.set(0, -0.86, 0);
+    foundationGroup.add(baseBridge);
 
     const items = [
-      { x: -0.42, z: -0.42, h: 0.58, title: "I. CARÁTULA", sub: "Marco Institucional" },
-      { x: 0.42, z: -0.42, h: 0.78, title: "II. TEMA", sub: "Área y Contexto" },
-      { x: -0.42, z: 0.42, h: 0.98, title: "III. PROBLEMA", sub: "Desnaturalización" },
-      { x: 0.42, z: 0.42, h: 1.18, title: "IV. OBJETIVOS", sub: "General y Específicos" }
+      { x: -0.68, z: 0.06, h: 0.70, title: "I. EL PROBLEMA", sub: "Contexto y Objetivos", meta: "SECCIÓN 1" },
+      { x: 0.00, z: -0.04, h: 0.92, title: "II. ESTADO Y TEORÍA", sub: "Antecedentes y 360°", meta: "SECCIÓN 2" },
+      { x: 0.68, z: 0.06, h: 1.12, title: "III. METODOLOGÍA", sub: "CUAL→cuan y Ética", meta: "SECCIÓN 3" }
     ];
 
     engine.anim03_blocks = [];
+    engine.anim03_rings = null;
+    engine.anim03_prism = null;
 
     items.forEach((item, idx) => {
       const blockGroup = new THREE.Group();
-      blockGroup.position.set(item.x, -0.85 + item.h / 2, item.z);
+      blockGroup.userData.baseY = -0.82 + item.h / 2;
+      blockGroup.position.set(item.x, blockGroup.userData.baseY, item.z);
 
-      // Zócalo inferior de caoba noble
-      const baseChassis = engine.createMachinedChassis(0.66, 0.08, 0.66, { color: 0x2e1204 });
-      baseChassis.position.y = -item.h / 2 + 0.04;
-      blockGroup.add(baseChassis);
+      const plinthFoot = new THREE.Mesh(
+        new THREE.BoxGeometry(0.56, 0.07, 0.56),
+        engine.graniteMat(0x0f172a, 0.38, 0.22)
+      );
+      plinthFoot.position.y = -item.h / 2 + 0.035;
+      blockGroup.add(plinthFoot);
 
-      // Fuste cúbico de mármol Carrara veteado
       const blockMesh = new THREE.Mesh(
-        new THREE.BoxGeometry(0.60, item.h - 0.12, 0.60),
+        new THREE.BoxGeometry(0.50, item.h - 0.12, 0.50),
         engine.marbleMat(0xfdfbf7, 0.28)
       );
-      blockMesh.position.y = 0.02;
+      blockMesh.position.y = 0.01;
       blockMesh.castShadow = true;
       blockMesh.receiveShadow = true;
       blockGroup.add(blockMesh);
 
-      // Chapa técnica grabada en la cara frontal del cimiento
       const plaque = engine.createEngravedPlaque(
-        0.52,
+        0.44,
         0.20,
         item.title,
         item.sub,
-        [`CIMIENTO ${idx + 1}/4`],
+        [item.meta],
         { theme: "dark" }
       );
-      plaque.position.set(0, 0.02, 0.31);
+      plaque.position.set(0, 0.02, 0.26);
       blockGroup.add(plaque);
 
-      // Tapa superior de latón moldurado
       const topCap = new THREE.Mesh(
-        new THREE.BoxGeometry(0.62, 0.035, 0.62),
+        new THREE.BoxGeometry(0.54, 0.036, 0.54),
         engine.brassMat(0xd4af37)
       );
       topCap.position.y = item.h / 2 - 0.02;
       blockGroup.add(topCap);
 
-      // Artefacto distintivo de ingeniería sobre la cima
       if (idx === 0) {
-        // I: Brújula náutica / compás y pergamino
-        const compass = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.12, 0.12, 0.03, 24),
+        const dial = engine.createGraduatedDial(0.12, {
+          title: "01",
+          sub: "CASO",
+          divisions: 24,
+          theme: "dark"
+        });
+        dial.position.y = item.h / 2 + 0.025;
+        blockGroup.add(dial);
+      } else if (idx === 1) {
+        const armillary = new THREE.Group();
+        armillary.position.y = item.h / 2 + 0.17;
+        const r1 = engine.createBrassArmillaryRing(0.14, 0.012);
+        r1.rotation.x = Math.PI / 3;
+        const r2 = engine.createBrassArmillaryRing(0.14, 0.012);
+        r2.rotation.y = Math.PI / 3;
+        const core = new THREE.Mesh(
+          new THREE.SphereGeometry(0.048, 24, 24),
           engine.goldMat(0xffd700)
         );
-        compass.position.y = item.h / 2 + 0.03;
-        blockGroup.add(compass);
-      } else if (idx === 1) {
-        // II: Aro armilar astronómico
-        const ring = engine.createBrassArmillaryRing(0.14, 0.012);
-        ring.position.y = item.h / 2 + 0.15;
-        ring.rotation.x = Math.PI / 4;
-        blockGroup.add(ring);
+        armillary.add(r1, r2, core);
+        blockGroup.add(armillary);
+        engine.anim03_rings = armillary;
       } else if (idx === 2) {
-        // III: Dial de precisión de diagnóstico
-        const dial = engine.createGraduatedDial(0.11, {
-          title: "SIA",
-          sub: "360°",
-          divisions: 30,
-          theme: "light"
-        });
-        dial.position.y = item.h / 2 + 0.03;
-        blockGroup.add(dial);
-      } else if (idx === 3) {
-        // IV: Obelisco prismático de cristal óptico con luz cenital
-        const prism = new THREE.Mesh(
-          new THREE.ConeGeometry(0.12, 0.32, 4),
-          engine.glassMat(0x38bdf8, { roughness: 0.05, opacity: 0.85 })
+        const prismBase = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.12, 0.14, 0.028, 32),
+          engine.brassMat(0xd4af37)
         );
-        prism.position.y = item.h / 2 + 0.18;
+        prismBase.position.y = item.h / 2 + 0.015;
+        blockGroup.add(prismBase);
+
+        const prism = new THREE.Mesh(
+          new THREE.OctahedronGeometry(0.12, 0),
+          engine.glassMat(0x0ea5e9, { roughness: 0.05, opacity: 0.88 })
+        );
+        prism.position.y = item.h / 2 + 0.16;
         blockGroup.add(prism);
-
-        const beaconLight = new THREE.PointLight(0x38bdf8, 0.8, 1.2);
-        beaconLight.position.y = item.h / 2 + 0.18;
-        blockGroup.add(beaconLight);
+        engine.anim03_prism = prism;
       }
-
-      // Etiqueta flotante
-      const label = engine.createLabelSprite(item.title, item.sub, "#0f2d59", false);
-      label.position.set(0, item.h / 2 + 0.28, 0);
-      blockGroup.add(label);
 
       foundationGroup.add(blockGroup);
       engine.anim03_blocks.push(blockGroup);
@@ -834,8 +825,15 @@ window.Presentation3D_Objects["anim_03"] = {
   animate(engine, t) {
     if (engine.anim03_blocks) {
       engine.anim03_blocks.forEach((b, i) => {
-        b.position.y = -0.85 + (0.58 + i * 0.20) / 2 + Math.sin(t * 1.6 + i * 0.9) * 0.008;
+        const baseY = b.userData.baseY ?? (-0.46 + i * 0.11);
+        b.position.y = baseY + Math.sin(t * 1.5 + i * 0.9) * 0.007;
       });
+    }
+    if (engine.anim03_rings) {
+      engine.anim03_rings.rotation.y = t * 0.75;
+    }
+    if (engine.anim03_prism) {
+      engine.anim03_prism.rotation.y = -t * 0.9;
     }
   }
 };

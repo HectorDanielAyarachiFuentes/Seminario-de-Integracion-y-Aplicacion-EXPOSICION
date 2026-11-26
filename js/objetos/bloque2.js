@@ -540,16 +540,6 @@ window.Presentation3D_Objects["anim_07"] = {
     netGroup.add(radarSweepLight);
     engine.anim07_sweepLight = radarSweepLight;
 
-    // ÚNICA Cartela Maestra Superior (despejada, limpia y sin sobrecarga)
-    const labelMaster = engine.createLabelSprite(
-      "RED TERRITORIAL DE NODOS REGIONALES",
-      "Sede Central Viedma • 10 Nodos Conectados (Res. CD 135/22 y 196/22)",
-      "#0f2d59",
-      true
-    );
-    labelMaster.position.set(0, 1.15, 0);
-    g.add(labelMaster);
-
     // Los 10 Nodos Territoriales oficiales (Res. CD N° 135/2022)
     engine.nodos07 = [
       { id: "los_menucos", nombre: "LOS MENUCOS", subtitulo: "Región Sur Central", tipo: "Nodo Territorial", col: 0x38bdf8 },
@@ -862,239 +852,226 @@ window.Presentation3D_Objects["anim_08"] = {
 };
 
 // ──────────────────────────────────────────────────────────────────────────
-// 9. TENSIÓN NORMATIVA: Balanza Dual de Tensión Estatutaria (Art. 75 vs. Art. 76)
+// 9. EL PROBLEMA: Escultura Cinética Abstracta de Tensión (Rigidez vs. Apertura 360°)
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_09"] = {
   build(engine, g) {
-    engine.createMuseumPlinth(g, 1.50, 0.22, -1.22);
+    engine.createMuseumPlinth(g, 1.52, 0.22, -1.22);
 
-    const scaleGroup = new THREE.Group();
-    scaleGroup.position.set(0, -0.15, 0);
+    const tensionGroup = new THREE.Group();
+    tensionGroup.position.set(0, -0.10, 0);
 
-    // Chasis de caoba noble monumental
-    const scaleChassis = engine.createMachinedChassis(1.72, 0.12, 0.65, { color: 0x2e1204 });
-    scaleChassis.position.y = -0.95;
-    scaleGroup.add(scaleChassis);
+    // Basamento escultórico de pizarra oscura
+    const plinthBar = engine.createMachinedChassis(1.62, 0.08, 0.62, { color: 0x0f172a });
+    plinthBar.position.y = -0.90;
+    tensionGroup.add(plinthBar);
 
-    // Fuste y pedestal central de columna clásica acanalada
-    const centralPillar = engine.createClassicalColumn(1.25, 0.11, 0xd4af37, true);
-    centralPillar.position.set(0, -0.35, 0);
-    scaleGroup.add(centralPillar);
+    // Fulcro central: Pirámide truncada de mármol marfil y articulación esférica dorada
+    const fulcrumPillar = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.065, 0.19, 1.10, 4),
+      engine.marbleMat(0xf8f6f0, 0.26)
+    );
+    fulcrumPillar.rotation.y = Math.PI / 4;
+    fulcrumPillar.position.y = -0.32;
+    fulcrumPillar.castShadow = true;
+    fulcrumPillar.receiveShadow = true;
+    tensionGroup.add(fulcrumPillar);
 
-    // Cuadrante graduado de inclinación de la balanza en el fulcro (orientado hacia el frente)
-    const balanceDial = engine.createGraduatedDial(0.14, {
-      title: "EQUILIBRIO",
-      sub: "ART. 75/76",
-      divisions: 30,
-      theme: "dark"
-    });
-    balanceDial.position.set(0, 0.38, 0.06);
-    balanceDial.rotation.x = Math.PI / 2;
-    scaleGroup.add(balanceDial);
+    const pivotRing = engine.createBrassArmillaryRing(0.14, 0.014);
+    pivotRing.position.set(0, 0.28, 0);
+    tensionGroup.add(pivotRing);
 
-    // Barra oscilante de latón maquinado
+    const pivotCore = new THREE.Mesh(
+      new THREE.SphereGeometry(0.065, 32, 32),
+      engine.goldMat(0xffd700)
+    );
+    pivotCore.position.set(0, 0.28, 0);
+    tensionGroup.add(pivotCore);
+
+    // Brazo cinético asimétrico en latón champán
+    const kineticArm = new THREE.Group();
+    kineticArm.position.set(0, 0.28, 0);
+
     const beam = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.02, 0.02, 1.55, 16),
+      new THREE.CylinderGeometry(0.016, 0.016, 1.66, 24),
       engine.brassMat(0xd4af37)
     );
     beam.rotation.z = Math.PI / 2;
-    beam.position.y = 0.38;
-    scaleGroup.add(beam);
-    engine.anim09_beam = beam;
+    kineticArm.add(beam);
 
-    // Platillo Izquierdo: Art. 75 (Candado / Ponderación punitiva de vacancia)
-    const leftPanGroup = new THREE.Group();
-    leftPanGroup.position.set(-0.68, 0.15, 0);
+    // Tensores finos de suspensión a ambos extremos
+    [-0.78, 0.78].forEach((bx) => {
+      const cap = new THREE.Mesh(
+        new THREE.SphereGeometry(0.032, 20, 20),
+        engine.goldMat(0xffd700)
+      );
+      cap.position.set(bx, 0, 0);
+      kineticArm.add(cap);
 
-    const leftPan = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.25, 0.22, 0.03, 32),
-      engine.brassMat()
+      const wire = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.005, 0.005, 0.34, 12),
+        engine.brassMat(0xcfa346)
+      );
+      wire.position.set(bx, -0.17, 0);
+      kineticArm.add(wire);
+    });
+
+    tensionGroup.add(kineticArm);
+    engine.anim09_beam = kineticArm;
+
+    // POLO IZQUIERDO (EL NUDO / CONTROL SUMATIVO ART. 75):
+    // Monolito pesado de basalto encerrado en jaula geométrica rígida
+    const rigidNode = new THREE.Group();
+    rigidNode.position.set(-0.78, -0.16, 0);
+
+    const heavyCube = new THREE.Mesh(
+      new THREE.BoxGeometry(0.30, 0.30, 0.30),
+      engine.graniteMat(0x1e293b, 0.42, 0.28)
     );
-    leftPanGroup.add(leftPan);
+    heavyCube.rotation.set(0.22, Math.PI / 4, 0.15);
+    heavyCube.castShadow = true;
+    rigidNode.add(heavyCube);
 
-    const lockBody = new THREE.Mesh(
-      new THREE.BoxGeometry(0.18, 0.16, 0.08),
-      engine.graniteMat(0x475569)
+    // Marco cúbico constrictivo exterior (jaula burocrática)
+    const cageGeo = new THREE.BoxGeometry(0.44, 0.44, 0.44);
+    const cageEdges = new THREE.EdgesGeometry(cageGeo);
+    const cageLines = new THREE.LineSegments(
+      cageEdges,
+      new THREE.LineBasicMaterial({ color: 0x991b1b, transparent: true, opacity: 0.75 })
     );
-    lockBody.position.y = 0.10;
-    leftPanGroup.add(lockBody);
+    rigidNode.add(cageLines);
 
-    const lockShackle = new THREE.Mesh(
-      new THREE.TorusGeometry(0.07, 0.015, 12, 24, Math.PI),
-      engine.brassMat(0xd4af37)
+    const cageFrame1 = new THREE.Mesh(
+      new THREE.TorusGeometry(0.27, 0.009, 12, 4),
+      engine.graniteMat(0x7f1d1d, 0.35, 0.4)
     );
-    lockShackle.position.y = 0.18;
-    leftPanGroup.add(lockShackle);
+    cageFrame1.rotation.z = Math.PI / 4;
+    rigidNode.add(cageFrame1);
 
-    const labelLeft = engine.createLabelSprite(
-      "ART. 75 ESTATUTO",
-      "Control Sumativo • Vacancia",
-      "#b91c1c",
-      false,
-      { x: 0.64, y: 0.17 }
+    const cageFrame2 = cageFrame1.clone();
+    cageFrame2.rotation.y = Math.PI / 2;
+    rigidNode.add(cageFrame2);
+
+    tensionGroup.add(rigidNode);
+    engine.anim09_left = rigidNode;
+
+    // POLO DERECHO (LA APERTURA / RETROALIMENTACIÓN FORMATIVA 360° ART. 76):
+    // Esfera abierta de 4 anillos armilares luminosos y núcleo de cristal celeste
+    const openNode = new THREE.Group();
+    openNode.position.set(0.78, 0.04, 0);
+
+    const openRings = new THREE.Group();
+    for (let i = 0; i < 4; i++) {
+      const r = engine.createBrassArmillaryRing(0.18 + i * 0.032, 0.0075);
+      r.rotation.x = (i * Math.PI) / 4;
+      r.rotation.y = (i * Math.PI) / 3;
+      openRings.add(r);
+    }
+    openNode.add(openRings);
+    engine.anim09_rings = openRings;
+
+    const crystalCore = new THREE.Mesh(
+      new THREE.OctahedronGeometry(0.11, 0),
+      engine.glassMat(0x38bdf8, { roughness: 0.05, opacity: 0.92 })
     );
-    labelLeft.position.set(0, 0.78, 0);
-    leftPanGroup.add(labelLeft);
-    scaleGroup.add(leftPanGroup);
-    engine.anim09_left = leftPanGroup;
+    openNode.add(crystalCore);
 
-    // Platillo Derecho: Art. 76 (Antorcha de Capacitación Continua)
-    const rightPanGroup = new THREE.Group();
-    rightPanGroup.position.set(0.68, 0.25, 0);
+    const warmGlow = new THREE.PointLight(0x38bdf8, 1.2, 1.6);
+    openNode.add(warmGlow);
 
-    const rightPan = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.25, 0.22, 0.03, 32),
-      engine.brassMat()
-    );
-    rightPanGroup.add(rightPan);
+    tensionGroup.add(openNode);
+    engine.anim09_right = openNode;
 
-    const torch = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.03, 0.05, 0.22, 16),
-      engine.brassMat(0xffd700)
-    );
-    torch.position.y = 0.12;
-    rightPanGroup.add(torch);
-
-    const flame = new THREE.Mesh(
-      new THREE.ConeGeometry(0.06, 0.16, 16),
-      engine.glassMat(0xf59e0b, { roughness: 0.06, opacity: 0.90 })
-    );
-    flame.position.y = 0.28;
-    rightPanGroup.add(flame);
-
-    const flameLight = new THREE.PointLight(0xf59e0b, 1.4, 1.4);
-    flameLight.position.y = 0.30;
-    rightPanGroup.add(flameLight);
-
-    const labelRight = engine.createLabelSprite(
-      "ART. 76 ESTATUTO",
-      "Capacitación y Desarrollo Formativo",
-      "#059669",
-      false,
-      { x: 0.64, y: 0.17 }
-    );
-    labelRight.position.set(0, 0.78, 0);
-    rightPanGroup.add(labelRight);
-    scaleGroup.add(rightPanGroup);
-    engine.anim09_right = rightPanGroup;
-
-    // Chapa grabada en el frente del chasis de la balanza
-    const plaqueScale = engine.createEngravedPlaque(
-      0.78,
-      0.24,
-      "TENSIÓN ESTATUTARIA",
-      "Art. 75 Régimen Sumativo vs. Art. 76 Desarrollo Formativo",
-      ["ESTATUTO UNCo • CCT DOCENTE"],
-      { theme: "dark" }
-    );
-    plaqueScale.position.set(0, -0.72, 0.36);
-    plaqueScale.rotation.x = -0.12;
-    scaleGroup.add(plaqueScale);
-
-    g.add(scaleGroup);
+    g.add(tensionGroup);
   },
 
   animate(engine, t) {
-    const swing = Math.sin(t * 1.4) * 0.05;
+    // Inclinación asimétrica suave (el peso punitivo tira hacia abajo mientras el 360° busca elevarse)
+    const tilt = -0.11 + Math.sin(t * 1.25) * 0.045;
     if (engine.anim09_beam) {
-      engine.anim09_beam.rotation.z = Math.PI / 2 + swing;
+      engine.anim09_beam.rotation.z = -tilt;
     }
     if (engine.anim09_left) {
-      engine.anim09_left.position.y = 0.15 - swing * 1.5;
+      engine.anim09_left.position.y = 0.28 - 0.36 + Math.sin(-tilt) * -0.78;
+      engine.anim09_left.rotation.y = Math.sin(t * 0.6) * 0.12;
     }
     if (engine.anim09_right) {
-      engine.anim09_right.position.y = 0.25 + swing * 1.5;
+      engine.anim09_right.position.y = 0.28 - 0.34 + Math.sin(-tilt) * 0.78;
+    }
+    if (engine.anim09_rings) {
+      engine.anim09_rings.rotation.y = t * 0.65;
+      engine.anim09_rings.rotation.z = Math.sin(t * 0.8) * 0.2;
     }
   }
 };
 
 // ──────────────────────────────────────────────────────────────────────────
-// 10. PREGUNTA CENTRAL: Pentágono Orbital de Factibilidad (5 Dimensiones)
+// 10. PREGUNTA Y 5 DIMENSIONES: Constelación Pentagonal Limpia de Factibilidad
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_10"] = {
   build(engine, g) {
     engine.createMuseumPlinth(g, 1.50, 0.22, -1.22);
 
     const pentGroup = new THREE.Group();
-    pentGroup.position.set(0, -0.05, 0);
+    pentGroup.position.set(0, 0.02, 0);
 
-    // Chasis de caoba noble inferior con cantoneras
-    const baseChassis = engine.createMachinedChassis(1.20, 0.12, 1.20, { color: 0x2e1204 });
-    baseChassis.position.y = -0.95;
-    g.add(baseChassis);
+    // Pedestal central esbelto
+    const stem = engine.createClassicalColumn(0.92, 0.09, 0xd4af37, true);
+    stem.position.set(0, -0.52, 0);
+    g.add(stem);
 
-    // Núcleo central pulsante: La Pregunta General de TFG con Escudo Académico UNCo
+    // Núcleo central: Esfera de alabastro y doble aro ecuatorial dorado (La Pregunta Central)
     const coreMesh = new THREE.Mesh(
-      new THREE.SphereGeometry(0.28, 32, 32),
-      engine.marbleMat(0xfdfbf7)
+      new THREE.SphereGeometry(0.24, 36, 36),
+      engine.marbleMat(0xfdfbf7, 0.22)
     );
     pentGroup.add(coreMesh);
 
-    const sealCore = engine.createAcademicSeal(0.13);
-    sealCore.position.set(0, 0, 0.26);
-    pentGroup.add(sealCore);
+    const coreRing1 = engine.createBrassArmillaryRing(0.34, 0.011);
+    coreRing1.rotation.x = Math.PI / 2.4;
+    pentGroup.add(coreRing1);
 
-    const coreRing = engine.createBrassArmillaryRing(0.38, 0.014);
-    coreRing.rotation.x = Math.PI / 2;
-    pentGroup.add(coreRing);
+    const coreRing2 = engine.createBrassArmillaryRing(0.86, 0.008);
+    coreRing2.rotation.x = Math.PI / 2;
+    pentGroup.add(coreRing2);
 
-    const coreLight = new THREE.PointLight(0xffd700, 1.5, 1.8);
+    const coreLight = new THREE.PointLight(0xffd700, 1.35, 2.0);
     pentGroup.add(coreLight);
 
-    const labelCore = engine.createLabelSprite("PREGUNTA CENTRAL", "¿Condiciones de Factibilidad 2027?", "#0f2d59", true);
-    labelCore.position.set(0, 0.70, 0);
-    pentGroup.add(labelCore);
-
-    // 5 Nodos Orbitales de las Cinco Dimensiones de Factibilidad
-    const dims = [
-      { name: "1. NORMATIVA", sub: "CCT y Estatuto UNCo", angle: 0, col: 0x38bdf8 },
-      { name: "2. TÉCNICA", sub: "Moodle y Anonimato", angle: (2 * Math.PI) / 5, col: 0x10b981 },
-      { name: "3. ORGANIZACIONAL", sub: "Circuitos y Art. 76", angle: (4 * Math.PI) / 5, col: 0xf59e0b },
-      { name: "4. CULTURAL", sub: "Confianza Docente", angle: (6 * Math.PI) / 5, col: 0x8b5cf6 },
-      { name: "5. GOBERNANZA", sub: "Cogobierno y ADUNC", angle: (8 * Math.PI) / 5, col: 0xec4899 }
-    ];
-
+    // 5 Gemas Prismáticas Orbitales (Las 5 Dimensiones de Factibilidad, sin carteles ruidosos)
+    const colors = [0x0f2d59, 0x0ea5e9, 0xf59e0b, 0x10b981, 0x8b5cf6];
     engine.anim10_arms = [];
-    dims.forEach((d) => {
-      const armGroup = new THREE.Group();
-      const r = 0.90;
-      const x = Math.cos(d.angle) * r;
-      const z = Math.sin(d.angle) * r;
 
-      // Brazo tensor de latón maquinado con estrías
-      const armGeo = new THREE.CylinderGeometry(0.010, 0.010, r, 12);
-      const armMesh = new THREE.Mesh(armGeo, engine.brassMat());
-      armMesh.position.set(x / 2, 0, z / 2);
+    colors.forEach((col, i) => {
+      const angle = (i * 2 * Math.PI) / 5 - Math.PI / 2;
+      const r = 0.86;
+      const x = Math.cos(angle) * r;
+      const z = Math.sin(angle) * r;
+
+      const armMesh = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.007, 0.007, r - 0.24, 12),
+        engine.brassMat(0xcfa346)
+      );
+      armMesh.position.set(x * 0.54, 0, z * 0.54);
       armMesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), new THREE.Vector3(x, 0, z).normalize());
-      armGroup.add(armMesh);
+      pentGroup.add(armMesh);
 
-      // Sello esférico / gema facetada de dimensión
+      const collar = new THREE.Mesh(
+        new THREE.TorusGeometry(0.14, 0.008, 16, 32),
+        engine.goldMat(0xffd700)
+      );
+      collar.rotation.x = Math.PI / 2;
+      collar.position.set(x, 0, z);
+      pentGroup.add(collar);
+
       const sealMesh = new THREE.Mesh(
-        new THREE.OctahedronGeometry(0.13, 0),
-        engine.glassMat(d.col, { opacity: 0.88, roughness: 0.08 })
+        new THREE.OctahedronGeometry(0.115, 0),
+        engine.glassMat(col, { opacity: 0.90, roughness: 0.06 })
       );
       sealMesh.position.set(x, 0, z);
-      armGroup.add(sealMesh);
-
-      const labelDim = engine.createLabelSprite(d.name, d.sub, "#0f2d59", false);
-      labelDim.position.set(x, 0.32, z);
-      armGroup.add(labelDim);
-
-      pentGroup.add(armGroup);
+      pentGroup.add(sealMesh);
       engine.anim10_arms.push(sealMesh);
     });
-
-    // Chapa maestra de factibilidad en el frente
-    const plaquePent = engine.createEngravedPlaque(
-      0.84,
-      0.26,
-      "MATRIZ PENTAGONAL DE FACTIBILIDAD",
-      "Las 5 Dimensiones Empíricas del Modelo 360°",
-      ["CONDICIONES DE VIABILIDAD 2027"],
-      { theme: "dark" }
-    );
-    plaquePent.position.set(0, -0.86, 0.62);
-    g.add(plaquePent);
 
     g.add(pentGroup);
     engine.anim10_group = pentGroup;
@@ -1102,11 +1079,12 @@ window.Presentation3D_Objects["anim_10"] = {
 
   animate(engine, t) {
     if (engine.anim10_group) {
-      engine.anim10_group.rotation.y = t * 0.25;
+      engine.anim10_group.rotation.y = t * 0.22;
+      engine.anim10_group.rotation.x = Math.sin(t * 0.5) * 0.08;
     }
     if (engine.anim10_arms) {
       engine.anim10_arms.forEach((seal, idx) => {
-        seal.rotation.y = t * 1.5 + idx;
+        seal.rotation.y = t * 1.3 + idx;
       });
     }
   }

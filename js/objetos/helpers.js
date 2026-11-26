@@ -299,11 +299,11 @@
       const h = logicalHeight - pad * 2;
       const r = 10;
 
-      ctx.shadowColor = "rgba(15, 23, 42, 0.10)";
-      ctx.shadowBlur = 14;
-      ctx.shadowOffsetY = 3;
+      ctx.shadowColor = "rgba(15, 23, 42, 0.14)";
+      ctx.shadowBlur = 16;
+      ctx.shadowOffsetY = 4;
 
-      ctx.fillStyle = opts?.bg || "rgba(252, 251, 248, 0.96)";
+      ctx.fillStyle = opts?.bg || "#ffffff";
 
       ctx.beginPath();
       ctx.moveTo(pad + r, pad);
@@ -319,30 +319,41 @@
       ctx.fill();
 
       ctx.shadowColor = "transparent";
-      ctx.strokeStyle = opts?.borderColor || (isMain ? "rgba(180, 131, 36, 0.55)" : "rgba(15, 23, 42, 0.16)");
-      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = opts?.borderColor || (isMain ? "rgba(180, 131, 36, 0.75)" : "rgba(15, 23, 42, 0.18)");
+      ctx.lineWidth = isMain ? 2 : 1.5;
       ctx.stroke();
+
+      // Filete superior institucional en cartelas principales
+      if (isMain) {
+        ctx.save();
+        ctx.clip();
+        ctx.fillStyle = "#0f2d59";
+        ctx.fillRect(pad, pad, w, 6);
+        ctx.fillStyle = "#d4af37";
+        ctx.fillRect(pad, pad + 6, w, 2);
+        ctx.restore();
+      }
 
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
 
-      const titleY = subtitle ? (pad + h * 0.37) : (logicalHeight / 2);
+      const titleY = subtitle ? (pad + h * (isMain ? 0.41 : 0.37)) : (logicalHeight / 2);
       ctx.font = `700 ${fontTitleSize}px 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
       ctx.fillStyle = color;
       ctx.fillText(title, logicalWidth / 2, titleY);
 
       if (subtitle) {
-        const lineY = pad + h * 0.58;
-        ctx.strokeStyle = "rgba(15, 23, 42, 0.08)";
+        const lineY = pad + h * 0.61;
+        ctx.strokeStyle = "rgba(180, 131, 36, 0.25)";
         ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.moveTo(pad + 24, lineY);
-        ctx.lineTo(pad + w - 24, lineY);
+        ctx.moveTo(pad + 28, lineY);
+        ctx.lineTo(pad + w - 28, lineY);
         ctx.stroke();
 
         ctx.font = `600 ${fontSubSize}px 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`;
-        ctx.fillStyle = opts?.subColor || "#334155";
-        ctx.fillText(subtitle, logicalWidth / 2, pad + h * 0.78);
+        ctx.fillStyle = opts?.subColor || "#475569";
+        ctx.fillText(subtitle, logicalWidth / 2, pad + h * 0.80);
       }
 
       const texture = new THREE.CanvasTexture(canvas);
@@ -353,6 +364,7 @@
       const spriteMat = new THREE.SpriteMaterial({
         map: texture,
         transparent: true,
+        toneMapped: false,
         depthTest: false,
         depthWrite: false
       });
