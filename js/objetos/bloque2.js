@@ -360,6 +360,7 @@ window.Presentation3D_Objects["anim_06"] = {
         almaFig.position.y = -0.72;
         almaFig.rotation.y = -0.55;
         pinGroup.add(almaFig);
+        engine.anim06_almaFig = almaFig;
 
         const orb = new THREE.Mesh(
           new THREE.SphereGeometry(0.032, 20, 20),
@@ -462,6 +463,19 @@ window.Presentation3D_Objects["anim_06"] = {
   },
 
   animate(engine, t) {
+    if (engine.anim06_almaFig) {
+      engine.animateClassicalFigure(engine.anim06_almaFig, t, {
+        speed: 1.65,
+        breathAmp: 0.055,
+        torsoYawAmp: 0.24,
+        torsoRollAmp: 0.045,
+        headYawAmp: 0.28,
+        headPitchAmp: 0.08,
+        armPitchAmp: 0.24,
+        armRollAmp: 0.18,
+        armAsym: true
+      });
+    }
     if (engine.sedes06 && engine.sedes06.length > 0) {
       const cycleDuration = 3.0;
       const activeIdx = Math.floor(t / cycleDuration) % engine.sedes06.length;
@@ -643,6 +657,7 @@ window.Presentation3D_Objects["anim_07"] = {
     netGroup.add(holoGlass);
 
     // Dos Estudiantes Presenciales en Viedma con pupitres universitarios mirando al docente
+    engine.anim07_presenciales = [];
     [
       { x: -0.58, z: 0.44, rotY: 0.78, col: 0x0f625a },
       { x: 0.58, z: 0.44, rotY: -0.78, col: 0x1e3a8a }
@@ -662,6 +677,7 @@ window.Presentation3D_Objects["anim_07"] = {
       stFig.position.set(st.x, -0.865, st.z);
       stFig.rotation.y = st.rotY;
       netGroup.add(stFig);
+      engine.anim07_presenciales.push(stFig);
 
       // Pupitre estudiantil delante de cada estudiante presencial
       const pupitre = new THREE.Group();
@@ -741,7 +757,7 @@ window.Presentation3D_Objects["anim_07"] = {
       nodeGroup.add(beaconOrb);
 
       const targetWorldY = -0.91 + 0.40;
-      engine.anim07_termBeacons.push({ mesh: beaconOrb, node: nodo, x, z });
+      engine.anim07_termBeacons.push({ mesh: beaconOrb, fig: remoteStudent, node: nodo, x, z });
       netGroup.add(nodeGroup);
 
       // Arco luminoso curvo desde el portal híbrido hacia cada estudiante en su Nodo
@@ -835,7 +851,39 @@ window.Presentation3D_Objects["anim_07"] = {
       engine.anim07_centralRing.rotation.z = t * 0.35;
     }
     if (engine.anim07_prof) {
-      engine.anim07_prof.rotation.y = Math.sin(t * 0.6) * 0.14;
+      engine.anim07_prof.rotation.y = 0;
+      engine.animateClassicalFigure(engine.anim07_prof, t, {
+        speed: 1.65,
+        breathAmp: 0.045,
+        torsoPitchBias: 0.01,
+        torsoYawAmp: 0.24,
+        torsoRollAmp: 0.04,
+        headYawAmp: 0.28,
+        headPitchBias: -0.02,
+        headPitchAmp: 0.08,
+        armPitchAmp: 0.22,
+        armRollAmp: 0.17,
+        armAsym: true
+      });
+    }
+    if (engine.anim07_presenciales) {
+      engine.anim07_presenciales.forEach((stFig, idx) => {
+        engine.animateClassicalFigure(stFig, t, {
+          phase: idx * 2.15 + 0.7,
+          speed: 1.48,
+          breathAmp: 0.05,
+          torsoYawAmp: 0.12,
+          torsoRollAmp: 0.038,
+          headYawAmp: 0.20,
+          headPitchBias: -0.03,
+          headPitchAmp: 0.095,
+          leftArmPitchBias: -0.08,
+          rightArmPitchBias: -0.08,
+          armPitchAmp: 0.17,
+          armRollAmp: 0.12,
+          armAsym: true
+        });
+      });
     }
     if (engine.anim07_lasers) {
       engine.anim07_lasers.forEach((item, i) => {
@@ -846,6 +894,7 @@ window.Presentation3D_Objects["anim_07"] = {
       });
     }
     if (engine.nodos07 && engine.nodos07.length > 0) {
+      const slotProg = (t / 2.6) % 1.0;
       const activeIdx = Math.floor(t / 2.6) % engine.nodos07.length;
       if (activeIdx !== engine.activeNodeIndex07) {
         engine.activeNodeIndex07 = activeIdx;
@@ -853,9 +902,37 @@ window.Presentation3D_Objects["anim_07"] = {
           window.updateNodeHUD(engine.nodos07[activeIdx]);
         }
       }
+      if (engine.anim07_termBeacons) {
+        engine.anim07_termBeacons.forEach((beacon, idx) => {
+          const activeWeight = idx === activeIdx ? Math.sin(slotProg * Math.PI) : 0;
+          if (beacon.fig) {
+            engine.animateClassicalFigure(beacon.fig, t, {
+              phase: idx * 0.63,
+              speed: 1.55,
+              breathAmp: 0.065,
+              torsoPitchBias: -0.08 * activeWeight,
+              torsoYawAmp: 0.15,
+              torsoRollAmp: 0.048,
+              headYawAmp: 0.22,
+              headPitchBias: -0.22 * activeWeight,
+              headPitchAmp: 0.085,
+              armPitchAmp: 0.24,
+              armRollAmp: 0.18,
+              armAsym: true,
+              rightArmPitchBias: -0.58 * activeWeight,
+              rightArmRollBias: 0.52 * activeWeight
+            });
+          }
+          if (beacon.mesh) {
+            beacon.mesh.scale.setScalar(1 + 0.42 * activeWeight);
+            beacon.mesh.position.y = 0.40 + 0.032 * activeWeight;
+          }
+        });
+      }
       const beacon = engine.anim07_termBeacons?.[activeIdx];
       if (beacon && engine.anim07_radarRing && engine.anim07_sweepLight) {
         engine.anim07_radarRing.position.set(beacon.x, -0.88, beacon.z);
+        engine.anim07_radarRing.scale.setScalar(1.0 + Math.sin(slotProg * Math.PI) * 0.16);
         engine.anim07_sweepLight.position.set(beacon.x, -0.45, beacon.z);
       }
     }
@@ -1175,6 +1252,7 @@ window.Presentation3D_Objects["anim_09"] = {
       laurel: true
     });
     rightScene.add(openTeacher);
+    engine.anim09_openFig = openTeacher;
 
     // Antorcha dorada de Capacitación Continua (Art. 76) junto al docente
     const torchPed = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.035, 0.62, 16), engine.brassMat(0xd4af37));
@@ -1193,6 +1271,7 @@ window.Presentation3D_Objects["anim_09"] = {
       { angle: Math.PI * 0.15, col: 0x0284c7, title: "ESTUDIANTES", sub: "Viedma y Nodos", lblPos: [0.92, 1.04, 0.36], lblW: 0.50 },
       { angle: -Math.PI * 0.50, col: 0xb45309, title: "DIRECCIÓN", sub: "Art. 76", lblPos: [0.46, 1.18, -0.34], lblW: 0.46 }
     ];
+    engine.anim09_companions = [];
     companions.forEach((c) => {
       const r = 0.48;
       const cx = Math.cos(c.angle) * r;
@@ -1205,6 +1284,7 @@ window.Presentation3D_Objects["anim_09"] = {
       peer.position.set(cx, 0, cz);
       peer.rotation.y = Math.atan2(-cx, -cz);
       rightScene.add(peer);
+      engine.anim09_companions.push(peer);
 
       const roleLbl = engine.createLabelSprite(c.title, c.sub, "#0f2d59", false, { x: c.lblW });
       roleLbl.position.set(c.lblPos[0], c.lblPos[1], c.lblPos[2]);
@@ -1259,10 +1339,52 @@ window.Presentation3D_Objects["anim_09"] = {
 
   animate(engine, t) {
     if (engine.anim09_heavy) {
-      engine.anim09_heavy.position.y = 1.03 + Math.sin(t * 1.4) * 0.014;
+      engine.anim09_heavy.position.y = 1.03 + Math.sin(t * 1.65) * 0.026;
     }
-    if (engine.anim09_burdenFig?.upperBody) {
-      engine.anim09_burdenFig.upperBody.rotation.x = 0.32 + Math.sin(t * 1.4) * 0.025;
+    if (engine.anim09_burdenFig) {
+      engine.animateClassicalFigure(engine.anim09_burdenFig, t, {
+        speed: 1.65,
+        breathAmp: 0.055,
+        torsoYawAmp: 0.06,
+        torsoRollAmp: 0.028,
+        headYawAmp: 0.14,
+        headPitchAmp: 0.065,
+        armPitchAmp: 0.075,
+        armRollAmp: 0.04,
+        armAsym: false
+      });
+    }
+    if (engine.anim09_openFig) {
+      engine.animateClassicalFigure(engine.anim09_openFig, t, {
+        phase: 0.4,
+        speed: 1.45,
+        breathAmp: 0.048,
+        torsoYawAmp: 0.22,
+        torsoRollAmp: 0.042,
+        headYawAmp: 0.26,
+        headPitchAmp: 0.075,
+        armPitchAmp: 0.19,
+        armRollAmp: 0.15,
+        armAsym: false
+      });
+    }
+    if (engine.anim09_companions) {
+      engine.anim09_companions.forEach((peer, idx) => {
+        engine.animateClassicalFigure(peer, t, {
+          phase: idx * 2.05 + 0.5,
+          speed: 1.62,
+          breathAmp: 0.052,
+          torsoYawAmp: 0.14,
+          torsoRollAmp: 0.038,
+          headYawAmp: 0.22,
+          headPitchAmp: 0.09,
+          leftArmPitchBias: -0.08,
+          rightArmPitchBias: -0.08,
+          armPitchAmp: 0.19,
+          armRollAmp: 0.13,
+          armAsym: true
+        });
+      });
     }
     if (engine.anim09_rings) {
       engine.anim09_rings.rotation.y = t * 0.48;
@@ -1297,6 +1419,7 @@ window.Presentation3D_Objects["anim_10"] = {
     });
     thinkerFig.position.set(0, -0.84, 0.16);
     pentGroup.add(thinkerFig);
+    engine.anim10_thinker = thinkerFig;
 
     // Esfera luminosa de la Pregunta Central flotando sobre la palma alzada
     const orbGroup = new THREE.Group();
@@ -1449,9 +1572,24 @@ window.Presentation3D_Objects["anim_10"] = {
     if (engine.anim10_group) {
       engine.anim10_group.rotation.y = Math.sin(t * 0.35) * 0.12;
     }
+    if (engine.anim10_thinker) {
+      engine.animateClassicalFigure(engine.anim10_thinker, t, {
+        speed: 1.50,
+        breathAmp: 0.045,
+        torsoYawAmp: 0.14,
+        torsoRollAmp: 0.032,
+        headYawAmp: 0.24,
+        headPitchAmp: 0.07,
+        armPitchAmp: 0.18,
+        armRollAmp: 0.11,
+        leftArmWeight: 0.32,
+        rightArmWeight: 1.0,
+        armAsym: true
+      });
+    }
     if (engine.anim10_orb) {
       engine.anim10_orb.rotation.y = -t * 0.8;
-      engine.anim10_orb.position.y = 0.44 + Math.sin(t * 1.6) * 0.016;
+      engine.anim10_orb.position.y = 0.44 + Math.sin(t * 1.6) * 0.026;
     }
     if (engine.anim10_arms) {
       engine.anim10_arms.forEach((emblem, idx) => {

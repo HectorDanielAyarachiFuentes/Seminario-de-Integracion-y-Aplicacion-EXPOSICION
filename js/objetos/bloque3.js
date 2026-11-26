@@ -83,6 +83,7 @@ window.Presentation3D_Objects["anim_11"] = {
       }
     ];
 
+    engine.anim11_figs = [];
     axes.forEach((ax) => {
       const ped = new THREE.Mesh(
         new THREE.CylinderGeometry(0.18, 0.21, 0.08, 28),
@@ -99,6 +100,7 @@ window.Presentation3D_Objects["anim_11"] = {
       figOE.position.set(ax.x, -0.86, ax.z);
       figOE.rotation.y = Math.atan2(-ax.x, -0.14 - ax.z);
       targetGroup.add(figOE);
+      engine.anim11_figs.push(figOE);
 
       // Atributo simbólico junto a cada figura
       if (ax.prop === "scroll") {
@@ -173,6 +175,25 @@ window.Presentation3D_Objects["anim_11"] = {
     if (engine.anim11_halo) {
       engine.anim11_halo.rotation.x = t * 0.5;
       engine.anim11_halo.rotation.y = t * 0.35;
+    }
+    if (engine.anim11_figs) {
+      engine.anim11_figs.forEach((figOE, idx) => {
+        engine.animateClassicalFigure(figOE, t, {
+          phase: idx * 1.57,
+          speed: 1.55,
+          breathAmp: 0.052,
+          torsoYawAmp: 0.13,
+          torsoRollAmp: 0.035,
+          headYawAmp: 0.20,
+          headPitchBias: -0.06,
+          headPitchAmp: 0.075,
+          armPitchAmp: 0.22,
+          armRollAmp: 0.14,
+          leftArmWeight: 0.38,
+          rightArmWeight: 1.0,
+          armAsym: false
+        });
+      });
     }
   }
 };

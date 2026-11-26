@@ -1007,22 +1007,99 @@
         rPts = [[0.21, 0.36, 0], [0.34, 0.32, 0.10], [0.42, 0.38, 0.18]];
       }
 
-      [lPts, rPts].forEach((pts) => {
-        const curve = new THREE.CatmullRomCurve3(pts.map((p) => new THREE.Vector3(p[0], p[1], p[2])));
+      const armSpecs = [
+        { key: "leftArm", origin: [-0.21, 0.36, 0], pts: lPts },
+        { key: "rightArm", origin: [0.21, 0.36, 0], pts: rPts }
+      ];
+      armSpecs.forEach(({ key, origin, pts }) => {
+        const armPivot = new THREE.Group();
+        armPivot.position.set(origin[0], origin[1], origin[2]);
+
+        const localPts = pts.map(
+          (p) => new THREE.Vector3(p[0] - origin[0], p[1] - origin[1], p[2] - origin[2])
+        );
+        const curve = new THREE.CatmullRomCurve3(localPts);
         const arm = new THREE.Mesh(new THREE.TubeGeometry(curve, 20, 0.036, 14, false), ivoryMat);
         arm.castShadow = true;
-        upperBody.add(arm);
-        const end = pts[pts.length - 1];
+        armPivot.add(arm);
+
+        const end = localPts[localPts.length - 1];
         const hand = new THREE.Mesh(new THREE.SphereGeometry(0.038, 14, 14), ivoryMat);
-        hand.position.set(end[0], end[1], end[2]);
-        upperBody.add(hand);
+        hand.position.copy(end);
+        armPivot.add(hand);
+
+        upperBody.add(armPivot);
+        fig[key] = armPivot;
       });
 
       fig.add(upperBody);
       fig.upperBody = upperBody;
       fig.headGroup = headGroup;
+      fig.userData.basePose = {
+        upperX: upperBody.rotation.x,
+        headX: headGroup.rotation.x,
+        headY: headGroup.rotation.y
+      };
       fig.scale.setScalar(scale);
       return fig;
+    },
+
+    /**
+     * Anima de forma orgánica y claramente visible una figura clásica esculpida (`createClassicalFigure`),
+     * dejando los pies firmes en el pedestal y articulando torso, cabeza y hombros con desfase natural.
+     */
+    animateClassicalFigure(fig, t, opts = {}) {
+      if (!fig) return;
+      const base = fig.userData?.basePose || { upperX: 0, headX: 0, headY: 0 };
+      const phase = opts.phase || 0;
+      const speed = opts.speed !== undefined ? opts.speed : 1.55;
+      const wt = t * speed + phase;
+
+      // Armónicos suaves para evitar rigidez pendular y generar pausas expresivas naturales
+      const breathWave = Math.sin(wt) * 0.78 + Math.sin(wt * 0.5 + 0.8) * 0.22;
+      const gazeWave = Math.sin(wt * 0.68 + 0.45 + phase * 0.35) * 0.76 + Math.sin(wt * 1.36 + 0.9) * 0.24;
+      const torsoTurnWave = Math.sin(wt * 0.68 + 0.05 + phase * 0.35) * 0.80 + Math.sin(wt * 1.36 + 0.4) * 0.20;
+      const swayWave = Math.sin(wt * 0.84 + 1.1);
+
+      const breathAmp = opts.breathAmp !== undefined ? opts.breathAmp : 0.045;
+      const torsoYawAmp = opts.torsoYawAmp !== undefined ? opts.torsoYawAmp : 0.14;
+      const torsoRollAmp = opts.torsoRollAmp !== undefined ? opts.torsoRollAmp : 0.032;
+      const headYawAmp = opts.headYawAmp !== undefined ? opts.headYawAmp : 0.20;
+      const headPitchAmp = opts.headPitchAmp !== undefined ? opts.headPitchAmp : 0.065;
+      const armPitchAmp = opts.armPitchAmp !== undefined ? opts.armPitchAmp : 0.16;
+      const armRollAmp = opts.armRollAmp !== undefined ? opts.armRollAmp : 0.12;
+      const asym = opts.armAsym !== false;
+
+      if (fig.upperBody) {
+        fig.upperBody.position.y = 0.63 + breathWave * 0.008;
+        fig.upperBody.rotation.x = base.upperX + (opts.torsoPitchBias || 0) + breathWave * breathAmp;
+        fig.upperBody.rotation.y = (opts.torsoYawBias || 0) + torsoTurnWave * torsoYawAmp;
+        fig.upperBody.rotation.z = swayWave * torsoRollAmp;
+      }
+
+      if (fig.headGroup) {
+        // La cabeza guía el gesto ligeramente antes que el torso (follow-through natural)
+        fig.headGroup.rotation.x = base.headX + (opts.headPitchBias || 0) + Math.sin(wt * 0.96 + 0.7) * headPitchAmp;
+        fig.headGroup.rotation.y = base.headY + (opts.headYawBias || 0) + gazeWave * headYawAmp;
+        fig.headGroup.rotation.z = Math.sin(wt * 0.72 + 1.1) * (headPitchAmp * 0.48);
+      }
+
+      const lArmW = opts.leftArmWeight !== undefined ? opts.leftArmWeight : 1.0;
+      const rArmW = opts.rightArmWeight !== undefined ? opts.rightArmWeight : 1.0;
+
+      if (fig.leftArm) {
+        const lPitchWave = asym ? (Math.sin(wt * 0.95 - 0.3) * 0.75 + Math.sin(wt * 1.9 + 0.5) * 0.25) : breathWave;
+        const lRollWave = Math.sin(wt * 0.82 - 0.2);
+        fig.leftArm.rotation.x = (opts.leftArmPitchBias || 0) + lPitchWave * armPitchAmp * lArmW;
+        fig.leftArm.rotation.z = (opts.leftArmRollBias || 0) - lRollWave * armRollAmp * lArmW;
+      }
+
+      if (fig.rightArm) {
+        const rPitchWave = asym ? (Math.sin(wt * 1.02 + 1.75) * 0.75 + Math.sin(wt * 2.04 + 0.9) * 0.25) : breathWave;
+        const rRollWave = Math.sin(wt * 0.82 + (asym ? 1.45 : -0.2));
+        fig.rightArm.rotation.x = (opts.rightArmPitchBias || 0) + rPitchWave * armPitchAmp * rArmW;
+        fig.rightArm.rotation.z = (opts.rightArmRollBias || 0) + rRollWave * armRollAmp * rArmW;
+      }
     }
   };
 })();
