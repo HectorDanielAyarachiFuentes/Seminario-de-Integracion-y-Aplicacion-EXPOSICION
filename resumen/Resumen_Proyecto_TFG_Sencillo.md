@@ -2,7 +2,7 @@
 
 **Título oficial:** *Evaluación del Desempeño Docente y Factibilidad de Implementación de un Modelo de Retroalimentación 360° en el Departamento de Administración Pública del CURZAS-UNCo (2027)*  
 **Reglamento marco:** Proyecto previo de TFG — Res. CD-CURZA N° 266/23 · Seminario de Integración y Aplicación (SIA 2026)  
-**Tesista:** Tec. Sup. en RRHH Héctor Daniel Ayarachi Fuentes (Legajo N° 8252 — DNI N° 35.492.138)  
+**Tesista:** Tec. Sup. en RRHH Héctor Daniel Ayarachi Fuentes (Legajo CURZA-8284 — DNI N° 35.492.138)  
 **Cátedra:** Dra. Deborah Noguera · Esp. Federico Abeiro · Esp. María Cecilia Aguirre  
 **Carrera:** Ciclo de Complementación Curricular de la Licenciatura en Gestión de Recursos Humanos (Viedma, Río Negro)
 

@@ -218,7 +218,7 @@ function getTFGRightPageTexture() {
 
   ctx.fillStyle = "#475569";
   ctx.font = "600 11px sans-serif";
-  ctx.fillText("Lic. en Gestión de Recursos Humanos (CCC) • Leg. 8252", 256, 482);
+  ctx.fillText("Lic. en Gestión de Recursos Humanos (CCC) • Leg. CURZA-8284", 256, 482);
   ctx.fillText("Sede Viedma y Red de 10 Nodos Territoriales", 256, 503);
 
   // Pie y radicación geográfica
@@ -684,7 +684,7 @@ window.Presentation3D_Objects["anim_02"] = {
       0.80,
       0.44,
       "HÉCTOR DANIEL AYARACHI FUENTES",
-      "Tec. Sup. en RRHH • Legajo 8252 • DNI 35.492.138",
+      "Tec. Sup. en RRHH • Legajo CURZA-8284 • DNI 35.492.138",
       ["CURZAS", "UNIVERSIDAD NACIONAL DEL COMAHUE", "TFG 2026/2027"],
       { theme: "dark" }
     );
@@ -711,7 +711,7 @@ window.Presentation3D_Objects["anim_02"] = {
     // Cartela flotante superior
     const label = engine.createLabelSprite(
       "HÉCTOR DANIEL AYARACHI FUENTES",
-      "Tec. Sup. en RRHH • Legajo 8252 • CURZAS-UNCo",
+      "Tec. Sup. en RRHH • Legajo CURZA-8284 • CURZAS-UNCo",
       "#0f2d59",
       true
     );

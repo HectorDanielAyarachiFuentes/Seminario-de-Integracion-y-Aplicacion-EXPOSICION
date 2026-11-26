@@ -4,7 +4,7 @@ bibliography: referencias.bib
 csl: apa.csl
 citeproc: true
 filters:
-  - ../../../.agents/filtros/linebreak_filter.lua
+  - ../../.agents/filtros/linebreak_filter.lua
 format:
   docx:
     toc: false

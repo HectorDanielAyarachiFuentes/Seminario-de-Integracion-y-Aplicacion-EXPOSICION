@@ -31,7 +31,7 @@
   #h(5.8em) Esp. María Cecilia Aguirre \
   \
   Estudiante: Tec. Sup. en RRHH Héctor Daniel Ayarachi Fuentes \
-  DNI y LEGAJO: DNI N° 35.492.138 — Legajo N° 8252 \
+  DNI y LEGAJO: DNI N° 35.492.138 — Legajo CURZA-8284 \
   Email: hectordanielayarachifuentes\@gmail.com \
   \
   Director/a: (A designar) \
@@ -74,7 +74,7 @@ Profesores: Dra. Deborah Noguera
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Esp. María Cecilia Aguirre  
 
 Estudiante: Tec. Sup. en RRHH Héctor Daniel Ayarachi Fuentes  
-DNI y LEGAJO: DNI N° 35.492.138 — Legajo N° 8252  
+DNI y LEGAJO: DNI N° 35.492.138 — Legajo CURZA-8284  
 Email: hectordanielayarachifuentes@gmail.com  
 
 Director/a: (A designar)  
@@ -210,7 +210,7 @@ En el marco de la gestión pública [@longo2006; @matus1993], la factibilidad re
 
 ### Pregunta General de Investigación
 
-> ¿Cuáles son las condiciones de factibilidad organizacional, técnica, normativa, cultural y de gobernanza multinivel para la implementación de un modelo de retroalimentación multiactoral (360°) en la evaluación del desempeño docente en el Departamento de Administración Pública del CURZAS-UNCo durante el año 2027?
+> ¿Cuáles son, a partir del análisis situado durante el año 2027, las condiciones de factibilidad organizacional, técnica, normativa, cultural y de gobernanza multinivel para una eventual implementación en ciclos posteriores de un modelo de retroalimentación multiactoral (360°) en la evaluación del desempeño docente del Departamento de Administración Pública del CURZAS-UNCo?
 
 ## Justificación y Relevancia de la Investigación
 
@@ -224,7 +224,7 @@ La investigación se justifica en tres planos complementarios. Cada uno de ellos
 
 ### Objetivo General
 
-* Analizar las condiciones de factibilidad organizacional, técnica, normativa, cultural y de gobernanza multinivel para la implementación de un modelo de retroalimentación multiactoral (360°) en la evaluación del desempeño docente en el Departamento de Administración Pública del CURZAS-UNCo (2027).
+* Analizar durante el ciclo lectivo 2027 las condiciones de factibilidad organizacional, técnica, normativa, cultural y de gobernanza multinivel para una eventual implementación en ciclos posteriores de un modelo de retroalimentación multiactoral (360°) en la evaluación del desempeño docente del Departamento de Administración Pública del CURZAS-UNCo.
 
 ### Objetivos Específicos
 
@@ -566,7 +566,7 @@ La investigación no requiere financiamiento institucional ni subsidios externos
 
 ### Recursos Humanos y Dedicación
 
-* *Investigador / Tesista:* Tec. Sup. Héctor Daniel Ayarachi Fuentes (Legajo N° 8252 — DNI N° 35.492.138). Dedicación estimada de 15 a 20 horas semanales.
+* *Investigador / Tesista:* Tec. Sup. Héctor Daniel Ayarachi Fuentes (Legajo CURZA-8284 — DNI N° 35.492.138). Dedicación estimada de 15 a 20 horas semanales.
 * *Director/a de TFG:* Docente especialista en Administración Pública o Gestión de RRHH, a designar conforme al procedimiento reglamentario (Art. 5°, Res. CD-CURZA N° 266/23).
 * *Equipo Docente del SIA:* Dra. Deborah Noguera, Esp. Federico Abeiro y Esp. María Cecilia Aguirre (acompañamiento formativo del diseño).
 * *Participantes institucionales:* Docentes, autoridades de departamento, consejeros y estudiantes que colaboren voluntariamente en entrevistas y sondeos.
@@ -699,7 +699,7 @@ Viedma, Río Negro, ______ de ________________ de 202___
 
 De mi mayor consideración:  
 
-Me dirijo a Usted como estudiante regular del Ciclo de Complementación Curricular de la Licenciatura en Gestión de Recursos Humanos (Legajo N° 8252 — DNI N° 35.492.138), en el marco de la formulación de mi Trabajo Final de Graduación para la asignatura *Seminario de Integración y Aplicación* (SIA 2025/2026), titulado:  
+Me dirijo a Usted como estudiante regular del Ciclo de Complementación Curricular de la Licenciatura en Gestión de Recursos Humanos (Legajo CURZA-8284 — DNI N° 35.492.138), en el marco de la formulación de mi Trabajo Final de Graduación para la asignatura *Seminario de Integración y Aplicación* (SIA 2025/2026), titulado:  
 
 **"Evaluación del Desempeño Docente y Factibilidad de Implementación de un Modelo de Retroalimentación 360° en el Departamento de Administración Pública del CURZAS-UNCo (2027)"**  
 
@@ -720,7 +720,7 @@ Agradeciendo su atención, saludo a Usted atentamente.
   #line(length: 65%, stroke: 0.5pt + black)
   #v(0.2em)
   #text(weight: "bold")[Tec. Sup. Héctor Daniel Ayarachi Fuentes] \
-  Legajo N° 8252 — DNI N° 35.492.138 \
+  Legajo CURZA-8284 — DNI N° 35.492.138 \
   Estudiante del CCC de la Licenciatura en Gestión de Recursos Humanos \
   Departamento de Administración Pública — CURZAS-UNCo
 ]
@@ -733,7 +733,7 @@ Agradeciendo su atención, saludo a Usted atentamente.
 ::: {align="center"}
 __________________________________________________  
 **Tec. Sup. Héctor Daniel Ayarachi Fuentes**  
-Legajo N° 8252 — DNI N° 35.492.138  
+Legajo CURZA-8284 — DNI N° 35.492.138  
 Estudiante del CCC de la Licenciatura en Gestión de Recursos Humanos  
 Departamento de Administración Pública — CURZAS-UNCo  
 :::

@@ -22,7 +22,7 @@ const PRESENTACION_DATA = {
     titulo: "Evaluación del Desempeño Docente y Factibilidad de Implementación de un Modelo de Retroalimentación 360°",
     subtitulo: "Proyecto de investigación situado en el Departamento de Administración Pública del CURZAS-UNCo (2027)",
     autor: "Tec. Sup. en RRHH Héctor Daniel Ayarachi Fuentes",
-    legajo: "Legajo N° 8252 — DNI N° 35.492.138",
+    legajo: "Legajo CURZA-8284 — DNI N° 35.492.138",
     email: "hectordanielayarachifuentes@gmail.com",
     director: "A designar antes de finalizar el cursado del SIA",
     codirector: "A designar antes de finalizar el cursado del SIA",
@@ -474,7 +474,7 @@ const PRESENTACION_DATA = {
       titulo: "Evaluación Docente y Factibilidad de un Modelo 360°",
       subtitulo: "Plan de investigación (2027) • Dpto. de Administración Pública • CURZAS–UNCo",
       fichaPortada: [
-        { etiqueta: "Tesista", valor: "Tec. Sup. Héctor D. Ayarachi Fuentes (Leg. 8252)" },
+        { etiqueta: "Tesista", valor: "Tec. Sup. Héctor D. Ayarachi Fuentes (Leg. CURZA-8284)" },
         { etiqueta: "Carrera", valor: "Lic. en Gestión de Recursos Humanos (CCC)" },
         { etiqueta: "Ámbito", valor: "Sede Viedma y 10 Nodos (Río Negro)" },
         { etiqueta: "Cátedra SIA", valor: "Dra. D. Noguera · Esp. F. Abeiro · Esp. M. C. Aguirre" }

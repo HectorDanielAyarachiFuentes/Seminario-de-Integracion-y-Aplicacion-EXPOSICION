@@ -112,7 +112,7 @@ Viedma, Río Negro, ______ de ________________ de 202___
 
 De mi mayor consideración:  
 
-Me dirijo a Usted como estudiante regular del Ciclo de Complementación Curricular de la Licenciatura en Gestión de Recursos Humanos (Legajo N° 8252 — DNI N° 35.492.138), en el marco de la formulación de mi Trabajo Final de Graduación para la asignatura *Seminario de Integración y Aplicación* (SIA 2025/2026), titulado:  
+Me dirijo a Usted como estudiante regular del Ciclo de Complementación Curricular de la Licenciatura en Gestión de Recursos Humanos (Legajo CURZA-8284 — DNI N° 35.492.138), en el marco de la formulación de mi Trabajo Final de Graduación para la asignatura *Seminario de Integración y Aplicación* (SIA 2025/2026), titulado:  
 
 **"Evaluación del Desempeño Docente y Factibilidad de Implementación de un Modelo de Retroalimentación 360° en el Departamento de Administración Pública del CURZAS-UNCo (2027)"**  
 
@@ -133,7 +133,7 @@ Agradeciendo su atención, saludo a Usted atentamente.
   #line(length: 65%, stroke: 0.5pt + black)
   #v(0.2em)
   #text(weight: "bold")[Tec. Sup. Héctor Daniel Ayarachi Fuentes] \
-  Legajo N° 8252 — DNI N° 35.492.138 \
+  Legajo CURZA-8284 — DNI N° 35.492.138 \
   Estudiante del CCC de la Licenciatura en Gestión de Recursos Humanos \
   Departamento de Administración Pública — CURZAS-UNCo
 ]
@@ -146,7 +146,7 @@ Agradeciendo su atención, saludo a Usted atentamente.
 ::: {align="center"}
 __________________________________________________  
 **Tec. Sup. Héctor Daniel Ayarachi Fuentes**  
-Legajo N° 8252 — DNI N° 35.492.138  
+Legajo CURZA-8284 — DNI N° 35.492.138  
 Estudiante del CCC de la Licenciatura en Gestión de Recursos Humanos  
 Departamento de Administración Pública — CURZAS-UNCo  
 :::

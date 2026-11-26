@@ -4,7 +4,7 @@
 **Centro Universitario Regional Zona Atlántica y Sur (CURZAS)**  
 **Universidad Nacional del Comahue (UNCo)**  
 
-* **Autor:** Tec. Sup. en RRHH Héctor Daniel Ayarachi Fuentes (Legajo N° 8252 — DNI N° 35.492.138)  
+* **Autor:** Tec. Sup. en RRHH Héctor Daniel Ayarachi Fuentes (Legajo CURZA-8284 — DNI N° 35.492.138)  
 * **Cátedra:** Dra. Deborah Noguera, Esp. Federico Abeiro, Esp. María Cecilia Aguirre  
 * **Marco Normativo:** Res. CD-CURZAS N° 266/23 | Estatuto UNCo Ord. CS N° 0988/2025 | Normas APA 7ma Edición  
 * **Duración estipulada:** 15 minutos cronometrados (~1.25 min por filmina)  
