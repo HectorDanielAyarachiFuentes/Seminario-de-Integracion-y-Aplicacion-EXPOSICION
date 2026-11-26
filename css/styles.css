@@ -785,6 +785,60 @@ body.notes-open .slide-card {
   font-weight: 700;
 }
 
+/* ─── JERARQUÍA LIMPIA: OBJETIVO GENERAL vs. OBJETIVOS ESPECÍFICOS ────────── */
+.obj-general-block {
+  padding: 0.52rem 0.75rem 0.58rem 0.85rem;
+  margin-bottom: 0.45rem;
+  border-left: 3.5px solid #0f2d59;
+  background: linear-gradient(90deg, rgba(15, 45, 89, 0.045) 0%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 0 8px 8px 0;
+}
+
+.obj-level-kicker {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 0.63rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: #996515;
+  margin-bottom: 0.16rem;
+}
+
+.obj-general-text {
+  font-size: clamp(0.88rem, 1.08vh + 0.1vw, 0.98rem);
+  font-weight: 600;
+  line-height: 1.38;
+  color: #0b2244;
+  margin: 0;
+}
+
+.obj-specific-kicker {
+  font-family: var(--font-serif);
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: #64748b;
+  padding: 0.2rem 0 0.15rem 0.15rem;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.slide-card.has-general-obj .slide-subtitle {
+  padding-bottom: clamp(0.42rem, 0.8vh, 0.65rem);
+  margin-bottom: clamp(0.5rem, 0.9vh, 0.75rem);
+}
+
+.slide-card.has-general-obj .slide-bullets li {
+  padding: clamp(0.42rem, 0.8vh, 0.58rem) 0.2rem clamp(0.42rem, 0.8vh, 0.58rem) 1.25rem;
+  font-size: clamp(0.88rem, 1.08vh + 0.1vw, 0.98rem);
+  line-height: 1.38;
+}
+
+.slide-card.has-general-obj .slide-bullets li::before {
+  top: calc(clamp(0.42rem, 0.8vh, 0.58rem) + 0.5em);
+}
+
 /* ─── PORTADA MINIMALISTA Y DESPEJADA (FILMINA 1) ────────────────────────── */
 .slide-card.is-cover-slide {
   background:

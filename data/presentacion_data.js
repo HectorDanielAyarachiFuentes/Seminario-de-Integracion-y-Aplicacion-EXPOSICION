@@ -614,21 +614,23 @@ const PRESENTACION_DATA = {
     {
       id: "slide_eje1_objetivos",
       numero: 7,
-      tiempoSugerido: "0:35 min",
+      tiempoSugerido: "0:40 min",
       bloque: "EJE 1 · EL PROBLEMA",
-      esquema: "1.3 Objetivo General y 4 Específicos (0:35)",
-      badge: "Tabla 1 • Objetivos",
-      titulo: "Objetivos del Proyecto",
-      subtitulo: "Analizar la factibilidad en las cinco dimensiones (2027)",
+      esquema: "1.3 Objetivo General vs. Específicos (0:40)",
+      badge: "Tabla 1 • Dos Niveles de Objetivos",
+      titulo: "Objetivo General y Específicos",
+      subtitulo: "Diferenciación entre la meta integral y su desglose operativo (Tabla 1)",
+      objetivoGeneral: "Analizar las condiciones de factibilidad (organizacional, técnica, normativa, cultural y de gobernanza) para implementar un modelo 360° docente en el Dpto. de Administración Pública (2027).",
+      etiquetaEspecificos: "Objetivos Específicos (Escalones Operativos)",
       puntosClave: [
-        "<strong>OE1 · Norma vs. Práctica:</strong> Relevar reglamentos, informes y encuestas SIU",
-        "<strong>OE2 · Voces y Confianza:</strong> Explorar miradas de docentes, alumnos y gestión",
-        "<strong>OE3 · Trabas y Pares:</strong> Indagar límites, ADUNC y pares horizontales",
-        "<strong>OE4 · Lineamientos:</strong> Proponer pautas prudentes según el campo"
+        "<strong>OE1 · Normativo:</strong> Relevar normas estatutarias vs. aplicación efectiva",
+        "<strong>OE2 · Cultural:</strong> Explorar percepciones y confianza de docentes, alumnos y gestión",
+        "<strong>OE3 · Gobernanza:</strong> Identificar límites técnicos, paritarios y pares horizontales",
+        "<strong>OE4 · Propositivo:</strong> Formular lineamientos según condiciones y límites reales"
       ],
-      metadatosFooter: "Eje 1 • Matriz de Consistencia",
+      metadatosFooter: "Eje 1 • Matriz de Consistencia y Articulación con Longo (Tabla 1)",
       escena3D: "anim_11",
-      guionOrador: "[Objetivos general y específicos • 0:35 min]\nPara responder esa pregunta, el Objetivo General analiza esas cinco dimensiones de factibilidad mediante cuatro objetivos específicos:\n1. Relevar normas, encuestas del SIU y capacitaciones actuales.\n2. Conocer qué piensan y qué necesitan docentes, estudiantes y autoridades para confiar.\n3. Detectar trabas técnicas, gremiales y cómo resolver cátedras de un solo docente mediante pares horizontales.\n4. Proponer lineamientos orientativos ajustados a lo que muestre el terreno."
+      guionOrador: "[Diferencia entre Objetivo General y Específicos • 0:40 min]\nTal como plasmamos en el proyecto escrito y en la Matriz de Consistencia (Tabla 1), distinguimos dos niveles de objetivos:\n\n[1. Objetivo General — Meta global]\nPor un lado, el Objetivo General fija el alcance integral del estudio: analizar las condiciones de factibilidad organizacional, técnica, normativa, cultural y de gobernanza multinivel para implementar un modelo 360° en el Departamento en 2027 (vinculado a la Gestión del Rendimiento de Longo).\n\n[2. Objetivos Específicos — Pasos operativos]\nPor otro lado, los cuatro Objetivos Específicos desglosan cómo vamos a alcanzar empíricamente ese objetivo general paso a paso:\n- OE1 (normativo-institucional): distinguir qué prescriben las normas frente a cómo se evalúa realmente hoy.\n- OE2 (intersubjetivo-cultural): explorar percepciones, disposiciones y confianza en docentes, estudiantes y autoridades.\n- OE3 (gobernanza multinivel): identificar condicionantes técnicos, paritarios (ADUNC) y la coevaluación mediante pares horizontales en cátedras unipersonales.\n- OE4 (propositivo): proponer lineamientos orientativos ajustados a los límites reales hallados en terreno."
     },
 
     // ─────────────────────────────────────────────────────────────────────────

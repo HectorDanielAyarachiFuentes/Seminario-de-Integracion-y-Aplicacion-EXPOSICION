@@ -676,6 +676,7 @@ class PresentationApp {
       this.cardElement.setAttribute("data-section", secId);
       this.cardElement.classList.toggle("is-cover-slide", Boolean(slide.esPortada));
       this.cardElement.classList.toggle("is-index-slide", Boolean(slide.esIndice));
+      this.cardElement.classList.toggle("has-general-obj", Boolean(slide.objetivoGeneral));
 
       // Cabecera limpia sin caja pesada exclusiva para Filmina 1 (Portada)
       let coverHeader = this.cardElement.querySelector(".cover-crest-banner");
@@ -756,6 +757,22 @@ class PresentationApp {
 
       this.bulletsElement.appendChild(indexList);
     } else {
+      // Si la filmina distingue Objetivo General + Específicos, jerarquizar ambos niveles limpiamente
+      if (slide.objetivoGeneral) {
+        const ogBlock = document.createElement("div");
+        ogBlock.className = "obj-general-block cover-anim-item";
+        ogBlock.innerHTML = `
+          <span class="obj-level-kicker">Objetivo General</span>
+          <p class="obj-general-text">${slide.objetivoGeneral}</p>
+        `;
+        this.bulletsElement.appendChild(ogBlock);
+
+        const oeHeader = document.createElement("div");
+        oeHeader.className = "obj-specific-kicker cover-anim-item";
+        oeHeader.textContent = slide.etiquetaEspecificos || "Objetivos Específicos";
+        this.bulletsElement.appendChild(oeHeader);
+      }
+
       // Puntos clave limpios y aireados (sin cajas pesadas ni emojis redundantes)
       const leadingEmojiRegex = /^(\p{Extended_Pictographic}(?:\uFE0F|\u200D\p{Extended_Pictographic})*)\s+/u;
       slide.puntosClave.forEach((punto) => {
