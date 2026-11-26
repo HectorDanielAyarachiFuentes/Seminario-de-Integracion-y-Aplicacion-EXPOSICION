@@ -290,7 +290,7 @@ window.Presentation3D_Objects["anim_06"] = {
       false,
       { x: 0.52, y: 0.16 }
     );
-    antLabel.position.set(1.07, -0.74, 0.64);
+    antLabel.position.set(1.44, -0.74, 0.90);
     antGroup.add(antLabel);
 
     g.add(antGroup);
@@ -429,7 +429,7 @@ window.Presentation3D_Objects["anim_06"] = {
     g.add(activeHalo);
     engine.nodeActiveHalo06 = activeHalo;
 
-    // Etiquetas explicativas territoriales sobre el mapa geodésico
+    // Etiquetas explicativas territoriales con márgenes limpios alrededor del mapa
     const lblTerritorio = engine.createLabelSprite(
       "UBICACIÓN ESPACIO–TEMPORAL",
       "CURZAS–UNCo • Ejecución Mayo–Noviembre 2027",
@@ -437,7 +437,7 @@ window.Presentation3D_Objects["anim_06"] = {
       true,
       { x: 1.44 }
     );
-    lblTerritorio.position.set(0.0, 0.56, -0.25);
+    lblTerritorio.position.set(0.0, 0.74, -0.45);
     g.add(lblTerritorio);
 
     const lblViedma = engine.createLabelSprite(
@@ -445,9 +445,9 @@ window.Presentation3D_Objects["anim_06"] = {
       "Conducción Académica y Cogobierno",
       "#996515",
       false,
-      { x: 0.86 }
+      { x: 0.82 }
     );
-    lblViedma.position.set(viedmaSede.x + 0.14, -0.02, viedmaSede.z - 0.06);
+    lblViedma.position.set(viedmaSede.x + 0.62, -0.18, viedmaSede.z - 0.18);
     g.add(lblViedma);
 
     const lblNodos = engine.createLabelSprite(
@@ -455,9 +455,9 @@ window.Presentation3D_Objects["anim_06"] = {
       "Línea Sur • Costa Atlántica • Valles",
       "#0369a1",
       false,
-      { x: 0.92 }
+      { x: 0.86 }
     );
-    lblNodos.position.set(-0.22, -0.28, 0.34);
+    lblNodos.position.set(-0.74, -0.34, 0.14);
     g.add(lblNodos);
   },
 
@@ -514,7 +514,7 @@ window.Presentation3D_Objects["anim_06"] = {
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_07"] = {
   build(engine, g) {
-    engine.createMuseumPlinth(g, 1.56, 0.22, -1.22);
+    engine.createMuseumPlinth(g, 1.82, 0.22, -1.22);
 
     const netGroup = new THREE.Group();
     netGroup.position.set(0, -0.10, 0);
@@ -774,7 +774,7 @@ window.Presentation3D_Objects["anim_07"] = {
     netGroup.add(radarRing);
     engine.anim07_radarRing = radarRing;
 
-    // Etiquetas explicativas claras (sin superposición)
+    // Etiquetas explicativas claras con márgenes libres sobre las figuras
     const lblMaster = engine.createLabelSprite(
       "DPTO. DE ADMINISTRACIÓN PÚBLICA",
       "Aula Presencial (Viedma) + Red de 10 Nodos Híbridos",
@@ -782,7 +782,7 @@ window.Presentation3D_Objects["anim_07"] = {
       true,
       { x: 1.48 }
     );
-    lblMaster.position.set(0, 1.18, -0.12);
+    lblMaster.position.set(0, 1.30, -0.12);
     netGroup.add(lblMaster);
 
     const lblDocente = engine.createLabelSprite(
@@ -792,7 +792,7 @@ window.Presentation3D_Objects["anim_07"] = {
       false,
       { x: 0.78 }
     );
-    lblDocente.position.set(0, 0.54, -0.06);
+    lblDocente.position.set(0, 0.56, -0.06);
     netGroup.add(lblDocente);
 
     const lblPresencial = engine.createLabelSprite(
@@ -802,7 +802,7 @@ window.Presentation3D_Objects["anim_07"] = {
       false,
       { x: 0.68 }
     );
-    lblPresencial.position.set(-0.76, -0.04, 0.52);
+    lblPresencial.position.set(-1.12, 0.30, 0.42);
     netGroup.add(lblPresencial);
 
     const lblHibrido = engine.createLabelSprite(
@@ -812,20 +812,19 @@ window.Presentation3D_Objects["anim_07"] = {
       false,
       { x: 0.72 }
     );
-    lblHibrido.position.set(0.84, -0.04, 0.52);
+    lblHibrido.position.set(1.22, 0.30, 0.32);
     netGroup.add(lblHibrido);
 
-    // Placa frontal de museo
-    const frontPlaque = engine.createEngravedPlaque(
-      1.08,
-      0.22,
+    // Placa frontal museográfica elevada sobre zócalo al ras del plinto
+    const frontPlaque = engine.createMountedPlaque(
+      1.10,
+      0.27,
       "PRÁCTICA DOCENTE SITUADA",
       "Sede Viedma y 10 Nodos • Res. CD-CURZA N° 196/22",
       ["ESTATUTO UNCo", "ORD. 0910/97", "CCT 1246/15"],
-      { theme: "dark" }
+      { theme: "dark", floorY: -1.0385 - (-0.10) }
     );
-    frontPlaque.position.set(0, -0.84, 1.24);
-    frontPlaque.rotation.x = -0.28;
+    frontPlaque.position.set(0, 0, 1.44);
     netGroup.add(frontPlaque);
 
     g.add(netGroup);
@@ -1024,7 +1023,7 @@ window.Presentation3D_Objects["anim_08"] = {
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_09"] = {
   build(engine, g) {
-    engine.createMuseumPlinth(g, 1.68, 0.22, -1.22);
+    engine.createMuseumPlinth(g, 1.80, 0.22, -1.22);
 
     const sceneGroup = new THREE.Group();
     sceneGroup.position.set(0, -0.08, 0);
@@ -1082,7 +1081,7 @@ window.Presentation3D_Objects["anim_09"] = {
       ctx.fillText("2 NEGATIVAS = VACANCIA", cw / 2, 134);
       ctx.fillStyle = "#94a3b8";
       ctx.font = "600 18px 'Inter', sans-serif";
-      ctx.fillText("Lógica Sumativa • Prevención", cw / 2, 190);
+      ctx.fillText("Control Anual • ¿Cautela?", cw / 2, 190);
       const tex = new THREE.CanvasTexture(c);
       tex.minFilter = THREE.LinearFilter;
       return tex;
@@ -1117,13 +1116,13 @@ window.Presentation3D_Objects["anim_09"] = {
 
     // Etiqueta clara encima de la escena izquierda
     const lblLeftProblem = engine.createLabelSprite(
-      "HOY: CONTROL SUMATIVO (ART. 75)",
-      "Peso punitivo aislado • Prevención docente",
+      "HIPÓTESIS: CONTROL (ART. 75)",
+      "¿Genera cautela? • A comprobar en 2027",
       "#991b1b",
       false,
       { x: 0.94 }
     );
-    lblLeftProblem.position.set(-0.78, 0.68, 0.12);
+    lblLeftProblem.position.set(-0.82, 0.72, 0.12);
     sceneGroup.add(lblLeftProblem);
 
     // ── CENTRO: LA BRECHA FORMATIVA (ART. 76 SIN INSUMO PEDAGÓGICO) ──
@@ -1139,13 +1138,13 @@ window.Presentation3D_Objects["anim_09"] = {
     sceneGroup.add(bridgeArc);
 
     const lblBreach = engine.createLabelSprite(
-      "BRECHA ART. 75 vs. ART. 76",
-      "¿Es viable pasar del control a la formación?",
+      "¿BRECHA ART. 75 vs. ART. 76?",
+      "¿Sería viable pasar del control a mejorar clases?",
       "#0f2d59",
       true,
       { x: 1.38 }
     );
-    lblBreach.position.set(0.0, 1.24, 0.10);
+    lblBreach.position.set(0.0, 1.40, 0.10);
     sceneGroup.add(lblBreach);
 
     // ── ESCENA DERECHA (OBJETO DE ESTUDIO: MODELO 360° FORMATIVO + ART. 76) ──
@@ -1188,11 +1187,11 @@ window.Presentation3D_Objects["anim_09"] = {
     torchFlame.position.set(0.24, 0.68, 0.10);
     rightScene.add(torchFlame);
 
-    // 3 Figuras clásicas acompañantes alrededor (Pares, Estudiantes y Dirección) con etiquetas explícitas
+    // 3 Figuras clásicas acompañantes alrededor (Pares, Estudiantes y Dirección) con etiquetas fuera de las figuras
     const companions = [
-      { angle: Math.PI * 0.85, col: 0x0f625a, title: "PARES", sub: "Coevaluación", lblOffset: [-0.14, 0.66, 0.08] },
-      { angle: Math.PI * 0.15, col: 0x0284c7, title: "ESTUDIANTES", sub: "Viedma y Nodos", lblOffset: [0.16, 0.66, 0.08] },
-      { angle: -Math.PI * 0.50, col: 0xb45309, title: "DIRECCIÓN", sub: "Art. 76", lblOffset: [0.0, 0.84, -0.10] }
+      { angle: Math.PI * 0.85, col: 0x0f625a, title: "PARES", sub: "Coevaluación", lblPos: [-0.86, 1.06, 0.38], lblW: 0.44 },
+      { angle: Math.PI * 0.15, col: 0x0284c7, title: "ESTUDIANTES", sub: "Viedma y Nodos", lblPos: [0.92, 1.04, 0.36], lblW: 0.50 },
+      { angle: -Math.PI * 0.50, col: 0xb45309, title: "DIRECCIÓN", sub: "Art. 76", lblPos: [0.46, 1.18, -0.34], lblW: 0.46 }
     ];
     companions.forEach((c) => {
       const r = 0.48;
@@ -1207,8 +1206,8 @@ window.Presentation3D_Objects["anim_09"] = {
       peer.rotation.y = Math.atan2(-cx, -cz);
       rightScene.add(peer);
 
-      const roleLbl = engine.createLabelSprite(c.title, c.sub, "#0f2d59", false, { x: 0.50 });
-      roleLbl.position.set(cx + c.lblOffset[0], c.lblOffset[1], cz + c.lblOffset[2]);
+      const roleLbl = engine.createLabelSprite(c.title, c.sub, "#0f2d59", false, { x: c.lblW });
+      roleLbl.position.set(c.lblPos[0], c.lblPos[1], c.lblPos[2]);
       rightScene.add(roleLbl);
     });
 
@@ -1234,26 +1233,25 @@ window.Presentation3D_Objects["anim_09"] = {
 
     // Etiqueta clara encima de la escena derecha
     const lblRightObject = engine.createLabelSprite(
-      "OBJETO: MODELO 360° FORMATIVO",
-      "4 Miradas • Cero Sanciones • Nutre al Art. 76",
+      "OBJETO: POSIBLE MODELO 360°",
+      "4 miradas para mejorar • Sin sanciones",
       "#0f625a",
       false,
       { x: 0.96 }
     );
-    lblRightObject.position.set(0.76, 0.54, 0.16);
+    lblRightObject.position.set(0.84, 0.88, 0.08);
     sceneGroup.add(lblRightObject);
 
-    // Placa museográfica frontal explicativa
-    const frontPlaque = engine.createEngravedPlaque(
-      1.18,
-      0.24,
-      "EL PROBLEMA Y OBJETO DE ESTUDIO",
-      "Tensión Art. 75 (Vacancia) vs. Art. 76 (Capacitación)",
-      ["CONTROL SUMATIVO", "BRECHA FORMATIVA", "FACTIBILIDAD 360°"],
-      { theme: "dark" }
+    // Placa museográfica frontal asentada sobre zócalo propio sin recortes ni solapes
+    const frontPlaque = engine.createMountedPlaque(
+      1.20,
+      0.28,
+      "PROBLEMA Y OBJETO A INDAGAR",
+      "Posible tensión Art. 75 (cargo) vs. Art. 76 (capacitación)",
+      ["CONTROL VIGENTE", "HIPÓTESIS FORMATIVA", "VIABILIDAD A EVALUAR"],
+      { theme: "dark", floorY: -1.0385 - (-0.08) }
     );
-    frontPlaque.position.set(0, -0.90, 0.96);
-    frontPlaque.rotation.x = -0.28;
+    frontPlaque.position.set(0, 0, 1.24);
     sceneGroup.add(frontPlaque);
 
     g.add(sceneGroup);
@@ -1277,7 +1275,7 @@ window.Presentation3D_Objects["anim_09"] = {
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_10"] = {
   build(engine, g) {
-    engine.createMuseumPlinth(g, 1.68, 0.22, -1.22);
+    engine.createMuseumPlinth(g, 1.80, 0.22, -1.22);
 
     const pentGroup = new THREE.Group();
     pentGroup.position.set(0, -0.06, 0);
@@ -1319,35 +1317,35 @@ window.Presentation3D_Objects["anim_10"] = {
     // Etiqueta maestra de la Pregunta Central
     const lblPregunta = engine.createLabelSprite(
       "PREGUNTA CENTRAL (2027)",
-      "¿Qué condiciones hacen factible un 360° en el Dpto.?",
+      "¿Sería viable un modelo 360° en el Departamento?",
       "#0f2d59",
       true,
       { x: 1.44 }
     );
-    lblPregunta.position.set(0, 1.24, 0.12);
+    lblPregunta.position.set(0, 1.40, 0.12);
     pentGroup.add(lblPregunta);
 
     // Anfiteatro Semicircular de las 5 Dimensiones (sin giros que tapen textos ni colisiones)
     const dims = [
       {
         name: "1. NORMATIVA", sub: "Cero sanciones • CCT",
-        x: -1.16, z: 0.24, h: 0.44, col: 0x0f2d59, lblY: 0.22, kind: "scales"
+        x: -1.24, z: 0.24, h: 0.44, col: 0x0f2d59, lblX: -1.42, lblY: 0.44, kind: "scales"
       },
       {
         name: "2. TÉCNICA", sub: "Moodle/SIU • Anonimato",
-        x: -0.70, z: -0.46, h: 0.68, col: 0x0ea5e9, lblY: 0.56, kind: "lens"
+        x: -0.74, z: -0.46, h: 0.68, col: 0x0ea5e9, lblX: -0.92, lblY: 0.58, kind: "lens"
       },
       {
         name: "3. ORGANIZACIONAL", sub: "Enlace Plan Art. 76",
-        x: 0.00, z: -0.76, h: 0.88, col: 0xf59e0b, lblY: 0.86, kind: "gear"
+        x: 0.00, z: -0.78, h: 0.88, col: 0xf59e0b, lblX: 0.00, lblY: 0.86, kind: "gear"
       },
       {
         name: "4. CULTURAL", sub: "Confianza Actoral",
-        x: 0.70, z: -0.46, h: 0.68, col: 0x10b981, lblY: 0.56, kind: "rings"
+        x: 0.74, z: -0.46, h: 0.68, col: 0x10b981, lblX: 0.92, lblY: 0.58, kind: "rings"
       },
       {
         name: "5. GOBERNANZA", sub: "Cogobierno y ADUNC",
-        x: 1.16, z: 0.24, h: 0.44, col: 0x8b5cf6, lblY: 0.22, kind: "council"
+        x: 1.24, z: 0.24, h: 0.44, col: 0x8b5cf6, lblX: 1.42, lblY: 0.44, kind: "council"
       }
     ];
 
@@ -1427,21 +1425,20 @@ window.Presentation3D_Objects["anim_10"] = {
 
       // Etiqueta explícita sobre cada columna
       const dimLbl = engine.createLabelSprite(d.name, d.sub, "#0f2d59", false, { x: 0.66 });
-      dimLbl.position.set(d.x, d.lblY, d.z);
+      dimLbl.position.set(d.lblX !== undefined ? d.lblX : d.x, d.lblY, d.z);
       pentGroup.add(dimLbl);
     });
 
-    // Placa museográfica frontal
-    const frontPlaque = engine.createEngravedPlaque(
-      1.14,
-      0.23,
+    // Placa museográfica frontal asentada sobre zócalo al ras del plinto
+    const frontPlaque = engine.createMountedPlaque(
+      1.16,
+      0.28,
       "5 DIMENSIONES DE FACTIBILIDAD",
       "Pregunta Rectora del Estudio en el CURZAS (2027)",
       ["NORMATIVA • TÉCNICA • ORGANIZACIONAL • CULTURAL • GOBERNANZA"],
-      { theme: "dark" }
+      { theme: "dark", floorY: -1.0385 - (-0.06) }
     );
-    frontPlaque.position.set(0, -0.90, 0.94);
-    frontPlaque.rotation.x = -0.28;
+    frontPlaque.position.set(0, 0, 1.24);
     pentGroup.add(frontPlaque);
 
     g.add(pentGroup);

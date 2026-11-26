@@ -457,7 +457,7 @@ const PRESENTACION_DATA = {
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // LAS 18 FILMINAS MINIMALISTAS — POCAS PALABRAS Y FOCO VISUAL CLARO
+  // LAS 18 FILMINAS MINIMALISTAS — EN POTENCIAL Y LENGUAJE DOCENTE CLARO
   // ═══════════════════════════════════════════════════════════════════════════
   slides: [
     // ─────────────────────────────────────────────────────────────────────────
@@ -469,10 +469,10 @@ const PRESENTACION_DATA = {
       esPortada: true,
       tiempoSugerido: "0:25 min",
       bloque: "APERTURA",
-      esquema: "Carátula Oficial del Proyecto TFG (0:25)",
-      badge: "Proyecto TFG • Res. 266/23",
+      esquema: "Carátula del Anteproyecto TFG (0:25)",
+      badge: "Proyecto Previo TFG • Res. 266/23",
       titulo: "Evaluación Docente y Factibilidad de un Modelo 360°",
-      subtitulo: "Departamento de Administración Pública • CURZAS–UNCo (2027)",
+      subtitulo: "Plan de investigación situado en el Dpto. de Administración Pública • CURZAS–UNCo (2027)",
       fichaPortada: [
         { etiqueta: "Tesista", valor: "Tec. Sup. Héctor D. Ayarachi Fuentes (Leg. 8252)" },
         { etiqueta: "Carrera", valor: "Lic. en Gestión de Recursos Humanos (CCC)" },
@@ -480,9 +480,9 @@ const PRESENTACION_DATA = {
         { etiqueta: "Cátedra SIA", valor: "Dra. D. Noguera · Esp. F. Abeiro · Esp. M. C. Aguirre" }
       ],
       puntosClave: [],
-      metadatosFooter: "Res. CD-CURZA N° 266/23 • SIA 2026",
+      metadatosFooter: "Res. CD-CURZA N° 266/23 • SIA 2026 • Estudio previsto 2027",
       escena3D: "anim_01",
-      guionOrador: "[Saludo y presentación • 0:25 min]\nBuenos días al equipo docente de la cátedra: Dra. Deborah Noguera, Esp. Federico Abeiro y Esp. María Cecilia Aguirre.\n\nPresento la defensa oral de mi Proyecto previo de Trabajo Final de Graduación (Res. CD-CURZA 266/23): un plan de investigación para ejecutar en 2027 que busca averiguar si es viable incorporar una evaluación docente de retroalimentación 360° con fines 100 % formativos en el Departamento de Administración Pública del CURZAS."
+      guionOrador: "[Saludo y aclaración inicial • 0:25 min]\nBuenos días al equipo docente de la cátedra: Dra. Deborah Noguera, Esp. Federico Abeiro y Esp. María Cecilia Aguirre.\n\nLo que presento hoy es un proyecto previo de Trabajo Final de Graduación (Res. CD-CURZA 266/23). Aclaro desde el inicio que todo está planteado en potencial: todavía no traemos resultados ni proponemos imponer un sistema nuevo, sino un plan para investigar en 2027 si sería viable incorporar una evaluación docente «360°» —es decir, combinar distintas miradas solo para acompañar y mejorar las clases— en el Departamento de Administración Pública del CURZAS."
     },
 
     {
@@ -499,29 +499,29 @@ const PRESENTACION_DATA = {
         {
           romano: "01",
           titulo: "El Problema",
-          resumen: "Ubicación CURZAS • Situación actual y objeto • 5 Dimensiones y Objetivos",
+          resumen: "Dónde queda y qué pasa hoy • Qué nos preguntamos • Objetivos",
           targetSlide: 2,
           tono: "b1"
         },
         {
           romano: "02",
           titulo: "Estado de la Cuestión y Marco Teórico",
-          resumen: "Autores clave (Longo, 360°, Gobernanza) • Antecedentes en 3 escalas",
+          resumen: "Qué es el 360° en palabras simples • Estudios previos • Posible vacío",
           targetSlide: 7,
           tono: "b2"
         },
         {
           romano: "03",
           titulo: "Metodología",
-          resumen: "Diseño CUAL → cuan • Muestra (n=9 / n=45) • Cronograma y Ética",
+          resumen: "Cómo investigaríamos en 2027 • Muestras • Tiempos y cuidado de datos",
           targetSlide: 10,
           tono: "b3"
         }
       ],
       puntosClave: [],
-      metadatosFooter: "3 Secciones + Cierre y Bibliografía APA 7",
+      metadatosFooter: "3 Secciones + Cierre y Referencias APA 7",
       escena3D: "anim_03",
-      guionOrador: "[Hoja de ruta inicial • 0:25 min]\nPara ordenar los quince minutos de exposición, vamos a recorrer tres ejes:\n\n1. Primero, «El Problema»: qué es el CURZAS y dónde nos ubicamos, qué pasa hoy con la evaluación docente, cuál es nuestro objeto de estudio y qué nos proponemos medir.\n2. Segundo, «Estado de la Cuestión y Marco Teórico»: con qué conceptos y estudios previos respaldamos el diseño.\n3. Y tercero, «Metodología»: cómo haremos el trabajo de campo en 2027, con qué muestras, plazos y garantías éticas."
+      guionOrador: "[Hoja de ruta inicial • 0:25 min]\nPara ordenar los quince minutos de charla, vamos a recorrer tres grandes partes:\n\n1. Primero, «El Problema»: ubicarnos en tiempo y espacio en el CURZAS, revisar qué hipótesis nos planteamos sobre la evaluación actual y contar qué querríamos averiguar.\n2. Segundo, «Estado de la Cuestión y Marco Teórico»: explicar en lenguaje sencillo qué ideas y experiencias previas nos sirven de guía.\n3. Y tercero, «Metodología»: contar cómo llevaríamos adelante el trabajo de campo en 2027, cuidando siempre la privacidad y el respeto hacia quienes participen."
     },
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -535,11 +535,11 @@ const PRESENTACION_DATA = {
       esquema: "1.1 Ubicación Espacio-Temporal: El CURZAS (0:40)",
       badge: "Paso 1 • Espacio y Tiempo",
       titulo: "El CURZAS en el Territorio (2027)",
-      subtitulo: "Ubicación espacio-temporal de nuestra organización universitaria",
+      subtitulo: "Dónde y cuándo realizaríamos la investigación",
       puntosClave: [
         "<strong>¿Qué es el CURZAS?</strong> Complejo Universitario Regional de la UNCo (Art. 17)",
-        "<strong>¿Dónde está presente?</strong> Sede Central en Viedma + 10 Nodos en Río Negro",
-        "<strong>Recorte temporal:</strong> Trabajo de campo previsto de mayo a noviembre de 2027"
+        "<strong>¿Dónde funciona?</strong> Sede Central en Viedma + 10 Nodos en Río Negro",
+        "<strong>¿Cuándo iríamos al campo?</strong> Trabajo previsto de mayo a noviembre de 2027"
       ],
       metadatosFooter: "Eje 1 • Ordenanza CS N° 0988/25 • Res. CD N° 135/22",
       escena3D: "anim_06",
@@ -550,7 +550,7 @@ const PRESENTACION_DATA = {
         etiqueta: "🗺️ Maqueta 3D Nodos",
         atajo: "A"
       },
-      guionOrador: "[Ubicación espacio-temporal • 0:40 min]\nPrimero nos ubicamos en tiempo y espacio: investigaremos entre mayo y noviembre de 2027 en el CURZAS de la Universidad Nacional del Comahue.\n\nEl CURZAS no se limita a un edificio: articula su Sede Central en Viedma con diez Nodos territoriales distribuidos en la Línea Sur, la Costa Atlántica y los Valles de Río Negro."
+      guionOrador: "[Ubicación espacio-temporal • 0:40 min]\nArrancamos ubicándonos en tiempo y espacio: el trabajo de campo se realizaría entre mayo y noviembre de 2027 dentro del CURZAS de la Universidad Nacional del Comahue.\n\nComo se ve en el mapa, el CURZAS no es solo un edificio en Viedma: también llega de manera presencial y virtual a diez localidades o Nodos distribuidos en la Línea Sur, la Costa Atlántica y los Valles de Río Negro."
     },
 
     {
@@ -559,17 +559,17 @@ const PRESENTACION_DATA = {
       tiempoSugerido: "0:45 min",
       bloque: "EJE 1 · EL PROBLEMA",
       esquema: "1.1 Unidad Académica y Práctica Híbrida (0:45)",
-      badge: "Paso 2 • Dónde se Establece",
+      badge: "Paso 2 • Dónde Miramos",
       titulo: "Departamento de Administración Pública",
-      subtitulo: "Cómo funciona hoy la docencia en la unidad académica estudiada",
+      subtitulo: "El espacio concreto donde observaríamos la docencia actual",
       puntosClave: [
-        "<strong>Unidad de estudio:</strong> Carreras de Administración Pública y CCC en RR. HH.",
-        "<strong>Práctica docente real:</strong> Aula presencial en Viedma + red híbrida en 10 Nodos",
-        "<strong>Normas vigentes:</strong> Estatuto UNCo, Ord. 0910/97 y Convenio Colectivo 1246/15"
+        "<strong>Dónde enfocamos:</strong> Carreras de Administración Pública y Lic. en RR. HH.",
+        "<strong>Doble modalidad:</strong> Clases en aula de Viedma + aulas virtuales hacia 10 Nodos",
+        "<strong>Reglas vigentes:</strong> Estatuto UNCo, Ord. 0910/97 y Convenio Colectivo 1246/15"
       ],
       metadatosFooter: "Eje 1 • Docencia Híbrida (Res. CD-CURZA N° 196/22)",
       escena3D: "anim_07",
-      guionOrador: "[Dónde se establece adentro del CURZAS • 0:45 min]\nBajando un escalón hacia nuestro ámbito concreto, nos situamos en el Departamento de Administración Pública (donde se dictan la Licenciatura en Administración Pública y el CCC de Recursos Humanos).\n\nComo muestra la escena, aquí el docente enseña al mismo tiempo en el aula presencial de Viedma y de forma híbrida hacia estudiantes en los diez Nodos (Res. 196/2022), bajo el Estatuto, la Ord. 0910/97 y el CCT 1246/15."
+      guionOrador: "[Dónde se ubica dentro del CURZAS • 0:45 min]\nDentro del CURZAS elegimos trabajar específicamente con el Departamento de Administración Pública, donde se cursan la Licenciatura en Administración Pública y el CCC de Recursos Humanos.\n\nLo interesante de este espacio —como ilustra la escena— es que muchos docentes dan clase a la vez para quienes están en Viedma y para estudiantes conectados desde los diez Nodos (Res. 196/2022), siempre bajo el Estatuto de la UNCo, el Reglamento de Carrera Docente y el Convenio Colectivo de Trabajo."
     },
 
     {
@@ -578,17 +578,17 @@ const PRESENTACION_DATA = {
       tiempoSugerido: "0:55 min",
       bloque: "EJE 1 · EL PROBLEMA",
       esquema: "1.2 El Problema y Objeto de Estudio (0:55)",
-      badge: "Paso 3 • Nudo y Objeto",
-      titulo: "El Problema y Objeto de Estudio",
-      subtitulo: "Del peso del control sumativo a una retroalimentación formativa",
+      badge: "Paso 3 • Hipótesis y Objeto",
+      titulo: "El Problema y Objeto a Indagar",
+      subtitulo: "De la evaluación pensada como control a una posible mirada formativa",
       puntosClave: [
-        "<strong>¿Qué ocurre hoy?</strong> Controles formales (Art. 74 y Art. 75: 2 negativas = vacancia)",
-        "<strong>El problema:</strong> Genera prevención docente y deja sin insumo formativo al Art. 76",
-        "<strong>Objeto de estudio:</strong> Factibilidad de un modelo 360° 100 % formativo y sin sanciones"
+        "<strong>Reglas actuales:</strong> Informe anual (Art. 74) y evaluación cuatrienal (Art. 75: riesgo cargo)",
+        "<strong>Hipótesis a verificar:</strong> ¿Genera cautela este control y falta guía para el Art. 76?",
+        "<strong>Objeto de estudio:</strong> Analizar si sería viable un 360° solo para mejorar, sin sanciones"
       ],
-      metadatosFooter: "Eje 1 • Tensión Art. 75 vs. Art. 76 (Estatuto UNCo)",
+      metadatosFooter: "Eje 1 • Posible Tensión Art. 75 vs. Art. 76 (A comprobar en 2027)",
       escena3D: "anim_09",
-      guionOrador: "[Qué ocurre hoy y cuál es el problema • 0:55 min]\n¿Qué ocurre hoy? Funcionan el informe anual con encuesta (Art. 74) y la evaluación cuatrienal (Art. 75), donde dos dictámenes negativos seguidos declaran vacante el cargo.\n\nComo representa la figura de la izquierda, ese peso sumativo genera una prevención lógica en el docente; mientras tanto, el programa anual de capacitación (Art. 76) carece de devoluciones pedagógicas ricas para aulas presenciales e híbridas.\n\n[Objeto de estudio]\nPor eso nuestro objeto de estudio —representado en el círculo colegiado de la derecha— es analizar si es factible implementar una retroalimentación 360° puramente formativa, desconectada de toda sanción."
+      guionOrador: "[Qué pasa hoy y qué hipótesis indagaremos • 0:55 min]\n¿Cuál es la inquietud que dispara esta investigación? En los papeles vigentes existen dos instancias: el informe anual con encuesta estudiantil (Art. 74) y la evaluación cada cuatro años (Art. 75), donde dos resultados negativos seguidos pueden dejar vacante un cargo.\n\nComo simboliza la figura de la izquierda, suponemos como hipótesis inicial —algo que todavía debemos comprobar escuchando a la gente en 2027— que cuando evaluar se asocia a aprobar o perder el cargo, eso podría generar cautela o desconfianza en el docente. Al mismo tiempo, querríamos averiguar si el programa anual de capacitación (Art. 76) hoy recibe o no devoluciones claras sobre lo que pasa en las aulas presenciales y virtuales.\n\n[Objeto de estudio]\nPor eso nuestro objeto de estudio —representado en el círculo de la derecha— sería analizar si resultaría viable implementar una evaluación «360°» (juntando la mirada del propio docente, sus colegas, estudiantes y dirección) pensada únicamente para ayudar a mejorar las clases y planificar capacitaciones, totalmente separada de sanciones o legajos."
     },
 
     {
@@ -599,16 +599,16 @@ const PRESENTACION_DATA = {
       esquema: "1.3 Pregunta Central y 5 Dimensiones (0:40)",
       badge: "Paso 4 • Factibilidad",
       titulo: "Pregunta Central y 5 Dimensiones",
-      subtitulo: "¿Qué condiciones reales vuelven factible un modelo 360° en 2027?",
+      subtitulo: "¿Qué tendría que pasar en 2027 para que un modelo 360° fuera viable?",
       puntosClave: [
-        "<strong>1. Normativa:</strong> Compatibilidad con Estatuto y CCT (cero efecto punitivo)",
-        "<strong>2. Técnica:</strong> Moodle / SIU breves, usables en Nodos y con anonimato real",
-        "<strong>3. Organizacional:</strong> Enlace directo al Plan Art. 76 sin sobrecarga burocrática",
-        "<strong>4 y 5. Cultural y Gobernanza:</strong> Confianza actoral + acuerdo paritario con ADUNC"
+        "<strong>1. Reglas y leyes:</strong> Que encaje con Estatuto y Convenio sin tocar estabilidad",
+        "<strong>2. Herramientas:</strong> Que Moodle / SIU permitan encuestas breves y 100 % anónimas",
+        "<strong>3. Organización:</strong> Que sirva para armar cursos del Art. 76 sin sumar papeleo",
+        "<strong>4 y 5. Clima y Acuerdos:</strong> Confianza entre pares + acuerdo en cogobierno y ADUNC"
       ],
-      metadatosFooter: "Eje 1 • Las 5 Condiciones de Factibilidad",
+      metadatosFooter: "Eje 1 • Las 5 Condiciones de Factibilidad a Evaluar",
       escena3D: "anim_10",
-      guionOrador: "[Pregunta central y 5 dimensiones • 0:40 min]\nDe ese problema surge nuestra pregunta central: ¿qué condiciones reales existen en 2027 en el Departamento para que un modelo 360° sea factible?\n\nLa analizamos en cinco dimensiones interconectadas: 1) normativa (cero sanciones); 2) técnica (Moodle/SIU ágiles y anónimos); 3) organizacional (nutrir al Art. 76 sin burocracia); 4) cultural (confianza entre actores); y 5) gobernanza multinivel (cogobierno y paritaria con ADUNC)."
+      guionOrador: "[Pregunta central y 5 dimensiones • 0:40 min]\nDe esa inquietud nace nuestra pregunta central: ¿estarían dadas las condiciones reales en 2027 en el Departamento para aplicar un modelo así?\n\nPara no dar nada por hecho, lo vamos a mirar desde cinco costados distintos:\n1) Reglas y normas: si sería compatible con el Estatuto y el Convenio Colectivo sin riesgo sancionatorio;\n2) Lo técnico: si Moodle o el SIU permitirían encuestas muy cortas, fáciles de usar en los Nodos y totalmente anónimas;\n3) La organización diaria: si ayudaría a diseñar capacitaciones del Art. 76 sin recargar de tareas;\n4) El clima humano: si habría confianza real entre docentes, alumnos y directivos;\n5) Los acuerdos políticos: si tendría consenso en los órganos de cogobierno y con el gremio ADUNC."
     },
 
     {
@@ -617,20 +617,20 @@ const PRESENTACION_DATA = {
       tiempoSugerido: "0:40 min",
       bloque: "EJE 1 · EL PROBLEMA",
       esquema: "1.3 Objetivo General vs. Específicos (0:40)",
-      badge: "Tabla 1 • Dos Niveles de Objetivos",
+      badge: "Tabla 1 • Dos Niveles de Metas",
       titulo: "Objetivo General y Específicos",
-      subtitulo: "Diferenciación entre la meta integral y su desglose operativo (Tabla 1)",
-      objetivoGeneral: "Analizar las condiciones de factibilidad (organizacional, técnica, normativa, cultural y de gobernanza) para implementar un modelo 360° docente en el Dpto. de Administración Pública (2027).",
-      etiquetaEspecificos: "Objetivos Específicos (Escalones Operativos)",
+      subtitulo: "Qué buscaríamos lograr en todo el estudio y en cada etapa (Tabla 1)",
+      objetivoGeneral: "Analizar las condiciones reales (legales, técnicas, organizativas, culturales y de acuerdos) para saber si sería factible implementar una evaluación 360° en el Dpto. de Administración Pública (2027).",
+      etiquetaEspecificos: "Objetivos Específicos (Pasos concretos en 2027)",
       puntosClave: [
-        "<strong>OE1 · Normativo:</strong> Relevar normas estatutarias vs. aplicación efectiva",
-        "<strong>OE2 · Cultural:</strong> Explorar percepciones y confianza de docentes, alumnos y gestión",
-        "<strong>OE3 · Gobernanza:</strong> Identificar límites técnicos, paritarios y pares horizontales",
-        "<strong>OE4 · Propositivo:</strong> Formular lineamientos según condiciones y límites reales"
+        "<strong>OE1 · Reglas vs. práctica:</strong> Revisar qué dicen las normas y cómo se evalúa hoy en el SIU",
+        "<strong>OE2 · Escuchar voces:</strong> Conocer qué piensan docentes, estudiantes y gestión sobre el 360°",
+        "<strong>OE3 · Trabas y soluciones:</strong> Detectar límites técnicos, paritarios y pares en cátedras chicas",
+        "<strong>OE4 · Pautas posibles:</strong> Sugerir lineamientos prudentes solo hasta donde el campo acompañe"
       ],
       metadatosFooter: "Eje 1 • Matriz de Consistencia y Articulación con Longo (Tabla 1)",
       escena3D: "anim_11",
-      guionOrador: "[Diferencia entre Objetivo General y Específicos • 0:40 min]\nTal como plasmamos en el proyecto escrito y en la Matriz de Consistencia (Tabla 1), distinguimos dos niveles de objetivos:\n\n[1. Objetivo General — Meta global]\nPor un lado, el Objetivo General fija el alcance integral del estudio: analizar las condiciones de factibilidad organizacional, técnica, normativa, cultural y de gobernanza multinivel para implementar un modelo 360° en el Departamento en 2027 (vinculado a la Gestión del Rendimiento de Longo).\n\n[2. Objetivos Específicos — Pasos operativos]\nPor otro lado, los cuatro Objetivos Específicos desglosan cómo vamos a alcanzar empíricamente ese objetivo general paso a paso:\n- OE1 (normativo-institucional): distinguir qué prescriben las normas frente a cómo se evalúa realmente hoy.\n- OE2 (intersubjetivo-cultural): explorar percepciones, disposiciones y confianza en docentes, estudiantes y autoridades.\n- OE3 (gobernanza multinivel): identificar condicionantes técnicos, paritarios (ADUNC) y la coevaluación mediante pares horizontales en cátedras unipersonales.\n- OE4 (propositivo): proponer lineamientos orientativos ajustados a los límites reales hallados en terreno."
+      guionOrador: "[Diferencia entre Objetivo General y Específicos • 0:40 min]\nSiguiendo la Matriz de Consistencia del proyecto (Tabla 1), separamos claramente dos niveles de objetivos:\n\n[1. Objetivo General — La gran pregunta]\nPor un lado, el Objetivo General resume la meta completa: averiguar si estarían dadas las cinco condiciones de factibilidad para pensar en una evaluación 360° dentro del Departamento en 2027.\n\n[2. Objetivos Específicos — Los cuatro pasos para comprobarlo]\nY los cuatro Objetivos Específicos marcan el camino concreto paso a paso:\n- Primero (OE1), mirar las reglas escritas junto a lo que realmente se hace hoy con encuestas e informes.\n- Segundo (OE2), escuchar qué opinan docentes, alumnos y autoridades, y qué necesitarían para confiar.\n- Tercero (OE3), detectar qué trabas técnicas o gremiales habría, e indagar si en materias de un solo docente serviría dialogar con colegas de materias cercanas («pares horizontales»).\n- Y cuarto (OE4), si el campo muestra viabilidad —y respetando los límites que encontremos—, redactar recomendaciones simples y posibles."
     },
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -641,19 +641,19 @@ const PRESENTACION_DATA = {
       numero: 8,
       tiempoSugerido: "1:15 min",
       bloque: "EJE 2 · ESTADO Y MARCO TEÓRICO",
-      esquema: "2.1 Epistemología y Subsistemas de Longo (1:15)",
+      esquema: "2.1 Ideas Teóricas en Lenguaje Simple (1:15)",
       badge: "Marco Teórico",
-      titulo: "Gestión Pública del Rendimiento",
-      subtitulo: "De la Garza Toledo (2001) y Francisco Longo (2006)",
+      titulo: "Mirada Integral del Desempeño",
+      subtitulo: "De la Garza Toledo (2001) y Francisco Longo (2006) explicados fácil",
       puntosClave: [
-        "<strong>Configuración abierta:</strong> Explorar lo viable sin conclusiones previas",
-        "<strong>Rendimiento + Desarrollo:</strong> Evaluar solo sirve si nutre al Art. 76",
-        "<strong>Empleo + Relaciones:</strong> Resguardo del CCT 1246/15 y diálogo sindical"
+        "<strong>Sin conclusiones previas:</strong> De la Garza propone usar la teoría como guía abierta",
+        "<strong>Evaluar para capacitar:</strong> Según Longo, evaluar tendría sentido si nutre al Art. 76",
+        "<strong>Trabajo y acuerdos:</strong> Cuidar la estabilidad laboral y el diálogo gremial (CCT 1246/15)"
       ],
-      metadatosFooter: "Eje 2 • 5 Subsistemas de Longo (2006)",
+      metadatosFooter: "Eje 2 • 5 Engranajes de Longo (2006) • Sin recetas cerradas",
       escena3D: "anim_12",
       diagramaSVG: "assets/Sistemas-longo.svg",
-      guionOrador: "[Autores centrales • 1:15 min]\nPasando al segundo eje, usamos la teoría como configuración abierta (De la Garza Toledo, 2001) para no forzar conclusiones previas.\n\nNuestra columna vertebral es Francisco Longo (2006), quien demuestra que evaluar el rendimiento falla si queda aislado: debemos conectarlo con capacitación del Art. 76 (desarrollo), aulas híbridas (organización), estabilidad estatutaria (empleo) y consenso paritario (relaciones humanas)."
+      guionOrador: "[Autores centrales en lenguaje claro • 1:15 min]\nPasando al segundo eje, ¿con qué ideas generales miraríamos el problema? Primero, con Enrique de la Garza Toledo (2001), entendemos la teoría como una guía abierta, no como una receta cerrada: vamos a investigar para ver qué pasa, sin dar respuestas por adelantado.\n\nNuestro autor central es Francisco Longo (2006), quien estudia cómo gestionar personas en instituciones públicas. Longo señala algo muy cercano a nuestra práctica diaria: medir el desempeño por sí solo no ayudaría si queda suelto en una planilla. Para que sirva, debería conectarse con las capacitaciones (Art. 76), con el trabajo real en aulas presenciales y virtuales, con la estabilidad en los cargos y con el diálogo sindical."
     },
 
     {
@@ -661,19 +661,19 @@ const PRESENTACION_DATA = {
       numero: 9,
       tiempoSugerido: "1:20 min",
       bloque: "EJE 2 · ESTADO Y MARCO TEÓRICO",
-      esquema: "2.1 Modelo 360° y Poligobernanza (1:20)",
+      esquema: "2.1 Qué es el 360° y Cómo Decide la Universidad (1:20)",
       badge: "Conceptos Clave",
-      titulo: "Modelo 360° y Poligobernanza",
-      subtitulo: "Cuatro miradas pedagógicas en cuatro planos de decisión",
+      titulo: "Modelo 360° y Niveles de Acuerdo",
+      subtitulo: "Cuatro miradas pedagógicas en cuatro ámbitos universitarios",
       puntosClave: [
-        "<strong>4 Miradas 360°:</strong> Autoevaluación • Pares • Estudiantes • Dirección",
-        "<strong>4 Planos (Cao & Blutman):</strong> UNCo • CURZAS • 10 Nodos • ADUNC",
-        "<strong>Consenso y TIC:</strong> Poder compartido (Matus) y anonimato digital (Oszlak)"
+        "<strong>Qué es el 360°:</strong> Sumar 4 voces (autoevaluación, colegas, alumnos y dirección)",
+        "<strong>4 niveles de decisión:</strong> UNCo • CURZAS • 10 Nodos • Gremio ADUNC",
+        "<strong>Condición de base:</strong> Acuerdos compartidos (Matus) y anonimato digital (Oszlak)"
       ],
-      metadatosFooter: "Eje 2 • Lepsinger & Lucia • Matus • Oszlak",
+      metadatosFooter: "Eje 2 • Lepsinger & Lucia • Cao & Blutman • Matus • Oszlak",
       escena3D: "anim_15",
       diagramaSVG: "assets/modelo_360.svg",
-      guionOrador: "[360° y gobernanza universitaria • 1:20 min]\nCon Chiavenato y Lepsinger & Lucia planteamos triangular cuatro miradas formativas: autoevaluación, pares horizontales, estudiantes y dirección.\n\nY con Cao y Blutman, Matus y Oszlak ordenamos la universidad como arena de poder compartido en cuatro planos —UNCo, CURZAS, Nodos y ADUNC—, exigiendo herramientas digitales con anonimato real y cero tecno-vigilancia sobre los actores situados."
+      guionOrador: "[360° y niveles de decisión explicados fácil • 1:20 min]\nEn palabras simples, ¿qué propone una evaluación «360°» (Chiavenato; Lepsinger & Lucia)? En lugar de depender de una sola voz aislada —como la encuesta estudiantil actual—, propone reunir cuatro miradas para devolverle ideas útiles al docente: su propia autoevaluación, el intercambio con colegas de materias cercanas, la opinión de estudiantes y la mirada de la dirección.\n\nY dado que la universidad pública no funciona por órdenes verticales sino en red —entre Neuquén (UNCo), Viedma (CURZAS), los diez Nodos y el gremio ADUNC (como analizan Cao y Blutman y Carlos Matus)—, entendemos que ninguna herramienta podría aplicarse sin acuerdos previos. Además, siguiendo a Oscar Oszlak, si se usaran Moodle o el SIU debería ser siempre para facilitar y cuidar el anonimato, nunca como vigilancia digital."
     },
 
     {
@@ -681,18 +681,18 @@ const PRESENTACION_DATA = {
       numero: 10,
       tiempoSugerido: "1:25 min",
       bloque: "EJE 2 · ESTADO Y MARCO TEÓRICO",
-      esquema: "2.2 Estado de la Cuestión en 3 Escalas (1:25)",
-      badge: "Revisión Preliminar",
-      titulo: "Estado de la Cuestión y Vacancia",
-      subtitulo: "Búsqueda exploratoria con 5 descriptores (Torraco, 2016)",
+      esquema: "2.2 Estudios Previos y Posible Vacío (1:25)",
+      badge: "Búsqueda Preliminar",
+      titulo: "Qué se Investigó Antes y Qué Falta",
+      subtitulo: "Primera revisión en 3 escalas (a ampliar en 2027 según Torraco)",
       puntosClave: [
-        "<strong>Internacional:</strong> 71,7 % valora fin formativo; rechazo al uso punitivo",
-        "<strong>Nacional y Local:</strong> Peso sumativo (Marquina) y reto virtual (Cariaga, CURZA)",
-        "<strong>Posible vacancia:</strong> Sin cruce previo entre 360°, cogobierno y 10 Nodos"
+        "<strong>Afuera (México/Cuba):</strong> El 71,7 % valoró mejorar clases; rechazó usos con castigo",
+        "<strong>Argentina y CURZAS:</strong> Predominarían controles formales; piden apoyo en lo virtual",
+        "<strong>Posible vacío (hipótesis):</strong> No hallamos cruces previos entre 360°, cogobierno y Nodos"
       ],
-      metadatosFooter: "Eje 2 • Dialnet, SciELO, Redalyc, EPAA y RDI UNCo",
+      metadatosFooter: "Eje 2 • Búsqueda inicial en Dialnet, SciELO, Redalyc, EPAA y RDI UNCo",
       escena3D: "anim_17",
-      guionOrador: "[Antecedentes en 3 escalas • 1:25 min]\nEn el estado de la cuestión rastreamos cinco descriptores en Dialnet, SciELO, Redalyc, EPAA y RDI UNCo:\n- A escala internacional (Sifuentes, Obando, Vázquez Cid y Hernández-Villafaña sobre 1.431 docentes en México), el 360° corrige sesgos de la encuesta aislada y capta tutorías híbridas siempre que sea confidencial y no punitivo.\n- A escala nacional (Chiroleu, Marquina) y local en el propio CURZA (Cariaga, 2019 en Revista Pilquen), predomina el control sumativo y se reclaman políticas de apoyo virtual.\n\nCon prudencia, planteamos una posible vacancia en este cruce exacto, a verificar en la búsqueda ampliada de 2027."
+      guionOrador: "[Estudios previos en lenguaje claro y potencial • 1:25 min]\nPara no empezar a ciegas, revisamos estudios anteriores en revistas educativas y repositorios universitarios (como Dialnet, SciELO y el de nuestra UNCo), búsqueda que profundizaremos en 2027:\n- En experiencias internacionales (Sifuentes, Obando, Vázquez Cid y un estudio sobre 1.431 docentes en México de Hernández-Villafaña), encontraron que cruzar varias miradas suele ayudar en clases virtuales y evita sesgos de la encuesta única, siempre que no tenga castigos ni afecte el sueldo.\n- En estudios de Argentina (Chiroleu, Marquina) y aquí mismo en el CURZA —donde Romina Cariaga entrevistó en 2019 a 10 docentes locales— aparece la necesidad de acompañar más a quienes enseñan en aulas virtuales.\n\nLo aclaramos también en potencial: hasta esta etapa preliminar parecería faltar un estudio que pruebe si un modelo 360° sería viable en una universidad pública cogobernada y con diez Nodos híbridos como la nuestra, algo que confirmaremos en 2027."
     },
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -703,18 +703,18 @@ const PRESENTACION_DATA = {
       numero: 11,
       tiempoSugerido: "1:10 min",
       bloque: "EJE 3 · METODOLOGÍA",
-      esquema: "3.1 Diseño Mixto, Población y Muestra (1:10)",
-      badge: "Estrategia Empírica",
-      titulo: "Diseño Mixto y Muestras (2027)",
-      subtitulo: "Estudio de caso situado con predominio cualitativo (CUAL → cuan)",
+      esquema: "3.1 Cómo Investigaríamos y Con Quiénes (1:10)",
+      badge: "Plan de Campo 2027",
+      titulo: "Cómo Haríamos el Estudio (2027)",
+      subtitulo: "Primero escuchar en profundidad y luego acompañar con encuestas breves",
       puntosClave: [
-        "<strong>Población estimada:</strong> ~38 docentes • ~130 alumnos avanzados • 5 referentes",
-        "<strong>Cualitativa (n = 9):</strong> 4 docentes, 2 autoridades, 1 ADUNC y 2 estudiantes",
-        "<strong>Cuantitativa (n = 45):</strong> 15 docentes + 30 estudiantes (sin contar piloto)"
+        "<strong>Estrategia mixta:</strong> Peso principal en entrevistas + encuesta descriptiva de apoyo",
+        "<strong>Universo estimado:</strong> ~38 docentes • ~130 alumnos avanzados • 5 referentes",
+        "<strong>Muestras previstas:</strong> 9 entrevistas en profundidad + ~45 encuestas voluntarias"
       ],
-      metadatosFooter: "Eje 3 • Sampieri • Flyvbjerg • Saturación Teórica",
+      metadatosFooter: "Eje 3 • Sampieri • Flyvbjerg • Muestra a confirmar por censo 2027",
       escena3D: "anim_19",
-      guionOrador: "[Diseño y muestras • 1:10 min]\nEn el tercer eje proponemos un estudio de caso único, transversal y mixto con predominio cualitativo (CUAL → cuan).\n\nSobre una población estimada de 38 docentes, 130 estudiantes avanzados y 5 referentes de gestión y gremio, realizaremos 9 entrevistas intencionales buscando saturación teórica y 45 cuestionarios voluntarios, dejando fuera de la muestra final a los participantes de la prueba piloto."
+      guionOrador: "[Cómo trabajaríamos en 2027 • 1:10 min]\nEn la tercera parte explicamos cómo haríamos la investigación en 2027. Elegimos estudiar este Departamento en particular usando un método combinado donde lo más importante es escuchar y comprender en profundidad (enfoque mixto CUAL → cuan, según Sampieri y Flyvbjerg).\n\nPartiendo de una estimación aproximada de 38 docentes, 130 estudiantes avanzados y 5 referentes entre gestión y gremio —cifras que confirmaremos con datos reales en mayo de 2027—, planeamos hacer 9 entrevistas (a docentes de Viedma y Nodos, autoridades, un representante de ADUNC y estudiantes) hasta que dejen de surgir ideas nuevas, sumado a unos 45 cuestionarios breves y voluntarios."
     },
 
     {
@@ -722,18 +722,18 @@ const PRESENTACION_DATA = {
       numero: 12,
       tiempoSugerido: "1:15 min",
       bloque: "EJE 3 · METODOLOGÍA",
-      esquema: "3.2 Herramientas y Análisis (1:15)",
+      esquema: "3.2 Herramientas y Cruce de Datos (1:15)",
       badge: "Anexos I y II • Tabla 2",
-      titulo: "Instrumentos y Triangulación",
-      subtitulo: "Recolección articulada sobre las 5 dimensiones",
+      titulo: "Herramientas y Cruce de Miradas",
+      subtitulo: "Tres formas de recoger información sobre las mismas 5 dimensiones",
       puntosClave: [
-        "<strong>Análisis documental:</strong> Ordenanzas vs. formularios SIU y planes Art. 76",
-        "<strong>Entrevistas (Anexo I):</strong> 3 guías procesadas por temas (Bardin, 2002)",
-        "<strong>Sondeo breve (Anexo II):</strong> Likert ≤15 ítems en R/PSPP + Triangulación"
+        "<strong>1. Leer documentos:</strong> Comparar ordenanzas con encuestas SIU y cursos Art. 76",
+        "<strong>2. Entrevistas (Anexo I):</strong> 3 guías flexibles ordenadas por temas (Bardin)",
+        "<strong>3. Encuesta corta (Anexo II):</strong> Menos de 15 preguntas + cruce de toda la información"
       ],
-      metadatosFooter: "Eje 3 • Denzin (1978) • Bardin (2002)",
+      metadatosFooter: "Eje 3 • Triangulación (Denzin, 1978) • Análisis Temático",
       escena3D: "anim_20",
-      guionOrador: "[Herramientas y procesamiento • 1:15 min]\nYa dejamos diseñados en los Anexos los tres instrumentos sobre la Matriz de 5 Dimensiones:\n1. Análisis documental comparando normas con encuestas reales del SIU.\n2. Tres guías de entrevista semiestructurada (Anexo I) codificadas con Bardin.\n3. Dos formularios breves de menos de 15 ítems con ítems invertidos de control (Anexo II) procesados en R/PSPP, integrando todo por triangulación metodológica (Denzin)."
+      guionOrador: "[Herramientas simples y poco tiempo • 1:15 min]\nPara no molestar ni recargar el tiempo de los colegas, dejamos armadas tres herramientas concretas en los Anexos:\n1. Primero revisaríamos papeles reales: comparar lo que dicen las ordenanzas con los formularios actuales del SIU y los planes de capacitación del Art. 76.\n2. Segundo, realizaríamos entrevistas con guías flexibles (Anexo I), ordenando luego las opiniones por temas en común.\n3. Tercero, enviaríamos formularios digitales muy cortos —menos de 15 preguntas que se responden en pocos minutos (Anexo II)— para cruzar los números con lo escuchado en entrevistas y documentos, buscando no quedarnos con una sola versión."
     },
 
     {
@@ -741,18 +741,18 @@ const PRESENTACION_DATA = {
       numero: 13,
       tiempoSugerido: "1:10 min",
       bloque: "EJE 3 · METODOLOGÍA",
-      esquema: "3.4 Plan de 7 Meses y Presupuesto (1:10)",
+      esquema: "3.4 Plan de 7 Meses y Costo Cero (1:10)",
       badge: "Costo $0 CURZAS",
-      titulo: "Cronograma (7 Meses) y Viabilidad",
-      subtitulo: "Mayo a noviembre de 2027 • 100 % autofinanciado",
+      titulo: "Tiempos (7 Meses) y Recursos",
+      subtitulo: "Previsto de mayo a noviembre de 2027 • 100 % autofinanciado",
       puntosClave: [
-        "<strong>May–Jul 2027:</strong> Aval (Anexo III), piloto, 9 entrevistas y sondeo digital",
-        "<strong>Ago–Nov 2027:</strong> Triangulación, lineamientos y entrega por mesa de entradas",
-        "<strong>Presupuesto propio:</strong> $160.000 ARS + software libre y relevamiento remoto"
+        "<strong>May–Jul 2027:</strong> Pedir avales, probar encuesta piloto, 9 entrevistas y sondeo online",
+        "<strong>Ago–Nov 2027:</strong> Analizar todo, redactar pautas posibles y entregar el trabajo final",
+        "<strong>Sin costo institucional:</strong> $160.000 propios + herramientas gratuitas y vía remota"
       ],
-      metadatosFooter: "Eje 3 • Tablas 3 y 4 (15–20 h/sem)",
+      metadatosFooter: "Eje 3 • Tablas 3 y 4 (Dedicación estimada 15–20 h/sem)",
       escena3D: "anim_21",
-      guionOrador: "[Cronograma y recursos • 1:10 min]\nEl trabajo abarca siete meses en seis fases: mayo para avales y piloto; junio y julio para entrevistas y encuesta digital en Viedma y Nodos; agosto para procesamiento; y septiembre a noviembre para redacción y entrega formal.\n\nEs 100 % autofinanciado ($160.000 propios, software libre Quarto/R y videoconferencias con los Nodos sin gastos de traslado)."
+      guionOrador: "[Cronograma y costos • 1:10 min]\nTodo el trabajo de campo llevaría siete meses durante 2027: en mayo pediríamos los avales formales del Departamento (Anexo III) y haríamos una prueba piloto —dejando fuera de la muestra final a quienes prueben el cuestionario—; en junio y julio haríamos las entrevistas y la encuesta digital en Viedma y Nodos; en agosto analizaríamos la información; y entre septiembre y noviembre redactaríamos el informe final.\n\nNo implicaría ningún gasto para la universidad: cubriría los $160.000 estimados con recursos propios, programas gratuitos y encuentros por videollamada con los Nodos."
     },
 
     {
@@ -760,18 +760,18 @@ const PRESENTACION_DATA = {
       numero: 14,
       tiempoSugerido: "1:05 min",
       bloque: "EJE 3 · METODOLOGÍA",
-      esquema: "3.3 Reflexividad y Resguardo Ético (1:05)",
+      esquema: "3.3 Cuidado de Objetividad y Privacidad (1:05)",
       badge: "Ley 25.326 • Anexo IV",
-      titulo: "Reflexividad y Blindaje Ético",
-      subtitulo: "Control del doble rol y resguardo estricto de datos",
+      titulo: "Transparencia y Cuidado Ético",
+      subtitulo: "Cuidar la objetividad del tesista y proteger la identidad de todos",
       puntosClave: [
-        "<strong>Vigilancia reflexiva:</strong> Control por ser alumno y egresado del Departamento",
-        "<strong>Anonimato vs. Confidencialidad:</strong> Tokens sin IP en encuesta y seudónimos",
-        "<strong>Candados futuros:</strong> Custodia externa, umbral n ≥ 5 y cero impacto laboral"
+        "<strong>Cuidar mi mirada:</strong> Como soy de este Dpto., pregunto sobre reglas, nunca personas",
+        "<strong>Privacidad real (Ley 25.326):</strong> Encuestas sin IP ni correo; apodos en entrevistas",
+        "<strong>Regla futura sugerida:</strong> Custodia neutral, mínimo 5 respuestas y cero uso en legajos"
       ],
-      metadatosFooter: "Eje 3 • Bourdieu & Guber • CCT 1246/15",
+      metadatosFooter: "Eje 3 • Bourdieu & Guber • Resguardo CCT 1246/15",
       escena3D: "anim_23",
-      guionOrador: "[Reflexividad y ética • 1:05 min]\nComo soy alumno del CCC y egresado técnico del lugar, aplico vigilancia epistemológica (Bourdieu y Guber): pautas centradas en reglas y no en personas, y contraste documental.\n\nBajo Ley 25.326 separamos el anonimato técnico del sondeo (tokens sin IP ni correo) de la confidencialidad con seudónimos en entrevistas (Anexo IV); y recomendamos custodia neutral y umbral mínimo de 5 respuestas para cualquier futuro 360°, sin tocar jamás legajos ni concursos."
+      guionOrador: "[Transparencia, doble rol y privacidad • 1:05 min]\nQuiero detenerme en un punto muy importante para cualquier colega: como soy alumno del CCC y egresado técnico de este mismo Departamento, alguien podría preguntarse si mi cercanía afecta la mirada o genera incomodidad al responder. Siguiendo a Bourdieu y Guber, cuidamos eso preguntando siempre sobre el funcionamiento del sistema y las reglas —nunca calificando personas— y contrastando con documentos escritos.\n\nAdemás, bajo la Ley 25.326 de Protección de Datos: en las encuestas no se guarda correo, IP ni horario; en las entrevistas usamos consentimiento escrito (Anexo IV) y códigos en lugar de nombres propios. Y si algún día el Departamento evaluara usar un 360°, recomendaríamos custodia neutral y al menos 5 respuestas por curso para proteger a quienes dictan materias solos —sin tocar jamás legajos ni concursos."
     },
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -782,18 +782,18 @@ const PRESENTACION_DATA = {
       numero: 15,
       tiempoSugerido: "0:50 min",
       bloque: "CIERRE",
-      esquema: "Sentido y Límite del Proyecto (0:50)",
+      esquema: "Sentido y Límite del Anteproyecto (0:50)",
       badge: "Síntesis Final",
       titulo: "Sentido y Alcance del Proyecto",
-      subtitulo: "Producir evidencia situada sin anticipar resultados",
+      subtitulo: "Aportar información seria en 2027 sin adelantar conclusiones",
       puntosClave: [
-        "<strong>Prudencia metodológica:</strong> El anteproyecto indaga viabilidad, no impone el 360°",
-        "<strong>Utilidad institucional:</strong> Insumo real para fortalecer la formación (Art. 76)",
-        "<strong>Devolución del Tribunal:</strong> Abierto a sugerencias para el campo 2027"
+        "<strong>Todo en potencial:</strong> No damos por probada la viabilidad antes de investigar",
+        "<strong>Aporte pensado:</strong> Dar evidencia útil si el Dpto. quiere fortalecer el Art. 76",
+        "<strong>Escucha al Tribunal:</strong> Abierto a mejoras para llegar mejor al campo en 2027"
       ],
       metadatosFooter: "Cierre • Defensa Oral SIA 2026",
       escena3D: "anim_25",
-      guionOrador: "[Cierre sólido • 0:50 min]\nEn síntesis, este proyecto busca aportar evidencia empírica rigurosa para que el Departamento decida con fundamentos propios sobre su formación docente (Art. 76), reconociendo con prudencia que el anteproyecto no da por probada la viabilidad antes de ir al terreno en 2027.\n\n[Pausa de 2 segundos]\n\nQuedo a disposición del Tribunal."
+      guionOrador: "[Cierre prudente • 0:50 min]\nPara cerrar: este proyecto no viene a convencer a nadie de aplicar una fórmula cerrada ni da por seguro que el modelo 360° sea viable. Justamente queremos ir al campo en 2027 a preguntar, escuchar y comprobar con seriedad qué funcionaría, qué generaría resistencia y qué límites reales existen en nuestro CURZAS, para dejarle al Departamento y al profesorado un insumo claro que ayude —si así se decide— a fortalecer la capacitación docente (Art. 76).\n\n[Pausa de 2 segundos]\n\nQuedo atento a las observaciones y preguntas de la cátedra."
     },
 
     {
@@ -804,11 +804,11 @@ const PRESENTACION_DATA = {
       esquema: "Correspondencia con Planilla Oficial (0:30)",
       badge: "Diseño UNCo–CURZAS",
       titulo: "Alineación con Planilla Oficial",
-      subtitulo: "Correspondencia 1:1 entre escrito y defensa",
+      subtitulo: "Correspondencia completa entre el documento escrito y esta exposición",
       puntosClave: [
         "<strong>Ejes 1 y 2:</strong> El Problema (1.1–1.4) • Estado y Marco Teórico (2.1–2.4)",
-        "<strong>Eje 3:</strong> Metodología (3.1–3.5) e Instrumentos listos (Anexos I–IV)",
-        "<strong>Soporte formal:</strong> 35 fuentes APA 7 y Cronograma en 6 fases"
+        "<strong>Eje 3:</strong> Metodología (3.1–3.5) e Instrumentos ya preparados (Anexos I–IV)",
+        "<strong>Respaldo formal:</strong> 35 referencias APA 7 y Cronograma en 6 etapas"
       ],
       metadatosFooter: "Diseño de Investigación Completo 2025",
       escena3D: "anim_28",
@@ -818,7 +818,7 @@ const PRESENTACION_DATA = {
         etiqueta: "📄 Planilla Oficial (PDF)",
         atajo: "A"
       },
-      guionOrador: "[Validación formal • 0:30 min]\nEl escrito cumple íntegramente las pautas de la cátedra y la Resolución 266/23 en sus tres secciones troncales, anexos operativos y referencias."
+      guionOrador: "[Validación formal • 0:30 min]\nEl proyecto escrito sigue punto por punto la estructura de la planilla oficial de la cátedra y la Resolución 266/23, incluyendo las guías de entrevista, cuestionarios modelo, consentimiento informado y referencias."
     },
 
     {
@@ -837,7 +837,7 @@ const PRESENTACION_DATA = {
       ],
       metadatosFooter: "Lic. en Gestión de RR. HH. (CCC) • CURZAS–UNCo",
       escena3D: "anim_26",
-      guionOrador: "[Gratitud • 0:20 min]\nMuchas gracias al equipo docente de la cátedra por su guía durante el cursado, a nuestra comunidad del CURZAS en Viedma y los Nodos, a mi familia y compañeros."
+      guionOrador: "[Gratitud • 0:20 min]\nMuchas gracias a las docentes y al docente de la cátedra por el acompañamiento durante este seminario, a la comunidad del CURZAS en Viedma y los diez Nodos, y a mi familia y compañeros de cursado."
     },
 
     {
@@ -857,7 +857,7 @@ const PRESENTACION_DATA = {
       metadatosFooter: "Detalle completo en Panel Respaldo (Tecla M)",
       escena3D: "anim_27",
       abrirTabDrawer: "bibliografia",
-      guionOrador: "[Fuentes • 0:10 min]\nLas 35 referencias APA 7 completas pueden consultarse desde el botón de Respaldo. Muchas gracias."
+      guionOrador: "[Fuentes • 0:10 min]\nTodas las referencias normativas y académicas en formato APA 7 quedan disponibles para consulta en el panel de Respaldo. Muchas gracias."
     }
   ]
 };

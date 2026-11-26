@@ -558,23 +558,26 @@
       basePlate.receiveShadow = true;
       plaqueGroup.add(basePlate);
 
-      // 2. Carátula mate con tipografía autoajustada y alto contraste
+      // 2. Carátula mate con tipografía autoajustada y márgenes internos proporcionales
       const canvas = document.createElement("canvas");
-      canvas.width = 1024;
-      canvas.height = Math.round(1024 * (h / w));
+      canvas.width = 1280;
+      canvas.height = Math.max(160, Math.round(1280 * (h / w)));
       const ctx = canvas.getContext("2d");
 
       const isDark = opts.theme !== "light";
       ctx.fillStyle = isDark ? "#0f172a" : "#f7f5f0";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+      const padOuter = Math.max(12, Math.round(Math.min(22, canvas.height * 0.065)));
+      const padInner = padOuter + Math.max(8, Math.round(Math.min(12, canvas.height * 0.04)));
+
       ctx.strokeStyle = "#cfa346";
       ctx.lineWidth = 3.5;
-      ctx.strokeRect(22, 22, canvas.width - 44, canvas.height - 44);
+      ctx.strokeRect(padOuter, padOuter, canvas.width - padOuter * 2, canvas.height - padOuter * 2);
       ctx.lineWidth = 1.25;
-      ctx.strokeRect(34, 34, canvas.width - 68, canvas.height - 68);
+      ctx.strokeRect(padInner, padInner, canvas.width - padInner * 2, canvas.height - padInner * 2);
 
-      const maxSafeWidth = canvas.width - 170;
+      const maxSafeWidth = canvas.width - 200;
       const drawFittedLine = (text, startPx, minPx, weight, family, color, yPos) => {
         let size = Math.max(minPx, Math.round(startPx));
         ctx.font = `${weight} ${size}px ${family}`;
@@ -588,40 +591,42 @@
         ctx.fillText(text, canvas.width / 2, yPos);
       };
 
+      const hasDetails = details && details.length > 0;
+      const titleY = hasDetails ? canvas.height * 0.275 : (subtitle ? canvas.height * 0.38 : canvas.height * 0.50);
       drawFittedLine(
         title,
-        canvas.height * 0.165,
+        canvas.height * (hasDetails ? 0.165 : 0.21),
         20,
         "bold",
         "'Cinzel', serif, Georgia",
         isDark ? "#f0cf70" : "#0f2d59",
-        canvas.height * 0.28
+        titleY
       );
 
       if (subtitle) {
         drawFittedLine(
           subtitle,
-          canvas.height * 0.105,
+          canvas.height * (hasDetails ? 0.105 : 0.135),
           15,
           "600",
           "'Inter', sans-serif",
           isDark ? "#e2e8f0" : "#334155",
-          canvas.height * 0.50
+          hasDetails ? canvas.height * 0.51 : canvas.height * 0.67
         );
       }
 
-      if (details && details.length > 0) {
+      if (hasDetails) {
         ctx.strokeStyle = "rgba(207, 163, 70, 0.42)";
         ctx.lineWidth = 1.5;
         ctx.beginPath();
-        ctx.moveTo(canvas.width * 0.14, canvas.height * 0.63);
-        ctx.lineTo(canvas.width * 0.86, canvas.height * 0.63);
+        ctx.moveTo(canvas.width * 0.14, canvas.height * 0.65);
+        ctx.lineTo(canvas.width * 0.86, canvas.height * 0.65);
         ctx.stroke();
 
         const detailText = details.join("  •  ");
         drawFittedLine(
           detailText,
-          canvas.height * 0.088,
+          canvas.height * 0.090,
           13,
           "500",
           "'Inter', sans-serif",
@@ -647,12 +652,12 @@
       faceMesh.position.z = 0.0145;
       plaqueGroup.add(faceMesh);
 
-      // 3. Cuatro remaches satinados sobrios en esquinas
-      const sx = w * 0.445;
-      const sy = h * 0.415;
+      // 3. Cuatro remaches satinados sobrios en esquinas del marco exterior
+      const sx = w * 0.468;
+      const sy = h * 0.425;
       [[-sx, -sy], [sx, -sy], [-sx, sy], [sx, sy]].forEach(([cx, cy]) => {
         const rivet = new THREE.Mesh(
-          new THREE.SphereGeometry(0.009, 16, 12),
+          new THREE.SphereGeometry(0.007, 16, 12),
           this.goldMat(0xdfba52)
         );
         rivet.scale.set(1, 1, 0.45);
@@ -661,6 +666,44 @@
       });
 
       return plaqueGroup;
+    },
+
+    /**
+     * Instala una placa museográfica frontal sobre un zócalo/atril bajo de granito y latón,
+     * garantizando que su borde inferior nunca quede enterrado debajo de floorY.
+     */
+    createMountedPlaque(w = 1.08, h = 0.27, title = "", subtitle = "", details = [], opts = {}) {
+      const mount = new THREE.Group();
+      const tilt = opts.tilt !== undefined ? opts.tilt : -0.25;
+      const floorY = opts.floorY !== undefined ? opts.floorY : -1.0385;
+      const clearance = opts.clearance !== undefined ? opts.clearance : 0.024;
+
+      const plaque = this.createEngravedPlaque(w, h, title, subtitle, details, opts);
+      const bottomOffset = (h * 0.5) * Math.cos(tilt) + 0.014 * Math.abs(Math.sin(tilt));
+      plaque.position.set(0, floorY + clearance + bottomOffset, 0);
+      plaque.rotation.x = tilt;
+      mount.add(plaque);
+
+      const railH = Math.max(0.020, clearance + 0.008);
+      const rail = new THREE.Mesh(
+        buildRoundedBoxGeo(w * 0.72, railH, 0.095, 0.006, 2),
+        this.graniteMat(0x1e293b, 0.45, 0.25)
+      );
+      rail.position.set(0, floorY + railH * 0.5, -0.02);
+      rail.castShadow = true;
+      rail.receiveShadow = true;
+      mount.add(rail);
+
+      [-w * 0.28, w * 0.28].forEach((fx) => {
+        const foot = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.014, 0.018, clearance + 0.032, 16),
+          this.brassMat(0xcfa346)
+        );
+        foot.position.set(fx, floorY + (clearance + 0.032) * 0.5, -0.025);
+        mount.add(foot);
+      });
+
+      return mount;
     },
 
     /** Chasis Editorial Biselado con Moldura Continua (sin esquinas duras) */

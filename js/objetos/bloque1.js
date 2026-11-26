@@ -578,16 +578,15 @@ window.Presentation3D_Objects["anim_01"] = {
     titleLabel.position.set(0, 1.06, 0);
     g.add(titleLabel);
 
-    const frontPlaque = engine.createEngravedPlaque(
-      0.96,
-      0.22,
+    const frontPlaque = engine.createMountedPlaque(
+      1.02,
+      0.26,
       "CARÁTULA OFICIAL TFG",
       "Res. CD-CURZA N° 266/23 • SIA 2026",
       ["SEDE VIEDMA Y 10 NODOS"],
-      { theme: "dark" }
+      { theme: "dark", floorY: -1.0385 }
     );
-    frontPlaque.position.set(0, -0.92, 0.78);
-    frontPlaque.rotation.x = -0.25;
+    frontPlaque.position.set(0, 0, 0.88);
     g.add(frontPlaque);
 
     engine.anim01_desk = deskGroup;
@@ -739,20 +738,20 @@ window.Presentation3D_Objects["anim_02"] = {
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_03"] = {
   build(engine, g) {
-    engine.createMuseumPlinth(g, 1.50, 0.22, -1.22);
+    engine.createMuseumPlinth(g, 1.66, 0.22, -1.22);
 
     const foundationGroup = new THREE.Group();
     foundationGroup.position.set(0, -0.14, 0);
 
     // Zócalo transversal unificador de caoba oscura
-    const baseBridge = engine.createMachinedChassis(2.02, 0.08, 0.72, { color: 0x2e1204 });
+    const baseBridge = engine.createMachinedChassis(2.48, 0.08, 0.72, { color: 0x2e1204 });
     baseBridge.position.set(0, -0.86, 0);
     foundationGroup.add(baseBridge);
 
     const items = [
-      { x: -0.74, z: 0.06, h: 0.70, title: "1. EL PROBLEMA", sub: "Ámbito y Objetivos", meta: "EJE 1 • F3–F7", labelY: 0.56 },
-      { x: 0.00, z: -0.04, h: 0.92, title: "2. ESTADO Y TEORÍA", sub: "Marco y Antecedentes", meta: "EJE 2 • F8–F10", labelY: 0.94 },
-      { x: 0.74, z: 0.06, h: 1.12, title: "3. METODOLOGÍA", sub: "CUAL→cuan y Ética", meta: "EJE 3 • F11–F14", labelY: 1.06 }
+      { x: -0.92, z: 0.06, h: 0.70, title: "1. EL PROBLEMA", sub: "Ámbito y Objetivos", meta: "EJE 1 • F3–F7", labelOffY: 0.36 },
+      { x: 0.00, z: -0.06, h: 0.92, title: "2. ESTADO Y TEORÍA", sub: "Marco y Antecedentes", meta: "EJE 2 • F8–F10", labelOffY: 0.56 },
+      { x: 0.92, z: 0.06, h: 1.12, title: "3. METODOLOGÍA", sub: "CUAL→cuan y Ética", meta: "EJE 3 • F11–F14", labelOffY: 0.52 }
     ];
 
     engine.anim03_blocks = [];
@@ -838,8 +837,8 @@ window.Presentation3D_Objects["anim_03"] = {
         engine.anim03_prism = prism;
       }
 
-      const secLabel = engine.createLabelSprite(item.title, item.sub, "#0f2d59", false, { x: 0.78 });
-      secLabel.position.set(0, item.h / 2 + 0.34, 0);
+      const secLabel = engine.createLabelSprite(item.title, item.sub, "#0f2d59", false, { x: 0.72 });
+      secLabel.position.set(0, item.h / 2 + item.labelOffY, 0);
       blockGroup.add(secLabel);
 
       foundationGroup.add(blockGroup);
@@ -853,7 +852,7 @@ window.Presentation3D_Objects["anim_03"] = {
       true,
       { x: 1.48 }
     );
-    masterLabel.position.set(0, 1.36, 0);
+    masterLabel.position.set(0, 1.48, 0);
     g.add(masterLabel);
 
     g.add(foundationGroup);

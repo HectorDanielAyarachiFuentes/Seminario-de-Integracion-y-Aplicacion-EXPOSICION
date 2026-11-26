@@ -17,7 +17,7 @@ window.Presentation3D_Objects = window.Presentation3D_Objects || {};
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_11"] = {
   build(engine, g) {
-    engine.createMuseumPlinth(g, 1.66, 0.22, -1.22);
+    engine.createMuseumPlinth(g, 1.82, 0.22, -1.22);
 
     const targetGroup = new THREE.Group();
     targetGroup.position.set(0, -0.06, 0);
@@ -46,13 +46,13 @@ window.Presentation3D_Objects["anim_11"] = {
 
     // Etiqueta clara para el Objetivo General
     const lblGeneral = engine.createLabelSprite(
-      "OBJETIVO GENERAL",
-      "Analizar factibilidad 360° en 5 dimensiones (2027)",
+      "OBJETIVO GENERAL (2027)",
+      "Averiguar si el 360° sería viable en 5 áreas",
       "#0f2d59",
       true,
       { x: 1.42 }
     );
-    lblGeneral.position.set(0, 1.18, -0.14);
+    lblGeneral.position.set(0, 1.30, -0.14);
     targetGroup.add(lblGeneral);
 
     // Anillos concéntricos en el piso del foro (Tabla 1 de Consistencia)
@@ -67,19 +67,19 @@ window.Presentation3D_Objects["anim_11"] = {
     const axes = [
       {
         title: "OE1 · NORMA vs. PRÁCTICA", sub: "Reglamentos y SIU",
-        x: -1.10, z: 0.34, col: 0x0f2d59, lblY: 0.16, prop: "scroll"
+        x: -1.14, z: 0.34, col: 0x0f2d59, lblX: -1.34, lblY: 0.38, prop: "scroll"
       },
       {
         title: "OE2 · VOCES Y CONFIANZA", sub: "Docentes y Alumnos",
-        x: 1.10, z: 0.34, col: 0x0f625a, lblY: 0.16, prop: "orb"
+        x: 1.14, z: 0.34, col: 0x0f625a, lblX: 1.34, lblY: 0.38, prop: "orb"
       },
       {
         title: "OE3 · TRABAS Y PARES", sub: "ADUNC y Pares Horiz.",
-        x: -0.72, z: -0.52, col: 0xb45309, lblY: 0.62, prop: "gears"
+        x: -0.74, z: -0.52, col: 0xb45309, lblX: -0.80, lblY: 0.70, prop: "gears"
       },
       {
         title: "OE4 · LINEAMIENTOS", sub: "Pautas Prudentes Dpto.",
-        x: 0.72, z: -0.52, col: 0x4c1d3d, lblY: 0.62, prop: "compass"
+        x: 0.74, z: -0.52, col: 0x4c1d3d, lblX: 0.80, lblY: 0.70, prop: "compass"
       }
     ];
 
@@ -131,7 +131,7 @@ window.Presentation3D_Objects["anim_11"] = {
 
       // Etiqueta nítida por cada Objetivo Específico
       const lblAx = engine.createLabelSprite(ax.title, ax.sub, "#0f2d59", false, { x: 0.72 });
-      lblAx.position.set(ax.x, ax.lblY, ax.z);
+      lblAx.position.set(ax.lblX !== undefined ? ax.lblX : ax.x, ax.lblY, ax.z);
       targetGroup.add(lblAx);
 
       // Haz dorado convergente desde cada Objetivo Específico hacia el Objetivo General
@@ -147,17 +147,16 @@ window.Presentation3D_Objects["anim_11"] = {
       targetGroup.add(beamMesh);
     });
 
-    // Placa museográfica frontal
-    const frontPlaque = engine.createEngravedPlaque(
-      1.10,
-      0.23,
+    // Placa museográfica frontal asentada sobre zócalo fuera de los aros
+    const frontPlaque = engine.createMountedPlaque(
+      1.12,
+      0.28,
       "TABLA 1 • CONSISTENCIA DE OBJETIVOS",
       "1 Objetivo General + 4 Objetivos Específicos",
       ["NORMATIVO • CULTURAL • GOBERNANZA • PROPOSITIVO"],
-      { theme: "dark" }
+      { theme: "dark", floorY: -1.0385 - (-0.06) }
     );
-    frontPlaque.position.set(0, -0.90, 0.96);
-    frontPlaque.rotation.x = -0.28;
+    frontPlaque.position.set(0, 0, 1.28);
     targetGroup.add(frontPlaque);
 
     g.add(targetGroup);
