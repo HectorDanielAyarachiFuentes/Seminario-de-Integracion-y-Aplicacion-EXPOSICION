@@ -46,11 +46,11 @@ window.Presentation3D_Objects["anim_11"] = {
 
     // Etiqueta clara para el Objetivo General
     const lblGeneral = engine.createLabelSprite(
-      "OBJETIVO GENERAL (2027)",
-      "Averiguar si el 360° sería viable en 5 áreas",
+      "OBJETIVO GENERAL (ESTUDIO 2027)",
+      "Indagar en 2027 viabilidad 360° para años posteriores",
       "#0f2d59",
       true,
-      { x: 1.42 }
+      { x: 1.46 }
     );
     lblGeneral.position.set(0, 1.30, -0.14);
     targetGroup.add(lblGeneral);

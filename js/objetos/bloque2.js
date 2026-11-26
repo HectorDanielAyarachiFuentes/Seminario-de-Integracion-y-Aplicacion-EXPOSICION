@@ -1116,8 +1116,8 @@ window.Presentation3D_Objects["anim_09"] = {
 
     // Etiqueta clara encima de la escena izquierda
     const lblLeftProblem = engine.createLabelSprite(
-      "HIPÓTESIS: CONTROL (ART. 75)",
-      "¿Genera cautela? • A comprobar en 2027",
+      "PLANTEO A DEVELAR (ART. 75)",
+      "¿Genera cautela el control? • A indagar en 2027",
       "#991b1b",
       false,
       { x: 0.94 }
@@ -1248,7 +1248,7 @@ window.Presentation3D_Objects["anim_09"] = {
       0.28,
       "PROBLEMA Y OBJETO A INDAGAR",
       "Posible tensión Art. 75 (cargo) vs. Art. 76 (capacitación)",
-      ["CONTROL VIGENTE", "HIPÓTESIS FORMATIVA", "VIABILIDAD A EVALUAR"],
+      ["CONTROL VIGENTE", "PLANTEO A DEVELAR", "VIABILIDAD A EVALUAR"],
       { theme: "dark", floorY: -1.0385 - (-0.08) }
     );
     frontPlaque.position.set(0, 0, 1.24);
@@ -1316,11 +1316,11 @@ window.Presentation3D_Objects["anim_10"] = {
 
     // Etiqueta maestra de la Pregunta Central
     const lblPregunta = engine.createLabelSprite(
-      "PREGUNTA CENTRAL (2027)",
-      "¿Sería viable un modelo 360° en el Departamento?",
+      "PREGUNTA CENTRAL (ESTUDIO 2027)",
+      "¿Serviría un modelo 360° en años posteriores?",
       "#0f2d59",
       true,
-      { x: 1.44 }
+      { x: 1.46 }
     );
     lblPregunta.position.set(0, 1.40, 0.12);
     pentGroup.add(lblPregunta);
@@ -1434,7 +1434,7 @@ window.Presentation3D_Objects["anim_10"] = {
       1.16,
       0.28,
       "5 DIMENSIONES DE FACTIBILIDAD",
-      "Pregunta Rectora del Estudio en el CURZAS (2027)",
+      "Investigación 2027 • ¿Viabilidad para años posteriores?",
       ["NORMATIVA • TÉCNICA • ORGANIZACIONAL • CULTURAL • GOBERNANZA"],
       { theme: "dark", floorY: -1.0385 - (-0.06) }
     );

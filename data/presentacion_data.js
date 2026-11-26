@@ -122,7 +122,7 @@ const PRESENTACION_DATA = {
     objetivos: [
       {
         nivel: "Objetivo General",
-        texto: "Analizar las condiciones de factibilidad organizacional, técnica, normativa, cultural y de gobernanza multinivel para la implementación de un modelo de retroalimentación multiactoral (360°) en la evaluación del desempeño docente en el Departamento de Administración Pública del CURZAS-UNCo (2027)."
+        texto: "Analizar en 2027 las condiciones de factibilidad organizacional, técnica, normativa, cultural y de gobernanza multinivel para una eventual implementación futura de un modelo de retroalimentación multiactoral (360°) en el Departamento de Administración Pública del CURZAS-UNCo."
       },
       {
         nivel: "Objetivo Específico 1 (Dimensión Normativa-Institucional)",
@@ -219,7 +219,7 @@ const PRESENTACION_DATA = {
       },
       {
         pregunta: "¿Cómo se aborda la prevención docente ante un posible uso persecutorio?",
-        respuesta: "Como hipótesis de indagación, se postulan dos blindajes necesarios: 1) Desacoplamiento Normativo del Art. 75 del Estatuto (permanencia) y vinculación al Art. 76 (capacitación continua); 2) Blindaje Técnico con anonimato estadístico auditado."
+        respuesta: "Como planteo a develar en el estudio, se contemplan dos resguardos necesarios: 1) Desacoplamiento Normativo del Art. 75 del Estatuto (permanencia) y vinculación al Art. 76 (capacitación continua); 2) Blindaje Técnico con anonimato estadístico auditado."
       },
       {
         pregunta: "¿Qué rol juega el Convenio Colectivo de Trabajo (Dec. 1246/15)?",
@@ -472,7 +472,7 @@ const PRESENTACION_DATA = {
       esquema: "Carátula del Anteproyecto TFG (0:25)",
       badge: "Proyecto Previo TFG • Res. 266/23",
       titulo: "Evaluación Docente y Factibilidad de un Modelo 360°",
-      subtitulo: "Plan de investigación situado en el Dpto. de Administración Pública • CURZAS–UNCo (2027)",
+      subtitulo: "Plan de investigación (2027) • Dpto. de Administración Pública • CURZAS–UNCo",
       fichaPortada: [
         { etiqueta: "Tesista", valor: "Tec. Sup. Héctor D. Ayarachi Fuentes (Leg. 8252)" },
         { etiqueta: "Carrera", valor: "Lic. en Gestión de Recursos Humanos (CCC)" },
@@ -482,7 +482,7 @@ const PRESENTACION_DATA = {
       puntosClave: [],
       metadatosFooter: "Res. CD-CURZA N° 266/23 • SIA 2026 • Estudio previsto 2027",
       escena3D: "anim_01",
-      guionOrador: "[Saludo y aclaración inicial • 0:25 min]\nBuenos días al equipo docente de la cátedra: Dra. Deborah Noguera, Esp. Federico Abeiro y Esp. María Cecilia Aguirre.\n\nLo que presento hoy es un proyecto previo de Trabajo Final de Graduación (Res. CD-CURZA 266/23). Aclaro desde el inicio que todo está planteado en potencial: todavía no traemos resultados ni proponemos imponer un sistema nuevo, sino un plan para investigar en 2027 si sería viable incorporar una evaluación docente «360°» —es decir, combinar distintas miradas solo para acompañar y mejorar las clases— en el Departamento de Administración Pública del CURZAS."
+      guionOrador: "[Saludo y aclaración inicial • 0:25 min]\nBuenos días al equipo docente de la cátedra: Dra. Deborah Noguera, Esp. Federico Abeiro y Esp. María Cecilia Aguirre.\n\nLo que presento hoy es un proyecto previo de Trabajo Final de Graduación (Res. CD-CURZA 266/23) pensado para investigar en 2027. Como es un estudio todavía por hacer, hablaré siempre en potencial: nuestra intención es averiguar si sería viable pensar a futuro —para años posteriores— en una evaluación docente «360°» (reunir distintas miradas solo para acompañar y mejorar las clases) en el Departamento de Administración Pública del CURZAS."
     },
 
     {
@@ -521,7 +521,7 @@ const PRESENTACION_DATA = {
       puntosClave: [],
       metadatosFooter: "3 Secciones + Cierre y Referencias APA 7",
       escena3D: "anim_03",
-      guionOrador: "[Hoja de ruta inicial • 0:25 min]\nPara ordenar los quince minutos de charla, vamos a recorrer tres grandes partes:\n\n1. Primero, «El Problema»: ubicarnos en tiempo y espacio en el CURZAS, revisar qué hipótesis nos planteamos sobre la evaluación actual y contar qué querríamos averiguar.\n2. Segundo, «Estado de la Cuestión y Marco Teórico»: explicar en lenguaje sencillo qué ideas y experiencias previas nos sirven de guía.\n3. Y tercero, «Metodología»: contar cómo llevaríamos adelante el trabajo de campo en 2027, cuidando siempre la privacidad y el respeto hacia quienes participen."
+      guionOrador: "[Hoja de ruta inicial • 0:25 min]\nPara ordenar los quince minutos de charla, vamos a recorrer tres grandes partes:\n\n1. Primero, «El Problema»: ubicarnos en tiempo y espacio en el CURZAS, revisar qué planteo nos lleva a indagar la evaluación actual y contar qué querríamos averiguar.\n2. Segundo, «Estado de la Cuestión y Marco Teórico»: explicar en lenguaje sencillo qué ideas y experiencias previas nos sirven de guía.\n3. Y tercero, «Metodología»: contar cómo llevaríamos adelante el trabajo de campo en 2027, cuidando siempre la privacidad y el respeto hacia quienes participen."
     },
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -578,17 +578,17 @@ const PRESENTACION_DATA = {
       tiempoSugerido: "0:55 min",
       bloque: "EJE 1 · EL PROBLEMA",
       esquema: "1.2 El Problema y Objeto de Estudio (0:55)",
-      badge: "Paso 3 • Hipótesis y Objeto",
+      badge: "Paso 3 • Planteo y Objeto",
       titulo: "El Problema y Objeto a Indagar",
       subtitulo: "De la evaluación pensada como control a una posible mirada formativa",
       puntosClave: [
         "<strong>Reglas actuales:</strong> Informe anual (Art. 74) y evaluación cuatrienal (Art. 75: riesgo cargo)",
-        "<strong>Hipótesis a verificar:</strong> ¿Genera cautela este control y falta guía para el Art. 76?",
-        "<strong>Objeto de estudio:</strong> Analizar si sería viable un 360° solo para mejorar, sin sanciones"
+        "<strong>Planteo a develar:</strong> ¿Genera cautela este control y falta guía para el Art. 76?",
+        "<strong>Objeto de estudio:</strong> Analizar en 2027 si un 360° serviría a futuro, solo para mejorar"
       ],
-      metadatosFooter: "Eje 1 • Posible Tensión Art. 75 vs. Art. 76 (A comprobar en 2027)",
+      metadatosFooter: "Eje 1 • Tensión Art. 75 vs. Art. 76 • Planteo a develar",
       escena3D: "anim_09",
-      guionOrador: "[Qué pasa hoy y qué hipótesis indagaremos • 0:55 min]\n¿Cuál es la inquietud que dispara esta investigación? En los papeles vigentes existen dos instancias: el informe anual con encuesta estudiantil (Art. 74) y la evaluación cada cuatro años (Art. 75), donde dos resultados negativos seguidos pueden dejar vacante un cargo.\n\nComo simboliza la figura de la izquierda, suponemos como hipótesis inicial —algo que todavía debemos comprobar escuchando a la gente en 2027— que cuando evaluar se asocia a aprobar o perder el cargo, eso podría generar cautela o desconfianza en el docente. Al mismo tiempo, querríamos averiguar si el programa anual de capacitación (Art. 76) hoy recibe o no devoluciones claras sobre lo que pasa en las aulas presenciales y virtuales.\n\n[Objeto de estudio]\nPor eso nuestro objeto de estudio —representado en el círculo de la derecha— sería analizar si resultaría viable implementar una evaluación «360°» (juntando la mirada del propio docente, sus colegas, estudiantes y dirección) pensada únicamente para ayudar a mejorar las clases y planificar capacitaciones, totalmente separada de sanciones o legajos."
+      guionOrador: "[Qué pasa hoy y planteo a develar • 0:55 min]\n¿Cuál es la inquietud que da origen a este estudio? En las normas vigentes existen dos instancias: el informe anual con encuesta estudiantil (Art. 74) y la evaluación cada cuatro años (Art. 75), donde dos resultados negativos seguidos pueden dejar vacante un cargo.\n\nComo simboliza la figura de la izquierda, aparece aquí un planteo a develar en 2027: cuando evaluar se asocia a aprobar o perder el cargo, eso podría generar cautela en el docente; además, querríamos conocer si el programa anual de capacitación (Art. 76) recibe hoy devoluciones claras sobre lo que pasa en las aulas presenciales y virtuales.\n\n[Objeto de estudio]\nPor eso nuestro objeto de estudio —representado en el círculo de la derecha— sería investigar en 2027 si resultaría viable pensar, para años posteriores, en una evaluación «360°» (juntando la mirada del propio docente, sus colegas, estudiantes y dirección) pensada únicamente para ayudar a mejorar las clases y planificar capacitaciones, totalmente separada de sanciones o legajos."
     },
 
     {
@@ -599,16 +599,16 @@ const PRESENTACION_DATA = {
       esquema: "1.3 Pregunta Central y 5 Dimensiones (0:40)",
       badge: "Paso 4 • Factibilidad",
       titulo: "Pregunta Central y 5 Dimensiones",
-      subtitulo: "¿Qué tendría que pasar en 2027 para que un modelo 360° fuera viable?",
+      subtitulo: "¿Qué tendría que darse para que este modelo sirviera en años posteriores?",
       puntosClave: [
         "<strong>1. Reglas y leyes:</strong> Que encaje con Estatuto y Convenio sin tocar estabilidad",
         "<strong>2. Herramientas:</strong> Que Moodle / SIU permitan encuestas breves y 100 % anónimas",
         "<strong>3. Organización:</strong> Que sirva para armar cursos del Art. 76 sin sumar papeleo",
         "<strong>4 y 5. Clima y Acuerdos:</strong> Confianza entre pares + acuerdo en cogobierno y ADUNC"
       ],
-      metadatosFooter: "Eje 1 • Las 5 Condiciones de Factibilidad a Evaluar",
+      metadatosFooter: "Eje 1 • Estudio en 2027 para evaluar viabilidad futura",
       escena3D: "anim_10",
-      guionOrador: "[Pregunta central y 5 dimensiones • 0:40 min]\nDe esa inquietud nace nuestra pregunta central: ¿estarían dadas las condiciones reales en 2027 en el Departamento para aplicar un modelo así?\n\nPara no dar nada por hecho, lo vamos a mirar desde cinco costados distintos:\n1) Reglas y normas: si sería compatible con el Estatuto y el Convenio Colectivo sin riesgo sancionatorio;\n2) Lo técnico: si Moodle o el SIU permitirían encuestas muy cortas, fáciles de usar en los Nodos y totalmente anónimas;\n3) La organización diaria: si ayudaría a diseñar capacitaciones del Art. 76 sin recargar de tareas;\n4) El clima humano: si habría confianza real entre docentes, alumnos y directivos;\n5) Los acuerdos políticos: si tendría consenso en los órganos de cogobierno y con el gremio ADUNC."
+      guionOrador: "[Pregunta central y 5 dimensiones • 0:40 min]\nDe esa inquietud nace nuestra pregunta central. Aclaro algo fundamental: en 2027 no vamos a implementar el modelo, sino a investigarlo. Lo que queremos averiguar ese año es si estarían dadas las condiciones reales en el Departamento para que una propuesta así sirva y pueda aplicarse en años posteriores.\n\nLo analizaríamos desde cinco costados concretos:\n1) Reglas y normas: si sería compatible con el Estatuto y el Convenio Colectivo sin riesgo sancionatorio;\n2) Lo técnico: si Moodle o el SIU permitirían encuestas muy cortas, fáciles de usar en los Nodos y totalmente anónimas;\n3) La organización diaria: si ayudaría a diseñar capacitaciones del Art. 76 sin recargar de tareas;\n4) El clima humano: si habría confianza real entre docentes, alumnos y directivos;\n5) Los acuerdos políticos: si tendría consenso en los órganos de cogobierno y con el gremio ADUNC."
     },
 
     {
@@ -619,9 +619,9 @@ const PRESENTACION_DATA = {
       esquema: "1.3 Objetivo General vs. Específicos (0:40)",
       badge: "Tabla 1 • Dos Niveles de Metas",
       titulo: "Objetivo General y Específicos",
-      subtitulo: "Qué buscaríamos lograr en todo el estudio y en cada etapa (Tabla 1)",
-      objetivoGeneral: "Analizar las condiciones reales (legales, técnicas, organizativas, culturales y de acuerdos) para saber si sería factible implementar una evaluación 360° en el Dpto. de Administración Pública (2027).",
-      etiquetaEspecificos: "Objetivos Específicos (Pasos concretos en 2027)",
+      subtitulo: "Qué estudiaríamos en 2027 para proyectar si serviría a futuro (Tabla 1)",
+      objetivoGeneral: "Analizar en 2027 las condiciones reales (legales, técnicas, organizativas, culturales y de acuerdos) para saber si sería factible una evaluación 360° aplicable en años posteriores.",
+      etiquetaEspecificos: "Objetivos Específicos (Pasos del estudio en 2027)",
       puntosClave: [
         "<strong>OE1 · Reglas vs. práctica:</strong> Revisar qué dicen las normas y cómo se evalúa hoy en el SIU",
         "<strong>OE2 · Escuchar voces:</strong> Conocer qué piensan docentes, estudiantes y gestión sobre el 360°",
@@ -630,7 +630,7 @@ const PRESENTACION_DATA = {
       ],
       metadatosFooter: "Eje 1 • Matriz de Consistencia y Articulación con Longo (Tabla 1)",
       escena3D: "anim_11",
-      guionOrador: "[Diferencia entre Objetivo General y Específicos • 0:40 min]\nSiguiendo la Matriz de Consistencia del proyecto (Tabla 1), separamos claramente dos niveles de objetivos:\n\n[1. Objetivo General — La gran pregunta]\nPor un lado, el Objetivo General resume la meta completa: averiguar si estarían dadas las cinco condiciones de factibilidad para pensar en una evaluación 360° dentro del Departamento en 2027.\n\n[2. Objetivos Específicos — Los cuatro pasos para comprobarlo]\nY los cuatro Objetivos Específicos marcan el camino concreto paso a paso:\n- Primero (OE1), mirar las reglas escritas junto a lo que realmente se hace hoy con encuestas e informes.\n- Segundo (OE2), escuchar qué opinan docentes, alumnos y autoridades, y qué necesitarían para confiar.\n- Tercero (OE3), detectar qué trabas técnicas o gremiales habría, e indagar si en materias de un solo docente serviría dialogar con colegas de materias cercanas («pares horizontales»).\n- Y cuarto (OE4), si el campo muestra viabilidad —y respetando los límites que encontremos—, redactar recomendaciones simples y posibles."
+      guionOrador: "[Diferencia entre Objetivo General y Específicos • 0:40 min]\nSiguiendo la Matriz de Consistencia del proyecto (Tabla 1), separamos claramente dos niveles de objetivos:\n\n[1. Objetivo General — La gran pregunta]\nPor un lado, el Objetivo General resume la meta completa: investigar durante 2027 si estarían dadas las cinco condiciones de factibilidad para pensar en una evaluación 360° aplicable en años posteriores dentro del Departamento.\n\n[2. Objetivos Específicos — Los cuatro pasos para indagarla]\nY los cuatro Objetivos Específicos marcan el camino concreto paso a paso:\n- Primero (OE1), mirar las reglas escritas junto a lo que realmente se hace hoy con encuestas e informes.\n- Segundo (OE2), escuchar qué opinan docentes, alumnos y autoridades, y qué necesitarían para confiar.\n- Tercero (OE3), detectar qué trabas técnicas o gremiales habría, e indagar si en materias de un solo docente serviría dialogar con colegas de materias cercanas («pares horizontales»).\n- Y cuarto (OE4), si el campo muestra viabilidad —y respetando los límites que encontremos—, redactar recomendaciones simples y posibles."
     },
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -688,11 +688,11 @@ const PRESENTACION_DATA = {
       puntosClave: [
         "<strong>Afuera (México/Cuba):</strong> El 71,7 % valoró mejorar clases; rechazó usos con castigo",
         "<strong>Argentina y CURZAS:</strong> Predominarían controles formales; piden apoyo en lo virtual",
-        "<strong>Posible vacío (hipótesis):</strong> No hallamos cruces previos entre 360°, cogobierno y Nodos"
+        "<strong>Posible vacío:</strong> No hallamos cruces previos entre 360°, cogobierno y Nodos"
       ],
       metadatosFooter: "Eje 2 • Búsqueda inicial en Dialnet, SciELO, Redalyc, EPAA y RDI UNCo",
       escena3D: "anim_17",
-      guionOrador: "[Estudios previos en lenguaje claro y potencial • 1:25 min]\nPara no empezar a ciegas, revisamos estudios anteriores en revistas educativas y repositorios universitarios (como Dialnet, SciELO y el de nuestra UNCo), búsqueda que profundizaremos en 2027:\n- En experiencias internacionales (Sifuentes, Obando, Vázquez Cid y un estudio sobre 1.431 docentes en México de Hernández-Villafaña), encontraron que cruzar varias miradas suele ayudar en clases virtuales y evita sesgos de la encuesta única, siempre que no tenga castigos ni afecte el sueldo.\n- En estudios de Argentina (Chiroleu, Marquina) y aquí mismo en el CURZA —donde Romina Cariaga entrevistó en 2019 a 10 docentes locales— aparece la necesidad de acompañar más a quienes enseñan en aulas virtuales.\n\nLo aclaramos también en potencial: hasta esta etapa preliminar parecería faltar un estudio que pruebe si un modelo 360° sería viable en una universidad pública cogobernada y con diez Nodos híbridos como la nuestra, algo que confirmaremos en 2027."
+      guionOrador: "[Estudios previos en lenguaje claro • 1:25 min]\nPara no empezar a ciegas, revisamos estudios anteriores en revistas educativas y repositorios universitarios (como Dialnet, SciELO y el de nuestra UNCo), búsqueda que profundizaremos en 2027:\n- En experiencias internacionales (Sifuentes, Obando, Vázquez Cid y un estudio sobre 1.431 docentes en México de Hernández-Villafaña), encontraron que cruzar varias miradas suele ayudar en clases virtuales y evita sesgos de la encuesta única, siempre que no tenga castigos ni afecte el sueldo.\n- En estudios de Argentina (Chiroleu, Marquina) y aquí mismo en el CURZA —donde Romina Cariaga entrevistó en 2019 a 10 docentes locales— aparece la necesidad de acompañar más a quienes enseñan en aulas virtuales.\n\nA partir de esta revisión inicial, parecería faltar un estudio que analice si un modelo 360° sería viable en una universidad pública cogobernada y con diez Nodos híbridos como la nuestra, punto que terminaremos de corroborar en 2027."
     },
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -787,13 +787,13 @@ const PRESENTACION_DATA = {
       titulo: "Sentido y Alcance del Proyecto",
       subtitulo: "Aportar información seria en 2027 sin adelantar conclusiones",
       puntosClave: [
-        "<strong>Todo en potencial:</strong> No damos por probada la viabilidad antes de investigar",
+        "<strong>Estudio abierto:</strong> Indagar qué funcionaría sin anticipar resultados",
         "<strong>Aporte pensado:</strong> Dar evidencia útil si el Dpto. quiere fortalecer el Art. 76",
         "<strong>Escucha al Tribunal:</strong> Abierto a mejoras para llegar mejor al campo en 2027"
       ],
       metadatosFooter: "Cierre • Defensa Oral SIA 2026",
       escena3D: "anim_25",
-      guionOrador: "[Cierre prudente • 0:50 min]\nPara cerrar: este proyecto no viene a convencer a nadie de aplicar una fórmula cerrada ni da por seguro que el modelo 360° sea viable. Justamente queremos ir al campo en 2027 a preguntar, escuchar y comprobar con seriedad qué funcionaría, qué generaría resistencia y qué límites reales existen en nuestro CURZAS, para dejarle al Departamento y al profesorado un insumo claro que ayude —si así se decide— a fortalecer la capacitación docente (Art. 76).\n\n[Pausa de 2 segundos]\n\nQuedo atento a las observaciones y preguntas de la cátedra."
+      guionOrador: "[Cierre del proyecto • 0:50 min]\nPara cerrar: el sentido de este proyecto es ir al terreno en 2027 a escuchar a todos los actores para conocer si esta propuesta serviría en años posteriores, qué generaría dudas y qué límites existen en nuestro CURZAS, dejando un insumo claro que ayude —si el Departamento así lo decide— a fortalecer la capacitación docente (Art. 76).\n\n[Pausa de 2 segundos]\n\nQuedo atento a las observaciones y preguntas de la cátedra."
     },
 
     {
