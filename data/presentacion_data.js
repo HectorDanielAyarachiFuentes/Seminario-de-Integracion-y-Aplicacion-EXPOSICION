@@ -856,7 +856,7 @@ const PRESENTACION_DATA = {
       esquema: "2.1 Enfoque Neural: Francisco Longo (1:05)",
       badge: "Enfoque Neural • Empleo Público",
       titulo: "Gestión Estratégica del Rendimiento",
-      subtitulo: "Francisco Longo (2006) • Enfoque aplicado al CURZAS-UNCo",
+      subtitulo: "Francisco Longo (2006) • Gestión de personas en el empleo público",
       longoVisual: {
         contraste: {
           desde: "Burocracia weberiana",
@@ -864,32 +864,32 @@ const PRESENTACION_DATA = {
         },
         centro: {
           titulo: "Gestión del Rendimiento",
-          detalle: "Evaluación formativa 360°"
+          detalle: "Subsistema integrador"
         },
         satelites: [
           {
             id: "organizacion",
             titulo: "Organización del Trabajo",
-            detalle: "Aulas híbridas y 10 Nodos (Res. 196/22)"
+            detalle: "Diseño de puestos, tareas y perfiles"
           },
           {
             id: "desarrollo",
             titulo: "Gestión del Desarrollo",
-            detalle: "Capacitación Docente (Art. 76)"
+            detalle: "Formación, capacitación y carrera"
           },
           {
             id: "relaciones",
             titulo: "Relaciones Humanas",
-            detalle: "Clima, reserva y ADUNC (CCT 1246/15)"
+            detalle: "Clima laboral y diálogo sindical"
           }
         ],
-        porQue: "Marco propio del empleo público que une evaluación, capacitación y diálogo gremial."
+        porQue: "Marco propio del empleo público que nos permitiría indagar en 2027 si un 360° formativo podría articularse con los Nodos (Res. 196/22), la capacitación (Art. 76) y ADUNC (CCT 1246/15)."
       },
       puntosClave: [],
       metadatosFooter: "Eje 2 • Francisco Longo (2006) • Enfoque Neural",
       escena3D: "anim_12",
       diagramaSVG: "assets/Sistemas-longo.svg",
-      guionOrador: "[Enfoque neural: Francisco Longo • 1:05 min]\nSobre esa base apoyamos nuestro marco central: el modelo de gestión estratégica de personas en el sector público de Francisco Longo (2006), que propone transitar desde el modelo burocrático-weberiano tradicional hacia un enfoque de mérito y flexibilidad.\n\n[Esquema en torno al Rendimiento 360°]\nEn el centro del dispositivo ubicamos al Subsistema de Gestión del Rendimiento —entendido como evaluación formativa 360°—, conectado de forma inseparable con tres subsistemas del CURZAS:\n1. Organización del Trabajo, para capturar la realidad de las aulas híbridas y los 10 Nodos bajo la Res. CD-CURZA N° 196/2022.\n2. Gestión del Desarrollo, articulando las devoluciones con el Programa Anual de Capacitación Docente del Art. 76 del Estatuto UNCo.\n3. Gestión de las Relaciones Humanas y Sociales, clave para cuidar el clima, la confidencialidad y el acuerdo paritario con ADUNC bajo el CCT Dec. PEN N° 1246/2015.\n\n[¿Por qué lo elegimos?]\nElegimos a Longo porque aporta un marco propio del empleo público que enlaza evaluación con capacitación y diálogo gremial, evitando trasplantes empresariales acríticos a la universidad pública."
+      guionOrador: "[Enfoque neural: qué plantea Francisco Longo (2006) • 1:05 min]\nSobre esa base epistemológica apoyamos nuestro marco central: el modelo sistémico de gestión estratégica de recursos humanos en el sector público de Francisco Longo (2006), quien propone transitar desde la gestión burocrático-weberiana tradicional hacia un enfoque basado en el mérito y la flexibilidad.\n\n[Subsistemas interdependientes en el modelo de Longo]\nEn la arquitectura de Longo, el Subsistema de Gestión del Rendimiento tiene como finalidad planificar, estimular y evaluar la contribución de las personas a los objetivos de la organización, sin operar de forma aislada sino en estrecha articulación con otros tres subsistemas:\n1. Organización del Trabajo, encargado de definir tareas, perfiles y condiciones concretas de desempeño.\n2. Gestión del Desarrollo, orientado a la formación continua, la capacitación y la proyección de carrera.\n3. Gestión de las Relaciones Humanas y Sociales, enfocado en el clima laboral, la comunicación interna y el diálogo con los actores sindicales.\n\n[Articulación con nuestro anteproyecto y por qué lo elegimos]\nElegimos a Longo porque aporta un marco propio del empleo público —evitando trasplantes empresariales acríticos— que en nuestro anteproyecto utilizaríamos como lente analítico: nos permitiría indagar en 2027 si sería factible vincular una eventual retroalimentación 360° de carácter formativo con la realidad de las aulas híbridas y los 10 Nodos (Res. CD-CURZA N° 196/2022), el Programa Anual de Capacitación Docente (Art. 76 del Estatuto UNCo) y el cuidado del clima y el acuerdo paritario con ADUNC (CCT Dec. PEN N° 1246/2015)."
     },
 
     {
