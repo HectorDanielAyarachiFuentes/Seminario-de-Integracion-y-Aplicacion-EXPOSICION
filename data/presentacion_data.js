@@ -1,6 +1,6 @@
 /**
  * =============================================================================
- * METADATOS Y CONTENIDO DE LA PRESENTACIÓN FINAL — ANTEPROYECTO DE TFG (15 FILMINAS)
+ * METADATOS Y CONTENIDO DE LA PRESENTACIÓN FINAL — ANTEPROYECTO DE TFG (19 FILMINAS)
  * Universidad Nacional del Comahue — CURZAS
  * Seminario de Integración y Aplicación (SIA 2026)
  * Autor: Tec. Sup. en RRHH Héctor Daniel Ayarachi Fuentes
@@ -292,164 +292,164 @@ const PRESENTACION_DATA = {
         cita: "Consejo Directivo del CURZAS. (2023). Resolución CD-CURZAS N° 266/2023: Reglamento de Trabajos Finales de Graduación del Departamento de Administración Pública."
       },
 
-      // ── BLOQUE 2a: MARCO TEÓRICO, MODELO 360° Y POLIGOBERNANZA (F5–F6) ──
+      // ── BLOQUE 2a: MARCO TEÓRICO, MODELO 360° Y POLIGOBERNANZA (F8–F10) ──
       {
-        categoria: "2. Bloque 2a — Teoría, Modelo 360° y Poligobernanza (F5–F6)",
-        filminas: "F5",
+        categoria: "2. Bloque 2a — Teoría, Modelo 360° y Poligobernanza (F8–F10)",
+        filminas: "F8",
         jerarquia: "Epistemología Rectora",
         cita: "De la Garza Toledo, E. (2001). La epistemología crítica y el concepto de configuración: Alternativas a la estructura y a la acción. En Los retos de las ciencias sociales en el siglo XXI (pp. 45–68). Plaza y Valdés."
       },
       {
-        categoria: "2. Bloque 2a — Teoría, Modelo 360° y Poligobernanza (F5–F6)",
-        filminas: "F6",
+        categoria: "2. Bloque 2a — Teoría, Modelo 360° y Poligobernanza (F8–F10)",
+        filminas: "F9",
         jerarquia: "Núcleo 360°",
         cita: "Lepsinger, R., y Lucia, A. D. (2009). The art and science of 360 degree feedback (2.ª ed.). Pfeiffer."
       },
       {
-        categoria: "2. Bloque 2a — Teoría, Modelo 360° y Poligobernanza (F5–F6)",
-        filminas: "F6",
+        categoria: "2. Bloque 2a — Teoría, Modelo 360° y Poligobernanza (F8–F10)",
+        filminas: "F10",
         jerarquia: "Poligobernanza Principal",
         cita: "Cao, H., y Blutman, G. (2023). Escenarios futuros para el Estado y la Administración Pública. Colección, 34(1), 143–176. https://doi.org/10.46553/colec.34.2023.p143-176"
       },
       {
-        categoria: "2. Bloque 2a — Teoría, Modelo 360° y Poligobernanza (F5–F6)",
-        filminas: "F6",
+        categoria: "2. Bloque 2a — Teoría, Modelo 360° y Poligobernanza (F8–F10)",
+        filminas: "F10",
         jerarquia: "Viabilidad Política",
         cita: "Matus, C. (1993). Política, planificación y gobierno. Fundación ALTADIR."
       },
       {
-        categoria: "2. Bloque 2a — Teoría, Modelo 360° y Poligobernanza (F5–F6)",
-        filminas: "F2, F6",
+        categoria: "2. Bloque 2a — Teoría, Modelo 360° y Poligobernanza (F8–F10)",
+        filminas: "F4, F10",
         jerarquia: "Capacidades Digitales",
         cita: "Oszlak, O. (2020). El Estado en la era exponencial. Instituto Nacional de la Administración Pública (CLAD/INAP)."
       },
       {
-        categoria: "2. Bloque 2a — Teoría, Modelo 360° y Poligobernanza (F5–F6)",
-        filminas: "F6",
+        categoria: "2. Bloque 2a — Teoría, Modelo 360° y Poligobernanza (F8–F10)",
+        filminas: "F10",
         jerarquia: "Base Prospectiva",
         cita: "Cao, H., y Blutman, G. (2021). Escenarios prospectivos para el Estado y la administración pública argentina: El modelo de la poligobernanza y las transformaciones tecnológicas. Instituto Nacional de la Administración Pública (INAP)."
       },
       {
-        categoria: "2. Bloque 2a — Teoría, Modelo 360° y Poligobernanza (F5–F6)",
-        filminas: "F6",
+        categoria: "2. Bloque 2a — Teoría, Modelo 360° y Poligobernanza (F8–F10)",
+        filminas: "F9",
         jerarquia: "Enfoque Formativo",
         cita: "Chiavenato, I. (2020). Gestión del talento humano: El nuevo papel de los recursos humanos en las organizaciones (5.ª ed.). McGraw-Hill Interamericana."
       },
       {
-        categoria: "2. Bloque 2a — Teoría, Modelo 360° y Poligobernanza (F5–F6)",
-        filminas: "F6",
+        categoria: "2. Bloque 2a — Teoría, Modelo 360° y Poligobernanza (F8–F10)",
+        filminas: "F10",
         jerarquia: "Gobernanza Base",
         cita: "Aguilar Villanueva, L. F. (2006). Gobernanza y gestión pública. Fondo de Cultura Económica."
       },
 
-      // ── BLOQUE 2b: ANTECEDENTES EMPÍRICOS Y ESTADO DEL ARTE EN 3 ESCALAS (F7) ──
+      // ── BLOQUE 2b: ANTECEDENTES EMPÍRICOS Y ESTADO DEL ARTE EN 3 ESCALAS (F11) ──
       {
-        categoria: "3. Bloque 2b — Antecedentes y Estado del Arte (F7)",
-        filminas: "F7",
+        categoria: "3. Bloque 2b — Antecedentes y Estado del Arte (F11)",
+        filminas: "F11",
         jerarquia: "Guía Revisión Rectora",
         cita: "Torraco, R. J. (2016). Writing integrative literature reviews: Using the past and present to explore the future. Human Resource Development Review, 15(4), 404–428. https://doi.org/10.1177/1534484316671606"
       },
       {
-        categoria: "3. Bloque 2b — Antecedentes y Estado del Arte (F7)",
-        filminas: "F7",
+        categoria: "3. Bloque 2b — Antecedentes y Estado del Arte (F11)",
+        filminas: "F11",
         jerarquia: "Guía Revisión",
         cita: "Jiménez Becerra, A. (2008). El estado del arte y la investigación de la investigación: Reflexiones metodológicas. En La práctica investigativa en ciencias sociales (pp. 27–42). UPN / CLACSO."
       },
       {
-        categoria: "3. Bloque 2b — Antecedentes y Estado del Arte (F7)",
-        filminas: "F7",
+        categoria: "3. Bloque 2b — Antecedentes y Estado del Arte (F11)",
+        filminas: "F11",
         jerarquia: "Int. Empírico (n=1.431)",
         cita: "Hernández-Villafaña, A. D., y Luna Serrano, E. (2023). Metaevaluación del sistema de evaluación docente en una universidad pública mexicana. Archivos Analíticos de Políticas Educativas, 31(11), 1–24. https://doi.org/10.14507/epaa.31.7501"
       },
       {
-        categoria: "3. Bloque 2b — Antecedentes y Estado del Arte (F7)",
-        filminas: "F7",
+        categoria: "3. Bloque 2b — Antecedentes y Estado del Arte (F11)",
+        filminas: "F11",
         jerarquia: "Int. Modelo 360°",
         cita: "Sifuentes Ocegueda, E., Suárez Flores, M., y Lara González, L. M. (2016). La evaluación de 360° aplicada al personal docente de nivel superior. Revista de Investigación en Tecnologías de la Información, 4(7), 17–23."
       },
       {
-        categoria: "3. Bloque 2b — Antecedentes y Estado del Arte (F7)",
-        filminas: "F7",
+        categoria: "3. Bloque 2b — Antecedentes y Estado del Arte (F11)",
+        filminas: "F11",
         jerarquia: "Int. Tutoría Híbrida",
         cita: "Vázquez Cid de León, C., Domínguez Herrera, J. E., Aguilar Cruz, C., Ramírez Castillo, E. A., y Vázquez Arango, M. de L. (2021). Evaluación 360° de las tutorías presenciales y en línea en universidades públicas. UNACIENCIA: Revista de Estudios e Investigaciones, 14(27), 103–120."
       },
       {
-        categoria: "3. Bloque 2b — Antecedentes y Estado del Arte (F7)",
-        filminas: "F7",
+        categoria: "3. Bloque 2b — Antecedentes y Estado del Arte (F11)",
+        filminas: "F11",
         jerarquia: "Int. Pedagógico",
         cita: "Obando Freire, F. X., López Fernández, R., Luna Álvarez, D., Luna Álvarez, E., Luna Álvarez, W., y Alpízar Fernández, R. (2014). Sistema de evaluación docente mediante el modelo 360 grados y el portafolio electrónico. Medisur, 12(2), 334–340."
       },
       {
-        categoria: "3. Bloque 2b — Antecedentes y Estado del Arte (F7)",
-        filminas: "F7",
+        categoria: "3. Bloque 2b — Antecedentes y Estado del Arte (F11)",
+        filminas: "F11",
         jerarquia: "Nacional Principal",
         cita: "Marquina, M. (2013). ¿Hay una profesión académica argentina? Avances y reflexiones sobre un objeto en construcción. Pensamiento Universitario, 15(15), 35–58."
       },
       {
-        categoria: "3. Bloque 2b — Antecedentes y Estado del Arte (F7)",
-        filminas: "F7",
+        categoria: "3. Bloque 2b — Antecedentes y Estado del Arte (F11)",
+        filminas: "F11",
         jerarquia: "Nacional Fundacional",
         cita: "Chiroleu, A. (2002). La profesión académica en Argentina. Espacios en Blanco. Serie Indagaciones, 12, 51–73."
       },
       {
-        categoria: "3. Bloque 2b — Antecedentes y Estado del Arte (F7)",
-        filminas: "F7",
+        categoria: "3. Bloque 2b — Antecedentes y Estado del Arte (F11)",
+        filminas: "F11",
         jerarquia: "Local CURZA-UNCo",
         cita: "Cariaga, R. (2019). El rol del docente universitario en las propuestas educativas virtualizadas. Revista Pilquen. Sección Psicopedagogía, 16(2), 14–28."
       },
 
-      // ── BLOQUE 3: METODOLOGÍA, MUESTREO, ANÁLISIS Y RESGUARDO ÉTICO (F8–F11) ──
+      // ── BLOQUE 3: METODOLOGÍA, MUESTREO, ANÁLISIS Y RESGUARDO ÉTICO (F12–F15) ──
       {
-        categoria: "4. Bloque 3 — Metodología, Muestreo y Resguardo Ético (F8–F11)",
-        filminas: "F8–F10",
+        categoria: "4. Bloque 3 — Metodología, Muestreo y Resguardo Ético (F12–F15)",
+        filminas: "F12–F14",
         jerarquia: "Diseño Mixto Rector",
         cita: "Hernández Sampieri, R., Fernández Collado, C., y Baptista Lucio, M. P. (2014). Metodología de la investigación (6.ª ed.). McGraw-Hill Interamericana."
       },
       {
-        categoria: "4. Bloque 3 — Metodología, Muestreo y Resguardo Ético (F8–F11)",
-        filminas: "F8",
+        categoria: "4. Bloque 3 — Metodología, Muestreo y Resguardo Ético (F12–F15)",
+        filminas: "F12",
         jerarquia: "Estudio de Caso",
         cita: "Flyvbjerg, B. (2005). Cinco malentendidos acerca de la investigación mediante los estudios de caso. Revista Española de Investigaciones Sociológicas, 106, 33–62."
       },
       {
-        categoria: "4. Bloque 3 — Metodología, Muestreo y Resguardo Ético (F8–F11)",
-        filminas: "F8",
+        categoria: "4. Bloque 3 — Metodología, Muestreo y Resguardo Ético (F12–F15)",
+        filminas: "F12",
         jerarquia: "Validación Caso",
         cita: "Giménez, G. (2012). El estatuto metodológico del estudio de caso en la investigación social. Cultura y Representaciones Sociales, 7(13), 33–52."
       },
       {
-        categoria: "4. Bloque 3 — Metodología, Muestreo y Resguardo Ético (F8–F11)",
-        filminas: "F8",
+        categoria: "4. Bloque 3 — Metodología, Muestreo y Resguardo Ético (F12–F15)",
+        filminas: "F12",
         jerarquia: "Saturación Cualitativa",
         cita: "Glaser, B. G., y Strauss, A. L. (1967). The discovery of grounded theory: Strategies for qualitative research. Aldine Publishing Company."
       },
       {
-        categoria: "4. Bloque 3 — Metodología, Muestreo y Resguardo Ético (F8–F11)",
-        filminas: "F8–F10",
+        categoria: "4. Bloque 3 — Metodología, Muestreo y Resguardo Ético (F12–F15)",
+        filminas: "F12–F14",
         jerarquia: "Análisis Contenido",
         cita: "Bardin, L. (2002). Análisis de contenido. Akal."
       },
       {
-        categoria: "4. Bloque 3 — Metodología, Muestreo y Resguardo Ético (F8–F11)",
-        filminas: "F8, F10",
+        categoria: "4. Bloque 3 — Metodología, Muestreo y Resguardo Ético (F12–F15)",
+        filminas: "F12, F13",
         jerarquia: "Triangulación",
         cita: "Denzin, N. K. (1978). The research act: A theoretical introduction to sociological methods (2.ª ed.). McGraw-Hill."
       },
       {
-        categoria: "4. Bloque 3 — Metodología, Muestreo y Resguardo Ético (F8–F11)",
-        filminas: "F11",
+        categoria: "4. Bloque 3 — Metodología, Muestreo y Resguardo Ético (F12–F15)",
+        filminas: "F15",
         jerarquia: "Vigilancia Reflexiva",
         cita: "Bourdieu, P. (2003). El oficio de científico: Ciencia de la ciencia y reflexividad. Anagrama."
       },
       {
-        categoria: "4. Bloque 3 — Metodología, Muestreo y Resguardo Ético (F8–F11)",
-        filminas: "F11",
+        categoria: "4. Bloque 3 — Metodología, Muestreo y Resguardo Ético (F12–F15)",
+        filminas: "F15",
         jerarquia: "Extrañamiento Campo",
         cita: "Guber, R. (2004). El salvaje metropolitano: Reconstrucción del conocimiento social en el trabajo de campo. Paidós."
       },
       {
-        categoria: "4. Bloque 3 — Metodología, Muestreo y Resguardo Ético (F8–F11)",
-        filminas: "F9, F11",
+        categoria: "4. Bloque 3 — Metodología, Muestreo y Resguardo Ético (F12–F15)",
+        filminas: "F13, F15",
         jerarquia: "Tutela Legal Datos",
         cita: "Congreso de la Nación Argentina. (2000). Ley N° 25.326: Protección de los Datos Personales. Boletín Oficial de la República Argentina."
       }
@@ -457,7 +457,7 @@ const PRESENTACION_DATA = {
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // LAS 18 FILMINAS MINIMALISTAS — EN POTENCIAL Y LENGUAJE DOCENTE CLARO
+  // LAS 19 FILMINAS MINIMALISTAS — EN POTENCIAL Y LENGUAJE DOCENTE CLARO
   // ═══════════════════════════════════════════════════════════════════════════
   slides: [
     // ─────────────────────────────────────────────────────────────────────────
@@ -506,7 +506,7 @@ const PRESENTACION_DATA = {
         {
           romano: "02",
           titulo: "Estado de la Cuestión y Marco Teórico",
-          resumen: "Qué es el 360° en palabras simples • Estudios previos • Posible vacío",
+          resumen: "De la Garza • Longo • Poligobernanza (Cao y Blutman / Oszlak) • Estado del Arte",
           targetSlide: 7,
           tono: "b2"
         },
@@ -514,7 +514,7 @@ const PRESENTACION_DATA = {
           romano: "03",
           titulo: "Metodología",
           resumen: "Cómo investigaríamos en 2027 • Muestras • Tiempos y cuidado de datos",
-          targetSlide: 10,
+          targetSlide: 11,
           tono: "b3"
         }
       ],
@@ -634,73 +634,93 @@ const PRESENTACION_DATA = {
     },
 
     // ─────────────────────────────────────────────────────────────────────────
-    // EJE 2: ESTADO DE LA CUESTIÓN Y MARCO TEÓRICO (4:00 min — Filminas 8 a 10)
+    // EJE 2: ESTADO DE LA CUESTIÓN Y MARCO TEÓRICO (4:00 min — Filminas 8 a 11)
     // ─────────────────────────────────────────────────────────────────────────
     {
-      id: "slide_5",
+      id: "slide_eje2_delagarza",
       numero: 8,
-      tiempoSugerido: "1:15 min",
-      bloque: "EJE 2 · ESTADO Y MARCO TEÓRICO",
-      esquema: "2.1 Ideas Teóricas en Lenguaje Simple (1:15)",
-      badge: "Marco Teórico",
-      titulo: "Mirada Integral del Desempeño",
-      subtitulo: "De la Garza Toledo (2001) y Francisco Longo (2006) explicados fácil",
+      tiempoSugerido: "0:45 min",
+      bloque: "EJE 2 · ESTADO DE LA CUESTIÓN Y MARCO TEÓRICO",
+      esquema: "2.1 Construcción Teórica Principal: De la Garza (0:45)",
+      badge: "Base Epistemológica",
+      titulo: "La Teoría como Configuración Abierta",
+      subtitulo: "Enrique de la Garza Toledo (2001) • Epistemología crítica como base del estudio",
       puntosClave: [
-        "<strong>Sin conclusiones previas:</strong> De la Garza propone usar la teoría como guía abierta",
-        "<strong>Evaluar para capacitar:</strong> Según Longo, evaluar tendría sentido si nutre al Art. 76",
-        "<strong>Trabajo y acuerdos:</strong> Cuidar la estabilidad laboral y el diálogo gremial (CCT 1246/15)"
+        "<strong>Enfoque principal:</strong> La teoría no es un dogma cerrado, sino una <em>configuración abierta</em> que articula Administración Pública y RR. HH.",
+        "<strong>Base de la investigación:</strong> Concibe la universidad como proceso abierto de actores reflexivos para reconstruir el <em>campo de lo viable</em> en 2027.",
+        "<strong>Por qué lo elegimos:</strong> Evita importar recetas cerradas, dialoga con la realidad del CURZAS y ordena los conceptos en pirámide invertida (Sautu, 2005)."
       ],
-      metadatosFooter: "Eje 2 • 5 Engranajes de Longo (2006) • Sin recetas cerradas",
+      metadatosFooter: "Eje 2 • De la Garza Toledo (2001) • Configuración Abierta",
+      escena3D: "anim_29",
+      guionOrador: "[Construcción teórica principal • 0:45 min]\nPara abrir el Eje 2 definimos primero nuestro posicionamiento teórico con Enrique de la Garza Toledo (2001), quien concibe la teoría como una «configuración abierta»: no como un sistema cerrado de axiomas rígidos, sino como una red flexible de categorías que articula la Administración Pública con la Gestión de Recursos Humanos.\n\nElegimos este autor como base principal porque una universidad pública cogobernada y con diez Nodos no funciona mecánicamente; investigar factibilidad exige reconstruir el campo de lo institucionalmente viable en 2027 sin dar conclusiones cerradas de antemano."
+    },
+
+    {
+      id: "slide_eje2_longo",
+      numero: 9,
+      tiempoSugerido: "1:05 min",
+      bloque: "EJE 2 · ESTADO DE LA CUESTIÓN Y MARCO TEÓRICO",
+      esquema: "2.1 Enfoque Neural: Subsistema de Longo (1:05)",
+      badge: "Columna Vertebral",
+      titulo: "Gestión Estratégica del Rendimiento",
+      subtitulo: "Francisco Longo (2006) • Subsistema central articulado en el empleo público",
+      puntosClave: [
+        "<strong>Subsistema central:</strong> La <em>Gestión del Rendimiento</em> (evaluación formativa 360° en 4 miradas) legitima el mérito si supera la auditoría punitiva.",
+        "<strong>Articulación sistémica:</strong> Se enlaza con <em>Desarrollo</em> (Art. 76), <em>Organización del Trabajo</em> (aulas híbridas), <em>Empleo</em> (CCT) y <em>Relaciones Humanas</em> (ADUNC).",
+        "<strong>Por qué es eje neural:</strong> Estructura la Matriz de Consistencia del TFG: evaluar el desempeño en aislamiento resulta estéril si no nutre la formación ni respeta la estabilidad."
+      ],
+      metadatosFooter: "Eje 2 • Francisco Longo (2006) • 5 Subsistemas Focalizados en el TFG",
       escena3D: "anim_12",
       diagramaSVG: "assets/Sistemas-longo.svg",
-      guionOrador: "[Autores centrales en lenguaje claro • 1:15 min]\nPasando al segundo eje, ¿con qué ideas generales miraríamos el problema? Primero, con Enrique de la Garza Toledo (2001), entendemos la teoría como una guía abierta, no como una receta cerrada: vamos a investigar para ver qué pasa, sin dar respuestas por adelantado.\n\nNuestro autor central es Francisco Longo (2006), quien estudia cómo gestionar personas en instituciones públicas. Longo señala algo muy cercano a nuestra práctica diaria: medir el desempeño por sí solo no ayudaría si queda suelto en una planilla. Para que sirva, debería conectarse con las capacitaciones (Art. 76), con el trabajo real en aulas presenciales y virtuales, con la estabilidad en los cargos y con el diálogo sindical."
+      guionOrador: "[Enfoque neural o central • 1:05 min]\nSobre esa base abierta apoyamos nuestro eje central: el modelo sistémico de gestión pública de Francisco Longo (2006). El estudio focaliza en el subsistema de Gestión del Rendimiento, entendido no como control burocrático sino como un proceso reflexivo de mejora donde encajaría una retroalimentación 360° en cuatro miradas (autoevaluación, pares o pares horizontales, estudiantes y dirección).\n\nElegimos a Longo como columna vertebral del análisis porque demuestra que evaluar sin conectar con el subsistema de Desarrollo (la capacitación del Art. 76), con la Organización del Trabajo en aulas híbridas y con la Gestión del Empleo y las Relaciones Humanas en paritaria vacía de sentido formativo al dispositivo."
     },
 
     {
-      id: "slide_6",
-      numero: 9,
-      tiempoSugerido: "1:20 min",
-      bloque: "EJE 2 · ESTADO Y MARCO TEÓRICO",
-      esquema: "2.1 Qué es el 360° y Cómo Decide la Universidad (1:20)",
-      badge: "Conceptos Clave",
-      titulo: "Modelo 360° y Niveles de Acuerdo",
-      subtitulo: "Cuatro miradas pedagógicas en cuatro ámbitos universitarios",
+      id: "slide_eje2_poligobernanza",
+      numero: 10,
+      tiempoSugerido: "0:55 min",
+      bloque: "EJE 2 · ESTADO DE LA CUESTIÓN Y MARCO TEÓRICO",
+      esquema: "2.1 Poligobernanza y Capacidades Estatales (0:55)",
+      badge: "Conceptos Complementarios",
+      titulo: "Poligobernanza y Capacidades Digitales",
+      subtitulo: "Cao y Blutman (2023) • Oscar Oszlak (2020) • Articulación en red del CURZAS",
       puntosClave: [
-        "<strong>Qué es el 360°:</strong> Sumar 4 voces (autoevaluación, colegas, alumnos y dirección)",
-        "<strong>4 niveles de decisión:</strong> UNCo • CURZAS • 10 Nodos • Gremio ADUNC",
-        "<strong>Condición de base:</strong> Acuerdos compartidos (Matus) y anonimato digital (Oszlak)"
+        "<strong>Poligobernanza (Cao y Blutman, 2023):</strong> Dirección compartida en 4 planos —Macro (UNCo), Meso (CURZAS), Micro (10 Nodos) y Transversal (ADUNC)— frente a la complejidad territorial.",
+        "<strong>Capacidades digitales (Oszlak, 2020):</strong> Plataformas abiertas (Moodle/SIU) al servicio formativo y del anonimato técnico, evitando el tecno-autoritarismo.",
+        "<strong>Por qué los incorporamos:</strong> Aterrizan el modelo en la universidad cogobernada: la viabilidad requiere consensos en poder compartido (Matus, 1993) y resguardo tecnológico confiable."
       ],
-      metadatosFooter: "Eje 2 • Lepsinger & Lucia • Cao & Blutman • Matus • Oszlak",
+      metadatosFooter: "Eje 2 • Poligobernanza (Cao & Blutman) • Estado Exponencial (Oszlak) • Matus",
       escena3D: "anim_15",
       diagramaSVG: "assets/modelo_360.svg",
-      guionOrador: "[360° y niveles de decisión explicados fácil • 1:20 min]\nEn palabras simples, ¿qué propone una evaluación «360°» (Chiavenato; Lepsinger & Lucia)? En lugar de depender de una sola voz aislada —como la encuesta estudiantil actual—, propone reunir cuatro miradas para devolverle ideas útiles al docente: su propia autoevaluación, el intercambio con colegas de materias cercanas, la opinión de estudiantes y la mirada de la dirección.\n\nY dado que la universidad pública no funciona por órdenes verticales sino en red —entre Neuquén (UNCo), Viedma (CURZAS), los diez Nodos y el gremio ADUNC (como analizan Cao y Blutman y Carlos Matus)—, entendemos que ninguna herramienta podría aplicarse sin acuerdos previos. Además, siguiendo a Oscar Oszlak, si se usaran Moodle o el SIU debería ser siempre para facilitar y cuidar el anonimato, nunca como vigilancia digital."
+      guionOrador: "[Conceptos complementarios • 0:55 min]\nComo conceptos complementarios incorporamos la poligobernanza de Horacio Cao y Gustavo Blutman (2023) junto a las capacidades estatales en la era exponencial de Oscar Oszlak (2020). En una universidad pública no hay mando vertical único: las decisiones circulan en red entre el Consejo Superior, el CURZAS, los diez Nodos territoriales y la paritaria con ADUNC.\n\nIncorporar esta dupla conceptual resulta indispensable porque, siguiendo a Oszlak (y en sintonía con las arenas de poder compartido de Carlos Matus), plataformas como Moodle o el SIU solo fortalecen capacidades de gestión si aseguran anonimato real y sentido formativo, nunca vigilancia tecno-burocrática."
     },
 
     {
-      id: "slide_7",
-      numero: 10,
-      tiempoSugerido: "1:25 min",
-      bloque: "EJE 2 · ESTADO Y MARCO TEÓRICO",
-      esquema: "2.2 Estudios Previos y Posible Vacío (1:25)",
-      badge: "Búsqueda Preliminar",
-      titulo: "Qué se Investigó Antes y Qué Falta",
-      subtitulo: "Primera revisión en 3 escalas (a ampliar en 2027 según Torraco)",
+      id: "slide_eje2_estado_arte",
+      numero: 11,
+      tiempoSugerido: "1:15 min",
+      bloque: "EJE 2 · ESTADO DE LA CUESTIÓN Y MARCO TEÓRICO",
+      esquema: "2.2 Estado del Arte en 3 Niveles (1:15)",
+      badge: "Relevamiento Abierto",
+      titulo: "Estado del Arte y Posible Vacancia",
+      subtitulo: "Antecedentes en 3 escalas (Dialnet, SciELO, Redalyc, EPAA y RDI UNCo)",
       puntosClave: [
-        "<strong>Afuera (México/Cuba):</strong> El 71,7 % valoró mejorar clases; rechazó usos con castigo",
-        "<strong>Argentina y CURZAS:</strong> Predominarían controles formales; piden apoyo en lo virtual",
-        "<strong>Posible vacío:</strong> No hallamos cruces previos entre 360°, cogobierno y Nodos"
+        "<strong>Internacional:</strong> Circuitos 360° reducen sesgos, captan tutorías híbridas y funcionan solo si son formativos (<em>Sifuentes, 2016; Obando, 2014; Vázquez Cid, 2021; Hernández-Villafaña, 2023, n = 1.431</em>).",
+        "<strong>Nacional:</strong> Fragmentación académica y primacía de controles burocráticos sobre instancias colegiadas de mejora (<em>Chiroleu, 2002; Marquina, 2013</em>).",
+        "<strong>Local (UNCo–CURZAS):</strong> Tensiones docentes ante la virtualidad y demanda de formación continua (<em>Cariaga, 2019, Pilquen</em>); normativa actual sin devoluciones 360°.",
+        "<strong>Pertinencia y nota abierta:</strong> Los estudios internacionales validan el 360° en docencia híbrida y el deslinde punitivo. <em>Relevamiento preliminar abierto, sujeto a agregados y cambios en 2027 (SNRD, SEDICI y RevEle).</em>"
       ],
-      metadatosFooter: "Eje 2 • Búsqueda inicial en Dialnet, SciELO, Redalyc, EPAA y RDI UNCo",
+      metadatosFooter: "Eje 2 • Estado del Arte Preliminar y Abierto • Posible Vacancia (2027)",
       escena3D: "anim_17",
-      guionOrador: "[Estudios previos en lenguaje claro • 1:25 min]\nPara no empezar a ciegas, revisamos estudios anteriores en revistas educativas y repositorios universitarios (como Dialnet, SciELO y el de nuestra UNCo), búsqueda que profundizaremos en 2027:\n- En experiencias internacionales (Sifuentes, Obando, Vázquez Cid y un estudio sobre 1.431 docentes en México de Hernández-Villafaña), encontraron que cruzar varias miradas suele ayudar en clases virtuales y evita sesgos de la encuesta única, siempre que no tenga castigos ni afecte el sueldo.\n- En estudios de Argentina (Chiroleu, Marquina) y aquí mismo en el CURZA —donde Romina Cariaga entrevistó en 2019 a 10 docentes locales— aparece la necesidad de acompañar más a quienes enseñan en aulas virtuales.\n\nA partir de esta revisión inicial, parecería faltar un estudio que analice si un modelo 360° sería viable en una universidad pública cogobernada y con diez Nodos híbridos como la nuestra, punto que terminaremos de corroborar en 2027."
+      guionOrador: "[Estado del arte en tres estadios • 1:15 min]\nPara el estado del arte organizamos la búsqueda preliminar en tres niveles geográficos. A escala internacional, investigaciones empíricas en México, Ecuador y Cuba —como Hernández-Villafaña sobre 1.431 docentes y Vázquez Cid en tutorías híbridas— muestran que la evaluación 360° reduce sesgos de la encuesta única y capta mejor la tutoría virtual, siempre que quede desligada de sanciones o salarios.\n\nEn el plano nacional, Chiroleu y Marquina advierten que predominan controles burocrático-sumativos frente a circuitos formativos. Y en el ámbito local, Romina Cariaga (2019) documenta en el propio CURZA la necesidad de sostener el desarrollo docente en entornos virtuales.\n\n[Pertinencia y aclaración de apertura]\nEstos antecedentes —en especial los internacionales— resultan pertinentes porque aportan evidencia empírica sobre entornos híbridos y resguardo no punitivo donde aún no hallamos estudios situados locales. Aclaramos expresamente que este relevamiento es preliminar y permanece abierto a cambios o nuevos agregados durante la revisión ampliada de 2027."
     },
 
     // ─────────────────────────────────────────────────────────────────────────
-    // EJE 3: METODOLOGÍA (4:40 min — Filminas 11 a 14)
+    // EJE 3: METODOLOGÍA (4:40 min — Filminas 12 a 15)
     // ─────────────────────────────────────────────────────────────────────────
     {
       id: "slide_8",
-      numero: 11,
+      numero: 12,
       tiempoSugerido: "1:10 min",
       bloque: "EJE 3 · METODOLOGÍA",
       esquema: "3.1 Cómo Investigaríamos y Con Quiénes (1:10)",
@@ -719,7 +739,7 @@ const PRESENTACION_DATA = {
 
     {
       id: "slide_9",
-      numero: 12,
+      numero: 13,
       tiempoSugerido: "1:15 min",
       bloque: "EJE 3 · METODOLOGÍA",
       esquema: "3.2 Herramientas y Cruce de Datos (1:15)",
@@ -738,7 +758,7 @@ const PRESENTACION_DATA = {
 
     {
       id: "slide_10",
-      numero: 13,
+      numero: 14,
       tiempoSugerido: "1:10 min",
       bloque: "EJE 3 · METODOLOGÍA",
       esquema: "3.4 Plan de 7 Meses y Costo Cero (1:10)",
@@ -757,7 +777,7 @@ const PRESENTACION_DATA = {
 
     {
       id: "slide_11",
-      numero: 14,
+      numero: 15,
       tiempoSugerido: "1:05 min",
       bloque: "EJE 3 · METODOLOGÍA",
       esquema: "3.3 Cuidado de Objetividad y Privacidad (1:05)",
@@ -775,11 +795,11 @@ const PRESENTACION_DATA = {
     },
 
     // ─────────────────────────────────────────────────────────────────────────
-    // CIERRE Y RESPALDO (1:50 min — Filminas 15 a 18)
+    // CIERRE Y RESPALDO (1:50 min — Filminas 16 a 19)
     // ─────────────────────────────────────────────────────────────────────────
     {
       id: "slide_12",
-      numero: 15,
+      numero: 16,
       tiempoSugerido: "0:50 min",
       bloque: "CIERRE",
       esquema: "Sentido y Límite del Anteproyecto (0:50)",
@@ -798,7 +818,7 @@ const PRESENTACION_DATA = {
 
     {
       id: "slide_13",
-      numero: 16,
+      numero: 17,
       tiempoSugerido: "0:30 min",
       bloque: "CIERRE",
       esquema: "Correspondencia con Planilla Oficial (0:30)",
@@ -806,7 +826,7 @@ const PRESENTACION_DATA = {
       titulo: "Alineación con Planilla Oficial",
       subtitulo: "Correspondencia completa entre el documento escrito y esta exposición",
       puntosClave: [
-        "<strong>Ejes 1 y 2:</strong> El Problema (1.1–1.4) • Estado y Marco Teórico (2.1–2.4)",
+        "<strong>Ejes 1 y 2:</strong> El Problema (1.1–1.4) • Estado de la Cuestión y Marco Teórico (2.1–2.4)",
         "<strong>Eje 3:</strong> Metodología (3.1–3.5) e Instrumentos ya preparados (Anexos I–IV)",
         "<strong>Respaldo formal:</strong> 35 referencias APA 7 y Cronograma en 6 etapas"
       ],
@@ -823,7 +843,7 @@ const PRESENTACION_DATA = {
 
     {
       id: "slide_14",
-      numero: 17,
+      numero: 18,
       tiempoSugerido: "0:20 min",
       bloque: "CIERRE",
       esquema: "Agradecimientos (0:20)",
@@ -842,7 +862,7 @@ const PRESENTACION_DATA = {
 
     {
       id: "slide_15",
-      numero: 18,
+      numero: 19,
       tiempoSugerido: "0:10 min",
       bloque: "CIERRE",
       esquema: "Bibliografía APA 7 (0:10)",
@@ -851,7 +871,7 @@ const PRESENTACION_DATA = {
       subtitulo: "Referencias organizadas por eje y jerarquía",
       puntosClave: [
         "<strong>Eje 1 · Problema:</strong> Ley 24.521, Estatuto UNCo, CCT 1246/15, Wainerman y Sautu",
-        "<strong>Eje 2 · Estado y Teoría:</strong> Longo, De la Garza, Cao y Blutman, Torraco, Cariaga",
+        "<strong>Eje 2 · Estado de la Cuestión y Marco Teórico:</strong> De la Garza, Longo, Cao y Blutman, Oszlak, Cariaga",
         "<strong>Eje 3 · Metodología:</strong> Sampieri, Flyvbjerg, Bardin, Bourdieu, Ley 25.326"
       ],
       metadatosFooter: "Detalle completo en Panel Respaldo (Tecla M)",

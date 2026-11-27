@@ -750,8 +750,8 @@ window.Presentation3D_Objects["anim_03"] = {
 
     const items = [
       { x: -0.92, z: 0.06, h: 0.70, title: "1. EL PROBLEMA", sub: "Ámbito y Objetivos", meta: "EJE 1 • F3–F7", labelOffY: 0.36 },
-      { x: 0.00, z: -0.06, h: 0.92, title: "2. ESTADO Y TEORÍA", sub: "Marco y Antecedentes", meta: "EJE 2 • F8–F10", labelOffY: 0.56 },
-      { x: 0.92, z: 0.06, h: 1.12, title: "3. METODOLOGÍA", sub: "CUAL→cuan y Ética", meta: "EJE 3 • F11–F14", labelOffY: 0.52 }
+      { x: 0.00, z: -0.06, h: 0.92, title: "2. ESTADO DE LA CUESTIÓN", sub: "y Marco Teórico", meta: "EJE 2 • F8–F11", labelOffY: 0.56 },
+      { x: 0.92, z: 0.06, h: 1.12, title: "3. METODOLOGÍA", sub: "CUAL→cuan y Ética", meta: "EJE 3 • F12–F15", labelOffY: 0.52 }
     ];
 
     engine.anim03_blocks = [];

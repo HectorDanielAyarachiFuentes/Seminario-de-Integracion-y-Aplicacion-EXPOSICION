@@ -36,5 +36,6 @@ window.Scene3DCameraConfig = {
   anim_25: { pos: [2.2, 1.5, 6.5], lookAt: [1.3, 0.1, 0] },
   anim_26: { pos: [2.25, 1.48, 6.45], lookAt: [1.3, 0.08, 0] }, // Agradecimientos Institucionales
   anim_27: { pos: [2.30, 1.52, 6.50], lookAt: [1.3, 0.08, 0] }, // Bibliografía y Fuentes
-  anim_28: { pos: [2.25, 1.48, 6.25], lookAt: [1.3, 0.06, 0] }  // Diseño de Investigación Completo (Informe Final)
+  anim_28: { pos: [2.25, 1.48, 6.25], lookAt: [1.3, 0.06, 0] }, // Diseño de Investigación Completo (Informe Final)
+  anim_29: { pos: [2.20, 1.54, 6.65], lookAt: [1.3, 0.08, 0] }  // Configuración Abierta (Enrique de la Garza Toledo)
 };

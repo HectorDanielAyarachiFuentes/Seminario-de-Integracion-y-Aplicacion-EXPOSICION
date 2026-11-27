@@ -1011,3 +1011,175 @@ window.Presentation3D_Objects["anim_15"] = {
     }
   }
 };
+
+// ──────────────────────────────────────────────────────────────────────────
+// 29. CONSTRUCCIÓN TEÓRICA PRINCIPAL: La Teoría como Configuración Abierta
+//     (Enrique de la Garza Toledo, 2001 • Base Epistemológica del TFG)
+// ──────────────────────────────────────────────────────────────────────────
+window.Presentation3D_Objects["anim_29"] = {
+  build(engine, g) {
+    engine.createMuseumPlinth(g, 1.58, 0.22, -1.22);
+
+    const chassis = engine.createMachinedChassis(1.56, 0.10, 1.12, { color: 0x1e293b });
+    chassis.position.set(0, -0.985, -0.06);
+    g.add(chassis);
+
+    const frontPlaque = engine.createMountedPlaque(
+      1.18,
+      0.26,
+      "LA TEORÍA COMO CONFIGURACIÓN ABIERTA",
+      "Enrique de la Garza Toledo (2001) • Epistemología Crítica",
+      ["RED CONCEPTUAL ABIERTA", "CAMPO DE LO VIABLE (2027)", "SIN DOGMAS CERRADOS"],
+      { theme: "dark", floorY: -1.0385 }
+    );
+    frontPlaque.position.set(0, 0, 1.06);
+    g.add(frontPlaque);
+
+    const group = new THREE.Group();
+    group.position.set(0, -0.02, -0.06);
+
+    const ivoryMat = engine.marbleMat(0xf7f5ef, 0.44);
+    const brassMat = engine.brassMat(0xcfa346);
+    const goldMat = engine.goldMat(0xe0ba56);
+
+    // Pedestal clásico torneado hasta el núcleo abierto
+    const stemPts = [
+      new THREE.Vector2(0, -0.915),
+      new THREE.Vector2(0.24, -0.915),
+      new THREE.Vector2(0.20, -0.84),
+      new THREE.Vector2(0.085, -0.62),
+      new THREE.Vector2(0.065, -0.34),
+      new THREE.Vector2(0.14, -0.28),
+      new THREE.Vector2(0, -0.28)
+    ];
+    const stem = new THREE.Mesh(new THREE.LatheGeometry(stemPts, 48), ivoryMat);
+    stem.castShadow = true;
+    stem.receiveShadow = true;
+    group.add(stem);
+
+    const collar = new THREE.Mesh(new THREE.TorusGeometry(0.135, 0.012, 16, 48), goldMat);
+    collar.rotation.x = Math.PI / 2;
+    collar.position.y = -0.28;
+    group.add(collar);
+
+    const corePos = new THREE.Vector3(0, 0.14, 0);
+
+    const coreCrystal = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(0.155, 1),
+      engine.glassMat(0x0ea5e9, { opacity: 0.88, roughness: 0.06, transmission: 0.65 })
+    );
+    coreCrystal.position.copy(corePos);
+    group.add(coreCrystal);
+    engine.anim29_core = coreCrystal;
+
+    const innerGold = new THREE.Mesh(new THREE.OctahedronGeometry(0.078, 0), goldMat);
+    innerGold.position.copy(corePos);
+    group.add(innerGold);
+
+    const coreLight = new THREE.PointLight(0x38bdf8, 1.4, 2.2);
+    coreLight.position.copy(corePos);
+    group.add(coreLight);
+
+    // Dos arcos abiertos de latón (simbolizan un sistema abierto, nunca cerrado)
+    const arc1 = new THREE.Mesh(
+      new THREE.TorusGeometry(0.30, 0.012, 18, 56, Math.PI * 1.45),
+      goldMat
+    );
+    arc1.position.copy(corePos);
+    arc1.rotation.x = Math.PI / 3;
+    group.add(arc1);
+    engine.anim29_arc1 = arc1;
+
+    const arc2 = new THREE.Mesh(
+      new THREE.TorusGeometry(0.40, 0.010, 18, 64, Math.PI * 1.38),
+      brassMat
+    );
+    arc2.position.copy(corePos);
+    arc2.rotation.y = Math.PI / 4;
+    arc2.rotation.z = -Math.PI / 5;
+    group.add(arc2);
+    engine.anim29_arc2 = arc2;
+
+    // 3 Nodos conceptuales articulados en red flexible
+    const nodes = [
+      {
+        title: "ADMINISTRACIÓN PÚBLICA", sub: "Estado y Gobernanza",
+        pos: [-0.84, 0.22, 0.18], labelY: 0.52, hex: 0x2563eb, color: "#1e3a8a"
+      },
+      {
+        title: "GESTIÓN DE RR. HH.", sub: "Subsistemas de Longo",
+        pos: [0.84, 0.22, 0.18], labelY: 0.52, hex: 0x10b981, color: "#047857"
+      },
+      {
+        title: "CAMPO DE LO VIABLE", sub: "Construcción Situada 2027",
+        pos: [0.0, 0.66, -0.28], labelY: 0.96, hex: 0xf59e0b, color: "#b45309"
+      }
+    ];
+
+    engine.anim29_nodes = [];
+    nodes.forEach((nd) => {
+      const pVec = new THREE.Vector3(nd.pos[0], nd.pos[1], nd.pos[2]);
+      const midVec = new THREE.Vector3().addVectors(corePos, pVec).multiplyScalar(0.5);
+      midVec.y += 0.14;
+
+      const linkCurve = new THREE.QuadraticBezierCurve3(corePos, midVec, pVec);
+      const linkMesh = new THREE.Mesh(
+        new THREE.TubeGeometry(linkCurve, 20, 0.007, 8, false),
+        brassMat
+      );
+      group.add(linkMesh);
+
+      const nodeGroup = new THREE.Group();
+      nodeGroup.position.copy(pVec);
+      nodeGroup.userData.baseY = nd.pos[1];
+
+      const orb = new THREE.Mesh(
+        new THREE.OctahedronGeometry(0.082, 1),
+        engine.glassMat(nd.hex, { opacity: 0.92, roughness: 0.08 })
+      );
+      nodeGroup.add(orb);
+
+      const halo = engine.createBrassArmillaryRing(0.12, 0.006);
+      halo.rotation.x = Math.PI / 2.2;
+      nodeGroup.add(halo);
+
+      group.add(nodeGroup);
+      engine.anim29_nodes.push(nodeGroup);
+
+      const lbl = engine.createLabelSprite(nd.title, nd.sub, nd.color, false, { x: 0.66, y: 0.19 });
+      lbl.position.set(nd.pos[0], nd.labelY, nd.pos[2]);
+      group.add(lbl);
+    });
+
+    const masterLbl = engine.createLabelSprite(
+      "TEORÍA COMO CONFIGURACIÓN ABIERTA",
+      "De la Garza Toledo (2001) • Base Epistemológica",
+      "#0f2d59",
+      true
+    );
+    masterLbl.position.set(0, 1.32, 0.05);
+    group.add(masterLbl);
+
+    g.add(group);
+  },
+
+  animate(engine, t) {
+    if (engine.anim29_core) {
+      engine.anim29_core.rotation.y = t * 0.45;
+    }
+    if (engine.anim29_arc1) {
+      engine.anim29_arc1.rotation.y = t * 0.36;
+      engine.anim29_arc1.rotation.z = Math.sin(t * 0.65) * 0.18;
+    }
+    if (engine.anim29_arc2) {
+      engine.anim29_arc2.rotation.x = -t * 0.30;
+      engine.anim29_arc2.rotation.y = Math.PI / 4 + Math.cos(t * 0.5) * 0.22;
+    }
+    if (engine.anim29_nodes) {
+      engine.anim29_nodes.forEach((node, idx) => {
+        node.position.y = node.userData.baseY + Math.sin(t * 1.25 + idx * 2.1) * 0.024;
+        node.rotation.y = t * 0.5 + idx;
+      });
+    }
+  }
+};

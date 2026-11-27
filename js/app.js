@@ -525,9 +525,9 @@ class PresentationApp {
       {
         id: "eje2",
         code: "EJE 2",
-        shortLabel: "2-Estado y Marco Teórico",
-        title: "EJE 2: Estado de la Cuestión y Marco Teórico (Longo, 360°, Gobernanza y Antecedentes)",
-        range: [7, 9], // Filminas 8 a 10
+        shortLabel: "2-Estado de la Cuestión y Marco Teórico",
+        title: "EJE 2: Estado de la Cuestión y Marco Teórico (De la Garza, Longo, Poligobernanza y Estado del Arte)",
+        range: [7, 10], // Filminas 8 a 11
         isEje: true,
         ejeNumber: 2
       },
@@ -536,7 +536,7 @@ class PresentationApp {
         code: "EJE 3",
         shortLabel: "3-Metodología",
         title: "EJE 3: Metodología (Enfoque Mixto, Muestras, Cronograma 2027 y Ética)",
-        range: [10, 13], // Filminas 11 a 14
+        range: [11, 14], // Filminas 12 a 15
         isEje: true,
         ejeNumber: 3
       },
@@ -545,7 +545,7 @@ class PresentationApp {
         code: "CIERRE",
         shortLabel: "Cierre y Respaldo",
         title: "Cierre: Sentido del Proyecto, Planilla Oficial, Gratitud y Bibliografía APA 7",
-        range: [14, 17], // Filminas 15 a 18
+        range: [15, 18], // Filminas 16 a 19
         isEje: false
       }
     ];
