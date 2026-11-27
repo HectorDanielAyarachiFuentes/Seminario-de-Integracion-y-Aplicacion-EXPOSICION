@@ -957,7 +957,7 @@ class PresentationApp {
   }
 
   /**
-   * Renderiza la Filmina 9 (Francisco Longo, 2006): Contraste burocrático→mérito y esquema radial.
+   * Renderiza la Filmina 9 (Francisco Longo, 2006): Contraste limpio + núcleo 360° conectado a 3 subsistemas.
    */
   renderLongoVisualLayout(data) {
     const { contraste, centro, satelites, porQue } = data;
@@ -966,40 +966,37 @@ class PresentationApp {
       const contrastBar = document.createElement("div");
       contrastBar.className = "longo-contrast cover-anim-item";
       contrastBar.innerHTML = `
-        <span class="longo-contrast-pill is-from">${contraste.desde}</span>
+        <span class="longo-contrast-from">${contraste.desde}</span>
         <span class="longo-contrast-arrow" aria-hidden="true">→</span>
-        <span class="longo-contrast-pill is-to">${contraste.hacia}</span>
+        <span class="longo-contrast-to">${contraste.hacia}</span>
       `;
       this.bulletsElement.appendChild(contrastBar);
     }
 
-    const radialStage = document.createElement("div");
-    radialStage.className = "longo-radial-stage cover-anim-item";
-    radialStage.innerHTML = `
-      <svg class="longo-radial-svg" viewBox="0 0 600 210" preserveAspectRatio="none" aria-hidden="true">
-        <ellipse cx="300" cy="105" rx="185" ry="70" fill="none" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="4 5" />
-        <line x1="300" y1="105" x2="145" y2="36" stroke="#0f625a" stroke-width="1.6" stroke-opacity="0.4" />
-        <line x1="300" y1="105" x2="455" y2="36" stroke="#0f625a" stroke-width="1.6" stroke-opacity="0.4" />
-        <line x1="300" y1="105" x2="300" y2="174" stroke="#d97706" stroke-width="1.6" stroke-opacity="0.5" />
-        <circle cx="145" cy="36" r="3.5" fill="#0f625a" />
-        <circle cx="455" cy="36" r="3.5" fill="#0f625a" />
-        <circle cx="300" cy="174" r="3.5" fill="#d97706" />
+    const diagram = document.createElement("div");
+    diagram.className = "longo-tree-wrap cover-anim-item";
+    diagram.innerHTML = `
+      <div class="longo-hub">
+        <strong class="longo-hub-title">${centro.titulo}</strong>
+        <span class="longo-hub-sub">${centro.detalle}</span>
+      </div>
+      <svg class="longo-tree-svg" viewBox="0 0 600 30" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="300" y1="0" x2="300" y2="14" stroke="#94a3b8" stroke-width="1.5" />
+        <line x1="100" y1="14" x2="500" y2="14" stroke="#94a3b8" stroke-width="1.5" />
+        <line x1="100" y1="14" x2="100" y2="30" stroke="#0f625a" stroke-width="1.6" />
+        <line x1="300" y1="14" x2="300" y2="30" stroke="#1d4ed8" stroke-width="1.6" />
+        <line x1="500" y1="14" x2="500" y2="30" stroke="#d97706" stroke-width="1.6" />
       </svg>
-      <div class="longo-radial-grid">
+      <div class="longo-branches-grid">
         ${(satelites || []).map((sat) => `
-          <div class="longo-sat longo-sat-${sat.id}">
-            <strong class="longo-sat-title">${sat.titulo}</strong>
-            <span class="longo-sat-desc">${sat.detalle}</span>
+          <div class="longo-branch longo-branch-${sat.id}">
+            <strong class="longo-branch-title">${sat.titulo}</strong>
+            <span class="longo-branch-desc">${sat.detalle}</span>
           </div>
         `).join("")}
-        <div class="longo-hub">
-          <span class="longo-hub-kicker">${centro.kicker}</span>
-          <strong class="longo-hub-title">${centro.titulo}</strong>
-          <span class="longo-hub-sub">${centro.detalle}</span>
-        </div>
       </div>
     `;
-    this.bulletsElement.appendChild(radialStage);
+    this.bulletsElement.appendChild(diagram);
 
     if (porQue) {
       const whyBox = this.createWhyChosenBlock("¿Por qué lo elegimos?", porQue);
@@ -1009,7 +1006,7 @@ class PresentationApp {
   }
 
   /**
-   * Renderiza la Filmina 10: Desarrollo individual de Cao y Blutman, Oszlak y Matus.
+   * Renderiza la Filmina 10: Desarrollo individual limpio de Cao y Blutman, Oszlak y Matus.
    */
   renderAutoresComplementariosLayout(autores) {
     const list = document.createElement("div");
@@ -1021,10 +1018,10 @@ class PresentationApp {
       card.innerHTML = `
         <div class="autor-comp-head">
           <h3 class="autor-comp-name">${autor.nombre}</h3>
-          <span class="autor-comp-tag">${autor.etiqueta}</span>
+          <span class="autor-comp-tag">· ${autor.etiqueta}</span>
         </div>
-        <p class="autor-comp-temario"><strong>Temario principal:</strong> ${autor.temario}</p>
-        <p class="autor-comp-why"><strong>${autor.porQueLabel || "¿Por qué lo elegimos?"}:</strong> ${autor.porQue}</p>
+        <p class="autor-comp-line"><strong>Temario:</strong> ${autor.temario}</p>
+        <p class="autor-comp-line autor-comp-why"><strong>${autor.porQueLabel || "¿Por qué lo elegimos?"}:</strong> ${autor.porQue}</p>
       `;
       list.appendChild(card);
     });
@@ -1033,33 +1030,31 @@ class PresentationApp {
   }
 
   /**
-   * Renderiza la Filmina 11: Estado del Arte en 3 ámbitos, vacancia y nota al pie preliminar.
+   * Renderiza la Filmina 11: Estado del Arte en 3 bloques horizontales aireados, vacancia y nota al pie.
    */
   renderEstadoArteLayout(data) {
-    const cols = document.createElement("div");
-    cols.className = "estado-arte-cols";
+    const rows = document.createElement("div");
+    rows.className = "estado-arte-rows";
 
     (data.ambitos || []).forEach((amb) => {
-      const col = document.createElement("section");
-      col.className = `ambito-col ambito-${amb.id} cover-anim-item`;
-      col.innerHTML = `
-        <header class="ambito-col-head">
-          <span class="ambito-col-pill">${amb.titulo}</span>
-        </header>
-        <p class="ambito-col-fuentes">${amb.fuentes}</p>
-        <p class="ambito-col-sintesis">${amb.sintesis}</p>
-        <p class="ambito-col-why"><strong>${amb.porQueLabel || "¿Por qué lo elegimos?"}:</strong> ${amb.porQue}</p>
+      const row = document.createElement("section");
+      row.className = `ambito-row ambito-${amb.id} cover-anim-item`;
+      row.innerHTML = `
+        <div class="ambito-row-head">
+          <span class="ambito-row-pill">${amb.titulo}</span>
+          <span class="ambito-row-fuentes">${amb.fuentes}</span>
+        </div>
+        <p class="ambito-row-body">${amb.sintesis} — <strong>${amb.porQueLabel || "¿Por qué lo elegimos?"}:</strong> ${amb.porQue}</p>
       `;
-      cols.appendChild(col);
+      rows.appendChild(row);
     });
-    this.bulletsElement.appendChild(cols);
+    this.bulletsElement.appendChild(rows);
 
     if (data.vacancia) {
       const vacBox = document.createElement("div");
       vacBox.className = "estado-arte-vacancia cover-anim-item";
       vacBox.innerHTML = `
-        <span class="vacancia-kicker">Vacancia de investigación</span>
-        <p class="vacancia-text">${data.vacancia}</p>
+        <p class="vacancia-text"><strong>Vacancia:</strong> ${data.vacancia}</p>
       `;
       this.bulletsElement.appendChild(vacBox);
     }
@@ -1207,7 +1202,8 @@ class PresentationApp {
           x: 0,
           opacity: 1,
           duration: 0.16,
-          stagger: 0.015
+          stagger: 0.015,
+          clearProps: "transform"
         }, "-=0.08");
       }
 
@@ -1266,7 +1262,8 @@ class PresentationApp {
             opacity: 1,
             duration: 0.26,
             stagger: 0.035,
-            ease: "power2.out"
+            ease: "power2.out",
+            clearProps: "transform"
           }, "-=0.15");
         }
 

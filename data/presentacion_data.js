@@ -856,14 +856,13 @@ const PRESENTACION_DATA = {
       esquema: "2.1 Enfoque Neural: Francisco Longo (1:05)",
       badge: "Enfoque Neural • Empleo Público",
       titulo: "Gestión Estratégica del Rendimiento",
-      subtitulo: "Francisco Longo (2006) • Del modelo burocrático-weberiano al mérito y flexibilidad",
+      subtitulo: "Francisco Longo (2006) • Enfoque aplicado al CURZAS-UNCo",
       longoVisual: {
         contraste: {
-          desde: "Burocracia weberiana tradicional",
+          desde: "Burocracia weberiana",
           hacia: "Mérito y flexibilidad"
         },
         centro: {
-          kicker: "Núcleo Central",
           titulo: "Gestión del Rendimiento",
           detalle: "Evaluación formativa 360°"
         },
@@ -871,26 +870,26 @@ const PRESENTACION_DATA = {
           {
             id: "organizacion",
             titulo: "Organización del Trabajo",
-            detalle: "Aulas híbridas y 10 Nodos (Res. 196/2022)"
+            detalle: "Aulas híbridas y 10 Nodos (Res. 196/22)"
           },
           {
             id: "desarrollo",
             titulo: "Gestión del Desarrollo",
-            detalle: "Capacitación Docente (Art. 76 Estatuto)"
+            detalle: "Capacitación Docente (Art. 76)"
           },
           {
             id: "relaciones",
-            titulo: "Relaciones Humanas y Sociales",
-            detalle: "Clima, reserva y paritaria ADUNC (CCT 1246/2015)"
+            titulo: "Relaciones Humanas",
+            detalle: "Clima, reserva y ADUNC (CCT 1246/15)"
           }
         ],
-        porQue: "Marco propio del empleo público que une evaluación, capacitación y diálogo gremial, evitando trasplantes empresariales acríticos."
+        porQue: "Marco propio del empleo público que une evaluación, capacitación y diálogo gremial."
       },
       puntosClave: [],
       metadatosFooter: "Eje 2 • Francisco Longo (2006) • Enfoque Neural",
       escena3D: "anim_12",
       diagramaSVG: "assets/Sistemas-longo.svg",
-      guionOrador: "[Enfoque neural: Francisco Longo • 1:05 min]\nSobre esa base apoyamos nuestro marco central: el modelo de gestión estratégica de personas en el sector público de Francisco Longo (2006), que propone transitar desde el modelo burocrático-weberiano tradicional hacia un enfoque de mérito y flexibilidad.\n\n[Esquema radial en torno al Rendimiento 360°]\nEn el centro del dispositivo ubicamos al Subsistema de Gestión del Rendimiento —entendido como evaluación formativa 360°—, conectado de forma inseparable con tres subsistemas del CURZAS:\n1. Organización del Trabajo, para capturar la realidad de las aulas híbridas y los 10 Nodos bajo la Res. CD-CURZA N° 196/2022.\n2. Gestión del Desarrollo, articulando las devoluciones con el Programa Anual de Capacitación Docente del Art. 76 del Estatuto UNCo.\n3. Gestión de las Relaciones Humanas y Sociales, clave para cuidar el clima, la confidencialidad y el acuerdo paritario con ADUNC bajo el CCT Dec. PEN N° 1246/2015.\n\n[¿Por qué lo elegimos?]\nElegimos a Longo porque aporta un marco propio del empleo público que enlaza evaluación con capacitación y diálogo gremial, evitando trasplantes empresariales acríticos a la universidad pública."
+      guionOrador: "[Enfoque neural: Francisco Longo • 1:05 min]\nSobre esa base apoyamos nuestro marco central: el modelo de gestión estratégica de personas en el sector público de Francisco Longo (2006), que propone transitar desde el modelo burocrático-weberiano tradicional hacia un enfoque de mérito y flexibilidad.\n\n[Esquema en torno al Rendimiento 360°]\nEn el centro del dispositivo ubicamos al Subsistema de Gestión del Rendimiento —entendido como evaluación formativa 360°—, conectado de forma inseparable con tres subsistemas del CURZAS:\n1. Organización del Trabajo, para capturar la realidad de las aulas híbridas y los 10 Nodos bajo la Res. CD-CURZA N° 196/2022.\n2. Gestión del Desarrollo, articulando las devoluciones con el Programa Anual de Capacitación Docente del Art. 76 del Estatuto UNCo.\n3. Gestión de las Relaciones Humanas y Sociales, clave para cuidar el clima, la confidencialidad y el acuerdo paritario con ADUNC bajo el CCT Dec. PEN N° 1246/2015.\n\n[¿Por qué lo elegimos?]\nElegimos a Longo porque aporta un marco propio del empleo público que enlaza evaluación con capacitación y diálogo gremial, evitando trasplantes empresariales acríticos a la universidad pública."
     },
 
     {
@@ -907,25 +906,25 @@ const PRESENTACION_DATA = {
           id: "cao-blutman",
           nombre: "Horacio Cao y Gustavo Blutman (2021, 2023)",
           etiqueta: "Poligobernanza",
-          temario: "«Estado plataforma» y complejidad situada en 4 planos: Macro (UNCo), Meso (CURZAS), Micro (10 Nodos) y ADUNC.",
+          temario: "«Estado plataforma» en 4 planos: UNCo, CURZAS, Nodos y ADUNC.",
           porQueLabel: "¿Por qué los elegimos?",
-          porQue: "Permiten una evaluación en red para cursadas híbridas, superando encuestas genéricas."
+          porQue: "Evaluación en red para cursadas híbridas, sin encuestas genéricas."
         },
         {
           id: "oszlak",
           nombre: "Oscar Oszlak (2020)",
           etiqueta: "Era Digital",
-          temario: "Capacidades estatales digitales: Moodle y SIU-Guaraní para gestión y anonimato técnico, sin control tecno-burocrático.",
+          temario: "Moodle y SIU con anonimato técnico, sin fiscalización punitiva.",
           porQueLabel: "¿Por qué lo elegimos?",
-          porQue: "Aprovecha la infraestructura universitaria existente garantizando confidencialidad útil."
+          porQue: "Aprovecha la infraestructura propia con confidencialidad útil."
         },
         {
           id: "matus",
           nombre: "Carlos Matus (1993)",
           etiqueta: "Poder Compartido",
-          temario: "Planificación Estratégica Situacional y viabilidad en arenas sin monopolio decisional.",
+          temario: "Planificación situacional en arenas sin monopolio decisional.",
           porQueLabel: "¿Por qué lo elegimos?",
-          porQue: "Solo es viable concertando voluntariedad, anonimato y desvinculación de legajos sumativos."
+          porQue: "Viable solo acordando voluntariedad, anonimato y cero legajos."
         }
       ],
       puntosClave: [],
@@ -942,35 +941,35 @@ const PRESENTACION_DATA = {
       esquema: "2.2 Estado del Arte en 3 Ámbitos (1:15)",
       badge: "Estado del Arte • 3 Ámbitos",
       titulo: "Estado del Arte y Vacancia",
-      subtitulo: "Antecedentes empíricos y normativos en tres escalas",
+      subtitulo: "Antecedentes en tres ámbitos (desarrollo ampliado en Notas del Orador)",
       estadoArteData: {
         ambitos: [
           {
             id: "internacional",
             titulo: "Internacional",
-            fuentes: "Sifuentes Ocegueda et al. (2016) · Obando Freire et al. (2014) · Reyes & Díaz (2020) · Alvarado & Morales (2019)",
-            sintesis: "Experiencias 360° en México y Cuba.",
-            porQueLabel: "¿Por qué los elegimos?",
-            porQue: ">85 % de aceptación con anonimato y resguardo no punitivo."
+            fuentes: "Sifuentes Ocegueda (2016) · Obando Freire (2014) · Reyes & Díaz (2020) · Alvarado & Morales (2019)",
+            sintesis: "México y Cuba (360°)",
+            porQueLabel: "Por qué los elegimos",
+            porQue: ">85 % de aceptación bajo anonimato y resguardo gremial."
           },
           {
             id: "nacional",
             titulo: "Nacional",
             fuentes: "Marquina (2012) · Pérez et al. (2021)",
-            sintesis: "Profesión académica y tutorías 360° híbridas.",
-            porQueLabel: "¿Por qué los elegimos?",
-            porQue: "Brecha didáctica de grado y validez tutorial virtual."
+            sintesis: "Profesión académica y tutorías híbridas",
+            porQueLabel: "Por qué los elegimos",
+            porQue: "Brecha didáctica de grado y validez 360° virtual."
           },
           {
             id: "local",
             titulo: "Local / Institucional",
             fuentes: "Estatuto UNCo (Arts. 74–76) · Ord. 0910/97 · CCT 1246/15 · Res. 196/22",
-            sintesis: "Permanencia, capacitación, paritaria y 10 Nodos.",
-            porQueLabel: "¿Por qué lo elegimos?",
+            sintesis: "Permanencia, capacitación, paritaria y 10 Nodos",
+            porQueLabel: "Por qué lo elegimos",
             porQue: "Marco jurídico-territorial sin vulnerar estabilidad."
           }
         ],
-        vacancia: "Sin estudios sobre factibilidad integral de un 360° formativo en universidad patagónica cogobernada con red híbrida.",
+        vacancia: "Sin estudios sobre factibilidad de un 360° formativo en universidad patagónica cogobernada con red híbrida.",
         notaPie: "Selección preliminar sujeta a posibles cambios o agregados."
       },
       puntosClave: [],
