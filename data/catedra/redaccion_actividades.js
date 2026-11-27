@@ -1,0 +1,172 @@
+// Redacción Final + Cuestionarios y Actividades
+window.CATEDRA_PARTS = window.CATEDRA_PARTS || {};
+window.CATEDRA_PARTS.redaccionActividades = [
+  {
+    "nombre": "CARATULA INSCRIPCION PROYECTO  TFG .docx",
+    "titulo": "CARATULA INSCRIPCION PROYECTO  TFG",
+    "ext": ".docx",
+    "tamano": "68.4 KB",
+    "bytes": 70011,
+    "ruta": "Material Catedra/✍️ Redacción del Documento Final 📄/Examen Final - Inscripción del TFG/CARATULA INSCRIPCION PROYECTO  TFG .docx",
+    "categoriaSlug": "redaccion",
+    "categoriaLabel": "Redacción & Defensa TFG",
+    "seccion": "✍️ Redacción del Documento Final 📄",
+    "subseccion": "Examen Final - Inscripción del TFG"
+  },
+  {
+    "nombre": "CARATULA PARA DEFENSA TFG.docx",
+    "titulo": "CARATULA PARA DEFENSA TFG",
+    "ext": ".docx",
+    "tamano": "68.4 KB",
+    "bytes": 69993,
+    "ruta": "Material Catedra/✍️ Redacción del Documento Final 📄/Documentos para la defensa del TFG (para cuando termin/CARATULA PARA DEFENSA TFG.docx",
+    "categoriaSlug": "redaccion",
+    "categoriaLabel": "Redacción & Defensa TFG",
+    "seccion": "✍️ Redacción del Documento Final 📄",
+    "subseccion": "Documentos para la defensa del TFG (para cuando termin"
+  },
+  {
+    "nombre": "CONECTORES.pdf",
+    "titulo": "CONECTORES",
+    "ext": ".pdf",
+    "tamano": "89.9 KB",
+    "bytes": 92019,
+    "ruta": "Material Catedra/✍️ Redacción del Documento Final 📄/Conectores y consejos de escritura-20260920/CONECTORES.pdf",
+    "categoriaSlug": "redaccion",
+    "categoriaLabel": "Redacción & Defensa TFG",
+    "seccion": "✍️ Redacción del Documento Final 📄",
+    "subseccion": "Conectores y consejos de escritura-20260920"
+  },
+  {
+    "nombre": "Conectores para una buena redacción.pdf",
+    "titulo": "Conectores para una buena redacción",
+    "ext": ".pdf",
+    "tamano": "67.5 KB",
+    "bytes": 69145,
+    "ruta": "Material Catedra/✍️ Redacción del Documento Final 📄/Conectores y consejos de escritura-20260920/Conectores para una buena redacción.pdf",
+    "categoriaSlug": "redaccion",
+    "categoriaLabel": "Redacción & Defensa TFG",
+    "seccion": "✍️ Redacción del Documento Final 📄",
+    "subseccion": "Conectores y consejos de escritura-20260920"
+  },
+  {
+    "nombre": "Conectores-y-funciones alumnos CURZA.pdf",
+    "titulo": "Conectores-y-funciones alumnos CURZA",
+    "ext": ".pdf",
+    "tamano": "358.7 KB",
+    "bytes": 367357,
+    "ruta": "Material Catedra/✍️ Redacción del Documento Final 📄/Conectores y consejos de escritura-20260920/Conectores-y-funciones alumnos CURZA.pdf",
+    "categoriaSlug": "redaccion",
+    "categoriaLabel": "Redacción & Defensa TFG",
+    "seccion": "✍️ Redacción del Documento Final 📄",
+    "subseccion": "Conectores y consejos de escritura-20260920"
+  },
+  {
+    "nombre": "NOTA ALUMNO INSCRIPCION PROYECTO TFG.doc",
+    "titulo": "NOTA ALUMNO INSCRIPCION PROYECTO TFG",
+    "ext": ".doc",
+    "tamano": "30.5 KB",
+    "bytes": 31232,
+    "ruta": "Material Catedra/✍️ Redacción del Documento Final 📄/Examen Final - Inscripción del TFG/NOTA ALUMNO INSCRIPCION PROYECTO TFG.doc",
+    "categoriaSlug": "redaccion",
+    "categoriaLabel": "Redacción & Defensa TFG",
+    "seccion": "✍️ Redacción del Documento Final 📄",
+    "subseccion": "Examen Final - Inscripción del TFG"
+  },
+  {
+    "nombre": "NOTA ALUMNOS PARA  DEFENSA TFG.doc",
+    "titulo": "NOTA ALUMNOS PARA  DEFENSA TFG",
+    "ext": ".doc",
+    "tamano": "31 KB",
+    "bytes": 31744,
+    "ruta": "Material Catedra/✍️ Redacción del Documento Final 📄/Documentos para la defensa del TFG (para cuando termin/NOTA ALUMNOS PARA  DEFENSA TFG.doc",
+    "categoriaSlug": "redaccion",
+    "categoriaLabel": "Redacción & Defensa TFG",
+    "seccion": "✍️ Redacción del Documento Final 📄",
+    "subseccion": "Documentos para la defensa del TFG (para cuando termin"
+  },
+  {
+    "nombre": "NOTA DIRECTOR ACEPTA DIRIGIR PROYECTO TFG.doc",
+    "titulo": "NOTA DIRECTOR ACEPTA DIRIGIR PROYECTO TFG",
+    "ext": ".doc",
+    "tamano": "31.5 KB",
+    "bytes": 32256,
+    "ruta": "Material Catedra/✍️ Redacción del Documento Final 📄/Examen Final - Inscripción del TFG/NOTA DIRECTOR ACEPTA DIRIGIR PROYECTO TFG.doc",
+    "categoriaSlug": "redaccion",
+    "categoriaLabel": "Redacción & Defensa TFG",
+    "seccion": "✍️ Redacción del Documento Final 📄",
+    "subseccion": "Examen Final - Inscripción del TFG"
+  },
+  {
+    "nombre": "NOTA DIRECTOR PARA DEFENSA TFG.doc",
+    "titulo": "NOTA DIRECTOR PARA DEFENSA TFG",
+    "ext": ".doc",
+    "tamano": "31 KB",
+    "bytes": 31744,
+    "ruta": "Material Catedra/✍️ Redacción del Documento Final 📄/Documentos para la defensa del TFG (para cuando termin/NOTA DIRECTOR PARA DEFENSA TFG.doc",
+    "categoriaSlug": "redaccion",
+    "categoriaLabel": "Redacción & Defensa TFG",
+    "seccion": "✍️ Redacción del Documento Final 📄",
+    "subseccion": "Documentos para la defensa del TFG (para cuando termin"
+  },
+  {
+    "nombre": "Requisitos de una Tesis.pdf",
+    "titulo": "Requisitos de una Tesis",
+    "ext": ".pdf",
+    "tamano": "222.9 KB",
+    "bytes": 228264,
+    "ruta": "Material Catedra/✍️ Redacción del Documento Final 📄/Conectores y consejos de escritura-20260920/Requisitos de una Tesis.pdf",
+    "categoriaSlug": "redaccion",
+    "categoriaLabel": "Redacción & Defensa TFG",
+    "seccion": "✍️ Redacción del Documento Final 📄",
+    "subseccion": "Conectores y consejos de escritura-20260920"
+  },
+  {
+    "nombre": "Uso de la coma 01.pdf",
+    "titulo": "Uso de la coma 01",
+    "ext": ".pdf",
+    "tamano": "453.2 KB",
+    "bytes": 464062,
+    "ruta": "Material Catedra/✍️ Redacción del Documento Final 📄/Conectores y consejos de escritura-20260920/Uso de la coma 01.pdf",
+    "categoriaSlug": "redaccion",
+    "categoriaLabel": "Redacción & Defensa TFG",
+    "seccion": "✍️ Redacción del Documento Final 📄",
+    "subseccion": "Conectores y consejos de escritura-20260920"
+  },
+  {
+    "nombre": "Uso de las mayúsculas.pdf",
+    "titulo": "Uso de las mayúsculas",
+    "ext": ".pdf",
+    "tamano": "71.3 KB",
+    "bytes": 72990,
+    "ruta": "Material Catedra/✍️ Redacción del Documento Final 📄/Conectores y consejos de escritura-20260920/Uso de las mayúsculas.pdf",
+    "categoriaSlug": "redaccion",
+    "categoriaLabel": "Redacción & Defensa TFG",
+    "seccion": "✍️ Redacción del Documento Final 📄",
+    "subseccion": "Conectores y consejos de escritura-20260920"
+  },
+  {
+    "nombre": "Actividad - Problematización_ Revisión del intento.pdf",
+    "titulo": "Actividad - Problematización  Revisión del intento",
+    "ext": ".pdf",
+    "tamano": "71.3 KB",
+    "bytes": 73032,
+    "ruta": "Material Catedra/📝 Cuestionarios y Actividades ❓/Actividad - Problematización_ Revisión del intento.pdf",
+    "categoriaSlug": "actividades",
+    "categoriaLabel": "Actividades & Cuestionarios",
+    "seccion": "📝 Cuestionarios y Actividades ❓",
+    "subseccion": ""
+  },
+  {
+    "nombre": "Actividad Clases 20_8 y 21_8_ Revisión del intento.pdf",
+    "titulo": "Actividad Clases 20 8 y 21 8  Revisión del intento",
+    "ext": ".pdf",
+    "tamano": "94.6 KB",
+    "bytes": 96874,
+    "ruta": "Material Catedra/📝 Cuestionarios y Actividades ❓/Actividad Clases 20_8 y 21_8_ Revisión del intento.pdf",
+    "categoriaSlug": "actividades",
+    "categoriaLabel": "Actividades & Cuestionarios",
+    "seccion": "📝 Cuestionarios y Actividades ❓",
+    "subseccion": ""
+  }
+];
