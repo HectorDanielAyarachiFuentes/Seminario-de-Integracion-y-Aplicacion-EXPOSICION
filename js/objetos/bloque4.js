@@ -513,6 +513,7 @@ window.Presentation3D_Objects["anim_17"] = {
     });
 
     figureGroup.add(headGroup);
+    engine.anim17_head = headGroup;
 
     // ────────────────────────────────────────────────────────────────────────
     // BRAZO IZQUIERDO DEL VISOR (-X): Alza el Báculo del Astrolabio y Gema Geodésica
@@ -667,6 +668,10 @@ window.Presentation3D_Objects["anim_17"] = {
   },
 
   animate(engine, t) {
+    if (engine.anim17_head) {
+      engine.anim17_head.rotation.y = 0.22 + Math.sin(t * 0.75) * 0.11;
+      engine.anim17_head.rotation.x = Math.sin(t * 1.15) * 0.05;
+    }
     if (engine.anim17_diamond) {
       engine.anim17_diamond.rotation.y = t * 0.55;
       engine.anim17_diamond.rotation.x = Math.sin(t * 0.7) * 0.22;

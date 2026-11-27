@@ -204,28 +204,27 @@ window.Presentation3D_Objects["anim_11"] = {
 window.Presentation3D_Objects["anim_12"] = {
   build(engine, g) {
     // Basamento monumental estándar (superficie superior en y = -1.0385)
-    engine.createMuseumPlinth(g, 1.50, 0.22, -1.22);
+    engine.createMuseumPlinth(g, 1.68, 0.22, -1.22);
 
-    // Chasis mecanizado descansando al ras sobre la tarima de mármol
+    // Chasis mecanizado desplazado atrás para dar escenario frontal a los Davids
     const chassis = engine.createMachinedChassis(2.40, 0.10, 0.72, { color: 0x1e293b });
-    chassis.position.y = -0.99;
+    chassis.position.set(0, -0.99, -0.24);
     g.add(chassis);
 
-    const plaqueMaster = engine.createEngravedPlaque(
-      1.10,
-      0.22,
+    const plaqueMaster = engine.createMountedPlaque(
+      1.14,
+      0.24,
       "MODELO SISTÉMICO DE RRHH (LONGO)",
       "Francisco Longo (2006) • 5 Subsistemas Focalizados en TFG",
       ["RENDIMIENTO 360°", "DESARROLLO ART. 76", "EMPLEO Y RELACIONES"],
-      { theme: "dark" }
+      { theme: "dark", floorY: -1.0385 }
     );
-    plaqueMaster.position.set(0, -0.90, 0.42);
-    plaqueMaster.rotation.x = -0.18;
+    plaqueMaster.position.set(0, 0, 1.06);
     g.add(plaqueMaster);
 
-    // Posición vertical calibrada para que los 4 collarines de latón (-0.8825) apoyen sobre el chasis (-0.926)
+    // Posición vertical calibrada para que las varillas de latón apoyen sobre el chasis (-0.94)
     const longoGroup = new THREE.Group();
-    longoGroup.position.set(0, -0.04, 0);
+    longoGroup.position.set(0, 0.14, -0.24);
 
     const fullW = 2.34;
     const colY = 0.0;
@@ -262,17 +261,17 @@ window.Presentation3D_Objects["anim_12"] = {
 
     [-0.85, -0.28, 0.28, 0.85].forEach(sx => {
       const pinRod = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.012, 0.012, 0.33, 16),
+        new THREE.CylinderGeometry(0.012, 0.012, 0.53, 16),
         engine.brassMat(0xd4af37)
       );
-      pinRod.position.set(sx, -0.715, 0);
+      pinRod.position.set(sx, -0.815, 0);
       longoGroup.add(pinRod);
 
       const pinCollar = new THREE.Mesh(
         new THREE.CylinderGeometry(0.038, 0.048, 0.025, 16),
         engine.brassMat(0xffd700)
       );
-      pinCollar.position.set(sx, -0.87, 0);
+      pinCollar.position.set(sx, -1.067, 0);
       longoGroup.add(pinCollar);
     });
 
@@ -470,6 +469,43 @@ window.Presentation3D_Objects["anim_12"] = {
 
     g.add(longoGroup);
     engine.anim12_group = longoGroup;
+
+    // ── ELENCO DE DAVIDS EN ESCENA FRONTAL: El subsistema de Rendimiento dialogando con Desarrollo y Empleo ──
+    const cast12 = [
+      {
+        x: -0.84, z: 0.36, scale: 0.44, pose: "dialogue", col: 0x0369a1, rotY: 0.48, laurel: false,
+        anim: { phase: 0.6, speed: 1.50, breathAmp: 0.052, torsoYawAmp: 0.14, headYawAmp: 0.22, headPitchAmp: 0.08, armPitchAmp: 0.18, armRollAmp: 0.13, armAsym: true }
+      },
+      {
+        x: 0.24, z: 0.42, scale: 0.48, pose: "raisingOrb", col: 0x0f2d59, rotY: 0.24, laurel: true,
+        anim: { phase: 0.0, speed: 1.58, breathAmp: 0.048, torsoYawAmp: 0.22, headYawAmp: 0.26, headPitchAmp: 0.075, armPitchAmp: 0.20, armRollAmp: 0.15, leftArmWeight: 0.32, rightArmWeight: 1.0, armAsym: true }
+      },
+      {
+        x: 0.96, z: 0.34, scale: 0.44, pose: "teaching", col: 0x7c3aed, rotY: -0.52, laurel: false,
+        anim: { phase: 1.8, speed: 1.54, breathAmp: 0.05, torsoYawAmp: 0.16, headYawAmp: 0.24, headPitchAmp: 0.085, armPitchAmp: 0.20, armRollAmp: 0.15, armAsym: true }
+      }
+    ];
+    engine.anim12_figs = [];
+    cast12.forEach((actor) => {
+      const ped = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.16, 0.19, 0.06, 28),
+        engine.marbleMat(0xf8f6f0, 0.36)
+      );
+      ped.position.set(actor.x, -1.0085, actor.z);
+      ped.receiveShadow = true;
+      g.add(ped);
+
+      const fig = engine.createClassicalFigure({
+        scale: actor.scale,
+        pose: actor.pose,
+        togaColor: actor.col,
+        laurel: actor.laurel
+      });
+      fig.position.set(actor.x, -0.9785, actor.z);
+      fig.rotation.y = actor.rotY;
+      g.add(fig);
+      engine.anim12_figs.push({ fig, anim: actor.anim });
+    });
   },
 
   animate(engine, t) {
@@ -485,6 +521,11 @@ window.Presentation3D_Objects["anim_12"] = {
       engine.anim12_flowPulses.forEach((item, idx) => {
         const prog = (t * 0.6 + idx * 0.08) % 1.0;
         item.pulse.position.lerpVectors(item.from, item.to, prog);
+      });
+    }
+    if (engine.anim12_figs) {
+      engine.anim12_figs.forEach(({ fig, anim }) => {
+        engine.animateClassicalFigure(fig, t, anim);
       });
     }
   }
@@ -726,7 +767,7 @@ window.Presentation3D_Objects["anim_14"] = {
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_15"] = {
   build(engine, g) {
-    engine.createMuseumPlinth(g, 1.56, 0.22, -1.22);
+    engine.createMuseumPlinth(g, 1.78, 0.22, -1.22);
 
     const chassis = engine.createMachinedChassis(1.56, 0.10, 1.24, { color: 0x1e293b });
     chassis.position.set(0, -0.92, -0.06);
@@ -992,6 +1033,47 @@ window.Presentation3D_Objects["anim_15"] = {
     poliGroup.add(labelCore);
 
     g.add(poliGroup);
+
+    // ── ELENCO DE DAVIDS EN ESCENA: Los 4 actores de la Poligobernanza en arena compartida ──
+    const cast15 = [
+      {
+        x: -1.04, z: 0.42, scale: 0.44, pose: "dialogue", col: 0x0f2d59, laurel: true,
+        anim: { phase: 0.2, speed: 1.52, breathAmp: 0.052, torsoYawAmp: 0.16, headYawAmp: 0.24, headPitchAmp: 0.085, armPitchAmp: 0.19, armRollAmp: 0.14, armAsym: true }
+      },
+      {
+        x: 1.04, z: 0.42, scale: 0.44, pose: "teaching", col: 0xb45309, laurel: false,
+        anim: { phase: 1.7, speed: 1.58, breathAmp: 0.05, torsoYawAmp: 0.18, headYawAmp: 0.24, headPitchAmp: 0.08, armPitchAmp: 0.20, armRollAmp: 0.15, armAsym: true }
+      },
+      {
+        x: -1.04, z: -0.52, scale: 0.42, pose: "open", col: 0x0f766e, laurel: false,
+        anim: { phase: 3.1, speed: 1.48, breathAmp: 0.055, torsoYawAmp: 0.14, headYawAmp: 0.22, headPitchAmp: 0.085, armPitchAmp: 0.20, armRollAmp: 0.15, armAsym: true }
+      },
+      {
+        x: 1.04, z: -0.52, scale: 0.42, pose: "reaching", col: 0x6d28d9, laurel: false,
+        anim: { phase: 4.5, speed: 1.54, breathAmp: 0.052, torsoYawAmp: 0.13, headYawAmp: 0.20, headPitchBias: -0.05, headPitchAmp: 0.075, armPitchAmp: 0.21, armRollAmp: 0.14, leftArmWeight: 0.36, rightArmWeight: 1.0, armAsym: false }
+      }
+    ];
+    engine.anim15_figs = [];
+    cast15.forEach((actor) => {
+      const ped = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.16, 0.19, 0.06, 28),
+        engine.marbleMat(0xf8f6f0, 0.36)
+      );
+      ped.position.set(actor.x, -1.0085, actor.z);
+      ped.receiveShadow = true;
+      g.add(ped);
+
+      const fig = engine.createClassicalFigure({
+        scale: actor.scale,
+        pose: actor.pose,
+        togaColor: actor.col,
+        laurel: actor.laurel
+      });
+      fig.position.set(actor.x, -0.9785, actor.z);
+      fig.rotation.y = Math.atan2(-actor.x, -0.10 - actor.z);
+      g.add(fig);
+      engine.anim15_figs.push({ fig, anim: actor.anim });
+    });
   },
 
   animate(engine, t) {
@@ -1009,6 +1091,11 @@ window.Presentation3D_Objects["anim_15"] = {
     if (engine.anim15_parityRing) {
       engine.anim15_parityRing.rotation.z = t * 0.18;
     }
+    if (engine.anim15_figs) {
+      engine.anim15_figs.forEach(({ fig, anim }) => {
+        engine.animateClassicalFigure(fig, t, anim);
+      });
+    }
   }
 };
 
@@ -1018,10 +1105,10 @@ window.Presentation3D_Objects["anim_15"] = {
 // ──────────────────────────────────────────────────────────────────────────
 window.Presentation3D_Objects["anim_29"] = {
   build(engine, g) {
-    engine.createMuseumPlinth(g, 1.58, 0.22, -1.22);
+    engine.createMuseumPlinth(g, 1.66, 0.22, -1.22);
 
-    const chassis = engine.createMachinedChassis(1.56, 0.10, 1.12, { color: 0x1e293b });
-    chassis.position.set(0, -0.985, -0.06);
+    const chassis = engine.createMachinedChassis(1.78, 0.10, 1.24, { color: 0x1e293b });
+    chassis.position.set(0, -0.985, -0.04);
     g.add(chassis);
 
     const frontPlaque = engine.createMountedPlaque(
@@ -1032,37 +1119,38 @@ window.Presentation3D_Objects["anim_29"] = {
       ["RED CONCEPTUAL ABIERTA", "CAMPO DE LO VIABLE (2027)", "SIN DOGMAS CERRADOS"],
       { theme: "dark", floorY: -1.0385 }
     );
-    frontPlaque.position.set(0, 0, 1.06);
+    frontPlaque.position.set(0, 0, 1.12);
     g.add(frontPlaque);
 
     const group = new THREE.Group();
-    group.position.set(0, -0.02, -0.06);
+    group.position.set(0, -0.02, -0.04);
 
     const ivoryMat = engine.marbleMat(0xf7f5ef, 0.44);
     const brassMat = engine.brassMat(0xcfa346);
     const goldMat = engine.goldMat(0xe0ba56);
 
-    // Pedestal clásico torneado hasta el núcleo abierto
+    // Pedestal clásico torneado desplazado atrás para abrir escenario a los actores reflexivos
     const stemPts = [
       new THREE.Vector2(0, -0.915),
       new THREE.Vector2(0.24, -0.915),
-      new THREE.Vector2(0.20, -0.84),
-      new THREE.Vector2(0.085, -0.62),
-      new THREE.Vector2(0.065, -0.34),
-      new THREE.Vector2(0.14, -0.28),
-      new THREE.Vector2(0, -0.28)
+      new THREE.Vector2(0.19, -0.82),
+      new THREE.Vector2(0.085, -0.52),
+      new THREE.Vector2(0.065, -0.14),
+      new THREE.Vector2(0.14, -0.08),
+      new THREE.Vector2(0, -0.08)
     ];
     const stem = new THREE.Mesh(new THREE.LatheGeometry(stemPts, 48), ivoryMat);
+    stem.position.z = -0.22;
     stem.castShadow = true;
     stem.receiveShadow = true;
     group.add(stem);
 
     const collar = new THREE.Mesh(new THREE.TorusGeometry(0.135, 0.012, 16, 48), goldMat);
     collar.rotation.x = Math.PI / 2;
-    collar.position.y = -0.28;
+    collar.position.set(0, -0.08, -0.22);
     group.add(collar);
 
-    const corePos = new THREE.Vector3(0, 0.14, 0);
+    const corePos = new THREE.Vector3(0, 0.34, -0.22);
 
     const coreCrystal = new THREE.Mesh(
       new THREE.IcosahedronGeometry(0.155, 1),
@@ -1080,7 +1168,7 @@ window.Presentation3D_Objects["anim_29"] = {
     coreLight.position.copy(corePos);
     group.add(coreLight);
 
-    // Dos arcos abiertos de latón (simbolizan un sistema abierto, nunca cerrado)
+    // Dos arcos abiertos de latón (simbolizan una configuración abierta, nunca cerrada)
     const arc1 = new THREE.Mesh(
       new THREE.TorusGeometry(0.30, 0.012, 18, 56, Math.PI * 1.45),
       goldMat
@@ -1100,19 +1188,19 @@ window.Presentation3D_Objects["anim_29"] = {
     group.add(arc2);
     engine.anim29_arc2 = arc2;
 
-    // 3 Nodos conceptuales articulados en red flexible
+    // 3 Nodos conceptuales articulados en red flexible sobre los actores
     const nodes = [
       {
         title: "ADMINISTRACIÓN PÚBLICA", sub: "Estado y Gobernanza",
-        pos: [-0.84, 0.22, 0.18], labelY: 0.52, hex: 0x2563eb, color: "#1e3a8a"
+        pos: [-0.88, 0.24, -0.08], labelY: 0.56, hex: 0x2563eb, color: "#1e3a8a"
       },
       {
         title: "GESTIÓN DE RR. HH.", sub: "Subsistemas de Longo",
-        pos: [0.84, 0.22, 0.18], labelY: 0.52, hex: 0x10b981, color: "#047857"
+        pos: [0.88, 0.24, -0.08], labelY: 0.56, hex: 0x10b981, color: "#047857"
       },
       {
         title: "CAMPO DE LO VIABLE", sub: "Construcción Situada 2027",
-        pos: [0.0, 0.66, -0.28], labelY: 0.96, hex: 0xf59e0b, color: "#b45309"
+        pos: [0.0, 0.78, -0.24], labelY: 1.08, hex: 0xf59e0b, color: "#b45309"
       }
     ];
 
@@ -1151,13 +1239,50 @@ window.Presentation3D_Objects["anim_29"] = {
       group.add(lbl);
     });
 
+    // ── ELENCO DE DAVIDS EN ESCENA: Actores reflexivos tejiendo la Configuración Abierta ──
+    const cast29 = [
+      {
+        x: -0.74, z: 0.24, scale: 0.43, pose: "dialogue", col: 0x1e3a8a, rotY: 0.52, laurel: false,
+        anim: { phase: 0.8, speed: 1.50, breathAmp: 0.052, torsoYawAmp: 0.16, headYawAmp: 0.24, headPitchAmp: 0.08, armPitchAmp: 0.19, armRollAmp: 0.14, armAsym: true }
+      },
+      {
+        x: 0.0, z: 0.24, scale: 0.58, pose: "raisingOrb", col: 0x0f2d59, rotY: 0.0, laurel: true,
+        anim: { phase: 0.0, speed: 1.58, breathAmp: 0.048, torsoYawAmp: 0.22, headYawAmp: 0.26, headPitchBias: -0.04, headPitchAmp: 0.08, armPitchAmp: 0.20, armRollAmp: 0.15, leftArmWeight: 0.32, rightArmWeight: 1.0, armAsym: true }
+      },
+      {
+        x: 0.74, z: 0.24, scale: 0.43, pose: "open", col: 0x0f766e, rotY: -0.52, laurel: false,
+        anim: { phase: 2.3, speed: 1.52, breathAmp: 0.054, torsoYawAmp: 0.16, headYawAmp: 0.24, headPitchAmp: 0.08, armPitchAmp: 0.20, armRollAmp: 0.15, armAsym: true }
+      }
+    ];
+    engine.anim29_figs = [];
+    cast29.forEach((actor) => {
+      const ped = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.16, 0.19, 0.06, 28),
+        engine.marbleMat(0xf8f6f0, 0.36)
+      );
+      ped.position.set(actor.x, -0.885, actor.z);
+      ped.receiveShadow = true;
+      group.add(ped);
+
+      const fig = engine.createClassicalFigure({
+        scale: actor.scale,
+        pose: actor.pose,
+        togaColor: actor.col,
+        laurel: actor.laurel
+      });
+      fig.position.set(actor.x, -0.855, actor.z);
+      fig.rotation.y = actor.rotY;
+      group.add(fig);
+      engine.anim29_figs.push({ fig, anim: actor.anim });
+    });
+
     const masterLbl = engine.createLabelSprite(
       "TEORÍA COMO CONFIGURACIÓN ABIERTA",
       "De la Garza Toledo (2001) • Base Epistemológica",
       "#0f2d59",
       true
     );
-    masterLbl.position.set(0, 1.32, 0.05);
+    masterLbl.position.set(0, 1.38, 0.02);
     group.add(masterLbl);
 
     g.add(group);
@@ -1179,6 +1304,11 @@ window.Presentation3D_Objects["anim_29"] = {
       engine.anim29_nodes.forEach((node, idx) => {
         node.position.y = node.userData.baseY + Math.sin(t * 1.25 + idx * 2.1) * 0.024;
         node.rotation.y = t * 0.5 + idx;
+      });
+    }
+    if (engine.anim29_figs) {
+      engine.anim29_figs.forEach(({ fig, anim }) => {
+        engine.animateClassicalFigure(fig, t, anim);
       });
     }
   }
