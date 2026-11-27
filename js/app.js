@@ -1054,7 +1054,7 @@ class PresentationApp {
       const vacBox = document.createElement("div");
       vacBox.className = "estado-arte-vacancia cover-anim-item";
       vacBox.innerHTML = `
-        <p class="vacancia-text"><strong>Vacancia:</strong> ${data.vacancia}</p>
+        <p class="vacancia-text"><strong>Posible vacancia:</strong> ${data.vacancia}</p>
       `;
       this.bulletsElement.appendChild(vacBox);
     }

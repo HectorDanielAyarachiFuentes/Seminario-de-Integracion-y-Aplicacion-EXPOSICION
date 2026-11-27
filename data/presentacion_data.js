@@ -675,7 +675,7 @@ const PRESENTACION_DATA = {
       puntosClave: [],
       metadatosFooter: "Res. CD-CURZA N° 266/23 • SIA 2026 • Estudio previsto 2027",
       escena3D: "anim_01",
-      guionOrador: "[Saludo y aclaración inicial • 0:25 min]\nBuenos días al equipo docente de la cátedra: Dra. Deborah Noguera, Esp. Federico Abeiro y Esp. María Cecilia Aguirre.\n\nLo que presento hoy es un proyecto previo de Trabajo Final de Graduación (Res. CD-CURZA 266/23) pensado para investigar en 2027. Como es un estudio todavía por hacer, hablaré siempre en potencial: nuestra intención es averiguar si sería viable pensar a futuro —para años posteriores— en una evaluación docente «360°» (reunir distintas miradas solo para acompañar y mejorar las clases) en el Departamento de Administración Pública del CURZAS."
+      guionOrador: "[Saludo y aclaración inicial • 0:25 min]\nBuenos días al equipo docente de la cátedra: Dra. Deborah Noguera, Esp. Federico Abeiro y Esp. María Cecilia Aguirre.\n\nLo que presento hoy es un proyecto previo de Trabajo Final de Graduación (Res. CD-CURZA 266/23) pensado para investigar en 2027. Como es un estudio todavía por hacer, hablaré siempre en potencial: nuestra intención es averiguar si sería factible pensar a futuro —para años posteriores— en una evaluación docente «360°» (reunir distintas miradas solo para acompañar y mejorar las clases) en el Departamento de Administración Pública del CURZAS."
     },
 
     {
@@ -940,7 +940,7 @@ const PRESENTACION_DATA = {
       bloque: "EJE 2 · ESTADO DE LA CUESTIÓN Y MARCO TEÓRICO",
       esquema: "2.2 Estado del Arte en 3 Ámbitos (1:15)",
       badge: "Estado del Arte • 3 Ámbitos",
-      titulo: "Estado del Arte y Vacancia",
+      titulo: "Estado del Arte y Posible Vacancia",
       subtitulo: "Antecedentes en tres ámbitos (desarrollo ampliado en Notas del Orador)",
       estadoArteData: {
         ambitos: [
@@ -969,7 +969,7 @@ const PRESENTACION_DATA = {
             porQue: "Marco jurídico-territorial sin vulnerar estabilidad."
           }
         ],
-        vacancia: "Sin estudios sobre factibilidad de un 360° formativo en universidad patagónica cogobernada con red híbrida.",
+        vacancia: "Indicio preliminar —a contrastar en 2027— de escasos estudios sobre factibilidad de un 360° formativo en universidades patagónicas cogobernadas con red híbrida.",
         notaPie: "Selección preliminar sujeta a posibles cambios o agregados."
       },
       puntosClave: [],
@@ -998,7 +998,7 @@ const PRESENTACION_DATA = {
           porQue: "Delimitan el marco jurídico, gremial y territorial concreto donde debe insertarse el circuito formativo sin vulnerar la estabilidad laboral."
         }
       ],
-      guionOrador: "[Cierre del Eje 2 • Estado del arte en 3 ámbitos • 1:15 min]\nPara cerrar el Eje 2 organizamos los antecedentes en tres ámbitos complementarios —internacional, nacional y local-institucional—, manteniendo esta selección preliminar abierta a ampliaciones en 2027.\n\n{{AMBITOS}}\n\n[Síntesis de vacancia de investigación]\nAl cruzar los tres niveles identificamos la vacancia que da sentido al proyecto: aunque disponemos de evidencia latinoamericana sobre dispositivos 360°, diagnósticos nacionales sobre la profesión académica y un marco normativo específico en la UNCo, aún no existen estudios sobre la factibilidad integral de un modelo 360° formativo en una universidad pública patagónica cogobernada y con red territorial híbrida."
+      guionOrador: "[Cierre del Eje 2 • Estado del arte en 3 ámbitos • 1:15 min]\nPara cerrar el Eje 2 organizamos los antecedentes en tres ámbitos complementarios —internacional, nacional y local-institucional—, manteniendo esta selección preliminar abierta a ampliaciones en 2027.\n\n{{AMBITOS}}\n\n[Síntesis de posible vacancia de investigación]\nAl cruzar los tres niveles advertimos —de manera preliminar y a contrastar en el relevamiento bibliográfico ampliado de 2027— una posible vacancia: si bien disponemos de experiencias latinoamericanas sobre dispositivos 360°, diagnósticos nacionales sobre la profesión académica y un marco normativo específico en la UNCo, en esta etapa inicial no relevamos estudios integrales sobre la factibilidad de un modelo 360° formativo en una universidad pública patagónica cogobernada y con red territorial híbrida."
     },
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -1020,7 +1020,7 @@ const PRESENTACION_DATA = {
       ],
       metadatosFooter: "Eje 3 • Sampieri • Flyvbjerg • Retamozo (2016)",
       escena3D: "anim_19",
-      guionOrador: "[Cómo trabajaríamos en 2027 • 1:10 min]\nEn la tercera parte traducimos la vacancia del Eje 2 en un diseño metodológico ejecutable. Siguiendo a Hernández-Sampieri, Flyvbjerg y el criterio de acotamiento operativo de Martín Retamozo (2016) —abordar la complejidad del caso manteniendo la viabilidad empírica para un único tesista—, trabajaremos con un estudio de caso mixto de predominio cualitativo (CUAL → cuan).\n\nPartiendo de una estimación aproximada de 38 docentes, 130 estudiantes avanzados y 5 referentes entre gestión y gremio —cifras que confirmaremos con censo real en mayo de 2027—, planeamos 9 entrevistas (a docentes de Viedma y Nodos, autoridades, un representante de ADUNC y estudiantes) hasta saturación teórica, más ~45 cuestionarios breves y voluntarios."
+      guionOrador: "[Cómo trabajaríamos en 2027 • 1:10 min]\nEn la tercera parte traducimos esa posible vacancia del Eje 2 en un diseño metodológico ejecutable. Siguiendo a Hernández-Sampieri, Flyvbjerg y el criterio de acotamiento operativo de Martín Retamozo (2016) —abordar la complejidad del caso manteniendo la viabilidad empírica para un único tesista—, trabajaremos con un estudio de caso mixto de predominio cualitativo (CUAL → cuan).\n\nPartiendo de una estimación aproximada de 38 docentes, 130 estudiantes avanzados y 5 referentes entre gestión y gremio —cifras que confirmaremos con censo real en mayo de 2027—, planeamos 9 entrevistas (a docentes de Viedma y Nodos, autoridades, un representante de ADUNC y estudiantes) hasta saturación teórica, más ~45 cuestionarios breves y voluntarios."
     },
 
     {
