@@ -378,7 +378,7 @@ En coherencia con el posicionamiento abierto del proyecto, esta hipótesis preli
 
 ## Metodología / Materiales, Técnicas y Métodos
 
-Este capítulo define el diseño metodológico, la muestra, los instrumentos de recolección y los procedimientos analíticos para evaluar las condiciones de factibilidad en el Departamento de Administración Pública del CURZAS-UNCo. La estrategia metodológica se orienta a garantizar la rigurosidad empírica y la consistencia entre los objetivos de investigación y los datos a relevar en el territorio.
+Este capítulo define el diseño metodológico, la muestra, los instrumentos de recolección y los procedimientos analíticos para evaluar las condiciones de factibilidad en el Departamento de Administración Pública del CURZAS-UNCo. En articulación con el marco teórico previo y atendiendo al *principio de factibilidad* formulado por @retamozo2016, la estrategia metodológica busca incorporar la multidimensionalidad del objeto sin perder rigurosidad empírica ni coherencia operativa entre objetivos, técnicas y datos a relevar en el territorio.
 
 ### Enfoque y Diseño de la Investigación
 
@@ -544,7 +544,7 @@ El proyecto se planifica en un lapso de 7 meses continuos articulados con las se
 
 ## Viabilidad del Proyecto
 
-Conforme a las exigencias formales del Proyecto de Trabajo Final de Graduación, se especifican los recursos económicos, humanos y técnicos requeridos. El análisis de viabilidad garantiza la sustentabilidad operativa y material de cada una de las actividades proyectadas:
+Conforme a las exigencias formales del Proyecto de Trabajo Final de Graduación y a los criterios metodológicos de factibilidad sistematizados por @retamozo2016 —quien identifica cinco condiciones de posibilidad para la ejecución de un proyecto de tesis: aptitudes personales, aspectos institucionales, acceso a fuentes o campo, recursos financieros y dirección especializada—, se especifican a continuación los recursos y respaldos que garantizan la sustentabilidad operativa de cada etapa prevista:
 
 ### Recursos Económicos y Presupuesto
 
@@ -577,9 +577,9 @@ La investigación no requiere financiamiento institucional ni subsidios externos
 * Acceso institucional a plataformas virtuales del CURZAS (Campus Moodle y SIU-Guaraní).
 * Entorno de redacción *Docs-as-Code* (Quarto, Typst, Pandoc) con estándares de formato APA 7ma Edición.
 
-### Viabilidad Institucional y Autorizaciones
+### Viabilidad Institucional y Acceso al Campo
 
-El tesista es alumno regular del Ciclo de Complementación Curricular de la Licenciatura en Gestión de Recursos Humanos. Se presentará la nota formal de aval ante la Dirección del Departamento de Administración Pública (Anexo III) para autorizar las actividades de relevamiento empírico.
+De acuerdo con las condiciones institucionales y de acceso a fuentes señaladas por @retamozo2016, el tesista es alumno regular del Ciclo de Complementación Curricular de la Licenciatura en Gestión de Recursos Humanos —acreditando además formación previa como Técnico Superior en Recursos Humanos y dominio de herramientas de análisis cualitativo y estadístico—, cuenta con acceso a la infraestructura académica y digital del CURZAS-UNCo, y tramitará oportunamente tanto la nota formal de aval ante la Dirección del Departamento de Administración Pública (Anexo III) como la designación reglamentaria de la Dirección de TFG (Art. 5°, Res. CD-CURZA N° 266/23).
 
 {{< pagebreak >}}
 

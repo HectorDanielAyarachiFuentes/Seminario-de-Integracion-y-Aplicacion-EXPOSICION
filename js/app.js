@@ -526,7 +526,7 @@ class PresentationApp {
         id: "eje2",
         code: "EJE 2",
         shortLabel: "2-Estado de la Cuestión y Marco Teórico",
-        title: "EJE 2: Estado de la Cuestión y Marco Teórico (De la Garza, Longo, Poligobernanza y Estado del Arte)",
+        title: "EJE 2: Estado de la Cuestión y Marco Teórico (De la Garza, Longo, Cao y Blutman, Oszlak, Matus y Estado del Arte)",
         range: [7, 10], // Filminas 8 a 11
         isEje: true,
         ejeNumber: 2
@@ -535,7 +535,7 @@ class PresentationApp {
         id: "eje3",
         code: "EJE 3",
         shortLabel: "3-Metodología",
-        title: "EJE 3: Metodología (Enfoque Mixto, Muestras, Cronograma 2027 y Ética)",
+        title: "EJE 3: Metodología (Enfoque Mixto, Muestras, Ética, Cronograma 2027 y Factibilidad)",
         range: [11, 14], // Filminas 12 a 15
         isEje: true,
         ejeNumber: 3
@@ -756,6 +756,14 @@ class PresentationApp {
       });
 
       this.bulletsElement.appendChild(indexList);
+    } else if (slide.epistemologiaData) {
+      this.renderEpistemologiaLayout(slide.epistemologiaData);
+    } else if (slide.longoVisual) {
+      this.renderLongoVisualLayout(slide.longoVisual);
+    } else if (Array.isArray(slide.autoresComplementarios)) {
+      this.renderAutoresComplementariosLayout(slide.autoresComplementarios);
+    } else if (slide.estadoArteData) {
+      this.renderEstadoArteLayout(slide.estadoArteData);
     } else {
       // Si la filmina distingue Objetivo General + Específicos, jerarquizar ambos niveles limpiamente
       if (slide.objetivoGeneral) {
@@ -861,18 +869,217 @@ class PresentationApp {
       timePill.innerHTML = `⏱️ ${tiempoEst}`;
     }
 
-    // Formateo oratorio profesional: párrafos, saltos internos limpios y chips visuales
-    const formattedSpeech = (slide.guionOrador || "")
+    // Formateo oratorio profesional: párrafos, saltos internos limpios, ámbitos diferenciados y chips visuales
+    const ambitosNotesHtml = Array.isArray(slide.notasAmbitos)
+      ? `<div class="notes-ambitos-list">
+          ${slide.notasAmbitos.map((item) => `
+            <section class="notes-ambito-card notes-ambito-${item.id}">
+              <div class="notes-ambito-head">
+                <span class="notes-ambito-badge">${item.ambito}</span>
+                <p class="notes-ambito-refs">${item.referentes}</p>
+              </div>
+              <p class="notes-ambito-row"><strong>Qué tratan:</strong> ${item.queTratan}</p>
+              <p class="notes-ambito-row notes-ambito-why"><strong>Por qué los elegimos:</strong> ${item.porQue}</p>
+            </section>
+          `).join("")}
+        </div>`
+      : "";
+
+    const rawSpeech = slide.guionOrador || "";
+    const hasAmbitosPlaceholder = rawSpeech.includes("{{AMBITOS}}");
+    const formattedSpeech = rawSpeech
       .replace(/\[Pausa de 2 segundos\]/g, '<span class="notes-cue-pill notes-cue-pause">⏱️ Pausa de 2s</span>')
       .replace(/\[(.*?)\]/g, '<span class="notes-cue-pill notes-cue-emphasis">💡 $1</span>')
       .split('\n\n')
-      .map(p => `<p>${p.trim().replace(/\n/g, '<br>')}</p>`)
+      .map(p => p.trim())
+      .filter(Boolean)
+      .map(p => (p === "{{AMBITOS}}" ? ambitosNotesHtml : `<p>${p.replace(/\n/g, '<br>')}</p>`))
       .join('');
 
     this.notesBody.innerHTML = `
       <div class="notes-target-badge">🎯 Objetivo Filmina ${index + 1}: ${slide.esquema}</div>
-      <div class="notes-speech-text">${formattedSpeech}</div>
+      <div class="notes-speech-text">${formattedSpeech}${hasAmbitosPlaceholder ? "" : ambitosNotesHtml}</div>
     `;
+  }
+
+  /**
+   * Crea la píldora transversal "¿Por qué lo elegimos?" para los marcos y autores del Eje 2.
+   */
+  createWhyChosenBlock(label, text) {
+    const box = document.createElement("div");
+    box.className = "eje2-why-box";
+    box.innerHTML = `
+      <span class="eje2-why-kicker">${label}</span>
+      <span class="eje2-why-text">${text}</span>
+    `;
+    return box;
+  }
+
+  /**
+   * Renderiza la Filmina 8 (De la Garza Toledo, 2001): Epistemología crítica y espacio de lo viable.
+   */
+  renderEpistemologiaLayout(data) {
+    const grid = document.createElement("div");
+    grid.className = "epist-grid";
+
+    (data.pilares || []).forEach((pilar) => {
+      const card = document.createElement("div");
+      card.className = "epist-card cover-anim-item";
+      card.innerHTML = `
+        <span class="epist-card-kicker">${pilar.etiqueta}</span>
+        <p class="epist-card-text">${pilar.texto}</p>
+      `;
+      grid.appendChild(card);
+    });
+    this.bulletsElement.appendChild(grid);
+
+    if (Array.isArray(data.flujoPiramide) && data.flujoPiramide.length > 0) {
+      const flow = document.createElement("div");
+      flow.className = "epist-pyramid cover-anim-item";
+      const stepsHtml = data.flujoPiramide
+        .map((step, idx) => `
+          <span class="epist-step">${step}</span>
+          ${idx < data.flujoPiramide.length - 1 ? '<span class="epist-arrow" aria-hidden="true">→</span>' : ""}
+        `)
+        .join("");
+      flow.innerHTML = `
+        <div class="epist-flow-row">${stepsHtml}</div>
+        ${data.flujoNota ? `<span class="epist-flow-note">${data.flujoNota}</span>` : ""}
+      `;
+      this.bulletsElement.appendChild(flow);
+    }
+
+    if (data.porQue) {
+      const whyBox = this.createWhyChosenBlock("¿Por qué lo elegimos?", data.porQue);
+      whyBox.classList.add("cover-anim-item");
+      this.bulletsElement.appendChild(whyBox);
+    }
+  }
+
+  /**
+   * Renderiza la Filmina 9 (Francisco Longo, 2006): Contraste burocrático→mérito y esquema radial.
+   */
+  renderLongoVisualLayout(data) {
+    const { contraste, centro, satelites, porQue } = data;
+
+    if (contraste) {
+      const contrastBar = document.createElement("div");
+      contrastBar.className = "longo-contrast cover-anim-item";
+      contrastBar.innerHTML = `
+        <div class="longo-contrast-side is-from">
+          <span class="longo-contrast-title">${contraste.desde}</span>
+          <span class="longo-contrast-sub">${contraste.desdeSub}</span>
+        </div>
+        <div class="longo-contrast-arrow" aria-hidden="true">
+          <svg viewBox="0 0 36 16" width="32" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 8h28M24 3l6 5-6 5" />
+          </svg>
+        </div>
+        <div class="longo-contrast-side is-to">
+          <span class="longo-contrast-title">${contraste.hacia}</span>
+          <span class="longo-contrast-sub">${contraste.haciaSub}</span>
+        </div>
+      `;
+      this.bulletsElement.appendChild(contrastBar);
+    }
+
+    const radialStage = document.createElement("div");
+    radialStage.className = "longo-radial-stage cover-anim-item";
+    radialStage.innerHTML = `
+      <svg class="longo-radial-svg" viewBox="0 0 600 220" preserveAspectRatio="none" aria-hidden="true">
+        <ellipse cx="300" cy="110" rx="185" ry="74" fill="none" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="5 5" />
+        <line x1="300" y1="110" x2="142" y2="38" stroke="#0f625a" stroke-width="2" stroke-opacity="0.45" />
+        <line x1="300" y1="110" x2="458" y2="38" stroke="#0f625a" stroke-width="2" stroke-opacity="0.45" />
+        <line x1="300" y1="110" x2="300" y2="182" stroke="#d97706" stroke-width="2" stroke-opacity="0.55" />
+        <circle cx="142" cy="38" r="4" fill="#0f625a" />
+        <circle cx="458" cy="38" r="4" fill="#0f625a" />
+        <circle cx="300" cy="182" r="4" fill="#d97706" />
+      </svg>
+      <div class="longo-radial-grid">
+        ${(satelites || []).map((sat) => `
+          <div class="longo-sat longo-sat-${sat.id}">
+            <strong class="longo-sat-title">${sat.titulo}</strong>
+            <span class="longo-sat-desc">${sat.detalle}</span>
+          </div>
+        `).join("")}
+        <div class="longo-hub">
+          <span class="longo-hub-kicker">${centro.kicker}</span>
+          <strong class="longo-hub-title">${centro.titulo}</strong>
+          <span class="longo-hub-sub">${centro.detalle}</span>
+        </div>
+      </div>
+    `;
+    this.bulletsElement.appendChild(radialStage);
+
+    if (porQue) {
+      const whyBox = this.createWhyChosenBlock("¿Por qué lo elegimos?", porQue);
+      whyBox.classList.add("cover-anim-item");
+      this.bulletsElement.appendChild(whyBox);
+    }
+  }
+
+  /**
+   * Renderiza la Filmina 10: Desarrollo individual de Cao y Blutman, Oszlak y Matus.
+   */
+  renderAutoresComplementariosLayout(autores) {
+    const list = document.createElement("div");
+    list.className = "autores-comp-list";
+
+    autores.forEach((autor) => {
+      const card = document.createElement("article");
+      card.className = `autor-comp-card autor-tone-${autor.id} cover-anim-item`;
+      card.innerHTML = `
+        <div class="autor-comp-head">
+          <h3 class="autor-comp-name">${autor.nombre}</h3>
+          <span class="autor-comp-tag">${autor.etiqueta}</span>
+        </div>
+        <p class="autor-comp-temario"><strong>Temario principal:</strong> ${autor.temario}</p>
+        <p class="autor-comp-why"><strong>${autor.porQueLabel || "¿Por qué lo elegimos?"}:</strong> ${autor.porQue}</p>
+      `;
+      list.appendChild(card);
+    });
+
+    this.bulletsElement.appendChild(list);
+  }
+
+  /**
+   * Renderiza la Filmina 11: Estado del Arte en 3 ámbitos, vacancia y nota al pie preliminar.
+   */
+  renderEstadoArteLayout(data) {
+    const cols = document.createElement("div");
+    cols.className = "estado-arte-cols";
+
+    (data.ambitos || []).forEach((amb) => {
+      const col = document.createElement("section");
+      col.className = `ambito-col ambito-${amb.id} cover-anim-item`;
+      col.innerHTML = `
+        <header class="ambito-col-head">
+          <span class="ambito-col-pill">${amb.titulo}</span>
+        </header>
+        <p class="ambito-col-fuentes">${amb.fuentes}</p>
+        <p class="ambito-col-sintesis">${amb.sintesis}</p>
+        <p class="ambito-col-why"><strong>${amb.porQueLabel || "¿Por qué lo elegimos?"}:</strong> ${amb.porQue}</p>
+      `;
+      cols.appendChild(col);
+    });
+    this.bulletsElement.appendChild(cols);
+
+    if (data.vacancia) {
+      const vacBox = document.createElement("div");
+      vacBox.className = "estado-arte-vacancia cover-anim-item";
+      vacBox.innerHTML = `
+        <span class="vacancia-kicker">Vacancia de investigación</span>
+        <p class="vacancia-text">${data.vacancia}</p>
+      `;
+      this.bulletsElement.appendChild(vacBox);
+    }
+
+    if (data.notaPie) {
+      const foot = document.createElement("p");
+      foot.className = "estado-arte-footnote cover-anim-item";
+      foot.textContent = `* ${data.notaPie}`;
+      this.bulletsElement.appendChild(foot);
+    }
   }
 
   renderSlide(index, direction = 1) {
@@ -1428,6 +1635,15 @@ class PresentationApp {
     } else if (tabType === "catedra") {
       this.renderCatedraMaterialTab();
     } else if (tabType === "bibliografia" && f.bibliografia) {
+      const uniqueCount = new Set(f.bibliografia.map((item) => item.fuenteId || item.cita)).size;
+      const summary = document.createElement("div");
+      summary.className = "ref-card";
+      summary.innerHTML = `
+        <h4>📑 Corpus Bibliográfico Completo del TFG (${uniqueCount} fuentes únicas APA 7)</h4>
+        <p>Referencias de <code>Final_Proyecto_TFG_Ayarachi_Fuentes_COMPLETO.qmd</code> organizadas según los autores y normas citados en cada sección (las fuentes transversales figuran en todas las secciones donde intervienen).</p>
+      `;
+      this.drawerContent.appendChild(summary);
+
       const grupos = {};
       f.bibliografia.forEach((item) => {
         if (!grupos[item.categoria]) grupos[item.categoria] = [];
