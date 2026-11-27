@@ -966,19 +966,9 @@ class PresentationApp {
       const contrastBar = document.createElement("div");
       contrastBar.className = "longo-contrast cover-anim-item";
       contrastBar.innerHTML = `
-        <div class="longo-contrast-side is-from">
-          <span class="longo-contrast-title">${contraste.desde}</span>
-          <span class="longo-contrast-sub">${contraste.desdeSub}</span>
-        </div>
-        <div class="longo-contrast-arrow" aria-hidden="true">
-          <svg viewBox="0 0 36 16" width="32" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M2 8h28M24 3l6 5-6 5" />
-          </svg>
-        </div>
-        <div class="longo-contrast-side is-to">
-          <span class="longo-contrast-title">${contraste.hacia}</span>
-          <span class="longo-contrast-sub">${contraste.haciaSub}</span>
-        </div>
+        <span class="longo-contrast-pill is-from">${contraste.desde}</span>
+        <span class="longo-contrast-arrow" aria-hidden="true">→</span>
+        <span class="longo-contrast-pill is-to">${contraste.hacia}</span>
       `;
       this.bulletsElement.appendChild(contrastBar);
     }
@@ -986,14 +976,14 @@ class PresentationApp {
     const radialStage = document.createElement("div");
     radialStage.className = "longo-radial-stage cover-anim-item";
     radialStage.innerHTML = `
-      <svg class="longo-radial-svg" viewBox="0 0 600 220" preserveAspectRatio="none" aria-hidden="true">
-        <ellipse cx="300" cy="110" rx="185" ry="74" fill="none" stroke="#cbd5e1" stroke-width="1.4" stroke-dasharray="5 5" />
-        <line x1="300" y1="110" x2="142" y2="38" stroke="#0f625a" stroke-width="2" stroke-opacity="0.45" />
-        <line x1="300" y1="110" x2="458" y2="38" stroke="#0f625a" stroke-width="2" stroke-opacity="0.45" />
-        <line x1="300" y1="110" x2="300" y2="182" stroke="#d97706" stroke-width="2" stroke-opacity="0.55" />
-        <circle cx="142" cy="38" r="4" fill="#0f625a" />
-        <circle cx="458" cy="38" r="4" fill="#0f625a" />
-        <circle cx="300" cy="182" r="4" fill="#d97706" />
+      <svg class="longo-radial-svg" viewBox="0 0 600 210" preserveAspectRatio="none" aria-hidden="true">
+        <ellipse cx="300" cy="105" rx="185" ry="70" fill="none" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="4 5" />
+        <line x1="300" y1="105" x2="145" y2="36" stroke="#0f625a" stroke-width="1.6" stroke-opacity="0.4" />
+        <line x1="300" y1="105" x2="455" y2="36" stroke="#0f625a" stroke-width="1.6" stroke-opacity="0.4" />
+        <line x1="300" y1="105" x2="300" y2="174" stroke="#d97706" stroke-width="1.6" stroke-opacity="0.5" />
+        <circle cx="145" cy="36" r="3.5" fill="#0f625a" />
+        <circle cx="455" cy="36" r="3.5" fill="#0f625a" />
+        <circle cx="300" cy="174" r="3.5" fill="#d97706" />
       </svg>
       <div class="longo-radial-grid">
         ${(satelites || []).map((sat) => `

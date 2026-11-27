@@ -781,7 +781,7 @@ const PRESENTACION_DATA = {
       ],
       metadatosFooter: "Eje 1 • Tensión Art. 75 vs. Art. 76 • Planteo a develar",
       escena3D: "anim_09",
-      guionOrador: "[Qué pasa hoy y planteo a develar • 0:55 min]\n¿Cuál es la inquietud que da origen a este estudio? En las normas vigentes existen dos instancias: el informe anual con encuesta estudiantil (Art. 74) y la evaluación cada cuatro años (Art. 75), donde dos resultados negativos seguidos pueden dejar vacante un cargo.\n\nComo simboliza la figura de la izquierda, aparece aquí un planteo a develar en 2027: cuando evaluar se asocia a aprobar o perder el cargo, eso podría generar cautela en el docente; además, querríamos conocer si el programa anual de capacitación (Art. 76) recibe hoy devoluciones claras sobre lo que pasa en las aulas presenciales y virtuales.\n\n[Objeto de estudio]\nPor eso nuestro objeto de estudio —representado en el círculo de la derecha— sería investigar en 2027 si resultaría viable pensar, para años posteriores, en una evaluación «360°» (juntando la mirada del propio docente, sus colegas, estudiantes y dirección) pensada únicamente para ayudar a mejorar las clases y planificar capacitaciones, totalmente separada de sanciones o legajos."
+      guionOrador: "[Qué pasa hoy y planteo a develar • 0:55 min]\n¿Cuál es la inquietud que da origen a este estudio? En las normas vigentes existen dos instancias: el informe anual con encuesta estudiantil (Art. 74) y la evaluación cada cuatro años (Art. 75), donde dos resultados negativos seguidos pueden dejar vacante un cargo.\n\nComo simboliza la figura de la izquierda, aparece aquí un planteo a develar en 2027: cuando evaluar se asocia a aprobar o perder el cargo, eso podría generar cautela en el docente; además, querríamos conocer si el programa anual de capacitación (Art. 76) recibe hoy devoluciones claras sobre lo que pasa en las aulas presenciales y virtuales.\n\n[Objeto de estudio]\nPor eso nuestro objeto de estudio —representado en el círculo de la derecha— sería investigar en 2027 si sería factible pensar, para años posteriores, en una evaluación «360°» (juntando la mirada del propio docente, sus colegas, estudiantes y dirección) pensada únicamente para ayudar a mejorar las clases y planificar capacitaciones, totalmente separada de sanciones o legajos."
     },
 
     {
@@ -799,7 +799,7 @@ const PRESENTACION_DATA = {
         "<strong>3. Organización:</strong> Que sirva para armar cursos del Art. 76 sin sumar papeleo",
         "<strong>4 y 5. Clima y Acuerdos:</strong> Confianza entre pares + acuerdo en cogobierno y ADUNC"
       ],
-      metadatosFooter: "Eje 1 • Estudio en 2027 para evaluar viabilidad futura",
+      metadatosFooter: "Eje 1 • Estudio en 2027 para evaluar factibilidad futura",
       escena3D: "anim_10",
       guionOrador: "[Pregunta central y 5 dimensiones • 0:40 min]\nDe esa inquietud nace nuestra pregunta central. Aclaro algo fundamental: en 2027 no vamos a implementar el modelo, sino a investigarlo. Lo que queremos averiguar ese año es si estarían dadas las condiciones reales en el Departamento para que una propuesta así sirva y pueda aplicarse en años posteriores.\n\nLo analizaríamos desde cinco costados concretos:\n1) Reglas y normas: si sería compatible con el Estatuto y el Convenio Colectivo sin riesgo sancionatorio;\n2) Lo técnico: si Moodle o el SIU permitirían encuestas muy cortas, fáciles de usar en los Nodos y totalmente anónimas;\n3) La organización diaria: si ayudaría a diseñar capacitaciones del Art. 76 sin recargar de tareas;\n4) El clima humano: si habría confianza real entre docentes, alumnos y directivos;\n5) Los acuerdos políticos: si tendría consenso en los órganos de cogobierno y con el gremio ADUNC."
     },
@@ -823,7 +823,7 @@ const PRESENTACION_DATA = {
       ],
       metadatosFooter: "Eje 1 • Matriz de Consistencia y Articulación con Longo (Tabla 1)",
       escena3D: "anim_11",
-      guionOrador: "[Diferencia entre Objetivo General y Específicos • 0:40 min]\nSiguiendo la Matriz de Consistencia del proyecto (Tabla 1), separamos claramente dos niveles de objetivos:\n\n[1. Objetivo General — La gran pregunta]\nPor un lado, el Objetivo General resume la meta completa: investigar durante 2027 si estarían dadas las cinco condiciones de factibilidad para pensar en una evaluación 360° aplicable en años posteriores dentro del Departamento.\n\n[2. Objetivos Específicos — Los cuatro pasos para indagarla]\nY los cuatro Objetivos Específicos marcan el camino concreto paso a paso:\n- Primero (OE1), mirar las reglas escritas junto a lo que realmente se hace hoy con encuestas e informes.\n- Segundo (OE2), escuchar qué opinan docentes, alumnos y autoridades, y qué necesitarían para confiar.\n- Tercero (OE3), detectar qué trabas técnicas o gremiales habría, e indagar si en materias de un solo docente serviría dialogar con colegas de materias cercanas («pares horizontales»).\n- Y cuarto (OE4), si el campo muestra viabilidad —y respetando los límites que encontremos—, redactar recomendaciones simples y posibles."
+      guionOrador: "[Diferencia entre Objetivo General y Específicos • 0:40 min]\nSiguiendo la Matriz de Consistencia del proyecto (Tabla 1), separamos claramente dos niveles de objetivos:\n\n[1. Objetivo General — La gran pregunta]\nPor un lado, el Objetivo General resume la meta completa: investigar durante 2027 si estarían dadas las cinco condiciones de factibilidad para pensar en una evaluación 360° aplicable en años posteriores dentro del Departamento.\n\n[2. Objetivos Específicos — Los cuatro pasos para indagarla]\nY los cuatro Objetivos Específicos marcan el camino concreto paso a paso:\n- Primero (OE1), mirar las reglas escritas junto a lo que realmente se hace hoy con encuestas e informes.\n- Segundo (OE2), escuchar qué opinan docentes, alumnos y autoridades, y qué necesitarían para confiar.\n- Tercero (OE3), detectar qué trabas técnicas o gremiales habría, e indagar si en materias de un solo docente serviría dialogar con colegas de materias cercanas («pares horizontales»).\n- Y cuarto (OE4), si el campo muestra factibilidad —y respetando los límites que encontremos—, redactar recomendaciones simples y posibles."
     },
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -838,26 +838,11 @@ const PRESENTACION_DATA = {
       badge: "Base Epistemológica",
       titulo: "La Teoría como Configuración Abierta",
       subtitulo: "Enrique de la Garza Toledo (2001) • Epistemología crítica latinoamericana",
-      epistemologiaData: {
-        pilares: [
-          {
-            etiqueta: "01 · Teoría como Configuración Abierta",
-            texto: "Red conceptual flexible —sin axiomas cerrados— que entiende a la universidad como <strong>proceso abierto</strong> construido cotidianamente por <em>sujetos reflexivos</em>."
-          },
-          {
-            etiqueta: "02 · Espacio de Posibilidades Viables",
-            texto: "La factibilidad reconstruye en el presente el <strong>«espacio de posibilidades para la acción viable»</strong>, articulado con <em>Matus (1993)</em> en pirámide invertida según <em>Sautu (2005)</em>."
-          }
-        ],
-        flujoPiramide: [
-          "Longo (2006) · Empleo público",
-          "De la Garza (2001) · Config. abierta",
-          "Matus (1993) · Acción viable"
-        ],
-        flujoNota: "Articulación en pirámide invertida (Sautu, 2005)",
-        porQue: "Permite estudiar la factibilidad sin determinismos rígidos, integrando normas, cultura institucional y agencia de los actores."
-      },
-      puntosClave: [],
+      puntosClave: [
+        "<strong>Configuración abierta:</strong> Teoría flexible que concibe la universidad como <em>proceso abierto</em> de sujetos reflexivos",
+        "<strong>Acción viable:</strong> Reconstruir en el presente el <em>«espacio de posibilidades para la acción viable»</em> (con Matus, 1993; pirámide invertida según Sautu, 2005)",
+        "<strong>¿Por qué lo elegimos?</strong> Estudia la factibilidad sin determinismos rígidos, integrando normas, cultura institucional y agencia de los actores"
+      ],
       metadatosFooter: "Eje 2 • De la Garza Toledo (2001) • Matus (1993) • Sautu (2005)",
       escena3D: "anim_29",
       guionOrador: "[Posicionamiento epistemológico • 0:45 min]\nPara abrir el Eje 2 definimos nuestro posicionamiento epistemológico desde la epistemología crítica latinoamericana de Enrique de la Garza Toledo (2001). Para el autor, la teoría opera como una «configuración abierta»: no como un dogma cerrado, sino como una red flexible que lee a la universidad como un proceso abierto construido por sujetos reflexivos.\n\n[Espacio de posibilidades viables y pirámide invertida]\nDesde aquí, estudiar la factibilidad en 2027 implica reconstruir en el presente el «espacio de posibilidades para la acción viable» —articulado con Carlos Matus (1993) y organizado conceptualmente en pirámide invertida según Ruth Sautu (2005).\n\n[¿Por qué lo elegimos?]\nElegimos este posicionamiento porque nos permite analizar la factibilidad sin determinismos rígidos, integrando en un mismo plano las normas vigentes, la cultura institucional del CURZAS y la agencia real de docentes, estudiantes y conducción."
@@ -871,16 +856,14 @@ const PRESENTACION_DATA = {
       esquema: "2.1 Enfoque Neural: Francisco Longo (1:05)",
       badge: "Enfoque Neural • Empleo Público",
       titulo: "Gestión Estratégica del Rendimiento",
-      subtitulo: "Francisco Longo (2006) • Subsistema central articulado en red",
+      subtitulo: "Francisco Longo (2006) • Del modelo burocrático-weberiano al mérito y flexibilidad",
       longoVisual: {
         contraste: {
-          desde: "Modelo burocrático-weberiano tradicional",
-          desdeSub: "Apego formal rígido",
-          hacia: "Enfoque de mérito y flexibilidad",
-          haciaSub: "Gestión estratégica del valor público"
+          desde: "Burocracia weberiana tradicional",
+          hacia: "Mérito y flexibilidad"
         },
         centro: {
-          kicker: "Subsistema Central",
+          kicker: "Núcleo Central",
           titulo: "Gestión del Rendimiento",
           detalle: "Evaluación formativa 360°"
         },
@@ -888,20 +871,20 @@ const PRESENTACION_DATA = {
           {
             id: "organizacion",
             titulo: "Organización del Trabajo",
-            detalle: "Aulas híbridas y 10 Nodos · Res. CD-CURZA N° 196/2022"
+            detalle: "Aulas híbridas y 10 Nodos (Res. 196/2022)"
           },
           {
             id: "desarrollo",
             titulo: "Gestión del Desarrollo",
-            detalle: "Programa Anual de Capacitación Docente · Art. 76 Estatuto UNCo"
+            detalle: "Capacitación Docente (Art. 76 Estatuto)"
           },
           {
             id: "relaciones",
-            titulo: "Gestión de las Relaciones Humanas y Sociales",
-            detalle: "Clima, confidencialidad y acuerdo paritario ADUNC · CCT Dec. PEN N° 1246/2015"
+            titulo: "Relaciones Humanas y Sociales",
+            detalle: "Clima, reserva y paritaria ADUNC (CCT 1246/2015)"
           }
         ],
-        porQue: "Aporta un marco propio del empleo público que vincula evaluación con capacitación y diálogo gremial, evitando trasplantes empresariales acríticos."
+        porQue: "Marco propio del empleo público que une evaluación, capacitación y diálogo gremial, evitando trasplantes empresariales acríticos."
       },
       puntosClave: [],
       metadatosFooter: "Eje 2 • Francisco Longo (2006) • Enfoque Neural",
@@ -918,37 +901,36 @@ const PRESENTACION_DATA = {
       esquema: "2.1 Autores Complementarios (0:55)",
       badge: "Autores Complementarios",
       titulo: "Poligobernanza, Estado y Poder Compartido",
-      subtitulo: "Desarrollo individual de categorías situadas en la universidad pública cogobernada",
+      subtitulo: "Aportes individuales situados en la universidad cogobernada",
       autoresComplementarios: [
         {
           id: "cao-blutman",
           nombre: "Horacio Cao y Gustavo Blutman (2021, 2023)",
           etiqueta: "Poligobernanza",
-          temario: "Poligobernanza, «Estado plataforma» y gestión de la complejidad situada en los 4 planos decisionales del CURZAS-UNCo: Macro (UNCo), Meso (CURZAS/Dpto.), Micro (10 Nodos Territoriales) y Transversal paritario (ADUNC).",
+          temario: "«Estado plataforma» y complejidad situada en 4 planos: Macro (UNCo), Meso (CURZAS), Micro (10 Nodos) y ADUNC.",
           porQueLabel: "¿Por qué los elegimos?",
-          porQue: "Permiten pensar una evaluación en red adaptada a la descentralización territorial y las cursadas híbridas, superando encuestas estandarizadas genéricas."
+          porQue: "Permiten una evaluación en red para cursadas híbridas, superando encuestas genéricas."
         },
         {
           id: "oszlak",
           nombre: "Oscar Oszlak (2020)",
           etiqueta: "Era Digital",
-          temario: "Capacidades estatales en la era digital: uso de plataformas institucionales (Moodle y SIU-Guaraní) para la gestión de personas y el anonimato técnico, sin fiscalización tecno-burocrática.",
+          temario: "Capacidades estatales digitales: Moodle y SIU-Guaraní para gestión y anonimato técnico, sin control tecno-burocrático.",
           porQueLabel: "¿Por qué lo elegimos?",
-          porQue: "Fundamenta cómo aprovechar la infraestructura digital ya existente en la universidad para garantizar confidencialidad y procesamiento útil."
+          porQue: "Aprovecha la infraestructura universitaria existente garantizando confidencialidad útil."
         },
         {
           id: "matus",
           nombre: "Carlos Matus (1993)",
           etiqueta: "Poder Compartido",
-          temario: "Planificación Estratégica Situacional, poder compartido y viabilidad en arenas donde ningún actor concentra el monopolio decisional.",
+          temario: "Planificación Estratégica Situacional y viabilidad en arenas sin monopolio decisional.",
           porQueLabel: "¿Por qué lo elegimos?",
-          porQue: "Explica por qué la propuesta solo es viable si se conciertan variables de control compartido (voluntariedad, anonimato y desvinculación de legajos sumativos)."
+          porQue: "Solo es viable concertando voluntariedad, anonimato y desvinculación de legajos sumativos."
         }
       ],
       puntosClave: [],
       metadatosFooter: "Eje 2 • Cao y Blutman (2021, 2023) • Oszlak (2020) • Matus (1993)",
       escena3D: "anim_15",
-      diagramaSVG: "assets/modelo_360.svg",
       guionOrador: "[Desarrollo individual de autores complementarios • 0:55 min]\nPara adaptar el esquema de Longo a la realidad institucional de la UNCo, incorporamos tres aportes complementarios bien diferenciados:\n\n[1. Horacio Cao y Gustavo Blutman (2021, 2023)]\nSus nociones de poligobernanza y «Estado plataforma» nos permiten mapear la complejidad del CURZAS en cuatro planos decisionales —Macro en UNCo, Meso en CURZAS/Dpto., Micro en los 10 Nodos Territoriales y Transversal en la paritaria con ADUNC—, superando encuestas genéricas para pensar una evaluación en red adaptada a las cursadas híbridas.\n\n[2. Oscar Oszlak (2020)]\nDesde las capacidades estatales en la era digital, Oszlak fundamenta cómo aprovechar la infraestructura institucional existente —Moodle y SIU-Guaraní— para gestionar información útil y asegurar anonimato técnico, evitando cualquier deriva tecno-burocrática.\n\n[3. Carlos Matus (1993)]\nPor último, su Planificación Estratégica Situacional advierte que en arenas de poder compartido ningún actor monopoliza la decisión: la propuesta solo será viable si se conciertan voluntariedad, anonimato y total desvinculación de legajos sumativos."
     },
 
@@ -959,36 +941,36 @@ const PRESENTACION_DATA = {
       bloque: "EJE 2 · ESTADO DE LA CUESTIÓN Y MARCO TEÓRICO",
       esquema: "2.2 Estado del Arte en 3 Ámbitos (1:15)",
       badge: "Estado del Arte • 3 Ámbitos",
-      titulo: "Estado del Arte y Vacancia de Investigación",
-      subtitulo: "Antecedentes empíricos y normativos en tres escalas articuladas",
+      titulo: "Estado del Arte y Vacancia",
+      subtitulo: "Antecedentes empíricos y normativos en tres escalas",
       estadoArteData: {
         ambitos: [
           {
             id: "internacional",
             titulo: "Internacional",
-            fuentes: "Sifuentes Ocegueda et al. (2016) • Obando Freire et al. (2014) • Reyes & Díaz (2020) • Alvarado & Morales (2019)",
-            sintesis: "Experiencias 360° en educación superior pública de México y Cuba (encuestas, portafolios y análisis mixtos).",
+            fuentes: "Sifuentes Ocegueda et al. (2016) · Obando Freire et al. (2014) · Reyes & Díaz (2020) · Alvarado & Morales (2019)",
+            sintesis: "Experiencias 360° en México y Cuba.",
             porQueLabel: "¿Por qué los elegimos?",
-            porQue: "Muestran >85 % de aceptación con anonimato, mitigación de sesgos digitales y resguardo no punitivo."
+            porQue: ">85 % de aceptación con anonimato y resguardo no punitivo."
           },
           {
             id: "nacional",
             titulo: "Nacional",
-            fuentes: "Marquina (2012) • Pérez et al. (2021)",
-            sintesis: "Tensiones de la profesión académica en universidades públicas argentinas y evaluación 360° de tutorías presenciales y virtuales.",
+            fuentes: "Marquina (2012) · Pérez et al. (2021)",
+            sintesis: "Profesión académica y tutorías 360° híbridas.",
             porQueLabel: "¿Por qué los elegimos?",
-            porQue: "Exponen la brecha entre evaluación de investigación y grado, validando el 360° en tutorías híbridas."
+            porQue: "Brecha didáctica de grado y validez tutorial virtual."
           },
           {
             id: "local",
             titulo: "Local / Institucional",
-            fuentes: "Estatuto UNCo (Ord. CS N° 0988/2025, Arts. 74–76) • Ord. CS N° 0910/1997 • CCT Dec. N° 1246/2015 • Res. CD-CURZA N° 196/2022",
-            sintesis: "Informes anuales, permanencia cuatrienal, capacitación docente, estabilidad paritaria y red de 10 Nodos híbridos.",
+            fuentes: "Estatuto UNCo (Arts. 74–76) · Ord. 0910/97 · CCT 1246/15 · Res. 196/22",
+            sintesis: "Permanencia, capacitación, paritaria y 10 Nodos.",
             porQueLabel: "¿Por qué lo elegimos?",
-            porQue: "Delimitan el encuadre jurídico, gremial y territorial concreto para insertar el 360° sin vulnerar estabilidad."
+            porQue: "Marco jurídico-territorial sin vulnerar estabilidad."
           }
         ],
-        vacancia: "Ausencia de estudios sobre factibilidad integral de un modelo 360° formativo en una universidad pública patagónica cogobernada y con red territorial híbrida.",
+        vacancia: "Sin estudios sobre factibilidad integral de un 360° formativo en universidad patagónica cogobernada con red híbrida.",
         notaPie: "Selección preliminar sujeta a posibles cambios o agregados."
       },
       puntosClave: [],
@@ -1039,7 +1021,7 @@ const PRESENTACION_DATA = {
       ],
       metadatosFooter: "Eje 3 • Sampieri • Flyvbjerg • Retamozo (2016)",
       escena3D: "anim_19",
-      guionOrador: "[Cómo trabajaríamos en 2027 • 1:10 min]\nEn la tercera parte traducimos la vacancia del Eje 2 en un diseño metodológico ejecutable. Siguiendo a Hernández-Sampieri, Flyvbjerg y el criterio de Martín Retamozo (2016) sobre la viabilidad del diseño —incorporar la complejidad del caso sin volver inabarcable el estudio—, trabajaremos con un estudio de caso mixto de predominio cualitativo (CUAL → cuan).\n\nPartiendo de una estimación aproximada de 38 docentes, 130 estudiantes avanzados y 5 referentes entre gestión y gremio —cifras que confirmaremos con censo real en mayo de 2027—, planeamos 9 entrevistas (a docentes de Viedma y Nodos, autoridades, un representante de ADUNC y estudiantes) hasta saturación teórica, más ~45 cuestionarios breves y voluntarios."
+      guionOrador: "[Cómo trabajaríamos en 2027 • 1:10 min]\nEn la tercera parte traducimos la vacancia del Eje 2 en un diseño metodológico ejecutable. Siguiendo a Hernández-Sampieri, Flyvbjerg y el criterio de acotamiento operativo de Martín Retamozo (2016) —abordar la complejidad del caso manteniendo la viabilidad empírica para un único tesista—, trabajaremos con un estudio de caso mixto de predominio cualitativo (CUAL → cuan).\n\nPartiendo de una estimación aproximada de 38 docentes, 130 estudiantes avanzados y 5 referentes entre gestión y gremio —cifras que confirmaremos con censo real en mayo de 2027—, planeamos 9 entrevistas (a docentes de Viedma y Nodos, autoridades, un representante de ADUNC y estudiantes) hasta saturación teórica, más ~45 cuestionarios breves y voluntarios."
     },
 
     {
@@ -1096,7 +1078,7 @@ const PRESENTACION_DATA = {
       ],
       metadatosFooter: "Eje 3 • Retamozo (2016) • Tablas 3 y 4 (15–20 h/sem)",
       escena3D: "anim_21",
-      guionOrador: "[Cronograma y viabilidad operativa del proyecto • 1:10 min]\nTodo el trabajo de campo llevaría siete meses continuos durante 2027: en mayo pediríamos avales y haríamos la prueba piloto; en junio y julio las entrevistas y el sondeo en Viedma y Nodos; en agosto la triangulación; y de septiembre a noviembre la redacción y entrega formal.\n\n[Deslinde clave: qué investigamos vs. por qué podemos investigarlo]\nAclaro aquí una distinción fundamental: una cosa es la factibilidad del modelo 360° —que es nuestra pregunta abierta a responder recién tras el campo de 2027— y otra distinta la viabilidad operativa de este proyecto de investigación (Res. 266/23). Para esta segunda nos apoyamos en Martín Retamozo (2016, sección «10. Factibilidad») y sus 5 condiciones de ejecución:\n1) Aptitudes personales: formación técnica en RR. HH. y manejo de herramientas cuali-cuantitativas.\n2) Aspectos institucionales: infraestructura del CURZAS, Moodle y SIU-Guaraní.\n3) Acceso al campo: nota formal de aval departamental (Anexo III) y vínculo situado con Viedma y los 10 Nodos.\n4) Recursos financieros: $160.000 totalmente autofinanciados, software libre y trabajo remoto con Nodos (costo $0 institucional).\n5) Dirección de TFG: a designar conforme al Art. 5° de la Res. CD-CURZA 266/23."
+      guionOrador: "[Cronograma y viabilidad operativa del proyecto • 1:10 min]\nTodo el trabajo de campo llevaría siete meses continuos durante 2027: en mayo pediríamos avales y haríamos la prueba piloto; en junio y julio las entrevistas y el sondeo en Viedma y Nodos; en agosto la triangulación; y de septiembre a noviembre la redacción y entrega formal.\n\n[Deslinde clave frente al tribunal]\nConviene marcar aquí la diferencia entre ambos planos: todo el estudio indaga la factibilidad del modelo 360° (nuestra pregunta abierta a responder en 2027), mientras que esta filmina acredita la viabilidad operativa de ejecutar la investigación hoy —lo que la Res. 266/23 denomina Viabilidad y Martín Retamozo (2016, p. 283) sistematiza en cinco condiciones de posibilidad para una tesis:\n1) Aptitudes personales: formación técnica en RR. HH. y manejo de herramientas cuali-cuantitativas.\n2) Aspectos institucionales: infraestructura del CURZAS, Moodle y SIU-Guaraní.\n3) Acceso al campo: nota formal de aval departamental (Anexo III) y vínculo situado con Viedma y los 10 Nodos.\n4) Recursos financieros: $160.000 totalmente autofinanciados, software libre y trabajo remoto con Nodos (costo $0 institucional).\n5) Dirección de TFG: a designar conforme al Art. 5° de la Res. CD-CURZA 266/23."
     },
 
     // ─────────────────────────────────────────────────────────────────────────
