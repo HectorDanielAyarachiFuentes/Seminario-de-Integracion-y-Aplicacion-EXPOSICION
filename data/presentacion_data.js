@@ -92,7 +92,7 @@ const PRESENTACION_DATA = {
       },
       {
         autor: "Martín Retamozo (2016)",
-        concepto: "Metodología y diseño de proyectos en ciencias sociales: exige no perder de vista el «principio de factibilidad» al integrar múltiples dimensiones y verifica 5 condiciones de ejecución (aptitudes personales, soporte institucional, acceso a fuentes/campo, recursos financieros y dirección)."
+        concepto: "Viabilidad operativa del proyecto de investigación (cap. «10. Factibilidad», p. 283): establece 5 condiciones para ejecutar una tesis (aptitudes personales, soporte institucional, acceso a fuentes/campo, recursos financieros y dirección), diferenciadas de la factibilidad del modelo 360° investigado."
       }
     ],
 
@@ -526,19 +526,19 @@ const PRESENTACION_DATA = {
         cita: "Consejo Directivo del CURZA. (2022). <em>Resolución CD-CURZA N° 196/2022: Pautas institucionales sobre incorporación de mediaciones tecnológicas dentro de las carreras presenciales y semipresenciales</em>. Centro Universitario Regional Zona Atlántica, Universidad Nacional del Comahue."
       },
 
-      // ── 3. TERCERA PARTE TFG · EJE 3: METODOLOGÍA, MATRIZ 5D, ÉTICA Y FACTIBILIDAD (17 fuentes citadas • F12–F15) ──
+      // ── 3. TERCERA PARTE TFG · EJE 3: METODOLOGÍA, MATRIZ 5D, ÉTICA Y VIABILIDAD (17 fuentes citadas • F12–F15) ──
       {
         fuenteId: "hernandezsampieri2014",
-        categoria: "3. Eje 3 · Metodología, Ética y Factibilidad (Tercera Parte TFG • F12–F15)",
+        categoria: "3. Eje 3 · Metodología, Ética y Viabilidad (Tercera Parte TFG • F12–F15)",
         filminas: "F12–F15",
         jerarquia: "Diseño Mixto Rector",
         cita: "Hernández-Sampieri, R., Fernández-Collado, C., y Baptista-Lucio, M. del P. (2014). <em>Metodología de la investigación</em> (6.ª ed.). McGraw-Hill Education."
       },
       {
         fuenteId: "retamozo2016",
-        categoria: "3. Eje 3 · Metodología, Ética y Factibilidad (Tercera Parte TFG • F12–F15)",
+        categoria: "3. Eje 3 · Metodología, Ética y Viabilidad (Tercera Parte TFG • F12–F15)",
         filminas: "F12, F15",
-        jerarquia: "Factibilidad del Diseño",
+        jerarquia: "Viabilidad del Diseño",
         cita: "Retamozo, M. (2016). Instrucciones para hacer un proyecto de tesis en ciencias sociales (Apuntes desde el sur). En C. Gallegos Elías, A. Mejía Martínez y Y. Paredes Vilchiz (Coords.), <em>¿Cómo investigamos? ¿Cómo enseñamos a investigar? Tomo IV. In memoriam Hugo Zemelman Merino</em> (pp. 257–287). Universidad Nacional Autónoma de México."
       },
       {
@@ -706,7 +706,7 @@ const PRESENTACION_DATA = {
         {
           romano: "03",
           titulo: "Metodología",
-          resumen: "Cómo investigaríamos en 2027 • Muestras • Ética, tiempos y factibilidad",
+          resumen: "Cómo investigaríamos en 2027 • Muestras • Ética, tiempos y viabilidad",
           targetSlide: 11,
           tono: "b3"
         }
@@ -1037,9 +1037,9 @@ const PRESENTACION_DATA = {
         "<strong>Universo estimado:</strong> ~38 docentes • ~130 alumnos avanzados • 5 referentes",
         "<strong>Muestras previstas:</strong> 9 entrevistas en profundidad + ~45 encuestas voluntarias"
       ],
-      metadatosFooter: "Eje 3 • Sampieri • Flyvbjerg • Retamozo (principio de factibilidad)",
+      metadatosFooter: "Eje 3 • Sampieri • Flyvbjerg • Retamozo (2016)",
       escena3D: "anim_19",
-      guionOrador: "[Cómo trabajaríamos en 2027 • 1:10 min]\nEn la tercera parte traducimos la vacancia del Eje 2 en un diseño metodológico ejecutable. Siguiendo a Hernández-Sampieri, Flyvbjerg y el principio de factibilidad de Martín Retamozo (2016) —incorporar la complejidad del caso sin perder viabilidad empírica—, trabajaremos con un estudio de caso mixto de predominio cualitativo (CUAL → cuan).\n\nPartiendo de una estimación aproximada de 38 docentes, 130 estudiantes avanzados y 5 referentes entre gestión y gremio —cifras que confirmaremos con censo real en mayo de 2027—, planeamos 9 entrevistas (a docentes de Viedma y Nodos, autoridades, un representante de ADUNC y estudiantes) hasta saturación teórica, más ~45 cuestionarios breves y voluntarios."
+      guionOrador: "[Cómo trabajaríamos en 2027 • 1:10 min]\nEn la tercera parte traducimos la vacancia del Eje 2 en un diseño metodológico ejecutable. Siguiendo a Hernández-Sampieri, Flyvbjerg y el criterio de Martín Retamozo (2016) sobre la viabilidad del diseño —incorporar la complejidad del caso sin volver inabarcable el estudio—, trabajaremos con un estudio de caso mixto de predominio cualitativo (CUAL → cuan).\n\nPartiendo de una estimación aproximada de 38 docentes, 130 estudiantes avanzados y 5 referentes entre gestión y gremio —cifras que confirmaremos con censo real en mayo de 2027—, planeamos 9 entrevistas (a docentes de Viedma y Nodos, autoridades, un representante de ADUNC y estudiantes) hasta saturación teórica, más ~45 cuestionarios breves y voluntarios."
     },
 
     {
@@ -1085,10 +1085,10 @@ const PRESENTACION_DATA = {
       numero: 15,
       tiempoSugerido: "1:10 min",
       bloque: "EJE 3 · METODOLOGÍA",
-      esquema: "3.4–3.5 Cronograma (7 Meses) y Factibilidad (1:10)",
-      badge: "Factibilidad • Costo $0 CURZAS",
-      titulo: "Tiempos (7 Meses) y Factibilidad",
-      subtitulo: "Mayo–noviembre 2027 • 5 condiciones de viabilidad del diseño (Retamozo, 2016)",
+      esquema: "3.4–3.5 Cronograma (7 Meses) y Viabilidad del Estudio (1:10)",
+      badge: "Viabilidad del Estudio • Costo $0 CURZAS",
+      titulo: "Tiempos (7 Meses) y Viabilidad del Estudio",
+      subtitulo: "Mayo–noviembre 2027 • Ejecutabilidad del diseño TFG (Res. 266/23; Retamozo, 2016)",
       puntosClave: [
         "<strong>Cronograma (May–Nov 2027):</strong> Avales y piloto (May), campo (Jun–Jul), análisis (Ago) y entrega TFG (Sep–Nov)",
         "<strong>Aptitudes, institución y acceso:</strong> Formación RR. HH., Moodle/SIU del CURZAS y aval departamental (Anexo III)",
@@ -1096,7 +1096,7 @@ const PRESENTACION_DATA = {
       ],
       metadatosFooter: "Eje 3 • Retamozo (2016) • Tablas 3 y 4 (15–20 h/sem)",
       escena3D: "anim_21",
-      guionOrador: "[Cronograma y factibilidad del proyecto • 1:10 min]\nTodo el trabajo de campo llevaría siete meses continuos durante 2027: en mayo pediríamos avales y haríamos la prueba piloto; en junio y julio las entrevistas y el sondeo en Viedma y Nodos; en agosto la triangulación; y de septiembre a noviembre la redacción y entrega formal.\n\n[Las 5 condiciones de factibilidad según Retamozo (2016)]\nSiguiendo a Martín Retamozo (2016) —texto de la Unidad I de la cátedra sobre factibilidad de diseños—, el proyecto cumple sus cinco condiciones de ejecución:\n1) Aptitudes personales: formación técnica previa en RR. HH. y manejo de herramientas cuali-cuantitativas.\n2) Aspectos institucionales: infraestructura del CURZAS, Moodle y SIU-Guaraní.\n3) Acceso al campo: nota formal de aval departamental (Anexo III) y vínculo situado con Viedma y los 10 Nodos.\n4) Recursos financieros: $160.000 totalmente autofinanciados, software libre y trabajo remoto con Nodos (costo $0 institucional).\n5) Dirección de TFG: a designar conforme al Art. 5° de la Res. CD-CURZA 266/23."
+      guionOrador: "[Cronograma y viabilidad operativa del proyecto • 1:10 min]\nTodo el trabajo de campo llevaría siete meses continuos durante 2027: en mayo pediríamos avales y haríamos la prueba piloto; en junio y julio las entrevistas y el sondeo en Viedma y Nodos; en agosto la triangulación; y de septiembre a noviembre la redacción y entrega formal.\n\n[Deslinde clave: qué investigamos vs. por qué podemos investigarlo]\nAclaro aquí una distinción fundamental: una cosa es la factibilidad del modelo 360° —que es nuestra pregunta abierta a responder recién tras el campo de 2027— y otra distinta la viabilidad operativa de este proyecto de investigación (Res. 266/23). Para esta segunda nos apoyamos en Martín Retamozo (2016, sección «10. Factibilidad») y sus 5 condiciones de ejecución:\n1) Aptitudes personales: formación técnica en RR. HH. y manejo de herramientas cuali-cuantitativas.\n2) Aspectos institucionales: infraestructura del CURZAS, Moodle y SIU-Guaraní.\n3) Acceso al campo: nota formal de aval departamental (Anexo III) y vínculo situado con Viedma y los 10 Nodos.\n4) Recursos financieros: $160.000 totalmente autofinanciados, software libre y trabajo remoto con Nodos (costo $0 institucional).\n5) Dirección de TFG: a designar conforme al Art. 5° de la Res. CD-CURZA 266/23."
     },
 
     // ─────────────────────────────────────────────────────────────────────────

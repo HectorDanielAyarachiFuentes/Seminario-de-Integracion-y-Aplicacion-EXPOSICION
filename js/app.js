@@ -535,7 +535,7 @@ class PresentationApp {
         id: "eje3",
         code: "EJE 3",
         shortLabel: "3-Metodología",
-        title: "EJE 3: Metodología (Enfoque Mixto, Muestras, Ética, Cronograma 2027 y Factibilidad)",
+        title: "EJE 3: Metodología (Enfoque Mixto, Muestras, Ética, Cronograma 2027 y Viabilidad del Estudio)",
         range: [11, 14], // Filminas 12 a 15
         isEje: true,
         ejeNumber: 3
