@@ -119,14 +119,49 @@
           aria-label="Estaciones de la Defensa estructuradas en 3 Ejes"></nav>
       </div>
 
-      <!-- Cronómetro Académico de 15 minutos (Defensa Oficial) -->
-      <div class="timer-container" aria-label="Cronómetro de Defensa">
-        <span class="timer-label">DEFENSA</span>
-        <span class="timer-display" id="timer-display">15:00</span>
+      <!-- Cronógrafo Editorial de 15 minutos (Defensa Oficial) -->
+      <div class="timer-container" id="timer-container" aria-label="Cronómetro de Defensa">
+        <div class="timer-dial" id="timer-dial" aria-hidden="true">
+          <svg class="timer-dial-svg" viewBox="0 0 28 28" width="26" height="26">
+            <circle class="timer-dial-ring-bg" cx="14" cy="14" r="11" />
+            <!-- Marcas horológicas sutiles (12, 3, 6, 9) -->
+            <line class="timer-dial-tick" x1="14" y1="1.5" x2="14" y2="3.4" />
+            <line class="timer-dial-tick" x1="26.5" y1="14" x2="24.6" y2="14" />
+            <line class="timer-dial-tick" x1="14" y1="26.5" x2="14" y2="24.6" />
+            <line class="timer-dial-tick" x1="1.5" y1="14" x2="3.4" y2="14" />
+            <!-- Arco continuo de temperatura -->
+            <circle class="timer-dial-arc" id="timer-dial-arc" cx="14" cy="14" r="11" />
+            <!-- Aguja fina que rota con los 15 minutos -->
+            <line class="timer-dial-hand" id="timer-dial-hand" x1="14" y1="14" x2="14" y2="6.2" />
+            <circle class="timer-dial-pivot" cx="14" cy="14" r="2.1" />
+          </svg>
+          <span class="timer-dial-ripple" aria-hidden="true"></span>
+        </div>
+
+        <div class="timer-readout">
+          <span class="timer-label">DEFENSA</span>
+          <span class="timer-display" id="timer-display">15:00</span>
+        </div>
+
+        <span class="timer-divider" aria-hidden="true"></span>
+
         <div class="timer-actions">
-          <button id="btn-timer-toggle" title="Iniciar / Pausar Cronómetro (T)"
-            aria-label="Iniciar / Pausar Cronómetro">▶</button>
-          <button id="btn-timer-reset" title="Reiniciar a 15:00" aria-label="Reiniciar Cronómetro">↺</button>
+          <button id="btn-timer-toggle" class="timer-btn" title="Iniciar / Pausar Cronómetro (T)"
+            aria-label="Iniciar / Pausar Cronómetro">
+            <svg class="timer-icon-play" viewBox="0 0 14 14" width="11" height="11" fill="currentColor" aria-hidden="true">
+              <polygon points="3,1.8 12,7 3,12.2" />
+            </svg>
+            <svg class="timer-icon-pause" viewBox="0 0 14 14" width="11" height="11" fill="currentColor" aria-hidden="true">
+              <rect x="2.6" y="2" width="3" height="10" rx="0.6" />
+              <rect x="8.4" y="2" width="3" height="10" rx="0.6" />
+            </svg>
+          </button>
+          <button id="btn-timer-reset" class="timer-btn" title="Reiniciar a 15:00" aria-label="Reiniciar Cronómetro">
+            <svg viewBox="0 0 14 14" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M2.5 7a4.5 4.5 0 1 0 1.2-3.1L2.2 5.3" />
+              <polyline points="2.2,2.4 2.2,5.3 5.1,5.3" />
+            </svg>
+          </button>
         </div>
       </div>
     </header>

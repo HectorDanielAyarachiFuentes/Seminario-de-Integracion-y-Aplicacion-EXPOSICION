@@ -460,48 +460,185 @@ body.view-focus-text .canvas-3d-hint {
   box-shadow: 0 0 0 3px rgba(180, 131, 36, 0.22), 0 2px 7px rgba(180, 131, 36, 0.4);
 }
 
-/* Cronómetro Académico de 30 Minutos (Cronógrafo de Defensa) */
+/* Cronógrafo Editorial Académico — Dial Horológico + Temperatura Continua */
 .timer-container {
-  display: flex;
+  --timer-accent: hsl(148, 74%, 40%);
+  --timer-accent-soft: hsla(148, 74%, 40%, 0.12);
+  --timer-wash: hsla(148, 76%, 48%, 0.13);
+  --timer-border: hsla(148, 68%, 40%, 0.46);
+  --timer-text: hsl(148, 66%, 24%);
+
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  gap: 0.85rem;
-  background: #ffffff;
-  border: 1px solid var(--card-border);
-  padding: 0.4rem 1.1rem;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  gap: 0.65rem;
+  background: linear-gradient(90deg, var(--timer-wash) 0%, #fcfbf8 46%, #ffffff 100%);
+  border: 1px solid var(--timer-border);
+  padding: 0.34rem 0.72rem 0.34rem 0.62rem;
+  border-radius: 4px;
+  box-shadow:
+    0 1px 3px rgba(15, 23, 42, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.85);
+  transition: border-color 0.9s ease, background 0.9s ease, box-shadow 0.9s ease;
+}
+
+/* Micro-dial cronográfico SVG */
+.timer-dial {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.timer-dial-svg {
+  display: block;
+  overflow: visible;
+}
+
+.timer-dial-ring-bg {
+  fill: var(--timer-accent-soft);
+  stroke: rgba(15, 23, 42, 0.12);
+  stroke-width: 1.75;
+  transition: fill 0.9s ease;
+}
+
+.timer-dial-tick {
+  stroke: rgba(153, 101, 21, 0.42);
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+
+.timer-dial-arc {
+  fill: none;
+  stroke: var(--timer-accent);
+  stroke-width: 2.15;
+  stroke-linecap: round;
+  stroke-dasharray: 69.115;
+  stroke-dashoffset: 69.115;
+  transform: rotate(-90deg);
+  transform-origin: 14px 14px;
+  transition: stroke-dashoffset 0.95s linear, stroke 0.9s ease;
+}
+
+.timer-dial-hand {
+  stroke: var(--timer-accent);
+  stroke-width: 1.45;
+  stroke-linecap: round;
+  transform: rotate(0deg);
+  transform-origin: 14px 14px;
+  transition: transform 0.95s linear, stroke 0.9s ease;
+}
+
+.timer-dial-pivot {
+  fill: var(--timer-accent);
+  stroke: #fcfbf8;
+  stroke-width: 0.8;
+  transition: fill 0.9s ease;
+}
+
+/* Onda fina de tinta al cruzar un hito (5 min / 12 min) */
+.timer-dial-ripple {
+  position: absolute;
+  inset: 1px;
+  border-radius: 50%;
+  border: 1.5px solid var(--timer-accent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.timer-container.timer-bounce .timer-dial {
+  animation: timerDialKick 0.72s cubic-bezier(0.22, 1.35, 0.36, 1);
+}
+
+.timer-container.timer-bounce .timer-dial-ripple {
+  animation: timerRippleExpand 0.82s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.timer-container.timer-bounce .timer-display {
+  animation: timerReadoutNudge 0.62s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes timerDialKick {
+  0% {
+    transform: scale(1);
+  }
+  26% {
+    transform: scale(1.24);
+  }
+  56% {
+    transform: scale(0.93);
+  }
+  80% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes timerRippleExpand {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.72;
+  }
+  100% {
+    transform: scale(1.85);
+    opacity: 0;
+  }
+}
+
+@keyframes timerReadoutNudge {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-1.5px);
+  }
+  65% {
+    transform: translateY(0.5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.timer-readout {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.52rem;
 }
 
 .timer-label {
   font-family: var(--font-serif);
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   color: var(--gold-main);
 }
 
 .timer-display {
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.08rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--oxford-blue);
-  min-width: 60px;
+  letter-spacing: 0.05em;
+  color: var(--timer-text);
+  min-width: 54px;
   text-align: center;
-  transition: color 0.3s ease;
+  transition: color 0.9s ease;
 }
 
-.timer-display.warning {
-  color: #d97706;
-}
-
+.timer-display.warning,
 .timer-display.critical {
-  color: #dc2626;
+  color: var(--timer-text);
 }
 
 .timer-display.finished {
-  color: #b91c1c;
-  animation: timerPulse 1s ease-in-out infinite alternate;
+  color: #d41c14;
+  animation: timerPulse 1.2s ease-in-out infinite alternate;
 }
 
 @keyframes timerPulse {
@@ -510,25 +647,83 @@ body.view-focus-text .canvas-3d-hint {
   }
 
   to {
-    opacity: 0.45;
+    opacity: 0.55;
   }
 }
 
+.timer-divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(15, 23, 42, 0.12);
+  flex-shrink: 0;
+}
+
+.timer-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.12rem;
+}
+
+.timer-actions .timer-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.12s ease;
+}
+
+.timer-actions .timer-btn:hover {
+  background: var(--timer-accent-soft);
+  border-color: var(--timer-border);
+  color: var(--timer-accent);
+}
+
+.timer-actions .timer-btn:active {
+  transform: scale(0.93);
+}
+
+/* Alternancia limpia de iconos SVG Play / Pause */
+.timer-icon-pause {
+  display: none;
+}
+
+.timer-container.is-running .timer-icon-play {
+  display: none;
+}
+
+.timer-container.is-running .timer-icon-pause {
+  display: block;
+}
+
+/* Aviso editorial de cierre de tiempo (papel + filete carmesí) */
 .timer-toast {
   position: fixed;
-  top: 4.5rem;
+  top: 4.55rem;
   right: clamp(1rem, 2.5vw, 2.4rem);
   z-index: 1200;
-  background: rgba(15, 23, 42, 0.94);
-  color: #f8fafc;
-  border: 1px solid var(--gold-main);
-  border-radius: 8px;
-  padding: 0.65rem 1.05rem;
-  font-size: 0.84rem;
-  font-weight: 600;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #fcfbf8;
+  color: var(--oxford-blue);
+  border: 1px solid rgba(153, 101, 21, 0.34);
+  border-left: 3px solid #992222;
+  border-radius: 4px;
+  padding: 0.62rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.10);
   opacity: 0;
-  transform: translateY(-10px);
+  transform: translateY(-6px);
   pointer-events: none;
   transition: opacity 0.28s ease, transform 0.28s ease;
 }
@@ -536,20 +731,6 @@ body.view-focus-text .canvas-3d-hint {
 .timer-toast.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-.timer-actions button {
-  background: transparent;
-  border: none;
-  color: var(--text-muted);
-  cursor: pointer;
-  padding: 0.2rem 0.35rem;
-  font-size: 0.8rem;
-  transition: color 0.2s;
-}
-
-.timer-actions button:hover {
-  color: var(--gold-main);
 }
 
 /* ─── CONTENIDO CENTRAL DE LA PRESENTACIÓN (SLIDE CARD EN BLANCO CLÁSICO) ─── */

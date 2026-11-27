@@ -20,6 +20,8 @@ class PresentationApp {
     this.elapsedSeconds = 0;
     this.timerRunning = false;
     this.timerInterval = null;
+    this.timerMilestoneYellowTriggered = false;
+    this.timerMilestoneRedTriggered = false;
 
     // Estado del modo enfoque de texto (atenuación del fondo 3D)
     this.is3dDimmed = false;
@@ -82,6 +84,7 @@ class PresentationApp {
     this.renderSlide(initialSlide);
     this.populateDrawerContent();
     this.renderSlidesIndex();
+    this.updateTimerDisplay();
   }
 
   initDOMElements() {
@@ -100,6 +103,9 @@ class PresentationApp {
     this.slidesIndexBody = document.getElementById("slides-index-body");
     this.btnCloseSlidesIndex = document.getElementById("btn-close-slides-index");
 
+    this.timerContainer = document.getElementById("timer-container");
+    this.timerDialArc = document.getElementById("timer-dial-arc");
+    this.timerDialHand = document.getElementById("timer-dial-hand");
     this.timerDisplay = document.getElementById("timer-display");
     this.btnTimerToggle = document.getElementById("btn-timer-toggle");
     this.btnTimerReset = document.getElementById("btn-timer-reset");
@@ -1322,7 +1328,7 @@ class PresentationApp {
   startTimer() {
     if (!this.timerRunning) {
       this.timerRunning = true;
-      this.btnTimerToggle.textContent = "⏸";
+      this.timerContainer?.classList.add("is-running");
       this.btnTimerToggle.title = "Pausar cronómetro (T)";
 
       this.timerInterval = setInterval(() => {
@@ -1332,7 +1338,8 @@ class PresentationApp {
         if (this.elapsedSeconds >= this.totalSeconds) {
           this.pauseTimer();
           this.timerDisplay?.classList.add("finished");
-          this.showTimerToast("⏱️ Los 15 minutos estipulados para la defensa han concluido.");
+          this.triggerTimerBounce();
+          this.showTimerToast("Los 15 minutos estipulados para la defensa han concluido.");
         }
       }, 1000);
     }
@@ -1350,7 +1357,7 @@ class PresentationApp {
 
   pauseTimer() {
     this.timerRunning = false;
-    this.btnTimerToggle.textContent = "▶";
+    this.timerContainer?.classList.remove("is-running");
     this.btnTimerToggle.title = "Iniciar cronómetro (T)";
     clearInterval(this.timerInterval);
   }
@@ -1358,10 +1365,25 @@ class PresentationApp {
   resetTimer() {
     this.pauseTimer();
     this.elapsedSeconds = 0;
+    this.timerMilestoneYellowTriggered = false;
+    this.timerMilestoneRedTriggered = false;
     this.timerDisplay?.classList.remove("finished");
+    this.timerContainer?.classList.remove("timer-bounce");
     this.timerToast?.classList.remove("visible");
     clearTimeout(this._timerToastTimeout);
+    clearTimeout(this._timerBounceTimeout);
     this.updateTimerDisplay();
+  }
+
+  triggerTimerBounce() {
+    if (!this.timerContainer) return;
+    this.timerContainer.classList.remove("timer-bounce");
+    void this.timerContainer.offsetWidth;
+    this.timerContainer.classList.add("timer-bounce");
+    clearTimeout(this._timerBounceTimeout);
+    this._timerBounceTimeout = setTimeout(() => {
+      this.timerContainer?.classList.remove("timer-bounce");
+    }, 850);
   }
 
   updateTimerDisplay() {
@@ -1370,12 +1392,65 @@ class PresentationApp {
     const s = remainingSeconds % 60;
     this.timerDisplay.textContent = `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 
-    const minutosTranscurridos = this.elapsedSeconds / 60;
+    const totalMin = this.totalSeconds / 60;
+    const elapsedMin = Math.min(totalMin, this.elapsedSeconds / 60);
+    const yellowMin = 5; // 5 min transcurridos (10:00 restantes) -> amarillo cálido
+    const redMilestoneMin = 12; // 12 min transcurridos (3:00 restantes) -> tramo rojo final
+
+    // Paleta viva pero refinada (Esmeralda 148° -> Ámbar dorado 42° a los 5 min -> Rojo vivo 3° a los 15 min)
+    let hue, sat, light, textLight;
+    if (elapsedMin <= yellowMin) {
+      const t = Math.max(0, Math.min(1, elapsedMin / yellowMin));
+      const ease = t * t * (3 - 2 * t);
+      hue = 148 + (42 - 148) * ease;
+      sat = 74 + (95 - 74) * ease;
+      light = 40 + (47 - 40) * ease;
+      textLight = 24 + (32 - 24) * ease;
+    } else {
+      const t = Math.max(0, Math.min(1, (elapsedMin - yellowMin) / Math.max(1, totalMin - yellowMin)));
+      const ease = t * t * (3 - 2 * t);
+      hue = 42 + (3 - 42) * ease;
+      sat = 95 + (86 - 95) * ease;
+      light = 47 + (48 - 47) * ease;
+      textLight = 32 + (40 - 32) * ease;
+    }
+
+    const h = hue.toFixed(1);
+    const satStr = sat.toFixed(1);
+    const lStr = light.toFixed(1);
+
+    if (this.timerContainer) {
+      this.timerContainer.style.setProperty("--timer-accent", `hsl(${h}, ${satStr}%, ${lStr}%)`);
+      this.timerContainer.style.setProperty("--timer-accent-soft", `hsla(${h}, ${satStr}%, ${lStr}%, 0.13)`);
+      this.timerContainer.style.setProperty("--timer-wash", `hsla(${h}, ${satStr}%, 52%, 0.14)`);
+      this.timerContainer.style.setProperty("--timer-border", `hsla(${h}, ${Math.min(88, sat * 0.92).toFixed(1)}%, ${lStr}%, 0.48)`);
+      this.timerContainer.style.setProperty("--timer-text", `hsl(${h}, ${Math.min(82, sat * 0.84).toFixed(1)}%, ${textLight.toFixed(1)}%)`);
+    }
+
+    // Dial horológico SVG: arco (circunferencia r=11 -> 69.115) + aguja (0° -> 360°)
+    const progress = Math.max(0, Math.min(1, this.elapsedSeconds / this.totalSeconds));
+    if (this.timerDialArc) {
+      const circumference = 2 * Math.PI * 11;
+      this.timerDialArc.style.strokeDashoffset = (circumference * (1 - progress)).toFixed(2);
+    }
+    if (this.timerDialHand) {
+      this.timerDialHand.style.transform = `rotate(${(progress * 360).toFixed(1)}deg)`;
+    }
+
+    // Rebotes visuales al cruzar los hitos (5 min -> amarillo, 12 min -> tramo rojo)
+    if (elapsedMin >= yellowMin && !this.timerMilestoneYellowTriggered) {
+      this.timerMilestoneYellowTriggered = true;
+      this.triggerTimerBounce();
+    }
+    if (elapsedMin >= redMilestoneMin && !this.timerMilestoneRedTriggered) {
+      this.timerMilestoneRedTriggered = true;
+      this.triggerTimerBounce();
+    }
 
     this.timerDisplay.classList.remove("warning", "critical");
-    if (minutosTranscurridos >= this.data.timing.alertaRojaMinutos) {
+    if (elapsedMin >= redMilestoneMin) {
       this.timerDisplay.classList.add("critical");
-    } else if (minutosTranscurridos >= this.data.timing.alertaAmarillaMinutos) {
+    } else if (elapsedMin >= yellowMin) {
       this.timerDisplay.classList.add("warning");
     }
   }
