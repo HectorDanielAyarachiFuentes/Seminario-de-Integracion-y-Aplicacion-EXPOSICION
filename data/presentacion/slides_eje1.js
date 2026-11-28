@@ -6,14 +6,14 @@ window.PRESENTACION_PARTS.slidesEje1 = [
     "numero": 3,
     "tiempoSugerido": "0:40 min",
     "bloque": "EJE 1 · EL PROBLEMA",
-    "esquema": "1.1 Ubicación Espacio-Temporal: El CURZAS (0:40)",
-    "badge": "Paso 1 • Espacio y Tiempo",
-    "titulo": "El CURZAS en el Territorio (2027)",
-    "subtitulo": "Dónde y cuándo realizaríamos la investigación",
+    "esquema": "1.1 Ubicación Espacial: El CURZAS en el Territorio (0:40)",
+    "badge": "Paso 1 • Ubicación Espacial",
+    "titulo": "El CURZAS en el Territorio",
+    "subtitulo": "Dónde se situaría la investigación dentro de Río Negro",
     "puntosClave": [
       "<strong>¿Qué es el CURZAS?</strong> Complejo Universitario Regional de la UNCo (Art. 17)",
-      "<strong>¿Dónde funciona?</strong> Sede Central en Viedma + 10 Nodos en Río Negro",
-      "<strong>¿Cuándo iríamos al campo?</strong> Trabajo previsto de mayo a noviembre de 2027"
+      "<strong>Sede Cabecera:</strong> Ubicada en Viedma, capital de la provincia de Río Negro",
+      "<strong>Red Territorial:</strong> 10 Nodos en Línea Sur, Costa Atlántica y Valles"
     ],
     "metadatosFooter": "Eje 1 • Ordenanza CS N° 0988/25 • Res. CD N° 135/22",
     "escena3D": "anim_06",
@@ -24,7 +24,7 @@ window.PRESENTACION_PARTS.slidesEje1 = [
       "etiqueta": "🗺️ Maqueta 3D Nodos",
       "atajo": "A"
     },
-    "guionOrador": "[Espacio y tiempo • 0:40 min]\nEl trabajo de campo se realizaría entre mayo y noviembre de 2027 en el CURZAS de la Universidad Nacional del Comahue.\n\nComo muestra el mapa, el Complejo no es solo la sede central de Viedma: también llega de forma presencial y virtual a diez Nodos de la Línea Sur, la Costa Atlántica y los Valles."
+    "guionOrador": "[Ubicación espacial • 0:40 min]\nArrancamos ubicándonos en el espacio donde se situaría este estudio: el Complejo Universitario Regional Zona Atlántica y Sur (CURZAS) de la Universidad Nacional del Comahue.\n\nComo muestra el mapa, no se trata solo de la sede central en Viedma: el CURZAS se extiende de forma presencial y virtual a través de diez Nodos en la Línea Sur, la Costa Atlántica y los Valles de Río Negro."
   },
   {
     "id": "slide_eje1_ambito",
